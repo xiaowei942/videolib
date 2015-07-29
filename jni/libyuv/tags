@@ -1,0 +1,2219 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABGRToARGB	source/convert_argb.cc	/^int ABGRToARGB(const uint8* src_abgr, int src_stride_abgr,$/;"	f
+ABGRToI420	source/convert.cc	/^int ABGRToI420(const uint8* src_abgr, int src_stride_abgr,$/;"	f
+ABGRToUVRow_NEON	source/row_neon.cc	/^void ABGRToUVRow_NEON(const uint8* src_abgr, int src_stride_abgr,$/;"	f
+ABGRToUVRow_NEON	source/row_neon64.cc	/^void ABGRToUVRow_NEON(const uint8* src_abgr, int src_stride_abgr,$/;"	f
+ABGRToUVRow_SSSE3	source/row_posix.cc	/^void ABGRToUVRow_SSSE3(const uint8* src_abgr0, int src_stride_abgr,$/;"	f
+ABGRToUVRow_SSSE3	source/row_win.cc	/^void ABGRToUVRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ABGRToYRow_NEON	source/row_neon.cc	/^void ABGRToYRow_NEON(const uint8* src_abgr, uint8* dst_y, int pix) {$/;"	f
+ABGRToYRow_NEON	source/row_neon64.cc	/^void ABGRToYRow_NEON(const uint8* src_abgr, uint8* dst_y, int pix) {$/;"	f
+ABGRToYRow_SSSE3	source/row_posix.cc	/^void ABGRToYRow_SSSE3(const uint8* src_abgr, uint8* dst_y, int pix) {$/;"	f
+ABGRToYRow_SSSE3	source/row_win.cc	/^void ABGRToYRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ALIGNP	include/libyuv/basic_types.h	79;"	d
+ALIGNP	include/libyuv/basic_types.h	83;"	d
+APP_ABI	Application.mk	/^APP_ABI := armeabi armeabi-v7a arm64-v8a x86$/;"	m
+APP_STL	Application.mk	/^APP_STL := stlport_static/;"	m
+ARGB1555TOARGB	source/row_neon.cc	1031;"	d	file:
+ARGB1555TOARGB	source/row_neon64.cc	926;"	d	file:
+ARGB1555ToARGB	source/convert_argb.cc	/^int ARGB1555ToARGB(const uint8* src_argb1555, int src_stride_argb1555,$/;"	f
+ARGB1555ToARGBRow_C	source/row_common.cc	/^void ARGB1555ToARGBRow_C(const uint8* src_argb1555, uint8* dst_argb,$/;"	f
+ARGB1555ToARGBRow_NEON	source/row_neon.cc	/^void ARGB1555ToARGBRow_NEON(const uint8* src_argb1555, uint8* dst_argb,$/;"	f
+ARGB1555ToARGBRow_NEON	source/row_neon64.cc	/^void ARGB1555ToARGBRow_NEON(const uint8* src_argb1555, uint8* dst_argb,$/;"	f
+ARGB1555ToARGBRow_SSE2	source/row_posix.cc	/^void ARGB1555ToARGBRow_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGB1555ToARGBRow_SSE2	source/row_win.cc	/^void ARGB1555ToARGBRow_SSE2(const uint8* src_argb1555, uint8* dst_argb,$/;"	f
+ARGB1555ToI420	source/convert.cc	/^int ARGB1555ToI420(const uint8* src_argb1555, int src_stride_argb1555,$/;"	f
+ARGB1555ToUVRow_C	source/row_common.cc	/^void ARGB1555ToUVRow_C(const uint8* src_argb1555, int src_stride_argb1555,$/;"	f
+ARGB1555ToUVRow_NEON	source/row_neon.cc	/^void ARGB1555ToUVRow_NEON(const uint8* src_argb1555, int src_stride_argb1555,$/;"	f
+ARGB1555ToUVRow_NEON	source/row_neon64.cc	/^void ARGB1555ToUVRow_NEON(const uint8* src_argb1555, int src_stride_argb1555,$/;"	f
+ARGB1555ToYRow_C	source/row_common.cc	/^void ARGB1555ToYRow_C(const uint8* src_argb1555, uint8* dst_y, int width) {$/;"	f
+ARGB1555ToYRow_NEON	source/row_neon.cc	/^void ARGB1555ToYRow_NEON(const uint8* src_argb1555, uint8* dst_y, int pix) {$/;"	f
+ARGB1555ToYRow_NEON	source/row_neon64.cc	/^void ARGB1555ToYRow_NEON(const uint8* src_argb1555, uint8* dst_y, int pix) {$/;"	f
+ARGB4444TOARGB	source/row_neon.cc	1079;"	d	file:
+ARGB4444TOARGB	source/row_neon64.cc	985;"	d	file:
+ARGB4444ToARGB	source/convert_argb.cc	/^int ARGB4444ToARGB(const uint8* src_argb4444, int src_stride_argb4444,$/;"	f
+ARGB4444ToARGBRow_C	source/row_common.cc	/^void ARGB4444ToARGBRow_C(const uint8* src_argb4444, uint8* dst_argb,$/;"	f
+ARGB4444ToARGBRow_NEON	source/row_neon.cc	/^void ARGB4444ToARGBRow_NEON(const uint8* src_argb4444, uint8* dst_argb,$/;"	f
+ARGB4444ToARGBRow_NEON	source/row_neon64.cc	/^void ARGB4444ToARGBRow_NEON(const uint8* src_argb4444, uint8* dst_argb,$/;"	f
+ARGB4444ToARGBRow_SSE2	source/row_posix.cc	/^void ARGB4444ToARGBRow_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGB4444ToARGBRow_SSE2	source/row_win.cc	/^void ARGB4444ToARGBRow_SSE2(const uint8* src_argb4444, uint8* dst_argb,$/;"	f
+ARGB4444ToI420	source/convert.cc	/^int ARGB4444ToI420(const uint8* src_argb4444, int src_stride_argb4444,$/;"	f
+ARGB4444ToUVRow_C	source/row_common.cc	/^void ARGB4444ToUVRow_C(const uint8* src_argb4444, int src_stride_argb4444,$/;"	f
+ARGB4444ToUVRow_NEON	source/row_neon.cc	/^void ARGB4444ToUVRow_NEON(const uint8* src_argb4444, int src_stride_argb4444,$/;"	f
+ARGB4444ToUVRow_NEON	source/row_neon64.cc	/^void ARGB4444ToUVRow_NEON(const uint8* src_argb4444, int src_stride_argb4444,$/;"	f
+ARGB4444ToYRow_C	source/row_common.cc	/^void ARGB4444ToYRow_C(const uint8* src_argb4444, uint8* dst_y, int width) {$/;"	f
+ARGB4444ToYRow_NEON	source/row_neon.cc	/^void ARGB4444ToYRow_NEON(const uint8* src_argb4444, uint8* dst_y, int pix) {$/;"	f
+ARGB4444ToYRow_NEON	source/row_neon64.cc	/^void ARGB4444ToYRow_NEON(const uint8* src_argb4444, uint8* dst_y, int pix) {$/;"	f
+ARGBAdd	source/planar_functions.cc	/^int ARGBAdd(const uint8* src_argb0, int src_stride_argb0,$/;"	f
+ARGBAddRow_AVX2	source/row_posix.cc	/^void ARGBAddRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_AVX2	source/row_win.cc	/^void ARGBAddRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_C	source/row_common.cc	/^void ARGBAddRow_C(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_NEON	source/row_neon.cc	/^void ARGBAddRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_NEON	source/row_neon64.cc	/^void ARGBAddRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_SSE2	source/row_posix.cc	/^void ARGBAddRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAddRow_SSE2	source/row_win.cc	/^void ARGBAddRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBAffineRow_C	source/row_common.cc	/^void ARGBAffineRow_C(const uint8* src_argb, int src_argb_stride,$/;"	f
+ARGBAffineRow_SSE2	source/row_posix.cc	/^void ARGBAffineRow_SSE2(const uint8* src_argb, int src_argb_stride,$/;"	f
+ARGBAffineRow_SSE2	source/row_win.cc	/^void ARGBAffineRow_SSE2(const uint8* src_argb, int src_argb_stride,$/;"	f
+ARGBAttenuate	source/planar_functions.cc	/^int ARGBAttenuate(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBAttenuateRow_AVX2	source/row_posix.cc	/^void ARGBAttenuateRow_AVX2(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_AVX2	source/row_win.cc	/^void ARGBAttenuateRow_AVX2(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_C	source/row_common.cc	/^void ARGBAttenuateRow_C(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_NEON	source/row_neon.cc	/^void ARGBAttenuateRow_NEON(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_NEON	source/row_neon64.cc	/^void ARGBAttenuateRow_NEON(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_SSE2	source/row_posix.cc	/^void ARGBAttenuateRow_SSE2(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_SSE2	source/row_win.cc	/^void ARGBAttenuateRow_SSE2(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_SSSE3	source/row_posix.cc	/^void ARGBAttenuateRow_SSSE3(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBAttenuateRow_SSSE3	source/row_win.cc	/^void ARGBAttenuateRow_SSSE3(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBBlend	source/planar_functions.cc	/^int ARGBBlend(const uint8* src_argb0, int src_stride_argb0,$/;"	f
+ARGBBlendRow	include/libyuv/planar_functions.h	/^typedef void (*ARGBBlendRow)(const uint8* src_argb0, const uint8* src_argb1,$/;"	t
+ARGBBlendRow_C	source/row_common.cc	/^void ARGBBlendRow_C(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_NEON	source/row_neon.cc	/^void ARGBBlendRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_NEON	source/row_neon64.cc	/^void ARGBBlendRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_SSE2	source/row_posix.cc	/^void ARGBBlendRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_SSE2	source/row_win.cc	/^void ARGBBlendRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_SSSE3	source/row_posix.cc	/^void ARGBBlendRow_SSSE3(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlendRow_SSSE3	source/row_win.cc	/^void ARGBBlendRow_SSSE3(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBBlur	source/planar_functions.cc	/^int ARGBBlur(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBBuffers	source/convert_jpeg.cc	/^struct ARGBBuffers {$/;"	s	file:
+ARGBColorMatrix	source/planar_functions.cc	/^int ARGBColorMatrix(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBColorMatrixRow_C	source/row_common.cc	/^void ARGBColorMatrixRow_C(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBColorMatrixRow_NEON	source/row_neon.cc	/^void ARGBColorMatrixRow_NEON(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBColorMatrixRow_NEON	source/row_neon64.cc	/^void ARGBColorMatrixRow_NEON(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBColorMatrixRow_SSSE3	source/row_posix.cc	/^void ARGBColorMatrixRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBColorMatrixRow_SSSE3	source/row_win.cc	/^void ARGBColorMatrixRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBColorTable	source/planar_functions.cc	/^int ARGBColorTable(uint8* dst_argb, int dst_stride_argb,$/;"	f
+ARGBColorTableRow_C	source/row_common.cc	/^void ARGBColorTableRow_C(uint8* dst_argb, const uint8* table_argb, int width) {$/;"	f
+ARGBColorTableRow_X86	source/row_posix.cc	/^void ARGBColorTableRow_X86(uint8* dst_argb, const uint8* table_argb,$/;"	f
+ARGBColorTableRow_X86	source/row_win.cc	/^void ARGBColorTableRow_X86(uint8* dst_argb, const uint8* table_argb,$/;"	f
+ARGBComputeCumulativeSum	source/planar_functions.cc	/^int ARGBComputeCumulativeSum(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBCopy	source/convert_argb.cc	/^int ARGBCopy(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBCopyAlpha	source/planar_functions.cc	/^int ARGBCopyAlpha(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBCopyAlphaRow_AVX2	source/row_posix.cc	/^void ARGBCopyAlphaRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyAlphaRow_AVX2	source/row_win.cc	/^void ARGBCopyAlphaRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyAlphaRow_C	source/row_common.cc	/^void ARGBCopyAlphaRow_C(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyAlphaRow_SSE2	source/row_posix.cc	/^void ARGBCopyAlphaRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyAlphaRow_SSE2	source/row_win.cc	/^void ARGBCopyAlphaRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyYToAlpha	source/planar_functions.cc	/^int ARGBCopyYToAlpha(const uint8* src_y, int src_stride_y,$/;"	f
+ARGBCopyYToAlphaRow_AVX2	source/row_posix.cc	/^void ARGBCopyYToAlphaRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyYToAlphaRow_AVX2	source/row_win.cc	/^void ARGBCopyYToAlphaRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyYToAlphaRow_C	source/row_common.cc	/^void ARGBCopyYToAlphaRow_C(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyYToAlphaRow_SSE2	source/row_posix.cc	/^void ARGBCopyYToAlphaRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBCopyYToAlphaRow_SSE2	source/row_win.cc	/^void ARGBCopyYToAlphaRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBDetect	source/compare.cc	/^uint32 ARGBDetect(const uint8* argb, int stride_argb, int width, int height) {$/;"	f
+ARGBDetectRow_C	source/compare.cc	/^static uint32 ARGBDetectRow_C(const uint8* argb, int width) {$/;"	f	file:
+ARGBGray	source/planar_functions.cc	/^int ARGBGray(uint8* dst_argb, int dst_stride_argb,$/;"	f
+ARGBGrayRow_C	source/row_common.cc	/^void ARGBGrayRow_C(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBGrayRow_NEON	source/row_neon.cc	/^void ARGBGrayRow_NEON(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBGrayRow_NEON	source/row_neon64.cc	/^void ARGBGrayRow_NEON(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBGrayRow_SSSE3	source/row_posix.cc	/^void ARGBGrayRow_SSSE3(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBGrayRow_SSSE3	source/row_win.cc	/^void ARGBGrayRow_SSSE3(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBGrayTo	source/planar_functions.cc	/^int ARGBGrayTo(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBInterpolate	source/planar_functions.cc	/^int ARGBInterpolate(const uint8* src_argb0, int src_stride_argb0,$/;"	f
+ARGBLumaColorTable	source/planar_functions.cc	/^int ARGBLumaColorTable(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBLumaColorTableRow_C	source/row_common.cc	/^void ARGBLumaColorTableRow_C(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBLumaColorTableRow_SSSE3	source/row_posix.cc	/^void ARGBLumaColorTableRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBLumaColorTableRow_SSSE3	source/row_win.cc	/^void ARGBLumaColorTableRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBMirror	source/planar_functions.cc	/^int ARGBMirror(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBMirrorRow_AVX2	source/row_posix.cc	/^void ARGBMirrorRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_AVX2	source/row_win.cc	/^void ARGBMirrorRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_C	source/row_common.cc	/^void ARGBMirrorRow_C(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_NEON	source/row_neon.cc	/^void ARGBMirrorRow_NEON(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_NEON	source/row_neon64.cc	/^void ARGBMirrorRow_NEON(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_SSE2	source/row_posix.cc	/^void ARGBMirrorRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMirrorRow_SSE2	source/row_win.cc	/^void ARGBMirrorRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+ARGBMultiply	source/planar_functions.cc	/^int ARGBMultiply(const uint8* src_argb0, int src_stride_argb0,$/;"	f
+ARGBMultiplyRow_AVX2	source/row_posix.cc	/^void ARGBMultiplyRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_AVX2	source/row_win.cc	/^void ARGBMultiplyRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_C	source/row_common.cc	/^void ARGBMultiplyRow_C(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_NEON	source/row_neon.cc	/^void ARGBMultiplyRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_NEON	source/row_neon64.cc	/^void ARGBMultiplyRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_SSE2	source/row_posix.cc	/^void ARGBMultiplyRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBMultiplyRow_SSE2	source/row_win.cc	/^void ARGBMultiplyRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBPolynomial	source/planar_functions.cc	/^int ARGBPolynomial(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBPolynomialRow_AVX2	source/row_posix.cc	/^void ARGBPolynomialRow_AVX2(const uint8* src_argb,$/;"	f
+ARGBPolynomialRow_AVX2	source/row_win.cc	/^void ARGBPolynomialRow_AVX2(const uint8* src_argb,$/;"	f
+ARGBPolynomialRow_C	source/row_common.cc	/^void ARGBPolynomialRow_C(const uint8* src_argb,$/;"	f
+ARGBPolynomialRow_SSE2	source/row_posix.cc	/^void ARGBPolynomialRow_SSE2(const uint8* src_argb,$/;"	f
+ARGBPolynomialRow_SSE2	source/row_win.cc	/^void ARGBPolynomialRow_SSE2(const uint8* src_argb,$/;"	f
+ARGBQuantize	source/planar_functions.cc	/^int ARGBQuantize(uint8* dst_argb, int dst_stride_argb,$/;"	f
+ARGBQuantizeRow_C	source/row_common.cc	/^void ARGBQuantizeRow_C(uint8* dst_argb, int scale, int interval_size,$/;"	f
+ARGBQuantizeRow_NEON	source/row_neon.cc	/^void ARGBQuantizeRow_NEON(uint8* dst_argb, int scale, int interval_size,$/;"	f
+ARGBQuantizeRow_NEON	source/row_neon64.cc	/^void ARGBQuantizeRow_NEON(uint8* dst_argb, int scale, int interval_size,$/;"	f
+ARGBQuantizeRow_SSE2	source/row_posix.cc	/^void ARGBQuantizeRow_SSE2(uint8* dst_argb, int scale, int interval_size,$/;"	f
+ARGBQuantizeRow_SSE2	source/row_win.cc	/^void ARGBQuantizeRow_SSE2(uint8* dst_argb, int scale, int interval_size,$/;"	f
+ARGBRect	source/planar_functions.cc	/^int ARGBRect(uint8* dst_argb, int dst_stride_argb,$/;"	f
+ARGBRotate	source/rotate_argb.cc	/^int ARGBRotate(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBRotate180	source/rotate_argb.cc	/^void ARGBRotate180(const uint8* src, int src_stride,$/;"	f
+ARGBRotate270	source/rotate_argb.cc	/^void ARGBRotate270(const uint8* src, int src_stride,$/;"	f
+ARGBRotate90	source/rotate_argb.cc	/^void ARGBRotate90(const uint8* src, int src_stride,$/;"	f
+ARGBScale	source/scale_argb.cc	/^int ARGBScale(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBScaleClip	source/scale_argb.cc	/^int ARGBScaleClip(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBSepia	source/planar_functions.cc	/^int ARGBSepia(uint8* dst_argb, int dst_stride_argb,$/;"	f
+ARGBSepiaRow_C	source/row_common.cc	/^void ARGBSepiaRow_C(uint8* dst_argb, int width) {$/;"	f
+ARGBSepiaRow_NEON	source/row_neon.cc	/^void ARGBSepiaRow_NEON(uint8* dst_argb, int width) {$/;"	f
+ARGBSepiaRow_NEON	source/row_neon64.cc	/^void ARGBSepiaRow_NEON(uint8* dst_argb, int width) {$/;"	f
+ARGBSepiaRow_SSSE3	source/row_posix.cc	/^void ARGBSepiaRow_SSSE3(uint8* dst_argb, int width) {$/;"	f
+ARGBSepiaRow_SSSE3	source/row_win.cc	/^void ARGBSepiaRow_SSSE3(uint8* dst_argb, int width) {$/;"	f
+ARGBSetRow_C	source/row_common.cc	/^void ARGBSetRow_C(uint8* dst_argb, uint32 v32, int width) {$/;"	f
+ARGBSetRow_NEON	source/row_neon.cc	/^void ARGBSetRow_NEON(uint8* dst, uint32 v32, int count) {$/;"	f
+ARGBSetRow_NEON	source/row_neon64.cc	/^void ARGBSetRow_NEON(uint8* dst, uint32 v32, int count) {$/;"	f
+ARGBSetRow_X86	source/row_posix.cc	/^void ARGBSetRow_X86(uint8* dst_argb, uint32 v32, int width) {$/;"	f
+ARGBSetRow_X86	source/row_win.cc	/^void ARGBSetRow_X86(uint8* dst_argb, uint32 v32, int count) {$/;"	f
+ARGBShade	source/planar_functions.cc	/^int ARGBShade(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBShadeRow_C	source/row_common.cc	/^void ARGBShadeRow_C(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBShadeRow_NEON	source/row_neon.cc	/^void ARGBShadeRow_NEON(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBShadeRow_NEON	source/row_neon64.cc	/^void ARGBShadeRow_NEON(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBShadeRow_SSE2	source/row_posix.cc	/^void ARGBShadeRow_SSE2(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBShadeRow_SSE2	source/row_win.cc	/^void ARGBShadeRow_SSE2(const uint8* src_argb, uint8* dst_argb, int width,$/;"	f
+ARGBShuffle	source/planar_functions.cc	/^int ARGBShuffle(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+ARGBShuffleRow_AVX2	source/row_posix.cc	/^void ARGBShuffleRow_AVX2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_AVX2	source/row_win.cc	/^void ARGBShuffleRow_AVX2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_C	source/row_common.cc	/^void ARGBShuffleRow_C(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_NEON	source/row_neon.cc	/^void ARGBShuffleRow_NEON(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_NEON	source/row_neon64.cc	/^void ARGBShuffleRow_NEON(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_SSE2	source/row_posix.cc	/^void ARGBShuffleRow_SSE2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_SSE2	source/row_win.cc	/^void ARGBShuffleRow_SSE2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_SSSE3	source/row_posix.cc	/^void ARGBShuffleRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBShuffleRow_SSSE3	source/row_win.cc	/^void ARGBShuffleRow_SSSE3(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBSobel	source/planar_functions.cc	/^int ARGBSobel(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBSobelToPlane	source/planar_functions.cc	/^int ARGBSobelToPlane(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBSobelXY	source/planar_functions.cc	/^int ARGBSobelXY(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBSobelize	source/planar_functions.cc	/^static int ARGBSobelize(const uint8* src_argb, int src_stride_argb,$/;"	f	file:
+ARGBSubtract	source/planar_functions.cc	/^int ARGBSubtract(const uint8* src_argb0, int src_stride_argb0,$/;"	f
+ARGBSubtractRow_AVX2	source/row_posix.cc	/^void ARGBSubtractRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_AVX2	source/row_win.cc	/^void ARGBSubtractRow_AVX2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_C	source/row_common.cc	/^void ARGBSubtractRow_C(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_NEON	source/row_neon.cc	/^void ARGBSubtractRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_NEON	source/row_neon64.cc	/^void ARGBSubtractRow_NEON(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_SSE2	source/row_posix.cc	/^void ARGBSubtractRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBSubtractRow_SSE2	source/row_win.cc	/^void ARGBSubtractRow_SSE2(const uint8* src_argb0, const uint8* src_argb1,$/;"	f
+ARGBTOARGB1555	source/row_neon.cc	446;"	d	file:
+ARGBTOARGB1555	source/row_neon64.cc	391;"	d	file:
+ARGBTOARGB4444	source/row_neon.cc	496;"	d	file:
+ARGBTOARGB4444	source/row_neon64.cc	429;"	d	file:
+ARGBTORGB565	source/row_neon.cc	400;"	d	file:
+ARGBTORGB565	source/row_neon64.cc	356;"	d	file:
+ARGBToABGR	source/convert_argb.cc	/^int ARGBToABGR(const uint8* src_abgr, int src_stride_abgr,$/;"	f
+ARGBToARGB	include/libyuv/convert_argb.h	32;"	d
+ARGBToARGB	include/libyuv/convert_from_argb.h	22;"	d
+ARGBToARGB1555	source/convert_from_argb.cc	/^int ARGBToARGB1555(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToARGB1555Row_C	source/row_common.cc	/^void ARGBToARGB1555Row_C(const uint8* src_argb, uint8* dst_rgb, int width) {$/;"	f
+ARGBToARGB1555Row_NEON	source/row_neon.cc	/^void ARGBToARGB1555Row_NEON(const uint8* src_argb, uint8* dst_argb1555,$/;"	f
+ARGBToARGB1555Row_NEON	source/row_neon64.cc	/^void ARGBToARGB1555Row_NEON(const uint8* src_argb, uint8* dst_argb1555,$/;"	f
+ARGBToARGB1555Row_SSE2	source/row_posix.cc	/^void ARGBToARGB1555Row_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGBToARGB1555Row_SSE2	source/row_win.cc	/^void ARGBToARGB1555Row_SSE2(const uint8* src_argb, uint8* dst_rgb, int pix) {$/;"	f
+ARGBToARGB4444	source/convert_from_argb.cc	/^int ARGBToARGB4444(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToARGB4444Row_C	source/row_common.cc	/^void ARGBToARGB4444Row_C(const uint8* src_argb, uint8* dst_rgb, int width) {$/;"	f
+ARGBToARGB4444Row_NEON	source/row_neon.cc	/^void ARGBToARGB4444Row_NEON(const uint8* src_argb, uint8* dst_argb4444,$/;"	f
+ARGBToARGB4444Row_NEON	source/row_neon64.cc	/^void ARGBToARGB4444Row_NEON(const uint8* src_argb, uint8* dst_argb4444,$/;"	f
+ARGBToARGB4444Row_SSE2	source/row_posix.cc	/^void ARGBToARGB4444Row_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGBToARGB4444Row_SSE2	source/row_win.cc	/^void ARGBToARGB4444Row_SSE2(const uint8* src_argb, uint8* dst_rgb, int pix) {$/;"	f
+ARGBToARGBMirror	include/libyuv/planar_functions.h	119;"	d
+ARGBToBGRA	source/convert_argb.cc	/^int ARGBToBGRA(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+ARGBToBayer	source/format_conversion.cc	/^int ARGBToBayer(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToBayerGGRow_C	source/row_common.cc	/^void ARGBToBayerGGRow_C(const uint8* src_argb,$/;"	f
+ARGBToBayerGGRow_NEON	source/row_neon.cc	/^void ARGBToBayerGGRow_NEON(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerGGRow_NEON	source/row_neon64.cc	/^void ARGBToBayerGGRow_NEON(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerGGRow_SSE2	source/row_posix.cc	/^void ARGBToBayerGGRow_SSE2(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerGGRow_SSE2	source/row_win.cc	/^void ARGBToBayerGGRow_SSE2(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerRGB	include/libyuv/format_conversion.h	155;"	d
+ARGBToBayerRow_C	source/row_common.cc	/^void ARGBToBayerRow_C(const uint8* src_argb,$/;"	f
+ARGBToBayerRow_NEON	source/row_neon.cc	/^void ARGBToBayerRow_NEON(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerRow_NEON	source/row_neon64.cc	/^void ARGBToBayerRow_NEON(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerRow_SSSE3	source/row_posix.cc	/^void ARGBToBayerRow_SSSE3(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToBayerRow_SSSE3	source/row_win.cc	/^void ARGBToBayerRow_SSSE3(const uint8* src_argb, uint8* dst_bayer,$/;"	f
+ARGBToI400	source/convert_from_argb.cc	/^int ARGBToI400(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToI411	source/convert_from_argb.cc	/^int ARGBToI411(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToI420	source/convert.cc	/^int ARGBToI420(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToI422	source/convert_from_argb.cc	/^int ARGBToI422(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToI444	source/convert_from_argb.cc	/^int ARGBToI444(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToJ400	source/convert_from_argb.cc	/^int ARGBToJ400(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToJ420	source/convert_from_argb.cc	/^int ARGBToJ420(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToJ422	source/convert_from_argb.cc	/^int ARGBToJ422(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToNV12	source/convert_from_argb.cc	/^int ARGBToNV12(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToNV21	source/convert_from_argb.cc	/^int ARGBToNV21(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToRAW	source/convert_from_argb.cc	/^int ARGBToRAW(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToRAWRow_C	source/row_common.cc	/^void ARGBToRAWRow_C(const uint8* src_argb, uint8* dst_rgb, int width) {$/;"	f
+ARGBToRAWRow_NEON	source/row_neon.cc	/^void ARGBToRAWRow_NEON(const uint8* src_argb, uint8* dst_raw, int pix) {$/;"	f
+ARGBToRAWRow_NEON	source/row_neon64.cc	/^void ARGBToRAWRow_NEON(const uint8* src_argb, uint8* dst_raw, int pix) {$/;"	f
+ARGBToRAWRow_SSSE3	source/row_posix.cc	/^void ARGBToRAWRow_SSSE3(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGBToRAWRow_SSSE3	source/row_win.cc	/^void ARGBToRAWRow_SSSE3(const uint8* src_argb, uint8* dst_rgb, int pix) {$/;"	f
+ARGBToRGB24	source/convert_from_argb.cc	/^int ARGBToRGB24(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToRGB24Row_C	source/row_common.cc	/^void ARGBToRGB24Row_C(const uint8* src_argb, uint8* dst_rgb, int width) {$/;"	f
+ARGBToRGB24Row_NEON	source/row_neon.cc	/^void ARGBToRGB24Row_NEON(const uint8* src_argb, uint8* dst_rgb24, int pix) {$/;"	f
+ARGBToRGB24Row_NEON	source/row_neon64.cc	/^void ARGBToRGB24Row_NEON(const uint8* src_argb, uint8* dst_rgb24, int pix) {$/;"	f
+ARGBToRGB24Row_SSSE3	source/row_posix.cc	/^void ARGBToRGB24Row_SSSE3(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGBToRGB24Row_SSSE3	source/row_win.cc	/^void ARGBToRGB24Row_SSSE3(const uint8* src_argb, uint8* dst_rgb, int pix) {$/;"	f
+ARGBToRGB565	source/convert_from_argb.cc	/^int ARGBToRGB565(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToRGB565Row_C	source/row_common.cc	/^void ARGBToRGB565Row_C(const uint8* src_argb, uint8* dst_rgb, int width) {$/;"	f
+ARGBToRGB565Row_NEON	source/row_neon.cc	/^void ARGBToRGB565Row_NEON(const uint8* src_argb, uint8* dst_rgb565, int pix) {$/;"	f
+ARGBToRGB565Row_NEON	source/row_neon64.cc	/^void ARGBToRGB565Row_NEON(const uint8* src_argb, uint8* dst_rgb565, int pix) {$/;"	f
+ARGBToRGB565Row_SSE2	source/row_posix.cc	/^void ARGBToRGB565Row_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+ARGBToRGB565Row_SSE2	source/row_win.cc	/^void ARGBToRGB565Row_SSE2(const uint8* src_argb, uint8* dst_rgb, int pix) {$/;"	f
+ARGBToRGBA	source/convert_from_argb.cc	/^int ARGBToRGBA(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToUV411Row_C	source/row_common.cc	/^void ARGBToUV411Row_C(const uint8* src_argb,$/;"	f
+ARGBToUV411Row_NEON	source/row_neon.cc	/^void ARGBToUV411Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV411Row_NEON	source/row_neon64.cc	/^void ARGBToUV411Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV422Row_C	source/row_common.cc	/^void ARGBToUV422Row_C(const uint8* src_argb,$/;"	f
+ARGBToUV422Row_NEON	source/row_neon.cc	/^void ARGBToUV422Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV422Row_NEON	source/row_neon64.cc	/^void ARGBToUV422Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV422Row_SSSE3	source/row_posix.cc	/^void ARGBToUV422Row_SSSE3(const uint8* src_argb0,$/;"	f
+ARGBToUV422Row_SSSE3	source/row_win.cc	/^void ARGBToUV422Row_SSSE3(const uint8* src_argb0,$/;"	f
+ARGBToUV444Row_C	source/row_common.cc	/^void ARGBToUV444Row_C(const uint8* src_argb,$/;"	f
+ARGBToUV444Row_NEON	source/row_neon.cc	/^void ARGBToUV444Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV444Row_NEON	source/row_neon64.cc	/^void ARGBToUV444Row_NEON(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV444Row_SSSE3	source/row_posix.cc	/^void ARGBToUV444Row_SSSE3(const uint8* src_argb, uint8* dst_u, uint8* dst_v,$/;"	f
+ARGBToUV444Row_SSSE3	source/row_win.cc	/^void ARGBToUV444Row_SSSE3(const uint8* src_argb0,$/;"	f
+ARGBToUVJ422Row_C	source/row_common.cc	/^void ARGBToUVJ422Row_C(const uint8* src_argb,$/;"	f
+ARGBToUVJRow_NEON	source/row_neon.cc	/^void ARGBToUVJRow_NEON(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToUVJRow_NEON	source/row_neon64.cc	/^void ARGBToUVJRow_NEON(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToUVJRow_SSSE3	source/row_posix.cc	/^void ARGBToUVJRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUVJRow_SSSE3	source/row_win.cc	/^void ARGBToUVJRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUVRow_AVX2	source/row_posix.cc	/^void ARGBToUVRow_AVX2(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUVRow_AVX2	source/row_win.cc	/^void ARGBToUVRow_AVX2(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUVRow_NEON	source/row_neon.cc	/^void ARGBToUVRow_NEON(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToUVRow_NEON	source/row_neon64.cc	/^void ARGBToUVRow_NEON(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToUVRow_SSSE3	source/row_posix.cc	/^void ARGBToUVRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUVRow_SSSE3	source/row_win.cc	/^void ARGBToUVRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+ARGBToUYVY	source/convert_from_argb.cc	/^int ARGBToUYVY(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBToYJRow_AVX2	source/row_posix.cc	/^void ARGBToYJRow_AVX2(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYJRow_AVX2	source/row_win.cc	/^void ARGBToYJRow_AVX2(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYJRow_NEON	source/row_neon.cc	/^void ARGBToYJRow_NEON(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYJRow_NEON	source/row_neon64.cc	/^void ARGBToYJRow_NEON(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYJRow_SSSE3	source/row_posix.cc	/^void ARGBToYJRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYJRow_SSSE3	source/row_win.cc	/^void ARGBToYJRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_AVX2	source/row_posix.cc	/^void ARGBToYRow_AVX2(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_AVX2	source/row_win.cc	/^void ARGBToYRow_AVX2(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_NEON	source/row_neon.cc	/^void ARGBToYRow_NEON(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_NEON	source/row_neon64.cc	/^void ARGBToYRow_NEON(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_SSSE3	source/row_posix.cc	/^void ARGBToYRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYRow_SSSE3	source/row_win.cc	/^void ARGBToYRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+ARGBToYUY2	source/convert_from_argb.cc	/^int ARGBToYUY2(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBTranspose	source/rotate_argb.cc	/^static void ARGBTranspose(const uint8* src, int src_stride,$/;"	f	file:
+ARGBUnattenuate	source/planar_functions.cc	/^int ARGBUnattenuate(const uint8* src_argb, int src_stride_argb,$/;"	f
+ARGBUnattenuateRow_AVX2	source/row_posix.cc	/^void ARGBUnattenuateRow_AVX2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBUnattenuateRow_AVX2	source/row_win.cc	/^void ARGBUnattenuateRow_AVX2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBUnattenuateRow_C	source/row_common.cc	/^void ARGBUnattenuateRow_C(const uint8* src_argb, uint8* dst_argb, int width) {$/;"	f
+ARGBUnattenuateRow_SSE2	source/row_posix.cc	/^void ARGBUnattenuateRow_SSE2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARGBUnattenuateRow_SSE2	source/row_win.cc	/^void ARGBUnattenuateRow_SSE2(const uint8* src_argb, uint8* dst_argb,$/;"	f
+ARRAY_SIZE	source/video_common.cc	19;"	d	file:
+ATTENUATE	source/row_common.cc	1811;"	d	file:
+ATTENUATE	source/row_common.cc	1849;"	d	file:
+AVG	source/format_conversion.cc	108;"	d	file:
+AVGB	source/row_common.cc	347;"	d	file:
+AVOID_OVERREAD	source/scale.cc	27;"	d	file:
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addsd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addss, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addsubpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR addsubps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR andnpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR andnps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR andpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR andps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR blendpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR blendps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR blendvpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR blendvps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cmppd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cmpps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cmpsd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cmpss, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cvtdq2ps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR cvtps2dq, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR divpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR divps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR divsd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR divss, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR dppd, 1, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR dpps, 1, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR haddpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR haddps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR hsubpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR hsubps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR maxpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR maxps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR maxsd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR maxss, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR minpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR minps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR minsd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR minss, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR movhlps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR movlhps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR movsd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR movss, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR mpsadbw, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR mulpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR mulps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR mulsd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR mulss, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR orpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR orps, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pabsb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pabsd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pabsw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR packssdw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR packsswb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR packusdw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR packuswb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddd, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddq, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddsb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddsw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddusb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddusw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR paddw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR palignr, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pand, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pandn, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pavgb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pavgw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pblendvb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pblendw, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpeqb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpeqd, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpeqq, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpeqw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpestri, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpestrm, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpgtb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpgtd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpgtq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpgtw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpistri, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pcmpistrm, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pfadd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pfmul, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pfsub, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phaddd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phaddsw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phaddw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phsubd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phsubsw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR phsubw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaddubsw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaddwd, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxsb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxsd, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxsw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxub, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxud, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmaxuw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminsb, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminsd, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminsw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminub, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminud, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pminuw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmovmskb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmuldq, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmulhrsw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmulhuw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmulhw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmulld, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmullw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pmuludq, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR por, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psadbw, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pshufb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pshufd, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pshufhw, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pshuflw, 0, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psignb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psignd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psignw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pslld, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pslldq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psllq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psllw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psrad, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psraw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psrld, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psrldq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psrlq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psrlw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubsb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubsw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubusb, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubusw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR psubw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR ptest, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpckhbw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpckhdq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpckhqdq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpckhwd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpcklbw, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpckldq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpcklqdq, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR punpcklwd, 0, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR pxor, 0, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR shufps, 1, 1, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR subpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR subps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR subsd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR subss, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR unpckhpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR unpckhps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR unpcklpd, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR unpcklps, 1, 0, 0$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR xorpd, 1, 0, 1$/;"	l
+AVX_INSTR	source/x86inc.asm	/^AVX_INSTR xorps, 1, 0, 1$/;"	l
+Abs	source/convert.cc	/^static __inline int Abs(int v) {$/;"	f	file:
+Abs	source/convert_from.cc	/^static __inline int Abs(int v) {$/;"	f	file:
+Abs	source/row_common.cc	/^static __inline uint32 Abs(int32 v) {$/;"	f	file:
+Abs	source/scale.cc	/^static __inline int Abs(int v) {$/;"	f	file:
+Abs	source/scale_argb.cc	/^static __inline int Abs(int v) {$/;"	f	file:
+Abs	source/scale_common.cc	/^static __inline int Abs(int v) {$/;"	f	file:
+AllocOutputBuffers	source/mjpeg_decoder.cc	/^void MJpegDecoder::AllocOutputBuffers(int num_outbufs) {$/;"	f	class:libyuv::MJpegDecoder
+ArmCpuCaps	source/cpu_id.cc	/^int ArmCpuCaps(const char* cpuinfo_name) {$/;"	f
+BAYERANY	source/row_any.cc	210;"	d	file:
+BAYERANY	source/row_any.cc	238;"	d	file:
+BB	source/row_common.cc	1002;"	d	file:
+BB	source/row_common.cc	975;"	d	file:
+BB	source/row_posix.cc	1535;"	d	file:
+BB	source/row_win.cc	39;"	d	file:
+BBJ	source/row_common.cc	1094;"	d	file:
+BG	source/row_common.cc	1003;"	d	file:
+BG	source/row_common.cc	976;"	d	file:
+BG	source/row_posix.cc	1536;"	d	file:
+BG	source/row_win.cc	40;"	d	file:
+BG24ToARGB	include/libyuv/convert_argb.h	161;"	d
+BGJ	source/row_common.cc	1095;"	d	file:
+BGRAToARGB	source/convert_argb.cc	/^int BGRAToARGB(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+BGRAToI420	source/convert.cc	/^int BGRAToI420(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+BGRAToUVRow_NEON	source/row_neon.cc	/^void BGRAToUVRow_NEON(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+BGRAToUVRow_NEON	source/row_neon64.cc	/^void BGRAToUVRow_NEON(const uint8* src_bgra, int src_stride_bgra,$/;"	f
+BGRAToUVRow_SSSE3	source/row_posix.cc	/^void BGRAToUVRow_SSSE3(const uint8* src_bgra0, int src_stride_bgra,$/;"	f
+BGRAToUVRow_SSSE3	source/row_win.cc	/^void BGRAToUVRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+BGRAToYRow_NEON	source/row_neon.cc	/^void BGRAToYRow_NEON(const uint8* src_bgra, uint8* dst_y, int pix) {$/;"	f
+BGRAToYRow_NEON	source/row_neon64.cc	/^void BGRAToYRow_NEON(const uint8* src_bgra, uint8* dst_y, int pix) {$/;"	f
+BGRAToYRow_SSSE3	source/row_posix.cc	/^void BGRAToYRow_SSSE3(const uint8* src_bgra, uint8* dst_y, int pix) {$/;"	f
+BGRAToYRow_SSSE3	source/row_win.cc	/^void BGRAToYRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+BLEND	source/row_common.cc	1759;"	d	file:
+BLEND	source/row_common.cc	1810;"	d	file:
+BLENDER	source/scale_common.cc	398;"	d	file:
+BLENDER	source/scale_common.cc	449;"	d	file:
+BLENDER	source/scale_common.cc	451;"	d	file:
+BLENDER	source/scale_common.cc	502;"	d	file:
+BLENDER	source/scale_common.cc	802;"	d	file:
+BLENDER	source/scale_common.cc	866;"	d	file:
+BLENDER1	source/scale_common.cc	799;"	d	file:
+BLENDER1	source/scale_common.cc	864;"	d	file:
+BLENDERC	source/scale_common.cc	800;"	d	file:
+BLENDERC	source/scale_common.cc	865;"	d	file:
+BR	source/row_common.cc	1004;"	d	file:
+BR	source/row_common.cc	977;"	d	file:
+BR	source/row_posix.cc	1537;"	d	file:
+BR	source/row_win.cc	41;"	d	file:
+BRJ	source/row_common.cc	1096;"	d	file:
+BUNDLEALIGN	include/libyuv/row.h	452;"	d
+BUNDLELOCK	include/libyuv/row.h	415;"	d
+BUNDLEUNLOCK	include/libyuv/row.h	416;"	d
+BayerRGBToARGB	include/libyuv/format_conversion.h	125;"	d
+BayerRGBToI420	include/libyuv/format_conversion.h	51;"	d
+BayerRowBG	source/format_conversion.cc	/^static void BayerRowBG(const uint8* src_bayer0, int src_stride_bayer,$/;"	f	file:
+BayerRowGB	source/format_conversion.cc	/^static void BayerRowGB(const uint8* src_bayer0, int src_stride_bayer,$/;"	f	file:
+BayerRowGR	source/format_conversion.cc	/^static void BayerRowGR(const uint8* src_bayer0, int src_stride_bayer,$/;"	f	file:
+BayerRowRG	source/format_conversion.cc	/^static void BayerRowRG(const uint8* src_bayer0, int src_stride_bayer,$/;"	f	file:
+BayerToARGB	source/format_conversion.cc	/^int BayerToARGB(const uint8* src_bayer, int src_stride_bayer,$/;"	f
+BayerToI420	source/format_conversion.cc	/^int BayerToI420(const uint8* src_bayer, int src_stride_bayer,$/;"	f
+Buffer	include/libyuv/mjpeg_decoder.h	/^struct Buffer {$/;"	s	namespace:libyuv
+BufferVector	include/libyuv/mjpeg_decoder.h	/^struct BufferVector {$/;"	s	namespace:libyuv
+CENTERSTART	source/scale_common.cc	1075;"	d	file:
+CENTERSTART	source/scale_common.cc	1144;"	d	file:
+CLANG_HAS_AVX2	include/libyuv/row.h	176;"	d
+CPU	source/x86inc.asm	/^CPU amdnop$/;"	l
+CPU_ARM	include/libyuv/basic_types.h	74;"	d
+CPU_X86	include/libyuv/basic_types.h	70;"	d
+CalcFramePsnr	source/compare.cc	/^double CalcFramePsnr(const uint8* src_a, int stride_a,$/;"	f
+CalcFrameSsim	source/compare.cc	/^double CalcFrameSsim(const uint8* src_a, int stride_a,$/;"	f
+CallbackFunction	include/libyuv/mjpeg_decoder.h	/^  typedef void (*CallbackFunction)(void* opaque,$/;"	t	class:libyuv::MJpegDecoder
+CanonicalFourCC	source/video_common.cc	/^uint32 CanonicalFourCC(uint32 fourcc) {$/;"	f
+Clamp	source/row_common.cc	/^static __inline uint32 Clamp(int32 val) {$/;"	f	file:
+ComputeCumulativeSumRow_C	source/row_common.cc	/^void ComputeCumulativeSumRow_C(const uint8* row, int32* cumsum,$/;"	f
+ComputeCumulativeSumRow_SSE2	source/row_posix.cc	/^void ComputeCumulativeSumRow_SSE2(const uint8* row, int32* cumsum,$/;"	f
+ComputeCumulativeSumRow_SSE2	source/row_win.cc	/^void ComputeCumulativeSumRow_SSE2(const uint8* row, int32* cumsum,$/;"	f
+ComputeSumSquareError	source/compare.cc	/^uint64 ComputeSumSquareError(const uint8* src_a, const uint8* src_b,$/;"	f
+ComputeSumSquareErrorPlane	source/compare.cc	/^uint64 ComputeSumSquareErrorPlane(const uint8* src_a, int stride_a,$/;"	f
+ConvertFromI420	source/convert_from.cc	/^int ConvertFromI420(const uint8* y, int y_stride,$/;"	f
+ConvertToARGB	source/convert_to_argb.cc	/^int ConvertToARGB(const uint8* sample, size_t sample_size,$/;"	f
+ConvertToI420	source/convert_to_i420.cc	/^int ConvertToI420(const uint8* sample,$/;"	f
+CopyPlane	source/planar_functions.cc	/^void CopyPlane(const uint8* src_y, int src_stride_y,$/;"	f
+CopyPlane2	source/convert.cc	/^static void CopyPlane2(const uint8* src, int src_stride_0, int src_stride_1,$/;"	f	file:
+CopyPlane_16	source/planar_functions.cc	/^void CopyPlane_16(const uint16* src_y, int src_stride_y,$/;"	f
+CopyRow_16_C	source/row_common.cc	/^void CopyRow_16_C(const uint16* src, uint16* dst, int count) {$/;"	f
+CopyRow_AVX	source/row_posix.cc	/^void CopyRow_AVX(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_AVX	source/row_win.cc	/^void CopyRow_AVX(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_C	source/row_common.cc	/^void CopyRow_C(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_ERMS	source/row_posix.cc	/^void CopyRow_ERMS(const uint8* src, uint8* dst, int width) {$/;"	f
+CopyRow_ERMS	source/row_win.cc	/^void CopyRow_ERMS(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_MIPS	source/row_mips.cc	/^void CopyRow_MIPS(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_NEON	source/row_neon.cc	/^void CopyRow_NEON(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_NEON	source/row_neon64.cc	/^void CopyRow_NEON(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_SSE2	source/row_posix.cc	/^void CopyRow_SSE2(const uint8* src, uint8* dst, int count) {$/;"	f
+CopyRow_SSE2	source/row_win.cc	/^void CopyRow_SSE2(const uint8* src, uint8* dst, int count) {$/;"	f
+CpuId	source/cpu_id.cc	/^void CpuId(uint32 info_eax, uint32 info_ecx, uint32* cpu_info) {$/;"	f
+CumulativeSumToAverageRow_C	source/row_common.cc	/^void CumulativeSumToAverageRow_C(const int32* tl, const int32* bl,$/;"	f
+CumulativeSumToAverageRow_SSE2	source/row_posix.cc	/^void CumulativeSumToAverageRow_SSE2(const int32* topleft, const int32* botleft,$/;"	f
+CumulativeSumToAverageRow_SSE2	source/row_win.cc	/^void CumulativeSumToAverageRow_SSE2(const int32* topleft, const int32* botleft,$/;"	f
+DECLARE_ARG	source/x86inc.asm	/^DECLARE_ARG 7, 8, 9, 10, 11, 12, 13, 14$/;"	l
+DECLARE_FUNCTION	source/rotate.cc	26;"	d	file:
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 0,  rcx$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 0,  rdi$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 0, eax, 4$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 1,  rdx$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 1,  rsi$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 1, ecx, 8$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 10, rbp, 40$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 10, rbp, 88$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 11, R12, 48$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 11, R12, 96$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 12, R13, 104$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 12, R13, 56$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 13, R14, 112$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 13, R14, 64$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 14, R15, 120$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 14, R15, 72$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 2,  R8$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 2,  rdx$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 2, edx, 12$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 3,  R9$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 3,  rcx$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 3, ebx, 16$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 4,  R10, 40$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 4,  R8$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 4, esi, 20$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 5,  R11, 48$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 5,  R9$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 5, edi, 24$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 6,  rax, 56$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 6,  rax, 8$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 6, ebp, 28$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 7,  R10, 16$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 7,  rdi, 64$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 8,  R11, 24$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 8,  rsi, 72$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 9,  rbx, 32$/;"	l
+DECLARE_REG	source/x86inc.asm	/^DECLARE_REG 9,  rbx, 80$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE ax, al, ah$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE bp, bpl, null$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE bx, bl, bh$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE cx, cl, ch$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE di, dil, null$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE dx, dl, dh$/;"	l
+DECLARE_REG_SIZE	source/x86inc.asm	/^DECLARE_REG_SIZE si, sil, null$/;"	l
+DECLARE_REG_TMP_SIZE	source/x86inc.asm	/^DECLARE_REG_TMP_SIZE 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14$/;"	l
+DecodeImcuRow	source/mjpeg_decoder.cc	/^inline LIBYUV_BOOL MJpegDecoder::DecodeImcuRow() {$/;"	f	class:libyuv::MJpegDecoder
+DecodeToBuffers	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::DecodeToBuffers($/;"	f	class:libyuv::MJpegDecoder
+DecodeToCallback	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::DecodeToCallback(CallbackFunction fn, void* opaque,$/;"	f	class:libyuv::MJpegDecoder
+DestroyOutputBuffers	source/mjpeg_decoder.cc	/^void MJpegDecoder::DestroyOutputBuffers() {$/;"	f	class:libyuv::MJpegDecoder
+DivideAndRoundDown	source/mjpeg_decoder.cc	/^static int DivideAndRoundDown(int numerator, int denominator) {$/;"	f	namespace:libyuv
+DivideAndRoundUp	source/mjpeg_decoder.cc	/^static int DivideAndRoundUp(int numerator, int denominator) {$/;"	f	namespace:libyuv
+ErrorHandler	source/mjpeg_decoder.cc	/^void ErrorHandler(j_common_ptr cinfo) {$/;"	f	namespace:libyuv
+FMA_INSTR	source/x86inc.asm	/^FMA_INSTR  pmacsdd,  pmulld, paddd$/;"	l
+FMA_INSTR	source/x86inc.asm	/^FMA_INSTR  pmacsww,  pmullw, paddw$/;"	l
+FMA_INSTR	source/x86inc.asm	/^FMA_INSTR pmadcswd, pmaddwd, paddd$/;"	l
+FOURCC	include/libyuv/video_common.h	31;"	d
+FOURCC_24BG	include/libyuv/video_common.h	/^  FOURCC_24BG = FOURCC('2', '4', 'B', 'G'),$/;"	e	enum:libyuv::FourCC
+FOURCC_2VUY	include/libyuv/video_common.h	/^  FOURCC_2VUY = FOURCC('2', 'v', 'u', 'y'),  \/\/ Alias for UYVY on Mac.$/;"	e	enum:libyuv::FourCC
+FOURCC_5551	include/libyuv/video_common.h	/^  FOURCC_5551 = FOURCC('5', '5', '5', '1'),  \/\/ Alias for RGBO.$/;"	e	enum:libyuv::FourCC
+FOURCC_ABGR	include/libyuv/video_common.h	/^  FOURCC_ABGR = FOURCC('A', 'B', 'G', 'R'),$/;"	e	enum:libyuv::FourCC
+FOURCC_ANY	include/libyuv/video_common.h	/^  FOURCC_ANY = -1,$/;"	e	enum:libyuv::FourCC
+FOURCC_ARGB	include/libyuv/video_common.h	/^  FOURCC_ARGB = FOURCC('A', 'R', 'G', 'B'),$/;"	e	enum:libyuv::FourCC
+FOURCC_BA81	include/libyuv/video_common.h	/^  FOURCC_BA81 = FOURCC('B', 'A', '8', '1'),  \/\/ Alias for BGGR.$/;"	e	enum:libyuv::FourCC
+FOURCC_BGGR	include/libyuv/video_common.h	/^  FOURCC_BGGR = FOURCC('B', 'G', 'G', 'R'),$/;"	e	enum:libyuv::FourCC
+FOURCC_BGR3	include/libyuv/video_common.h	/^  FOURCC_BGR3 = FOURCC('B', 'G', 'R', '3'),  \/\/ Alias for 24BG.$/;"	e	enum:libyuv::FourCC
+FOURCC_BGRA	include/libyuv/video_common.h	/^  FOURCC_BGRA = FOURCC('B', 'G', 'R', 'A'),$/;"	e	enum:libyuv::FourCC
+FOURCC_BPP_24BG	include/libyuv/video_common.h	/^  FOURCC_BPP_24BG = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_2VUY	include/libyuv/video_common.h	/^  FOURCC_BPP_2VUY = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_ABGR	include/libyuv/video_common.h	/^  FOURCC_BPP_ABGR = 32,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_ANY	include/libyuv/video_common.h	/^  FOURCC_BPP_ANY  = 0,  \/\/ 0 means unknown.$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_ARGB	include/libyuv/video_common.h	/^  FOURCC_BPP_ARGB = 32,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_BA81	include/libyuv/video_common.h	/^  FOURCC_BPP_BA81 = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_BGGR	include/libyuv/video_common.h	/^  FOURCC_BPP_BGGR = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_BGR3	include/libyuv/video_common.h	/^  FOURCC_BPP_BGR3 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_BGRA	include/libyuv/video_common.h	/^  FOURCC_BPP_BGRA = 32,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_CM24	include/libyuv/video_common.h	/^  FOURCC_BPP_CM24 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_CM32	include/libyuv/video_common.h	/^  FOURCC_BPP_CM32 = 32,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_DMB1	include/libyuv/video_common.h	/^  FOURCC_BPP_DMB1 = 1,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_GBRG	include/libyuv/video_common.h	/^  FOURCC_BPP_GBRG = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_GRBG	include/libyuv/video_common.h	/^  FOURCC_BPP_GRBG = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_H264	include/libyuv/video_common.h	/^  FOURCC_BPP_H264 = 0,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_HDYC	include/libyuv/video_common.h	/^  FOURCC_BPP_HDYC = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_I400	include/libyuv/video_common.h	/^  FOURCC_BPP_I400 = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_I411	include/libyuv/video_common.h	/^  FOURCC_BPP_I411 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_I420	include/libyuv/video_common.h	/^  FOURCC_BPP_I420 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_I422	include/libyuv/video_common.h	/^  FOURCC_BPP_I422 = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_I444	include/libyuv/video_common.h	/^  FOURCC_BPP_I444 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_IYUV	include/libyuv/video_common.h	/^  FOURCC_BPP_IYUV = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_J400	include/libyuv/video_common.h	/^  FOURCC_BPP_J400 = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_J420	include/libyuv/video_common.h	/^  FOURCC_BPP_J420 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_JPEG	include/libyuv/video_common.h	/^  FOURCC_BPP_JPEG = 1,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_M420	include/libyuv/video_common.h	/^  FOURCC_BPP_M420 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_MJPG	include/libyuv/video_common.h	/^  FOURCC_BPP_MJPG = 0,  \/\/ 0 means unknown.$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_NV12	include/libyuv/video_common.h	/^  FOURCC_BPP_NV12 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_NV21	include/libyuv/video_common.h	/^  FOURCC_BPP_NV21 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_Q420	include/libyuv/video_common.h	/^  FOURCC_BPP_Q420 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_R444	include/libyuv/video_common.h	/^  FOURCC_BPP_R444 = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RAW	include/libyuv/video_common.h	/^  FOURCC_BPP_RAW  = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RGB3	include/libyuv/video_common.h	/^  FOURCC_BPP_RGB3 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RGBA	include/libyuv/video_common.h	/^  FOURCC_BPP_RGBA = 32,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RGBO	include/libyuv/video_common.h	/^  FOURCC_BPP_RGBO = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RGBP	include/libyuv/video_common.h	/^  FOURCC_BPP_RGBP = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_RGGB	include/libyuv/video_common.h	/^  FOURCC_BPP_RGGB = 8,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_UYVY	include/libyuv/video_common.h	/^  FOURCC_BPP_UYVY = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YU12	include/libyuv/video_common.h	/^  FOURCC_BPP_YU12 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YU16	include/libyuv/video_common.h	/^  FOURCC_BPP_YU16 = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YU24	include/libyuv/video_common.h	/^  FOURCC_BPP_YU24 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YUVS	include/libyuv/video_common.h	/^  FOURCC_BPP_YUVS = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YUY2	include/libyuv/video_common.h	/^  FOURCC_BPP_YUY2 = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YUYV	include/libyuv/video_common.h	/^  FOURCC_BPP_YUYV = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YV12	include/libyuv/video_common.h	/^  FOURCC_BPP_YV12 = 12,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YV16	include/libyuv/video_common.h	/^  FOURCC_BPP_YV16 = 16,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_BPP_YV24	include/libyuv/video_common.h	/^  FOURCC_BPP_YV24 = 24,$/;"	e	enum:libyuv::FourCCBpp
+FOURCC_CM24	include/libyuv/video_common.h	/^  FOURCC_CM24 = FOURCC(0, 0, 0, 24),  \/\/ Alias for RAW kCMPixelFormat_24RGB$/;"	e	enum:libyuv::FourCC
+FOURCC_CM32	include/libyuv/video_common.h	/^  FOURCC_CM32 = FOURCC(0, 0, 0, 32),  \/\/ Alias for BGRA kCMPixelFormat_32ARGB$/;"	e	enum:libyuv::FourCC
+FOURCC_DMB1	include/libyuv/video_common.h	/^  FOURCC_DMB1 = FOURCC('d', 'm', 'b', '1'),  \/\/ Alias for MJPG on Mac.$/;"	e	enum:libyuv::FourCC
+FOURCC_GBRG	include/libyuv/video_common.h	/^  FOURCC_GBRG = FOURCC('G', 'B', 'R', 'G'),$/;"	e	enum:libyuv::FourCC
+FOURCC_GRBG	include/libyuv/video_common.h	/^  FOURCC_GRBG = FOURCC('G', 'R', 'B', 'G'),$/;"	e	enum:libyuv::FourCC
+FOURCC_H264	include/libyuv/video_common.h	/^  FOURCC_H264 = FOURCC('H', '2', '6', '4'),$/;"	e	enum:libyuv::FourCC
+FOURCC_HDYC	include/libyuv/video_common.h	/^  FOURCC_HDYC = FOURCC('H', 'D', 'Y', 'C'),  \/\/ Alias for UYVY.$/;"	e	enum:libyuv::FourCC
+FOURCC_I400	include/libyuv/video_common.h	/^  FOURCC_I400 = FOURCC('I', '4', '0', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_I411	include/libyuv/video_common.h	/^  FOURCC_I411 = FOURCC('I', '4', '1', '1'),$/;"	e	enum:libyuv::FourCC
+FOURCC_I420	include/libyuv/video_common.h	/^  FOURCC_I420 = FOURCC('I', '4', '2', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_I422	include/libyuv/video_common.h	/^  FOURCC_I422 = FOURCC('I', '4', '2', '2'),$/;"	e	enum:libyuv::FourCC
+FOURCC_I444	include/libyuv/video_common.h	/^  FOURCC_I444 = FOURCC('I', '4', '4', '4'),$/;"	e	enum:libyuv::FourCC
+FOURCC_IYUV	include/libyuv/video_common.h	/^  FOURCC_IYUV = FOURCC('I', 'Y', 'U', 'V'),  \/\/ Alias for I420.$/;"	e	enum:libyuv::FourCC
+FOURCC_J400	include/libyuv/video_common.h	/^  FOURCC_J400 = FOURCC('J', '4', '0', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_J420	include/libyuv/video_common.h	/^  FOURCC_J420 = FOURCC('J', '4', '2', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_JPEG	include/libyuv/video_common.h	/^  FOURCC_JPEG = FOURCC('J', 'P', 'E', 'G'),  \/\/ Alias for MJPG.$/;"	e	enum:libyuv::FourCC
+FOURCC_L555	include/libyuv/video_common.h	/^  FOURCC_L555 = FOURCC('L', '5', '5', '5'),  \/\/ Alias for RGBO.$/;"	e	enum:libyuv::FourCC
+FOURCC_L565	include/libyuv/video_common.h	/^  FOURCC_L565 = FOURCC('L', '5', '6', '5'),  \/\/ Alias for RGBP.$/;"	e	enum:libyuv::FourCC
+FOURCC_M420	include/libyuv/video_common.h	/^  FOURCC_M420 = FOURCC('M', '4', '2', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_MJPG	include/libyuv/video_common.h	/^  FOURCC_MJPG = FOURCC('M', 'J', 'P', 'G'),$/;"	e	enum:libyuv::FourCC
+FOURCC_NV12	include/libyuv/video_common.h	/^  FOURCC_NV12 = FOURCC('N', 'V', '1', '2'),$/;"	e	enum:libyuv::FourCC
+FOURCC_NV21	include/libyuv/video_common.h	/^  FOURCC_NV21 = FOURCC('N', 'V', '2', '1'),$/;"	e	enum:libyuv::FourCC
+FOURCC_Q420	include/libyuv/video_common.h	/^  FOURCC_Q420 = FOURCC('Q', '4', '2', '0'),$/;"	e	enum:libyuv::FourCC
+FOURCC_R444	include/libyuv/video_common.h	/^  FOURCC_R444 = FOURCC('R', '4', '4', '4'),  \/\/ argb4444 LE.$/;"	e	enum:libyuv::FourCC
+FOURCC_RAW	include/libyuv/video_common.h	/^  FOURCC_RAW  = FOURCC('r', 'a', 'w', ' '),$/;"	e	enum:libyuv::FourCC
+FOURCC_RGB3	include/libyuv/video_common.h	/^  FOURCC_RGB3 = FOURCC('R', 'G', 'B', '3'),  \/\/ Alias for RAW.$/;"	e	enum:libyuv::FourCC
+FOURCC_RGBA	include/libyuv/video_common.h	/^  FOURCC_RGBA = FOURCC('R', 'G', 'B', 'A'),$/;"	e	enum:libyuv::FourCC
+FOURCC_RGBO	include/libyuv/video_common.h	/^  FOURCC_RGBO = FOURCC('R', 'G', 'B', 'O'),  \/\/ argb1555 LE.$/;"	e	enum:libyuv::FourCC
+FOURCC_RGBP	include/libyuv/video_common.h	/^  FOURCC_RGBP = FOURCC('R', 'G', 'B', 'P'),  \/\/ rgb565 LE.$/;"	e	enum:libyuv::FourCC
+FOURCC_RGGB	include/libyuv/video_common.h	/^  FOURCC_RGGB = FOURCC('R', 'G', 'G', 'B'),$/;"	e	enum:libyuv::FourCC
+FOURCC_UYVY	include/libyuv/video_common.h	/^  FOURCC_UYVY = FOURCC('U', 'Y', 'V', 'Y'),$/;"	e	enum:libyuv::FourCC
+FOURCC_YU12	include/libyuv/video_common.h	/^  FOURCC_YU12 = FOURCC('Y', 'U', '1', '2'),  \/\/ Linux version of I420.$/;"	e	enum:libyuv::FourCC
+FOURCC_YU16	include/libyuv/video_common.h	/^  FOURCC_YU16 = FOURCC('Y', 'U', '1', '6'),  \/\/ Alias for I422.$/;"	e	enum:libyuv::FourCC
+FOURCC_YU24	include/libyuv/video_common.h	/^  FOURCC_YU24 = FOURCC('Y', 'U', '2', '4'),  \/\/ Alias for I444.$/;"	e	enum:libyuv::FourCC
+FOURCC_YUVS	include/libyuv/video_common.h	/^  FOURCC_YUVS = FOURCC('y', 'u', 'v', 's'),  \/\/ Alias for YUY2 on Mac.$/;"	e	enum:libyuv::FourCC
+FOURCC_YUY2	include/libyuv/video_common.h	/^  FOURCC_YUY2 = FOURCC('Y', 'U', 'Y', '2'),$/;"	e	enum:libyuv::FourCC
+FOURCC_YUYV	include/libyuv/video_common.h	/^  FOURCC_YUYV = FOURCC('Y', 'U', 'Y', 'V'),  \/\/ Alias for YUY2.$/;"	e	enum:libyuv::FourCC
+FOURCC_YV12	include/libyuv/video_common.h	/^  FOURCC_YV12 = FOURCC('Y', 'V', '1', '2'),$/;"	e	enum:libyuv::FourCC
+FOURCC_YV16	include/libyuv/video_common.h	/^  FOURCC_YV16 = FOURCC('Y', 'V', '1', '6'),$/;"	e	enum:libyuv::FourCC
+FOURCC_YV24	include/libyuv/video_common.h	/^  FOURCC_YV24 = FOURCC('Y', 'V', '2', '4'),$/;"	e	enum:libyuv::FourCC
+FilterMode	include/libyuv/scale.h	/^typedef enum FilterMode {$/;"	g
+FilterModeEnum	include/libyuv/scale.h	/^} FilterModeEnum;$/;"	t	typeref:enum:libyuv::FilterMode
+FinishDecode	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::FinishDecode() {$/;"	f	class:libyuv::MJpegDecoder
+FixedDiv	include/libyuv/scale_row.h	92;"	d
+FixedDiv	include/libyuv/scale_row.h	95;"	d
+FixedDiv1	include/libyuv/scale_row.h	93;"	d
+FixedDiv1	include/libyuv/scale_row.h	96;"	d
+FixedDiv1_C	source/scale_common.cc	/^int FixedDiv1_C(int num, int div) {$/;"	f
+FixedDiv1_X86	source/scale_posix.cc	/^int FixedDiv1_X86(int num, int div) {$/;"	f
+FixedDiv1_X86	source/scale_win.cc	/^int FixedDiv1_X86(int num, int div) {$/;"	f
+FixedDiv_C	source/scale_common.cc	/^int FixedDiv_C(int num, int div) {$/;"	f
+FixedDiv_X86	source/scale_posix.cc	/^int FixedDiv_X86(int num, int div) {$/;"	f
+FixedDiv_X86	source/scale_win.cc	/^int FixedDiv_X86(int num, int div) {$/;"	f
+FourCC	include/libyuv/video_common.h	/^enum FourCC {$/;"	g
+FourCCAliasEntry	source/video_common.cc	/^struct FourCCAliasEntry {$/;"	s	file:
+FourCCBpp	include/libyuv/video_common.h	/^enum FourCCBpp {$/;"	g
+GCC_HAS_AVX2	include/libyuv/row.h	169;"	d
+GenerateSelector	source/format_conversion.cc	/^static uint32 GenerateSelector(int select0, int select1) {$/;"	f	file:
+GetARGBBlend	source/planar_functions.cc	/^ARGBBlendRow GetARGBBlend() {$/;"	f
+GetColorSpace	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetColorSpace() {$/;"	f	class:libyuv::MJpegDecoder
+GetComponentHeight	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetComponentHeight(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetComponentScanlinesPerImcuRow	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetComponentScanlinesPerImcuRow(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetComponentSize	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetComponentSize(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetComponentStride	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetComponentStride(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetComponentWidth	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetComponentWidth(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetHeight	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetHeight() {$/;"	f	class:libyuv::MJpegDecoder
+GetHorizSampFactor	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetHorizSampFactor(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetHorizSubSampFactor	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetHorizSubSampFactor(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetImageScanlinesPerImcuRow	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetImageScanlinesPerImcuRow() {$/;"	f	class:libyuv::MJpegDecoder
+GetNumComponents	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetNumComponents() {$/;"	f	class:libyuv::MJpegDecoder
+GetVertSampFactor	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetVertSampFactor(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetVertSubSampFactor	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetVertSubSampFactor(int component) {$/;"	f	class:libyuv::MJpegDecoder
+GetWidth	source/mjpeg_decoder.cc	/^int MJpegDecoder::GetWidth() {$/;"	f	class:libyuv::MJpegDecoder
+HAS_ABGRTOUVROW_NEON	include/libyuv/row.h	250;"	d
+HAS_ABGRTOUVROW_SSSE3	include/libyuv/row.h	61;"	d
+HAS_ABGRTOYROW_NEON	include/libyuv/row.h	251;"	d
+HAS_ABGRTOYROW_SSSE3	include/libyuv/row.h	62;"	d
+HAS_ARGB1555TOARGBROW_NEON	include/libyuv/row.h	252;"	d
+HAS_ARGB1555TOARGBROW_SSE2	include/libyuv/row.h	63;"	d
+HAS_ARGB1555TOUVROW_NEON	include/libyuv/row.h	253;"	d
+HAS_ARGB1555TOYROW_NEON	include/libyuv/row.h	254;"	d
+HAS_ARGB4444TOARGBROW_NEON	include/libyuv/row.h	255;"	d
+HAS_ARGB4444TOARGBROW_SSE2	include/libyuv/row.h	64;"	d
+HAS_ARGB4444TOUVROW_NEON	include/libyuv/row.h	256;"	d
+HAS_ARGB4444TOYROW_NEON	include/libyuv/row.h	257;"	d
+HAS_ARGBADDROW_AVX2	include/libyuv/row.h	216;"	d
+HAS_ARGBADDROW_NEON	include/libyuv/row.h	321;"	d
+HAS_ARGBADDROW_SSE2	include/libyuv/row.h	131;"	d
+HAS_ARGBAFFINEROW_SSE2	include/libyuv/planar_functions.h	406;"	d
+HAS_ARGBAFFINEROW_SSE2	include/libyuv/row.h	132;"	d
+HAS_ARGBATTENUATEROW_AVX2	include/libyuv/row.h	217;"	d
+HAS_ARGBATTENUATEROW_NEON	include/libyuv/row.h	322;"	d
+HAS_ARGBATTENUATEROW_SSE2	include/libyuv/row.h	242;"	d
+HAS_ARGBATTENUATEROW_SSSE3	include/libyuv/row.h	133;"	d
+HAS_ARGBBLENDROW_NEON	include/libyuv/row.h	323;"	d
+HAS_ARGBBLENDROW_SSE2	include/libyuv/row.h	243;"	d
+HAS_ARGBBLENDROW_SSSE3	include/libyuv/row.h	134;"	d
+HAS_ARGBCOLORMATRIXROW_NEON	include/libyuv/row.h	337;"	d
+HAS_ARGBCOLORMATRIXROW_SSSE3	include/libyuv/row.h	135;"	d
+HAS_ARGBCOLORTABLEROW_X86	include/libyuv/row.h	136;"	d
+HAS_ARGBCOPYALPHAROW_AVX2	include/libyuv/row.h	190;"	d
+HAS_ARGBCOPYALPHAROW_SSE2	include/libyuv/row.h	137;"	d
+HAS_ARGBCOPYYTOALPHAROW_AVX2	include/libyuv/row.h	191;"	d
+HAS_ARGBCOPYYTOALPHAROW_SSE2	include/libyuv/row.h	138;"	d
+HAS_ARGBGRAYROW_NEON	include/libyuv/row.h	324;"	d
+HAS_ARGBGRAYROW_SSSE3	include/libyuv/row.h	139;"	d
+HAS_ARGBLUMACOLORTABLEROW_SSSE3	include/libyuv/row.h	140;"	d
+HAS_ARGBMIRRORROW_AVX2	include/libyuv/row.h	192;"	d
+HAS_ARGBMIRRORROW_NEON	include/libyuv/row.h	325;"	d
+HAS_ARGBMIRRORROW_SSE2	include/libyuv/row.h	141;"	d
+HAS_ARGBMULTIPLYROW_AVX2	include/libyuv/row.h	218;"	d
+HAS_ARGBMULTIPLYROW_NEON	include/libyuv/row.h	326;"	d
+HAS_ARGBMULTIPLYROW_SSE2	include/libyuv/row.h	142;"	d
+HAS_ARGBPOLYNOMIALROW_AVX2	include/libyuv/row.h	193;"	d
+HAS_ARGBPOLYNOMIALROW_SSE2	include/libyuv/row.h	143;"	d
+HAS_ARGBQUANTIZEROW_NEON	include/libyuv/row.h	327;"	d
+HAS_ARGBQUANTIZEROW_SSE2	include/libyuv/row.h	144;"	d
+HAS_ARGBSEPIAROW_NEON	include/libyuv/row.h	328;"	d
+HAS_ARGBSEPIAROW_SSSE3	include/libyuv/row.h	145;"	d
+HAS_ARGBSETROW_NEON	include/libyuv/row.h	308;"	d
+HAS_ARGBSETROW_X86	include/libyuv/row.h	118;"	d
+HAS_ARGBSHADEROW_NEON	include/libyuv/row.h	329;"	d
+HAS_ARGBSHADEROW_SSE2	include/libyuv/row.h	146;"	d
+HAS_ARGBSHUFFLEROW_AVX2	include/libyuv/row.h	194;"	d
+HAS_ARGBSHUFFLEROW_NEON	include/libyuv/row.h	338;"	d
+HAS_ARGBSHUFFLEROW_SSE2	include/libyuv/row.h	65;"	d
+HAS_ARGBSHUFFLEROW_SSSE3	include/libyuv/row.h	66;"	d
+HAS_ARGBSUBTRACTROW_AVX2	include/libyuv/row.h	219;"	d
+HAS_ARGBSUBTRACTROW_NEON	include/libyuv/row.h	330;"	d
+HAS_ARGBSUBTRACTROW_SSE2	include/libyuv/row.h	147;"	d
+HAS_ARGBTOARGB1555ROW_NEON	include/libyuv/row.h	258;"	d
+HAS_ARGBTOARGB1555ROW_SSE2	include/libyuv/row.h	67;"	d
+HAS_ARGBTOARGB4444ROW_NEON	include/libyuv/row.h	259;"	d
+HAS_ARGBTOARGB4444ROW_SSE2	include/libyuv/row.h	68;"	d
+HAS_ARGBTOBAYERGGROW_NEON	include/libyuv/row.h	260;"	d
+HAS_ARGBTOBAYERGGROW_SSE2	include/libyuv/row.h	69;"	d
+HAS_ARGBTOBAYERROW_NEON	include/libyuv/row.h	261;"	d
+HAS_ARGBTOBAYERROW_SSSE3	include/libyuv/row.h	70;"	d
+HAS_ARGBTORAWROW_NEON	include/libyuv/row.h	262;"	d
+HAS_ARGBTORAWROW_SSSE3	include/libyuv/row.h	71;"	d
+HAS_ARGBTORGB24ROW_NEON	include/libyuv/row.h	263;"	d
+HAS_ARGBTORGB24ROW_SSSE3	include/libyuv/row.h	72;"	d
+HAS_ARGBTORGB565ROW_NEON	include/libyuv/row.h	264;"	d
+HAS_ARGBTORGB565ROW_SSE2	include/libyuv/row.h	73;"	d
+HAS_ARGBTOUV411ROW_NEON	include/libyuv/row.h	265;"	d
+HAS_ARGBTOUV422ROW_NEON	include/libyuv/row.h	266;"	d
+HAS_ARGBTOUV422ROW_SSSE3	include/libyuv/row.h	74;"	d
+HAS_ARGBTOUV444ROW_NEON	include/libyuv/row.h	267;"	d
+HAS_ARGBTOUV444ROW_SSSE3	include/libyuv/row.h	75;"	d
+HAS_ARGBTOUVJROW_NEON	include/libyuv/row.h	268;"	d
+HAS_ARGBTOUVJROW_SSSE3	include/libyuv/row.h	76;"	d
+HAS_ARGBTOUVROW_AVX2	include/libyuv/row.h	195;"	d
+HAS_ARGBTOUVROW_NEON	include/libyuv/row.h	269;"	d
+HAS_ARGBTOUVROW_SSSE3	include/libyuv/row.h	77;"	d
+HAS_ARGBTOYJROW_AVX2	include/libyuv/row.h	196;"	d
+HAS_ARGBTOYJROW_NEON	include/libyuv/row.h	270;"	d
+HAS_ARGBTOYJROW_SSSE3	include/libyuv/row.h	78;"	d
+HAS_ARGBTOYROW_AVX2	include/libyuv/row.h	197;"	d
+HAS_ARGBTOYROW_NEON	include/libyuv/row.h	271;"	d
+HAS_ARGBTOYROW_SSSE3	include/libyuv/row.h	79;"	d
+HAS_ARGBUNATTENUATEROW_AVX2	include/libyuv/row.h	220;"	d
+HAS_ARGBUNATTENUATEROW_SSE2	include/libyuv/row.h	148;"	d
+HAS_BGRATOUVROW_NEON	include/libyuv/row.h	272;"	d
+HAS_BGRATOUVROW_SSSE3	include/libyuv/row.h	80;"	d
+HAS_BGRATOYROW_NEON	include/libyuv/row.h	273;"	d
+HAS_BGRATOYROW_SSSE3	include/libyuv/row.h	81;"	d
+HAS_COMPUTECUMULATIVESUMROW_SSE2	include/libyuv/row.h	149;"	d
+HAS_COPYROW_AVX	include/libyuv/row.h	198;"	d
+HAS_COPYROW_ERMS	include/libyuv/row.h	82;"	d
+HAS_COPYROW_MIPS	include/libyuv/row.h	344;"	d
+HAS_COPYROW_NEON	include/libyuv/row.h	274;"	d
+HAS_COPYROW_SSE2	include/libyuv/row.h	83;"	d
+HAS_CUMULATIVESUMTOAVERAGEROW_SSE2	include/libyuv/row.h	150;"	d
+HAS_FIXEDDIV1_X86	include/libyuv/scale_row.h	42;"	d
+HAS_FIXEDDIV_X86	include/libyuv/scale_row.h	41;"	d
+HAS_HASHDJB2_AVX2	source/compare.cc	41;"	d	file:
+HAS_HASHDJB2_SSE41	source/compare.cc	37;"	d	file:
+HAS_HASHDJB2_SSE41	source/compare_posix.cc	69;"	d	file:
+HAS_HASHDJB2_SSE41	source/compare_win.cc	101;"	d	file:
+HAS_I400TOARGBROW_NEON	include/libyuv/row.h	275;"	d
+HAS_I400TOARGBROW_SSE2	include/libyuv/row.h	84;"	d
+HAS_I411TOARGBROW_NEON	include/libyuv/row.h	276;"	d
+HAS_I411TOARGBROW_SSSE3	include/libyuv/row.h	85;"	d
+HAS_I422TOABGRROW_MIPS_DSPR2	include/libyuv/row.h	346;"	d
+HAS_I422TOABGRROW_NEON	include/libyuv/row.h	277;"	d
+HAS_I422TOABGRROW_SSSE3	include/libyuv/row.h	86;"	d
+HAS_I422TOARGB1555ROW_NEON	include/libyuv/row.h	278;"	d
+HAS_I422TOARGB1555ROW_SSSE3	include/libyuv/row.h	87;"	d
+HAS_I422TOARGB1555ROW_SSSE3	include/libyuv/row.h	88;"	d
+HAS_I422TOARGB4444ROW_NEON	include/libyuv/row.h	279;"	d
+HAS_I422TOARGB4444ROW_SSSE3	include/libyuv/row.h	89;"	d
+HAS_I422TOARGBROW_MIPS_DSPR2	include/libyuv/row.h	347;"	d
+HAS_I422TOARGBROW_NEON	include/libyuv/row.h	280;"	d
+HAS_I422TOARGBROW_SSSE3	include/libyuv/row.h	163;"	d
+HAS_I422TOARGBROW_SSSE3	include/libyuv/row.h	90;"	d
+HAS_I422TOBGRAROW_MIPS_DSPR2	include/libyuv/row.h	348;"	d
+HAS_I422TOBGRAROW_NEON	include/libyuv/row.h	281;"	d
+HAS_I422TOBGRAROW_SSSE3	include/libyuv/row.h	91;"	d
+HAS_I422TORAWROW_NEON	include/libyuv/row.h	282;"	d
+HAS_I422TORAWROW_SSSE3	include/libyuv/row.h	92;"	d
+HAS_I422TORGB24ROW_NEON	include/libyuv/row.h	283;"	d
+HAS_I422TORGB24ROW_SSSE3	include/libyuv/row.h	93;"	d
+HAS_I422TORGB565ROW_NEON	include/libyuv/row.h	284;"	d
+HAS_I422TORGB565ROW_SSSE3	include/libyuv/row.h	94;"	d
+HAS_I422TORGBAROW_NEON	include/libyuv/row.h	285;"	d
+HAS_I422TORGBAROW_SSSE3	include/libyuv/row.h	95;"	d
+HAS_I422TOUYVYROW_NEON	include/libyuv/row.h	286;"	d
+HAS_I422TOUYVYROW_SSE2	include/libyuv/row.h	96;"	d
+HAS_I422TOYUY2ROW_NEON	include/libyuv/row.h	287;"	d
+HAS_I422TOYUY2ROW_SSE2	include/libyuv/row.h	97;"	d
+HAS_I444TOARGBROW_NEON	include/libyuv/row.h	288;"	d
+HAS_I444TOARGBROW_SSSE3	include/libyuv/row.h	98;"	d
+HAS_INTERPOLATEROWS_MIPS_DSPR2	include/libyuv/row.h	349;"	d
+HAS_INTERPOLATEROW_AVX2	include/libyuv/row.h	204;"	d
+HAS_INTERPOLATEROW_NEON	include/libyuv/row.h	331;"	d
+HAS_INTERPOLATEROW_SSE2	include/libyuv/row.h	151;"	d
+HAS_INTERPOLATEROW_SSSE3	include/libyuv/row.h	152;"	d
+HAS_MERGEUVROW_AVX2	include/libyuv/row.h	205;"	d
+HAS_MERGEUVROW_AVX2	include/libyuv/row.h	228;"	d
+HAS_MERGEUVROW_MMX	include/libyuv/row.h	229;"	d
+HAS_MERGEUVROW_NEON	include/libyuv/row.h	289;"	d
+HAS_MERGEUVROW_SSE2	include/libyuv/row.h	100;"	d
+HAS_MIRRORROW_AVX2	include/libyuv/row.h	206;"	d
+HAS_MIRRORROW_MIPS_DSPR2	include/libyuv/row.h	350;"	d
+HAS_MIRRORROW_NEON	include/libyuv/row.h	290;"	d
+HAS_MIRRORROW_SSE2	include/libyuv/row.h	101;"	d
+HAS_MIRRORROW_SSE2	include/libyuv/row.h	244;"	d
+HAS_MIRRORROW_SSSE3	include/libyuv/row.h	102;"	d
+HAS_MIRRORROW_UV_SSSE3	include/libyuv/row.h	103;"	d
+HAS_MIRRORUVROW_MIPS_DSPR2	include/libyuv/row.h	351;"	d
+HAS_MIRRORUVROW_NEON	include/libyuv/row.h	291;"	d
+HAS_MIRRORUVROW_SSSE3	include/libyuv/row.h	104;"	d
+HAS_NV12TOARGBROW_NEON	include/libyuv/row.h	292;"	d
+HAS_NV12TOARGBROW_SSSE3	include/libyuv/row.h	105;"	d
+HAS_NV12TORGB565ROW_NEON	include/libyuv/row.h	293;"	d
+HAS_NV12TORGB565ROW_SSSE3	include/libyuv/row.h	106;"	d
+HAS_NV21TOARGBROW_NEON	include/libyuv/row.h	294;"	d
+HAS_NV21TOARGBROW_SSSE3	include/libyuv/row.h	107;"	d
+HAS_NV21TORGB565ROW_NEON	include/libyuv/row.h	295;"	d
+HAS_NV21TORGB565ROW_SSSE3	include/libyuv/row.h	108;"	d
+HAS_RAWTOARGBROW_NEON	include/libyuv/row.h	296;"	d
+HAS_RAWTOARGBROW_SSSE3	include/libyuv/row.h	109;"	d
+HAS_RAWTOUVROW_NEON	include/libyuv/row.h	297;"	d
+HAS_RAWTOYROW_NEON	include/libyuv/row.h	298;"	d
+HAS_RAWTOYROW_SSSE3	include/libyuv/row.h	110;"	d
+HAS_RGB24TOARGBROW_NEON	include/libyuv/row.h	299;"	d
+HAS_RGB24TOARGBROW_SSSE3	include/libyuv/row.h	111;"	d
+HAS_RGB24TOUVROW_NEON	include/libyuv/row.h	300;"	d
+HAS_RGB24TOYROW_NEON	include/libyuv/row.h	301;"	d
+HAS_RGB24TOYROW_SSSE3	include/libyuv/row.h	112;"	d
+HAS_RGB565TOARGBROW_NEON	include/libyuv/row.h	302;"	d
+HAS_RGB565TOARGBROW_SSE2	include/libyuv/row.h	113;"	d
+HAS_RGB565TOUVROW_NEON	include/libyuv/row.h	303;"	d
+HAS_RGB565TOYROW_NEON	include/libyuv/row.h	304;"	d
+HAS_RGBATOUVROW_NEON	include/libyuv/row.h	305;"	d
+HAS_RGBATOUVROW_SSSE3	include/libyuv/row.h	114;"	d
+HAS_RGBATOYROW_NEON	include/libyuv/row.h	306;"	d
+HAS_RGBATOYROW_SSSE3	include/libyuv/row.h	115;"	d
+HAS_RGBCOLORTABLEROW_X86	include/libyuv/row.h	153;"	d
+HAS_SCALEADDROWS_SSE2	include/libyuv/scale_row.h	33;"	d
+HAS_SCALEARGBCOLSUP2_SSE2	include/libyuv/scale_row.h	40;"	d
+HAS_SCALEARGBCOLS_SSE2	include/libyuv/scale_row.h	38;"	d
+HAS_SCALEARGBFILTERCOLS_SSSE3	include/libyuv/scale_row.h	39;"	d
+HAS_SCALEARGBROWDOWN2_NEON	include/libyuv/scale_row.h	53;"	d
+HAS_SCALEARGBROWDOWN2_SSE2	include/libyuv/scale_row.h	36;"	d
+HAS_SCALEARGBROWDOWNEVEN_NEON	include/libyuv/scale_row.h	52;"	d
+HAS_SCALEARGBROWDOWNEVEN_NEON	source/rotate_argb.cc	35;"	d	file:
+HAS_SCALEARGBROWDOWNEVEN_SSE2	include/libyuv/scale_row.h	37;"	d
+HAS_SCALEARGBROWDOWNEVEN_SSE2	source/rotate_argb.cc	28;"	d	file:
+HAS_SCALECOLSUP2_SSE2	include/libyuv/scale_row.h	35;"	d
+HAS_SCALEFILTERCOLS_SSSE3	include/libyuv/scale_row.h	34;"	d
+HAS_SCALEROWDOWN2_MIPS_DSPR2	include/libyuv/scale_row.h	59;"	d
+HAS_SCALEROWDOWN2_NEON	include/libyuv/scale_row.h	48;"	d
+HAS_SCALEROWDOWN2_SSE2	include/libyuv/scale_row.h	29;"	d
+HAS_SCALEROWDOWN34_MIPS_DSPR2	include/libyuv/scale_row.h	61;"	d
+HAS_SCALEROWDOWN34_NEON	include/libyuv/scale_row.h	50;"	d
+HAS_SCALEROWDOWN34_SSSE3	include/libyuv/scale_row.h	31;"	d
+HAS_SCALEROWDOWN38_MIPS_DSPR2	include/libyuv/scale_row.h	62;"	d
+HAS_SCALEROWDOWN38_NEON	include/libyuv/scale_row.h	51;"	d
+HAS_SCALEROWDOWN38_NEON	source/scale_neon.cc	260;"	d	file:
+HAS_SCALEROWDOWN38_SSSE3	include/libyuv/scale_row.h	32;"	d
+HAS_SCALEROWDOWN4_MIPS_DSPR2	include/libyuv/scale_row.h	60;"	d
+HAS_SCALEROWDOWN4_NEON	include/libyuv/scale_row.h	49;"	d
+HAS_SCALEROWDOWN4_SSE2	include/libyuv/scale_row.h	30;"	d
+HAS_SETROW_ERMS	include/libyuv/row.h	117;"	d
+HAS_SETROW_NEON	include/libyuv/row.h	307;"	d
+HAS_SETROW_X86	include/libyuv/row.h	116;"	d
+HAS_SOBELROW_NEON	include/libyuv/row.h	332;"	d
+HAS_SOBELROW_SSE2	include/libyuv/row.h	154;"	d
+HAS_SOBELTOPLANEROW_NEON	include/libyuv/row.h	333;"	d
+HAS_SOBELTOPLANEROW_SSE2	include/libyuv/row.h	155;"	d
+HAS_SOBELXROW_NEON	include/libyuv/row.h	334;"	d
+HAS_SOBELXROW_SSE2	include/libyuv/row.h	156;"	d
+HAS_SOBELXYROW_NEON	include/libyuv/row.h	335;"	d
+HAS_SOBELXYROW_SSE2	include/libyuv/row.h	157;"	d
+HAS_SOBELYROW_NEON	include/libyuv/row.h	336;"	d
+HAS_SOBELYROW_SSE2	include/libyuv/row.h	158;"	d
+HAS_SPLITUVROW_AVX2	include/libyuv/row.h	207;"	d
+HAS_SPLITUVROW_AVX2	include/libyuv/row.h	230;"	d
+HAS_SPLITUVROW_MIPS_DSPR2	include/libyuv/row.h	352;"	d
+HAS_SPLITUVROW_MMX	include/libyuv/row.h	231;"	d
+HAS_SPLITUVROW_NEON	include/libyuv/row.h	309;"	d
+HAS_SPLITUVROW_SSE2	include/libyuv/row.h	119;"	d
+HAS_SUMSQUAREERROR_AVX2	source/compare.cc	143;"	d	file:
+HAS_SUMSQUAREERROR_NEON	source/compare.cc	133;"	d	file:
+HAS_SUMSQUAREERROR_SSE2	source/compare.cc	138;"	d	file:
+HAS_TRANSPOSE_UVWX8_NEON	source/rotate.cc	49;"	d	file:
+HAS_TRANSPOSE_UVWX8_SSE2	source/rotate.cc	166;"	d	file:
+HAS_TRANSPOSE_UVWX8_SSE2	source/rotate.cc	387;"	d	file:
+HAS_TRANSPOSE_UVWX8_SSE2	source/rotate.cc	657;"	d	file:
+HAS_TRANSPOSE_UVWx8_MIPS_DSPR2	source/rotate.cc	65;"	d	file:
+HAS_TRANSPOSE_WX8_FAST_SSSE3	source/rotate.cc	518;"	d	file:
+HAS_TRANSPOSE_WX8_MIPS_DSPR2	source/rotate.cc	59;"	d	file:
+HAS_TRANSPOSE_WX8_NEON	source/rotate.cc	46;"	d	file:
+HAS_TRANSPOSE_WX8_SSSE3	source/rotate.cc	298;"	d	file:
+HAS_TRANSPOSE_WX8_SSSE3	source/rotate.cc	74;"	d	file:
+HAS_UYVYTOARGBROW_NEON	include/libyuv/row.h	310;"	d
+HAS_UYVYTOARGBROW_SSSE3	include/libyuv/row.h	120;"	d
+HAS_UYVYTOUV422ROW_AVX2	include/libyuv/row.h	208;"	d
+HAS_UYVYTOUV422ROW_NEON	include/libyuv/row.h	311;"	d
+HAS_UYVYTOUV422ROW_SSE2	include/libyuv/row.h	121;"	d
+HAS_UYVYTOUVROW_AVX2	include/libyuv/row.h	209;"	d
+HAS_UYVYTOUVROW_NEON	include/libyuv/row.h	312;"	d
+HAS_UYVYTOUVROW_SSE2	include/libyuv/row.h	122;"	d
+HAS_UYVYTOYROW_AVX2	include/libyuv/row.h	210;"	d
+HAS_UYVYTOYROW_AVX2	include/libyuv/row.h	232;"	d
+HAS_UYVYTOYROW_MMX	include/libyuv/row.h	233;"	d
+HAS_UYVYTOYROW_NEON	include/libyuv/row.h	313;"	d
+HAS_UYVYTOYROW_SSE2	include/libyuv/row.h	123;"	d
+HAS_XGETBV	source/cpu_id.cc	96;"	d	file:
+HAS_YTOARGBROW_NEON	include/libyuv/row.h	314;"	d
+HAS_YTOARGBROW_SSE2	include/libyuv/row.h	124;"	d
+HAS_YUY2TOARGBROW_NEON	include/libyuv/row.h	315;"	d
+HAS_YUY2TOARGBROW_SSSE3	include/libyuv/row.h	125;"	d
+HAS_YUY2TOUV422ROW_AVX2	include/libyuv/row.h	211;"	d
+HAS_YUY2TOUV422ROW_NEON	include/libyuv/row.h	316;"	d
+HAS_YUY2TOUV422ROW_SSE2	include/libyuv/row.h	126;"	d
+HAS_YUY2TOUVROW_AVX2	include/libyuv/row.h	212;"	d
+HAS_YUY2TOUVROW_NEON	include/libyuv/row.h	317;"	d
+HAS_YUY2TOUVROW_SSE2	include/libyuv/row.h	127;"	d
+HAS_YUY2TOYROW_AVX2	include/libyuv/row.h	213;"	d
+HAS_YUY2TOYROW_AVX2	include/libyuv/row.h	234;"	d
+HAS_YUY2TOYROW_MMX	include/libyuv/row.h	235;"	d
+HAS_YUY2TOYROW_NEON	include/libyuv/row.h	318;"	d
+HAS_YUY2TOYROW_SSE2	include/libyuv/row.h	128;"	d
+HAVE_SETJMP	source/mjpeg_decoder.cc	20;"	d	file:
+HalfRow_16_C	source/row_common.cc	/^static void HalfRow_16_C(const uint16* src_uv, int src_uv_stride,$/;"	f	file:
+HalfRow_C	source/row_common.cc	/^static void HalfRow_C(const uint8* src_uv, int src_uv_stride,$/;"	f	file:
+HashDjb2	source/compare.cc	/^uint32 HashDjb2(const uint8* src, uint64 count, uint32 seed) {$/;"	f
+HashDjb2_AVX2	source/compare_win.cc	/^uint32 HashDjb2_AVX2(const uint8* src, int count, uint32 seed) {$/;"	f
+HashDjb2_C	source/compare_common.cc	/^uint32 HashDjb2_C(const uint8* src, int count, uint32 seed) {$/;"	f
+HashDjb2_SSE41	source/compare_posix.cc	/^uint32 HashDjb2_SSE41(const uint8* src, int count, uint32 seed) {$/;"	f
+HashDjb2_SSE41	source/compare_win.cc	/^uint32 HashDjb2_SSE41(const uint8* src, int count, uint32 seed) {$/;"	f
+I400Copy	source/convert_from.cc	/^int I400Copy(const uint8* src_y, int src_stride_y,$/;"	f
+I400Mirror	source/planar_functions.cc	/^int I400Mirror(const uint8* src_y, int src_stride_y,$/;"	f
+I400ToARGB	source/convert_argb.cc	/^int I400ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+I400ToARGBRow_C	source/row_common.cc	/^void I400ToARGBRow_C(const uint8* src_y, uint8* dst_argb, int width) {$/;"	f
+I400ToARGBRow_NEON	source/row_neon.cc	/^void I400ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I400ToARGBRow_NEON	source/row_neon64.cc	/^void I400ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I400ToARGBRow_SSE2	source/row_posix.cc	/^void I400ToARGBRow_SSE2(const uint8* src_y, uint8* dst_argb, int pix) {$/;"	f
+I400ToARGBRow_SSE2	source/row_win.cc	/^void I400ToARGBRow_SSE2(const uint8* src_y, uint8* dst_argb, int pix) {$/;"	f
+I400ToARGB_Reference	source/convert_argb.cc	/^int I400ToARGB_Reference(const uint8* src_y, int src_stride_y,$/;"	f
+I400ToI400	source/planar_functions.cc	/^int I400ToI400(const uint8* src_y, int src_stride_y,$/;"	f
+I400ToI400Mirror	include/libyuv/planar_functions.h	109;"	d
+I400ToI420	source/convert.cc	/^int I400ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+I411ToARGB	source/convert_argb.cc	/^int I411ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+I411ToARGBRow_C	source/row_common.cc	/^void I411ToARGBRow_C(const uint8* src_y,$/;"	f
+I411ToARGBRow_NEON	source/row_neon.cc	/^void I411ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I411ToARGBRow_NEON	source/row_neon64.cc	/^void I411ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I411ToARGBRow_SSSE3	source/row_posix.cc	/^void OMITFP I411ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I411ToARGBRow_SSSE3	source/row_win.cc	/^void I411ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I411ToI420	source/convert.cc	/^int I411ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+I420Buffers	source/convert_jpeg.cc	/^struct I420Buffers {$/;"	s	file:
+I420Copy	source/convert.cc	/^int I420Copy(const uint8* src_y, int src_stride_y,$/;"	f
+I420Mirror	source/planar_functions.cc	/^int I420Mirror(const uint8* src_y, int src_stride_y,$/;"	f
+I420Psnr	source/compare.cc	/^double I420Psnr(const uint8* src_y_a, int stride_y_a,$/;"	f
+I420Rect	source/planar_functions.cc	/^int I420Rect(uint8* dst_y, int dst_stride_y,$/;"	f
+I420Rotate	source/rotate.cc	/^int I420Rotate(const uint8* src_y, int src_stride_y,$/;"	f
+I420Scale	source/scale.cc	/^int I420Scale(const uint8* src_y, int src_stride_y,$/;"	f
+I420Scale_16	source/scale.cc	/^int I420Scale_16(const uint16* src_y, int src_stride_y,$/;"	f
+I420Ssim	source/compare.cc	/^double I420Ssim(const uint8* src_y_a, int stride_y_a,$/;"	f
+I420ToABGR	source/convert_from.cc	/^int I420ToABGR(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToARGB	source/convert_from.cc	/^int I420ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToARGB1555	source/convert_from.cc	/^int I420ToARGB1555(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToARGB4444	source/convert_from.cc	/^int I420ToARGB4444(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToBGRA	source/convert_from.cc	/^int I420ToBGRA(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToBayer	source/format_conversion.cc	/^int I420ToBayer(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToBayerRGB	include/libyuv/format_conversion.h	92;"	d
+I420ToI400	source/planar_functions.cc	/^int I420ToI400(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToI411	source/convert_from.cc	/^int I420ToI411(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToI420	include/libyuv/convert.h	56;"	d
+I420ToI420Mirror	include/libyuv/planar_functions.h	96;"	d
+I420ToI422	source/convert_from.cc	/^int I420ToI422(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToI444	source/convert_from.cc	/^int I420ToI444(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToI4xx	source/convert_from.cc	/^static int I420ToI4xx(const uint8* src_y, int src_stride_y,$/;"	f	file:
+I420ToNV12	source/convert_from.cc	/^int I420ToNV12(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToNV21	source/convert_from.cc	/^int I420ToNV21(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToRAW	source/convert_from.cc	/^int I420ToRAW(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToRGB24	source/convert_from.cc	/^int I420ToRGB24(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToRGB565	source/convert_from.cc	/^int I420ToRGB565(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToRGBA	source/convert_from.cc	/^int I420ToRGBA(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToUYVY	source/convert_from.cc	/^int I420ToUYVY(const uint8* src_y, int src_stride_y,$/;"	f
+I420ToYUY2	source/convert_from.cc	/^int I420ToYUY2(const uint8* src_y, int src_stride_y,$/;"	f
+I422Copy	source/planar_functions.cc	/^int I422Copy(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToABGR	source/planar_functions.cc	/^int I422ToABGR(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToABGRRow_AVX2	source/row_posix.cc	/^void OMITFP I422ToABGRRow_AVX2(const uint8* y_buf,$/;"	f
+I422ToABGRRow_AVX2	source/row_win.cc	/^void I422ToABGRRow_AVX2(const uint8* y_buf,$/;"	f
+I422ToABGRRow_C	source/row_common.cc	/^void I422ToABGRRow_C(const uint8* src_y,$/;"	f
+I422ToABGRRow_MIPS_DSPR2	source/row_mips.cc	/^void I422ToABGRRow_MIPS_DSPR2(const uint8* y_buf,$/;"	f
+I422ToABGRRow_NEON	source/row_neon.cc	/^void I422ToABGRRow_NEON(const uint8* src_y,$/;"	f
+I422ToABGRRow_NEON	source/row_neon64.cc	/^void I422ToABGRRow_NEON(const uint8* src_y,$/;"	f
+I422ToABGRRow_SSSE3	source/row_posix.cc	/^void OMITFP I422ToABGRRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToABGRRow_SSSE3	source/row_win.cc	/^void I422ToABGRRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToARGB	source/convert_argb.cc	/^int I422ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToARGB1555Row_C	source/row_common.cc	/^void I422ToARGB1555Row_C(const uint8* src_y,$/;"	f
+I422ToARGB1555Row_NEON	source/row_neon.cc	/^void I422ToARGB1555Row_NEON(const uint8* src_y,$/;"	f
+I422ToARGB1555Row_NEON	source/row_neon64.cc	/^void I422ToARGB1555Row_NEON(const uint8* src_y,$/;"	f
+I422ToARGB1555Row_SSSE3	source/row_common.cc	/^void I422ToARGB1555Row_SSSE3(const uint8* src_y,$/;"	f
+I422ToARGB4444Row_C	source/row_common.cc	/^void I422ToARGB4444Row_C(const uint8* src_y,$/;"	f
+I422ToARGB4444Row_NEON	source/row_neon.cc	/^void I422ToARGB4444Row_NEON(const uint8* src_y,$/;"	f
+I422ToARGB4444Row_NEON	source/row_neon64.cc	/^void I422ToARGB4444Row_NEON(const uint8* src_y,$/;"	f
+I422ToARGB4444Row_SSSE3	source/row_common.cc	/^void I422ToARGB4444Row_SSSE3(const uint8* src_y,$/;"	f
+I422ToARGBRow_AVX2	source/row_posix.cc	/^void OMITFP I422ToARGBRow_AVX2(const uint8* y_buf,$/;"	f
+I422ToARGBRow_AVX2	source/row_win.cc	/^void I422ToARGBRow_AVX2(const uint8* y_buf,$/;"	f
+I422ToARGBRow_C	source/row_common.cc	/^void I422ToARGBRow_C(const uint8* src_y,$/;"	f
+I422ToARGBRow_MIPS_DSPR2	source/row_mips.cc	/^void I422ToARGBRow_MIPS_DSPR2(const uint8* y_buf,$/;"	f
+I422ToARGBRow_NEON	source/row_neon.cc	/^void I422ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I422ToARGBRow_NEON	source/row_neon64.cc	/^void I422ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I422ToARGBRow_SSSE3	source/row_posix.cc	/^void OMITFP I422ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToARGBRow_SSSE3	source/row_win.cc	/^void I422ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToBGRA	source/planar_functions.cc	/^int I422ToBGRA(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToBGRARow_AVX2	source/row_posix.cc	/^void OMITFP I422ToBGRARow_AVX2(const uint8* y_buf,$/;"	f
+I422ToBGRARow_AVX2	source/row_win.cc	/^void I422ToBGRARow_AVX2(const uint8* y_buf,$/;"	f
+I422ToBGRARow_C	source/row_common.cc	/^void I422ToBGRARow_C(const uint8* src_y,$/;"	f
+I422ToBGRARow_MIPS_DSPR2	source/row_mips.cc	/^void I422ToBGRARow_MIPS_DSPR2(const uint8* y_buf,$/;"	f
+I422ToBGRARow_NEON	source/row_neon.cc	/^void I422ToBGRARow_NEON(const uint8* src_y,$/;"	f
+I422ToBGRARow_NEON	source/row_neon64.cc	/^void I422ToBGRARow_NEON(const uint8* src_y,$/;"	f
+I422ToBGRARow_SSSE3	source/row_posix.cc	/^void OMITFP I422ToBGRARow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToBGRARow_SSSE3	source/row_win.cc	/^void I422ToBGRARow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToI420	source/convert.cc	/^int I422ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToI422	include/libyuv/planar_functions.h	50;"	d
+I422ToRAWRow_C	source/row_common.cc	/^void I422ToRAWRow_C(const uint8* src_y,$/;"	f
+I422ToRAWRow_NEON	source/row_neon.cc	/^void I422ToRAWRow_NEON(const uint8* src_y,$/;"	f
+I422ToRAWRow_NEON	source/row_neon64.cc	/^void I422ToRAWRow_NEON(const uint8* src_y,$/;"	f
+I422ToRAWRow_SSSE3	source/row_posix.cc	/^void OMITFP I422ToRAWRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRAWRow_SSSE3	source/row_win.cc	/^void I422ToRAWRow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRGB24Row_C	source/row_common.cc	/^void I422ToRGB24Row_C(const uint8* src_y,$/;"	f
+I422ToRGB24Row_NEON	source/row_neon.cc	/^void I422ToRGB24Row_NEON(const uint8* src_y,$/;"	f
+I422ToRGB24Row_NEON	source/row_neon64.cc	/^void I422ToRGB24Row_NEON(const uint8* src_y,$/;"	f
+I422ToRGB24Row_SSSE3	source/row_posix.cc	/^void OMITFP I422ToRGB24Row_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRGB24Row_SSSE3	source/row_win.cc	/^void I422ToRGB24Row_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRGB565Row_C	source/row_common.cc	/^void I422ToRGB565Row_C(const uint8* src_y,$/;"	f
+I422ToRGB565Row_NEON	source/row_neon.cc	/^void I422ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+I422ToRGB565Row_NEON	source/row_neon64.cc	/^void I422ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+I422ToRGB565Row_SSSE3	source/row_common.cc	/^void I422ToRGB565Row_SSSE3(const uint8* src_y,$/;"	f
+I422ToRGB565Row_SSSE3	source/row_win.cc	/^void I422ToRGB565Row_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRGBA	source/planar_functions.cc	/^int I422ToRGBA(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToRGBARow_AVX2	source/row_posix.cc	/^void OMITFP I422ToRGBARow_AVX2(const uint8* y_buf,$/;"	f
+I422ToRGBARow_AVX2	source/row_win.cc	/^void I422ToRGBARow_AVX2(const uint8* y_buf,$/;"	f
+I422ToRGBARow_C	source/row_common.cc	/^void I422ToRGBARow_C(const uint8* src_y,$/;"	f
+I422ToRGBARow_NEON	source/row_neon.cc	/^void I422ToRGBARow_NEON(const uint8* src_y,$/;"	f
+I422ToRGBARow_NEON	source/row_neon64.cc	/^void I422ToRGBARow_NEON(const uint8* src_y,$/;"	f
+I422ToRGBARow_SSSE3	source/row_posix.cc	/^void OMITFP I422ToRGBARow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToRGBARow_SSSE3	source/row_win.cc	/^void I422ToRGBARow_SSSE3(const uint8* y_buf,$/;"	f
+I422ToTransientMipsRGB	source/row_mips.cc	599;"	d	file:
+I422ToUYVY	source/convert_from.cc	/^int I422ToUYVY(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToUYVYRow_C	source/row_common.cc	/^void I422ToUYVYRow_C(const uint8* src_y,$/;"	f
+I422ToUYVYRow_NEON	source/row_neon.cc	/^void I422ToUYVYRow_NEON(const uint8* src_y,$/;"	f
+I422ToUYVYRow_NEON	source/row_neon64.cc	/^void I422ToUYVYRow_NEON(const uint8* src_y,$/;"	f
+I422ToUYVYRow_SSE2	source/row_posix.cc	/^void I422ToUYVYRow_SSE2(const uint8* src_y,$/;"	f
+I422ToUYVYRow_SSE2	source/row_win.cc	/^void I422ToUYVYRow_SSE2(const uint8* src_y,$/;"	f
+I422ToYUY2	source/convert_from.cc	/^int I422ToYUY2(const uint8* src_y, int src_stride_y,$/;"	f
+I422ToYUY2Row_C	source/row_common.cc	/^void I422ToYUY2Row_C(const uint8* src_y,$/;"	f
+I422ToYUY2Row_NEON	source/row_neon.cc	/^void I422ToYUY2Row_NEON(const uint8* src_y,$/;"	f
+I422ToYUY2Row_NEON	source/row_neon64.cc	/^void I422ToYUY2Row_NEON(const uint8* src_y,$/;"	f
+I422ToYUY2Row_SSE2	source/row_posix.cc	/^void I422ToYUY2Row_SSE2(const uint8* src_y,$/;"	f
+I422ToYUY2Row_SSE2	source/row_win.cc	/^void I422ToYUY2Row_SSE2(const uint8* src_y,$/;"	f
+I444Copy	source/planar_functions.cc	/^int I444Copy(const uint8* src_y, int src_stride_y,$/;"	f
+I444ToARGB	source/convert_argb.cc	/^int I444ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+I444ToARGBRow_C	source/row_common.cc	/^void I444ToARGBRow_C(const uint8* src_y,$/;"	f
+I444ToARGBRow_NEON	source/row_neon.cc	/^void I444ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I444ToARGBRow_NEON	source/row_neon64.cc	/^void I444ToARGBRow_NEON(const uint8* src_y,$/;"	f
+I444ToARGBRow_SSSE3	source/row_posix.cc	/^void OMITFP I444ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I444ToARGBRow_SSSE3	source/row_win.cc	/^void I444ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+I444ToI420	source/convert.cc	/^int I444ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+I444ToI444	include/libyuv/planar_functions.h	61;"	d
+I4xxToI420	source/convert.cc	/^static int I4xxToI420(const uint8* src_y, int src_stride_y,$/;"	f	file:
+INCLUDE_LIBYUV_BASIC_TYPES_H_	include/libyuv/basic_types.h	12;"	d
+INCLUDE_LIBYUV_COMPARE_H_	include/libyuv/compare.h	12;"	d
+INCLUDE_LIBYUV_CONVERT_ARGB_H_	include/libyuv/convert_argb.h	12;"	d
+INCLUDE_LIBYUV_CONVERT_FROM_ARGB_H_	include/libyuv/convert_from_argb.h	12;"	d
+INCLUDE_LIBYUV_CONVERT_FROM_H_	include/libyuv/convert_from.h	12;"	d
+INCLUDE_LIBYUV_CONVERT_H_	include/libyuv/convert.h	12;"	d
+INCLUDE_LIBYUV_CPU_ID_H_	include/libyuv/cpu_id.h	12;"	d
+INCLUDE_LIBYUV_FORMATCONVERSION_H_	include/libyuv/format_conversion.h	12;"	d
+INCLUDE_LIBYUV_H_	include/libyuv.h	12;"	d
+INCLUDE_LIBYUV_MJPEG_DECODER_H_	include/libyuv/mjpeg_decoder.h	12;"	d
+INCLUDE_LIBYUV_PLANAR_FUNCTIONS_H_	include/libyuv/planar_functions.h	12;"	d
+INCLUDE_LIBYUV_ROTATE_ARGB_H_	include/libyuv/rotate_argb.h	12;"	d
+INCLUDE_LIBYUV_ROTATE_H_	include/libyuv/rotate.h	12;"	d
+INCLUDE_LIBYUV_ROW_H_	include/libyuv/row.h	12;"	d
+INCLUDE_LIBYUV_SCALE_ARGB_H_	include/libyuv/scale_argb.h	12;"	d
+INCLUDE_LIBYUV_SCALE_H_	include/libyuv/scale.h	12;"	d
+INCLUDE_LIBYUV_SCALE_ROW_H_	include/libyuv/scale_row.h	12;"	d
+INCLUDE_LIBYUV_VERSION_H_	include/libyuv/version.h	12;"	d
+INCLUDE_LIBYUV_VIDEO_COMMON_H_	include/libyuv/video_common.h	14;"	d
+INIT_MMX	source/row_x86.asm	/^INIT_MMX MMX$/;"	l
+INIT_XMM	source/row_x86.asm	/^INIT_XMM SSE2$/;"	l
+INIT_XMM	source/x86inc.asm	/^INIT_XMM$/;"	l
+INIT_YMM	source/row_x86.asm	/^INIT_YMM AVX2$/;"	l
+INT64_C	include/libyuv/basic_types.h	29;"	d
+INT64_C	include/libyuv/basic_types.h	40;"	d
+INT64_C	include/libyuv/basic_types.h	50;"	d
+INT64_F	include/libyuv/basic_types.h	34;"	d
+INT64_F	include/libyuv/basic_types.h	45;"	d
+INT64_F	include/libyuv/basic_types.h	55;"	d
+INT_TYPES_DEFINED	include/libyuv/basic_types.h	24;"	d
+IS_ALIGNED	include/libyuv/row.h	23;"	d
+InitCpuFlags	source/cpu_id.cc	/^int InitCpuFlags(void) {$/;"	f
+InterpolateRow_16_C	source/row_common.cc	/^void InterpolateRow_16_C(uint16* dst_ptr, const uint16* src_ptr,$/;"	f
+InterpolateRow_AVX2	source/row_posix.cc	/^void InterpolateRow_AVX2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_AVX2	source/row_win.cc	/^void InterpolateRow_AVX2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_C	source/row_common.cc	/^void InterpolateRow_C(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_NEON	source/row_neon.cc	/^void InterpolateRow_NEON(uint8* dst_ptr,$/;"	f
+InterpolateRow_NEON	source/row_neon64.cc	/^void InterpolateRow_NEON(uint8* dst_ptr,$/;"	f
+InterpolateRow_SSE2	source/row_posix.cc	/^void InterpolateRow_SSE2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_SSE2	source/row_win.cc	/^void InterpolateRow_SSE2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_SSSE3	source/row_posix.cc	/^void InterpolateRow_SSSE3(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRow_SSSE3	source/row_win.cc	/^void InterpolateRow_SSSE3(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+InterpolateRows_MIPS_DSPR2	source/row_mips.cc	/^void InterpolateRows_MIPS_DSPR2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+J420ToARGB	source/convert_argb.cc	/^int J420ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+J422ToARGB	source/convert_argb.cc	/^int J422ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+J422ToARGBRow_C	source/row_common.cc	/^void J422ToARGBRow_C(const uint8* src_y,$/;"	f
+JpegCopyI420	source/convert_jpeg.cc	/^static void JpegCopyI420(void* opaque,$/;"	f	file:
+JpegI400ToARGB	source/convert_jpeg.cc	/^static void JpegI400ToARGB(void* opaque,$/;"	f	file:
+JpegI400ToI420	source/convert_jpeg.cc	/^static void JpegI400ToI420(void* opaque,$/;"	f	file:
+JpegI411ToARGB	source/convert_jpeg.cc	/^static void JpegI411ToARGB(void* opaque,$/;"	f	file:
+JpegI411ToI420	source/convert_jpeg.cc	/^static void JpegI411ToI420(void* opaque,$/;"	f	file:
+JpegI420ToARGB	source/convert_jpeg.cc	/^static void JpegI420ToARGB(void* opaque,$/;"	f	file:
+JpegI422ToARGB	source/convert_jpeg.cc	/^static void JpegI422ToARGB(void* opaque,$/;"	f	file:
+JpegI422ToI420	source/convert_jpeg.cc	/^static void JpegI422ToI420(void* opaque,$/;"	f	file:
+JpegI444ToARGB	source/convert_jpeg.cc	/^static void JpegI444ToARGB(void* opaque,$/;"	f	file:
+JpegI444ToI420	source/convert_jpeg.cc	/^static void JpegI444ToI420(void* opaque,$/;"	f	file:
+JpegSubsamplingType	include/libyuv/mjpeg_decoder.h	/^enum JpegSubsamplingType {$/;"	g	namespace:libyuv
+JpegSubsamplingTypeHelper	source/mjpeg_decoder.cc	/^JpegSubsamplingType MJpegDecoder::JpegSubsamplingTypeHelper($/;"	f	class:libyuv::MJpegDecoder
+LABELALIGN	include/libyuv/row.h	410;"	d
+LABELALIGN	include/libyuv/row.h	412;"	d
+LIBYUV_API	include/libyuv/basic_types.h	100;"	d
+LIBYUV_API	include/libyuv/basic_types.h	102;"	d
+LIBYUV_API	include/libyuv/basic_types.h	91;"	d
+LIBYUV_API	include/libyuv/basic_types.h	93;"	d
+LIBYUV_API	include/libyuv/basic_types.h	95;"	d
+LIBYUV_BOOL	include/libyuv/basic_types.h	106;"	d
+LIBYUV_DISABLE_NEON	include/libyuv/row.h	53;"	d
+LIBYUV_DISABLE_X86	include/libyuv/planar_functions.h	392;"	d
+LIBYUV_DISABLE_X86	include/libyuv/row.h	43;"	d
+LIBYUV_DISABLE_X86	include/libyuv/scale_row.h	23;"	d
+LIBYUV_FALSE	include/libyuv/basic_types.h	107;"	d
+LIBYUV_LITTLE_ENDIAN	include/libyuv/basic_types.h	115;"	d
+LIBYUV_SSSE3_ONLY	include/libyuv/row.h	47;"	d
+LIBYUV_TRUE	include/libyuv/basic_types.h	108;"	d
+LIBYUV_VERSION	include/libyuv/version.h	14;"	d
+LOCAL_CPP_EXTENSION	Android.mk	/^LOCAL_CPP_EXTENSION := .cc$/;"	m
+LOCAL_MODULE	Android.mk	/^LOCAL_MODULE:= libyuv$/;"	m
+LOCAL_PATH	Android.mk	/^LOCAL_PATH := $(call my-dir)$/;"	m
+LOCAL_SRC_FILES	Android.mk	/^LOCAL_SRC_FILES := $(common_SRC_FILES)$/;"	m
+LoadFrame	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::LoadFrame(const uint8* src, size_t src_len) {$/;"	f	class:libyuv::MJpegDecoder
+M420ToARGB	source/convert_argb.cc	/^int M420ToARGB(const uint8* src_m420, int src_stride_m420,$/;"	f
+M420ToI420	source/convert.cc	/^int M420ToI420(const uint8* src_m420, int src_stride_m420,$/;"	f
+MAKEBAYERFOURCC	source/format_conversion.cc	496;"	d	file:
+MAKEROWY	source/row_common.cc	267;"	d	file:
+MAKEROWY	source/row_common.cc	309;"	d	file:
+MAKEROWYJ	source/row_common.cc	349;"	d	file:
+MAKEROWYJ	source/row_common.cc	386;"	d	file:
+MANY	source/row_any.cc	632;"	d	file:
+MANY	source/row_any.cc	663;"	d	file:
+MANY	source/row_any.cc	665;"	d	file:
+MANY	source/row_any.cc	684;"	d	file:
+MATHROW_ANY	source/row_any.cc	522;"	d	file:
+MATHROW_ANY	source/row_any.cc	568;"	d	file:
+MEMACCESS	include/libyuv/row.h	417;"	d
+MEMACCESS	include/libyuv/row.h	453;"	d
+MEMACCESS	include/libyuv/row.h	476;"	d
+MEMACCESS	include/libyuv/row.h	478;"	d
+MEMACCESS	include/libyuv/row.h	480;"	d
+MEMACCESS2	include/libyuv/row.h	418;"	d
+MEMACCESS2	include/libyuv/row.h	454;"	d
+MEMLEA	include/libyuv/row.h	419;"	d
+MEMLEA	include/libyuv/row.h	455;"	d
+MEMLEA3	include/libyuv/row.h	420;"	d
+MEMLEA3	include/libyuv/row.h	456;"	d
+MEMLEA4	include/libyuv/row.h	422;"	d
+MEMLEA4	include/libyuv/row.h	458;"	d
+MEMMOVESTRING	include/libyuv/row.h	424;"	d
+MEMMOVESTRING	include/libyuv/row.h	460;"	d
+MEMOPARG	include/libyuv/row.h	436;"	d
+MEMOPARG	include/libyuv/row.h	466;"	d
+MEMOPMEM	include/libyuv/row.h	431;"	d
+MEMOPMEM	include/libyuv/row.h	464;"	d
+MEMOPREG	include/libyuv/row.h	426;"	d
+MEMOPREG	include/libyuv/row.h	462;"	d
+MEMSTORESTRING	include/libyuv/row.h	425;"	d
+MEMSTORESTRING	include/libyuv/row.h	461;"	d
+MERGEUVROW_ANY	source/row_any.cc	498;"	d	file:
+MERGEUVROW_ANY	source/row_any.cc	520;"	d	file:
+MJPGSize	source/convert_jpeg.cc	/^int MJPGSize(const uint8* sample, size_t sample_size,$/;"	f
+MJPGToARGB	source/convert_jpeg.cc	/^int MJPGToARGB(const uint8* sample,$/;"	f
+MJPGToI420	source/convert_jpeg.cc	/^int MJPGToI420(const uint8* sample,$/;"	f
+MJpegDecoder	include/libyuv/mjpeg_decoder.h	/^class LIBYUV_API MJpegDecoder {$/;"	c	namespace:libyuv
+MJpegDecoder	source/mjpeg_decoder.cc	/^MJpegDecoder::MJpegDecoder()$/;"	f	class:libyuv::MJpegDecoder
+MakeSelectors	source/format_conversion.cc	/^static int MakeSelectors(const int blue_index,$/;"	f	file:
+MaskCpuFlags	source/cpu_id.cc	/^void MaskCpuFlags(int enable_flags) {$/;"	f
+MergeUVRow_	source/row_x86.asm	/^MergeUVRow_ a,$/;"	l
+MergeUVRow_	source/row_x86.asm	/^MergeUVRow_ u,_Unaligned$/;"	l
+MergeUVRow_AVX2	source/row_posix.cc	/^void MergeUVRow_AVX2(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_AVX2	source/row_win.cc	/^void MergeUVRow_AVX2(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_C	source/row_common.cc	/^void MergeUVRow_C(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_NEON	source/row_neon.cc	/^void MergeUVRow_NEON(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_NEON	source/row_neon64.cc	/^void MergeUVRow_NEON(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_SSE2	source/row_posix.cc	/^void MergeUVRow_SSE2(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MergeUVRow_SSE2	source/row_win.cc	/^void MergeUVRow_SSE2(const uint8* src_u, const uint8* src_v, uint8* dst_uv,$/;"	f
+MipsCpuCaps	source/cpu_id.cc	/^static int MipsCpuCaps(const char* search_string) {$/;"	f	file:
+MirrorPlane	source/planar_functions.cc	/^void MirrorPlane(const uint8* src_y, int src_stride_y,$/;"	f
+MirrorRow_AVX2	source/row_posix.cc	/^void MirrorRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_AVX2	source/row_win.cc	/^void MirrorRow_AVX2(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_C	source/row_common.cc	/^void MirrorRow_C(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_MIPS_DSPR2	source/row_mips.cc	/^void MirrorRow_MIPS_DSPR2(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_NEON	source/row_neon.cc	/^void MirrorRow_NEON(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_NEON	source/row_neon64.cc	/^void MirrorRow_NEON(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_SSE2	source/row_posix.cc	/^void MirrorRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_SSE2	source/row_win.cc	/^void MirrorRow_SSE2(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_SSSE3	source/row_posix.cc	/^void MirrorRow_SSSE3(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorRow_SSSE3	source/row_win.cc	/^void MirrorRow_SSSE3(const uint8* src, uint8* dst, int width) {$/;"	f
+MirrorUVRow_C	source/row_common.cc	/^void MirrorUVRow_C(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int width) {$/;"	f
+MirrorUVRow_MIPS_DSPR2	source/row_mips.cc	/^void MirrorUVRow_MIPS_DSPR2(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+MirrorUVRow_NEON	source/row_neon.cc	/^void MirrorUVRow_NEON(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+MirrorUVRow_NEON	source/row_neon64.cc	/^void MirrorUVRow_NEON(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+MirrorUVRow_SSSE3	source/row_posix.cc	/^void MirrorUVRow_SSSE3(const uint8* src, uint8* dst_u, uint8* dst_v,$/;"	f
+MirrorUVRow_SSSE3	source/row_win.cc	/^void MirrorUVRow_SSSE3(const uint8* src, uint8* dst_u, uint8* dst_v,$/;"	f
+NANY	source/row_any.cc	601;"	d	file:
+NANY	source/row_any.cc	630;"	d	file:
+NV12ToARGB	source/convert_argb.cc	/^int NV12ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+NV12ToARGBRow_C	source/row_common.cc	/^void NV12ToARGBRow_C(const uint8* src_y,$/;"	f
+NV12ToARGBRow_NEON	source/row_neon.cc	/^void NV12ToARGBRow_NEON(const uint8* src_y,$/;"	f
+NV12ToARGBRow_NEON	source/row_neon64.cc	/^void NV12ToARGBRow_NEON(const uint8* src_y,$/;"	f
+NV12ToARGBRow_SSSE3	source/row_posix.cc	/^void OMITFP NV12ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+NV12ToARGBRow_SSSE3	source/row_win.cc	/^void NV12ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+NV12ToI420	source/convert.cc	/^int NV12ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+NV12ToI420Rotate	source/rotate.cc	/^int NV12ToI420Rotate(const uint8* src_y, int src_stride_y,$/;"	f
+NV12ToRGB565	source/planar_functions.cc	/^int NV12ToRGB565(const uint8* src_y, int src_stride_y,$/;"	f
+NV12ToRGB565Row_C	source/row_common.cc	/^void NV12ToRGB565Row_C(const uint8* src_y,$/;"	f
+NV12ToRGB565Row_NEON	source/row_neon.cc	/^void NV12ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+NV12ToRGB565Row_NEON	source/row_neon64.cc	/^void NV12ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+NV12ToRGB565Row_SSSE3	source/row_common.cc	/^void NV12ToRGB565Row_SSSE3(const uint8* src_y,$/;"	f
+NV21ToARGB	source/convert_argb.cc	/^int NV21ToARGB(const uint8* src_y, int src_stride_y,$/;"	f
+NV21ToARGBRow_C	source/row_common.cc	/^void NV21ToARGBRow_C(const uint8* src_y,$/;"	f
+NV21ToARGBRow_NEON	source/row_neon.cc	/^void NV21ToARGBRow_NEON(const uint8* src_y,$/;"	f
+NV21ToARGBRow_NEON	source/row_neon64.cc	/^void NV21ToARGBRow_NEON(const uint8* src_y,$/;"	f
+NV21ToARGBRow_SSSE3	source/row_posix.cc	/^void OMITFP NV21ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+NV21ToARGBRow_SSSE3	source/row_win.cc	/^void NV21ToARGBRow_SSSE3(const uint8* y_buf,$/;"	f
+NV21ToI420	source/convert.cc	/^int NV21ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+NV21ToRGB565	source/planar_functions.cc	/^int NV21ToRGB565(const uint8* src_y, int src_stride_y,$/;"	f
+NV21ToRGB565Row_C	source/row_common.cc	/^void NV21ToRGB565Row_C(const uint8* src_y,$/;"	f
+NV21ToRGB565Row_NEON	source/row_neon.cc	/^void NV21ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+NV21ToRGB565Row_NEON	source/row_neon64.cc	/^void NV21ToRGB565Row_NEON(const uint8* src_y,$/;"	f
+NV21ToRGB565Row_SSSE3	source/row_common.cc	/^void NV21ToRGB565Row_SSSE3(const uint8* src_y,$/;"	f
+NV2NY	source/row_any.cc	105;"	d	file:
+NVANY	source/row_any.cc	139;"	d	file:
+OMITFP	include/libyuv/row.h	403;"	d
+OMITFP	include/libyuv/row.h	405;"	d
+Q420ToI420	source/convert.cc	/^int Q420ToI420(const uint8* src_y, int src_stride_y,$/;"	f
+RAWToARGB	source/convert_argb.cc	/^int RAWToARGB(const uint8* src_raw, int src_stride_raw,$/;"	f
+RAWToARGBRow_C	source/row_common.cc	/^void RAWToARGBRow_C(const uint8* src_raw, uint8* dst_argb, int width) {$/;"	f
+RAWToARGBRow_NEON	source/row_neon.cc	/^void RAWToARGBRow_NEON(const uint8* src_raw, uint8* dst_argb, int pix) {$/;"	f
+RAWToARGBRow_NEON	source/row_neon64.cc	/^void RAWToARGBRow_NEON(const uint8* src_raw, uint8* dst_argb, int pix) {$/;"	f
+RAWToARGBRow_SSSE3	source/row_posix.cc	/^void RAWToARGBRow_SSSE3(const uint8* src_raw, uint8* dst_argb, int pix) {$/;"	f
+RAWToARGBRow_SSSE3	source/row_win.cc	/^void RAWToARGBRow_SSSE3(const uint8* src_raw, uint8* dst_argb,$/;"	f
+RAWToI420	source/convert.cc	/^int RAWToI420(const uint8* src_raw, int src_stride_raw,$/;"	f
+RAWToUVRow_NEON	source/row_neon.cc	/^void RAWToUVRow_NEON(const uint8* src_raw, int src_stride_raw,$/;"	f
+RAWToUVRow_NEON	source/row_neon64.cc	/^void RAWToUVRow_NEON(const uint8* src_raw, int src_stride_raw,$/;"	f
+RAWToYRow_NEON	source/row_neon.cc	/^void RAWToYRow_NEON(const uint8* src_raw, uint8* dst_y, int pix) {$/;"	f
+RAWToYRow_NEON	source/row_neon64.cc	/^void RAWToYRow_NEON(const uint8* src_raw, uint8* dst_y, int pix) {$/;"	f
+READNV12	source/row_neon.cc	60;"	d	file:
+READNV12	source/row_neon64.cc	58;"	d	file:
+READNV12	source/row_posix.cc	1588;"	d	file:
+READNV12	source/row_win.cc	1756;"	d	file:
+READNV21	source/row_neon.cc	70;"	d	file:
+READNV21	source/row_neon64.cc	68;"	d	file:
+READUYVY	source/row_neon.cc	88;"	d	file:
+READUYVY	source/row_neon64.cc	86;"	d	file:
+READYUV400	source/row_neon.cc	54;"	d	file:
+READYUV400	source/row_neon64.cc	52;"	d	file:
+READYUV411	source/row_neon.cc	32;"	d	file:
+READYUV411	source/row_neon64.cc	31;"	d	file:
+READYUV411	source/row_posix.cc	1579;"	d	file:
+READYUV411	source/row_win.cc	1744;"	d	file:
+READYUV422	source/row_neon.cc	23;"	d	file:
+READYUV422	source/row_neon64.cc	22;"	d	file:
+READYUV422	source/row_posix.cc	1571;"	d	file:
+READYUV422	source/row_win.cc	1735;"	d	file:
+READYUV422_AVX2	source/row_posix.cc	2074;"	d	file:
+READYUV422_AVX2	source/row_win.cc	1502;"	d	file:
+READYUV444	source/row_neon.cc	43;"	d	file:
+READYUV444	source/row_neon64.cc	41;"	d	file:
+READYUV444	source/row_posix.cc	1564;"	d	file:
+READYUV444	source/row_win.cc	1727;"	d	file:
+READYUY2	source/row_neon.cc	80;"	d	file:
+READYUY2	source/row_neon64.cc	78;"	d	file:
+REPEAT8	source/row_common.cc	769;"	d	file:
+REPEAT8	source/row_common.cc	793;"	d	file:
+REPEAT8	source/row_common.cc	796;"	d	file:
+REPEAT8	source/row_common.cc	820;"	d	file:
+RGB24ToARGB	source/convert_argb.cc	/^int RGB24ToARGB(const uint8* src_rgb24, int src_stride_rgb24,$/;"	f
+RGB24ToARGBRow_C	source/row_common.cc	/^void RGB24ToARGBRow_C(const uint8* src_rgb24, uint8* dst_argb, int width) {$/;"	f
+RGB24ToARGBRow_NEON	source/row_neon.cc	/^void RGB24ToARGBRow_NEON(const uint8* src_rgb24, uint8* dst_argb, int pix) {$/;"	f
+RGB24ToARGBRow_NEON	source/row_neon64.cc	/^void RGB24ToARGBRow_NEON(const uint8* src_rgb24, uint8* dst_argb, int pix) {$/;"	f
+RGB24ToARGBRow_SSSE3	source/row_posix.cc	/^void RGB24ToARGBRow_SSSE3(const uint8* src_rgb24, uint8* dst_argb, int pix) {$/;"	f
+RGB24ToARGBRow_SSSE3	source/row_win.cc	/^void RGB24ToARGBRow_SSSE3(const uint8* src_rgb24, uint8* dst_argb, int pix) {$/;"	f
+RGB24ToI420	source/convert.cc	/^int RGB24ToI420(const uint8* src_rgb24, int src_stride_rgb24,$/;"	f
+RGB24ToUVRow_NEON	source/row_neon.cc	/^void RGB24ToUVRow_NEON(const uint8* src_rgb24, int src_stride_rgb24,$/;"	f
+RGB24ToUVRow_NEON	source/row_neon64.cc	/^void RGB24ToUVRow_NEON(const uint8* src_rgb24, int src_stride_rgb24,$/;"	f
+RGB24ToYRow_NEON	source/row_neon.cc	/^void RGB24ToYRow_NEON(const uint8* src_rgb24, uint8* dst_y, int pix) {$/;"	f
+RGB24ToYRow_NEON	source/row_neon64.cc	/^void RGB24ToYRow_NEON(const uint8* src_rgb24, uint8* dst_y, int pix) {$/;"	f
+RGB555TOARGB	source/row_neon.cc	1046;"	d	file:
+RGB555TOARGB	source/row_neon64.cc	947;"	d	file:
+RGB565TOARGB	source/row_neon.cc	999;"	d	file:
+RGB565TOARGB	source/row_neon64.cc	892;"	d	file:
+RGB565ToARGB	source/convert_argb.cc	/^int RGB565ToARGB(const uint8* src_rgb565, int src_stride_rgb565,$/;"	f
+RGB565ToARGBRow_C	source/row_common.cc	/^void RGB565ToARGBRow_C(const uint8* src_rgb565, uint8* dst_argb, int width) {$/;"	f
+RGB565ToARGBRow_NEON	source/row_neon.cc	/^void RGB565ToARGBRow_NEON(const uint8* src_rgb565, uint8* dst_argb, int pix) {$/;"	f
+RGB565ToARGBRow_NEON	source/row_neon64.cc	/^void RGB565ToARGBRow_NEON(const uint8* src_rgb565, uint8* dst_argb, int pix) {$/;"	f
+RGB565ToARGBRow_SSE2	source/row_posix.cc	/^void RGB565ToARGBRow_SSE2(const uint8* src, uint8* dst, int pix) {$/;"	f
+RGB565ToARGBRow_SSE2	source/row_win.cc	/^void RGB565ToARGBRow_SSE2(const uint8* src_rgb565, uint8* dst_argb,$/;"	f
+RGB565ToI420	source/convert.cc	/^int RGB565ToI420(const uint8* src_rgb565, int src_stride_rgb565,$/;"	f
+RGB565ToUVRow_C	source/row_common.cc	/^void RGB565ToUVRow_C(const uint8* src_rgb565, int src_stride_rgb565,$/;"	f
+RGB565ToUVRow_NEON	source/row_neon.cc	/^void RGB565ToUVRow_NEON(const uint8* src_rgb565, int src_stride_rgb565,$/;"	f
+RGB565ToUVRow_NEON	source/row_neon64.cc	/^void RGB565ToUVRow_NEON(const uint8* src_rgb565, int src_stride_rgb565,$/;"	f
+RGB565ToYRow_C	source/row_common.cc	/^void RGB565ToYRow_C(const uint8* src_rgb565, uint8* dst_y, int width) {$/;"	f
+RGB565ToYRow_NEON	source/row_neon.cc	/^void RGB565ToYRow_NEON(const uint8* src_rgb565, uint8* dst_y, int pix) {$/;"	f
+RGB565ToYRow_NEON	source/row_neon64.cc	/^void RGB565ToYRow_NEON(const uint8* src_rgb565, uint8* dst_y, int pix) {$/;"	f
+RGBANY	source/row_any.cc	141;"	d	file:
+RGBANY	source/row_any.cc	207;"	d	file:
+RGBAToARGB	source/convert_argb.cc	/^int RGBAToARGB(const uint8* src_rgba, int src_stride_rgba,$/;"	f
+RGBAToI420	source/convert.cc	/^int RGBAToI420(const uint8* src_rgba, int src_stride_rgba,$/;"	f
+RGBAToUVRow_NEON	source/row_neon.cc	/^void RGBAToUVRow_NEON(const uint8* src_rgba, int src_stride_rgba,$/;"	f
+RGBAToUVRow_NEON	source/row_neon64.cc	/^void RGBAToUVRow_NEON(const uint8* src_rgba, int src_stride_rgba,$/;"	f
+RGBAToUVRow_SSSE3	source/row_posix.cc	/^void RGBAToUVRow_SSSE3(const uint8* src_rgba0, int src_stride_rgba,$/;"	f
+RGBAToUVRow_SSSE3	source/row_win.cc	/^void RGBAToUVRow_SSSE3(const uint8* src_argb0, int src_stride_argb,$/;"	f
+RGBAToYRow_NEON	source/row_neon.cc	/^void RGBAToYRow_NEON(const uint8* src_rgba, uint8* dst_y, int pix) {$/;"	f
+RGBAToYRow_NEON	source/row_neon64.cc	/^void RGBAToYRow_NEON(const uint8* src_rgba, uint8* dst_y, int pix) {$/;"	f
+RGBAToYRow_SSSE3	source/row_posix.cc	/^void RGBAToYRow_SSSE3(const uint8* src_rgba, uint8* dst_y, int pix) {$/;"	f
+RGBAToYRow_SSSE3	source/row_win.cc	/^void RGBAToYRow_SSSE3(const uint8* src_argb, uint8* dst_y, int pix) {$/;"	f
+RGBColorMatrix	source/planar_functions.cc	/^int RGBColorMatrix(uint8* dst_argb, int dst_stride_argb,$/;"	f
+RGBColorTable	source/planar_functions.cc	/^int RGBColorTable(uint8* dst_argb, int dst_stride_argb,$/;"	f
+RGBColorTableRow_C	source/row_common.cc	/^void RGBColorTableRow_C(uint8* dst_argb, const uint8* table_argb, int width) {$/;"	f
+RGBColorTableRow_X86	source/row_posix.cc	/^void RGBColorTableRow_X86(uint8* dst_argb, const uint8* table_argb, int width) {$/;"	f
+RGBColorTableRow_X86	source/row_win.cc	/^void RGBColorTableRow_X86(uint8* dst_argb, const uint8* table_argb, int width) {$/;"	f
+RGBTOUV	source/row_neon.cc	1671;"	d	file:
+RGBTOUV	source/row_neon64.cc	1589;"	d	file:
+RGBTOUV_SETUP_REG	source/row_neon64.cc	125;"	d	file:
+RGBToU	source/row_common.cc	/^static __inline int RGBToU(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RGBToUJ	source/row_common.cc	/^static __inline int RGBToUJ(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RGBToV	source/row_common.cc	/^static __inline int RGBToV(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RGBToVJ	source/row_common.cc	/^static __inline int RGBToVJ(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RGBToY	source/row_common.cc	/^static __inline int RGBToY(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RGBToYJ	source/row_common.cc	/^static __inline int RGBToYJ(uint8 r, uint8 g, uint8 b) {$/;"	f	file:
+RotatePlane	source/rotate.cc	/^int RotatePlane(const uint8* src, int src_stride,$/;"	f
+RotatePlane180	source/rotate.cc	/^void RotatePlane180(const uint8* src, int src_stride,$/;"	f
+RotatePlane270	source/rotate.cc	/^void RotatePlane270(const uint8* src, int src_stride,$/;"	f
+RotatePlane90	source/rotate.cc	/^void RotatePlane90(const uint8* src, int src_stride,$/;"	f
+RotateUV180	source/rotate.cc	/^void RotateUV180(const uint8* src, int src_stride,$/;"	f
+RotateUV270	source/rotate.cc	/^void RotateUV270(const uint8* src, int src_stride,$/;"	f
+RotateUV90	source/rotate.cc	/^void RotateUV90(const uint8* src, int src_stride,$/;"	f
+RotationMode	include/libyuv/rotate.h	/^typedef enum RotationMode {$/;"	g
+RotationModeEnum	include/libyuv/rotate.h	/^} RotationModeEnum;$/;"	t	typeref:enum:libyuv::RotationMode
+SAFEBUFFERS	source/cpu_id.cc	41;"	d	file:
+SECTION	source/row_x86.asm	/^SECTION .text$/;"	l
+SECTION	source/x86inc.asm	/^SECTION .note.GNU-stack noalloc noexec nowrite progbits$/;"	l
+SETANY	source/row_any.cc	686;"	d	file:
+SETANY	source/row_any.cc	705;"	d	file:
+SHADE	source/row_common.cc	770;"	d	file:
+SHADE	source/row_common.cc	794;"	d	file:
+SHADE	source/row_common.cc	797;"	d	file:
+SHADE	source/row_common.cc	821;"	d	file:
+SHADE	source/row_common.cc	823;"	d	file:
+SHADE	source/row_common.cc	846;"	d	file:
+SHADE	source/row_common.cc	848;"	d	file:
+SHADE	source/row_common.cc	871;"	d	file:
+SIMD_ALIGNED	include/libyuv/row.h	357;"	d
+SPLITUVROWANY	source/row_any.cc	470;"	d	file:
+SPLITUVROWANY	source/row_any.cc	496;"	d	file:
+SUBSAMPLE	source/convert.cc	25;"	d	file:
+SUBSAMPLE	source/convert_from.cc	28;"	d	file:
+SUBSAMPLE	source/scale.cc	33;"	d	file:
+Scale	source/scale.cc	/^int Scale(const uint8* src_y, const uint8* src_u, const uint8* src_v,$/;"	f
+ScaleARGB	source/scale_argb.cc	/^static void ScaleARGB(const uint8* src, int src_stride,$/;"	f	file:
+ScaleARGBBilinearDown	source/scale_argb.cc	/^static void ScaleARGBBilinearDown(int src_width, int src_height,$/;"	f	file:
+ScaleARGBBilinearUp	source/scale_argb.cc	/^static void ScaleARGBBilinearUp(int src_width, int src_height,$/;"	f	file:
+ScaleARGBCols64_C	source/scale_common.cc	/^void ScaleARGBCols64_C(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBColsUp2_C	source/scale_common.cc	/^void ScaleARGBColsUp2_C(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBColsUp2_SSE2	source/scale_posix.cc	/^void ScaleARGBColsUp2_SSE2(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBColsUp2_SSE2	source/scale_win.cc	/^void ScaleARGBColsUp2_SSE2(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBCols_C	source/scale_common.cc	/^void ScaleARGBCols_C(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBCols_SSE2	source/scale_posix.cc	/^void ScaleARGBCols_SSE2(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBCols_SSE2	source/scale_win.cc	/^void ScaleARGBCols_SSE2(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBDown2	source/scale_argb.cc	/^static void ScaleARGBDown2(int src_width, int src_height,$/;"	f	file:
+ScaleARGBDown4Box	source/scale_argb.cc	/^static void ScaleARGBDown4Box(int src_width, int src_height,$/;"	f	file:
+ScaleARGBDownEven	source/scale_argb.cc	/^static void ScaleARGBDownEven(int src_width, int src_height,$/;"	f	file:
+ScaleARGBFilterCols64_C	source/scale_common.cc	/^void ScaleARGBFilterCols64_C(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBFilterCols_C	source/scale_common.cc	/^void ScaleARGBFilterCols_C(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBFilterCols_SSSE3	source/scale_posix.cc	/^void ScaleARGBFilterCols_SSSE3(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBFilterCols_SSSE3	source/scale_win.cc	/^void ScaleARGBFilterCols_SSSE3(uint8* dst_argb, const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2Box_C	source/scale_common.cc	/^void ScaleARGBRowDown2Box_C(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDown2Box_NEON	source/scale_neon.cc	/^void ScaleARGBRowDown2Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDown2Box_NEON	source/scale_neon64.cc	/^void ScaleARGBRowDown2Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDown2Box_SSE2	source/scale_posix.cc	/^void ScaleARGBRowDown2Box_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2Box_SSE2	source/scale_win.cc	/^void ScaleARGBRowDown2Box_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2Linear_C	source/scale_common.cc	/^void ScaleARGBRowDown2Linear_C(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2Linear_SSE2	source/scale_posix.cc	/^void ScaleARGBRowDown2Linear_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2Linear_SSE2	source/scale_win.cc	/^void ScaleARGBRowDown2Linear_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2_C	source/scale_common.cc	/^void ScaleARGBRowDown2_C(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2_NEON	source/scale_neon.cc	/^void ScaleARGBRowDown2_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDown2_NEON	source/scale_neon64.cc	/^void ScaleARGBRowDown2_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDown2_SSE2	source/scale_posix.cc	/^void ScaleARGBRowDown2_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDown2_SSE2	source/scale_win.cc	/^void ScaleARGBRowDown2_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDownEvenBox_C	source/scale_common.cc	/^void ScaleARGBRowDownEvenBox_C(const uint8* src_argb,$/;"	f
+ScaleARGBRowDownEvenBox_NEON	source/scale_neon.cc	/^void ScaleARGBRowDownEvenBox_NEON(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEvenBox_NEON	source/scale_neon64.cc	/^void ScaleARGBRowDownEvenBox_NEON(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEvenBox_SSE2	source/scale_posix.cc	/^void ScaleARGBRowDownEvenBox_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDownEvenBox_SSE2	source/scale_win.cc	/^void ScaleARGBRowDownEvenBox_SSE2(const uint8* src_argb,$/;"	f
+ScaleARGBRowDownEven_C	source/scale_common.cc	/^void ScaleARGBRowDownEven_C(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEven_NEON	source/scale_neon.cc	/^void ScaleARGBRowDownEven_NEON(const uint8* src_argb,  ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEven_NEON	source/scale_neon64.cc	/^void ScaleARGBRowDownEven_NEON(const uint8* src_argb,  ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEven_SSE2	source/scale_posix.cc	/^void ScaleARGBRowDownEven_SSE2(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBRowDownEven_SSE2	source/scale_win.cc	/^void ScaleARGBRowDownEven_SSE2(const uint8* src_argb, ptrdiff_t src_stride,$/;"	f
+ScaleARGBSimple	source/scale_argb.cc	/^static void ScaleARGBSimple(int src_width, int src_height,$/;"	f	file:
+ScaleAddCols1_16_C	source/scale.cc	/^static void ScaleAddCols1_16_C(int dst_width, int boxheight, int x, int dx,$/;"	f	file:
+ScaleAddCols1_C	source/scale.cc	/^static void ScaleAddCols1_C(int dst_width, int boxheight, int x, int dx,$/;"	f	file:
+ScaleAddCols2_16_C	source/scale.cc	/^static void ScaleAddCols2_16_C(int dst_width, int boxheight, int x, int dx,$/;"	f	file:
+ScaleAddCols2_C	source/scale.cc	/^static void ScaleAddCols2_C(int dst_width, int boxheight, int x, int dx,$/;"	f	file:
+ScaleAddRows_16_C	source/scale_common.cc	/^void ScaleAddRows_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleAddRows_C	source/scale_common.cc	/^void ScaleAddRows_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleAddRows_SSE2	source/scale_posix.cc	/^void ScaleAddRows_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleAddRows_SSE2	source/scale_win.cc	/^void ScaleAddRows_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleColsUp2_16_C	source/scale_common.cc	/^void ScaleColsUp2_16_C(uint16* dst_ptr, const uint16* src_ptr,$/;"	f
+ScaleColsUp2_C	source/scale_common.cc	/^void ScaleColsUp2_C(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleColsUp2_SSE2	source/scale_posix.cc	/^void ScaleColsUp2_SSE2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleColsUp2_SSE2	source/scale_win.cc	/^void ScaleColsUp2_SSE2(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleCols_16_C	source/scale_common.cc	/^void ScaleCols_16_C(uint16* dst_ptr, const uint16* src_ptr,$/;"	f
+ScaleCols_C	source/scale_common.cc	/^void ScaleCols_C(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleFilterCols64_16_C	source/scale_common.cc	/^void ScaleFilterCols64_16_C(uint16* dst_ptr, const uint16* src_ptr,$/;"	f
+ScaleFilterCols64_C	source/scale_common.cc	/^void ScaleFilterCols64_C(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleFilterCols_16_C	source/scale_common.cc	/^void ScaleFilterCols_16_C(uint16* dst_ptr, const uint16* src_ptr,$/;"	f
+ScaleFilterCols_C	source/scale_common.cc	/^void ScaleFilterCols_C(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleFilterCols_SSSE3	source/scale_posix.cc	/^void ScaleFilterCols_SSSE3(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleFilterCols_SSSE3	source/scale_win.cc	/^void ScaleFilterCols_SSSE3(uint8* dst_ptr, const uint8* src_ptr,$/;"	f
+ScaleFilterReduce	source/scale_common.cc	/^enum FilterMode ScaleFilterReduce(int src_width, int src_height,$/;"	f
+ScaleFilterRows_NEON	source/scale_neon.cc	/^void ScaleFilterRows_NEON(uint8* dst_ptr,$/;"	f
+ScaleFilterRows_NEON	source/scale_neon64.cc	/^void ScaleFilterRows_NEON(uint8* dst_ptr,$/;"	f
+ScaleOffset	source/scale.cc	/^int ScaleOffset(const uint8* src, int src_width, int src_height,$/;"	f
+ScalePlane	source/scale.cc	/^void ScalePlane(const uint8* src, int src_stride,$/;"	f
+ScalePlaneBilinearDown	source/scale.cc	/^void ScalePlaneBilinearDown(int src_width, int src_height,$/;"	f
+ScalePlaneBilinearDown_16	source/scale.cc	/^void ScalePlaneBilinearDown_16(int src_width, int src_height,$/;"	f
+ScalePlaneBilinearUp	source/scale.cc	/^void ScalePlaneBilinearUp(int src_width, int src_height,$/;"	f
+ScalePlaneBilinearUp_16	source/scale.cc	/^void ScalePlaneBilinearUp_16(int src_width, int src_height,$/;"	f
+ScalePlaneBox	source/scale.cc	/^static void ScalePlaneBox(int src_width, int src_height,$/;"	f	file:
+ScalePlaneBoxRow_16_C	source/scale.cc	/^static void ScalePlaneBoxRow_16_C(int dst_width, int boxheight,$/;"	f	file:
+ScalePlaneBoxRow_C	source/scale.cc	/^static void ScalePlaneBoxRow_C(int dst_width, int boxheight,$/;"	f	file:
+ScalePlaneBox_16	source/scale.cc	/^static void ScalePlaneBox_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown2	source/scale.cc	/^static void ScalePlaneDown2(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown2_16	source/scale.cc	/^static void ScalePlaneDown2_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown34	source/scale.cc	/^static void ScalePlaneDown34(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown34_16	source/scale.cc	/^static void ScalePlaneDown34_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown38	source/scale.cc	/^static void ScalePlaneDown38(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown38_16	source/scale.cc	/^static void ScalePlaneDown38_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown4	source/scale.cc	/^static void ScalePlaneDown4(int src_width, int src_height,$/;"	f	file:
+ScalePlaneDown4_16	source/scale.cc	/^static void ScalePlaneDown4_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneSimple	source/scale.cc	/^static void ScalePlaneSimple(int src_width, int src_height,$/;"	f	file:
+ScalePlaneSimple_16	source/scale.cc	/^static void ScalePlaneSimple_16(int src_width, int src_height,$/;"	f	file:
+ScalePlaneVertical	source/scale_common.cc	/^void ScalePlaneVertical(int src_height,$/;"	f
+ScalePlaneVertical_16	source/scale_common.cc	/^void ScalePlaneVertical_16(int src_height,$/;"	f
+ScalePlane_16	source/scale.cc	/^void ScalePlane_16(const uint16* src, int src_stride,$/;"	f
+ScaleRowDown2Box_16_C	source/scale_common.cc	/^void ScaleRowDown2Box_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_C	source/scale_common.cc	/^void ScaleRowDown2Box_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown2Box_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_NEON	source/scale_neon.cc	/^void ScaleRowDown2Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_NEON	source/scale_neon64.cc	/^void ScaleRowDown2Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_SSE2	source/scale_posix.cc	/^void ScaleRowDown2Box_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Box_SSE2	source/scale_win.cc	/^void ScaleRowDown2Box_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Linear_16_C	source/scale_common.cc	/^void ScaleRowDown2Linear_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Linear_C	source/scale_common.cc	/^void ScaleRowDown2Linear_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Linear_SSE2	source/scale_posix.cc	/^void ScaleRowDown2Linear_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2Linear_SSE2	source/scale_win.cc	/^void ScaleRowDown2Linear_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_16_C	source/scale_common.cc	/^void ScaleRowDown2_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_C	source/scale_common.cc	/^void ScaleRowDown2_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown2_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_NEON	source/scale_neon.cc	/^void ScaleRowDown2_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_NEON	source/scale_neon64.cc	/^void ScaleRowDown2_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_SSE2	source/scale_posix.cc	/^void ScaleRowDown2_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown2_SSE2	source/scale_win.cc	/^void ScaleRowDown2_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_0_Box_16_C	source/scale_common.cc	/^void ScaleRowDown34_0_Box_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_0_Box_C	source/scale_common.cc	/^void ScaleRowDown34_0_Box_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_0_Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown34_0_Box_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_0_Box_NEON	source/scale_neon.cc	/^void ScaleRowDown34_0_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_0_Box_NEON	source/scale_neon64.cc	/^void ScaleRowDown34_0_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_0_Box_SSSE3	source/scale_posix.cc	/^void ScaleRowDown34_0_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_0_Box_SSSE3	source/scale_win.cc	/^void ScaleRowDown34_0_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_16_C	source/scale_common.cc	/^void ScaleRowDown34_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_1_Box_16_C	source/scale_common.cc	/^void ScaleRowDown34_1_Box_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_1_Box_C	source/scale_common.cc	/^void ScaleRowDown34_1_Box_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_1_Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown34_1_Box_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_1_Box_NEON	source/scale_neon.cc	/^void ScaleRowDown34_1_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_1_Box_NEON	source/scale_neon64.cc	/^void ScaleRowDown34_1_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_1_Box_SSSE3	source/scale_posix.cc	/^void ScaleRowDown34_1_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_1_Box_SSSE3	source/scale_win.cc	/^void ScaleRowDown34_1_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_C	source/scale_common.cc	/^void ScaleRowDown34_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown34_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_NEON	source/scale_neon.cc	/^void ScaleRowDown34_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_NEON	source/scale_neon64.cc	/^void ScaleRowDown34_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown34_SSSE3	source/scale_posix.cc	/^void ScaleRowDown34_SSSE3(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown34_SSSE3	source/scale_win.cc	/^void ScaleRowDown34_SSSE3(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_16_C	source/scale_common.cc	/^void ScaleRowDown38_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_2_Box_16_C	source/scale_common.cc	/^void ScaleRowDown38_2_Box_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_2_Box_C	source/scale_common.cc	/^void ScaleRowDown38_2_Box_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_2_Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown38_2_Box_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_2_Box_NEON	source/scale_neon.cc	/^void ScaleRowDown38_2_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_2_Box_NEON	source/scale_neon64.cc	/^void ScaleRowDown38_2_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_2_Box_SSSE3	source/scale_posix.cc	/^void ScaleRowDown38_2_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_2_Box_SSSE3	source/scale_win.cc	/^void ScaleRowDown38_2_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_16_C	source/scale_common.cc	/^void ScaleRowDown38_3_Box_16_C(const uint16* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_C	source/scale_common.cc	/^void ScaleRowDown38_3_Box_C(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown38_3_Box_MIPS_DSPR2(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_NEON	source/scale_neon.cc	/^void OMITFP ScaleRowDown38_3_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_NEON	source/scale_neon64.cc	/^void OMITFP ScaleRowDown38_3_Box_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_SSSE3	source/scale_posix.cc	/^void ScaleRowDown38_3_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_3_Box_SSSE3	source/scale_win.cc	/^void ScaleRowDown38_3_Box_SSSE3(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_C	source/scale_common.cc	/^void ScaleRowDown38_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown38_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_NEON	source/scale_neon.cc	/^void ScaleRowDown38_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_NEON	source/scale_neon64.cc	/^void ScaleRowDown38_NEON(const uint8* src_ptr,$/;"	f
+ScaleRowDown38_SSSE3	source/scale_posix.cc	/^void ScaleRowDown38_SSSE3(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown38_SSSE3	source/scale_win.cc	/^void ScaleRowDown38_SSSE3(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_16_C	source/scale_common.cc	/^void ScaleRowDown4Box_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_C	source/scale_common.cc	/^void ScaleRowDown4Box_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown4Box_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_NEON	source/scale_neon.cc	/^void ScaleRowDown4Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_NEON	source/scale_neon64.cc	/^void ScaleRowDown4Box_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_SSE2	source/scale_posix.cc	/^void ScaleRowDown4Box_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4Box_SSE2	source/scale_win.cc	/^void ScaleRowDown4Box_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_16_C	source/scale_common.cc	/^void ScaleRowDown4_16_C(const uint16* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_C	source/scale_common.cc	/^void ScaleRowDown4_C(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_MIPS_DSPR2	source/scale_mips.cc	/^void ScaleRowDown4_MIPS_DSPR2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_NEON	source/scale_neon.cc	/^void ScaleRowDown4_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_NEON	source/scale_neon64.cc	/^void ScaleRowDown4_NEON(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_SSE2	source/scale_posix.cc	/^void ScaleRowDown4_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleRowDown4_SSE2	source/scale_win.cc	/^void ScaleRowDown4_SSE2(const uint8* src_ptr, ptrdiff_t src_stride,$/;"	f
+ScaleSlope	source/scale_common.cc	/^void ScaleSlope(int src_width, int src_height,$/;"	f
+ScaleYUVToARGBBilinearUp	source/scale_argb.cc	/^static void ScaleYUVToARGBBilinearUp(int src_width, int src_height,$/;"	f	file:
+SetJmpErrorMgr	source/mjpeg_decoder.cc	/^struct SetJmpErrorMgr {$/;"	s	namespace:libyuv	file:
+SetPlane	source/planar_functions.cc	/^void SetPlane(uint8* dst_y, int dst_stride_y,$/;"	f
+SetRow_C	source/row_common.cc	/^void SetRow_C(uint8* dst, uint8 v8, int width) {$/;"	f
+SetRow_ERMS	source/row_posix.cc	/^void SetRow_ERMS(uint8* dst, uint8 v8, int width) {$/;"	f
+SetRow_ERMS	source/row_win.cc	/^void SetRow_ERMS(uint8* dst, uint8 v8, int count) {$/;"	f
+SetRow_NEON	source/row_neon.cc	/^void SetRow_NEON(uint8* dst, uint8 v8, int count) {$/;"	f
+SetRow_NEON	source/row_neon64.cc	/^void SetRow_NEON(uint8* dst, uint8 v8, int count) {$/;"	f
+SetRow_X86	source/row_posix.cc	/^void SetRow_X86(uint8* dst, uint8 v8, int width) {$/;"	f
+SetRow_X86	source/row_win.cc	/^void SetRow_X86(uint8* dst, uint8 v8, int count) {$/;"	f
+SetScanlinePointers	source/mjpeg_decoder.cc	/^void MJpegDecoder::SetScanlinePointers(uint8** data) {$/;"	f	class:libyuv::MJpegDecoder
+SobelRow_C	source/row_common.cc	/^void SobelRow_C(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelRow_NEON	source/row_neon.cc	/^void SobelRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelRow_NEON	source/row_neon64.cc	/^void SobelRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelRow_SSE2	source/row_posix.cc	/^void SobelRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelRow_SSE2	source/row_win.cc	/^void SobelRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelToPlaneRow_C	source/row_common.cc	/^void SobelToPlaneRow_C(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelToPlaneRow_NEON	source/row_neon.cc	/^void SobelToPlaneRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelToPlaneRow_NEON	source/row_neon64.cc	/^void SobelToPlaneRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelToPlaneRow_SSE2	source/row_posix.cc	/^void SobelToPlaneRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelToPlaneRow_SSE2	source/row_win.cc	/^void SobelToPlaneRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelXRow_C	source/row_common.cc	/^void SobelXRow_C(const uint8* src_y0, const uint8* src_y1, const uint8* src_y2,$/;"	f
+SobelXRow_NEON	source/row_neon.cc	/^void SobelXRow_NEON(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelXRow_NEON	source/row_neon64.cc	/^void SobelXRow_NEON(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelXRow_SSE2	source/row_posix.cc	/^void SobelXRow_SSE2(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelXRow_SSE2	source/row_win.cc	/^void SobelXRow_SSE2(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelXYRow_C	source/row_common.cc	/^void SobelXYRow_C(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelXYRow_NEON	source/row_neon.cc	/^void SobelXYRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelXYRow_NEON	source/row_neon64.cc	/^void SobelXYRow_NEON(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelXYRow_SSE2	source/row_posix.cc	/^void SobelXYRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelXYRow_SSE2	source/row_win.cc	/^void SobelXYRow_SSE2(const uint8* src_sobelx, const uint8* src_sobely,$/;"	f
+SobelYRow_C	source/row_common.cc	/^void SobelYRow_C(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelYRow_NEON	source/row_neon.cc	/^void SobelYRow_NEON(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelYRow_NEON	source/row_neon64.cc	/^void SobelYRow_NEON(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelYRow_SSE2	source/row_posix.cc	/^void SobelYRow_SSE2(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SobelYRow_SSE2	source/row_win.cc	/^void SobelYRow_SSE2(const uint8* src_y0, const uint8* src_y1,$/;"	f
+SplitUVRow	source/row_x86.asm	/^SplitUVRow a,$/;"	l
+SplitUVRow	source/row_x86.asm	/^SplitUVRow u,_Unaligned$/;"	l
+SplitUVRow_AVX2	source/row_posix.cc	/^void SplitUVRow_AVX2(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int pix) {$/;"	f
+SplitUVRow_AVX2	source/row_win.cc	/^void SplitUVRow_AVX2(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int pix) {$/;"	f
+SplitUVRow_C	source/row_common.cc	/^void SplitUVRow_C(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int width) {$/;"	f
+SplitUVRow_MIPS_DSPR2	source/row_mips.cc	/^void SplitUVRow_MIPS_DSPR2(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+SplitUVRow_NEON	source/row_neon.cc	/^void SplitUVRow_NEON(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+SplitUVRow_NEON	source/row_neon64.cc	/^void SplitUVRow_NEON(const uint8* src_uv, uint8* dst_u, uint8* dst_v,$/;"	f
+SplitUVRow_SSE2	source/row_posix.cc	/^void SplitUVRow_SSE2(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int pix) {$/;"	f
+SplitUVRow_SSE2	source/row_win.cc	/^void SplitUVRow_SSE2(const uint8* src_uv, uint8* dst_u, uint8* dst_v, int pix) {$/;"	f
+Ssim8x8_C	source/compare.cc	/^static double Ssim8x8_C(const uint8* src_a, int stride_a,$/;"	f	file:
+StartDecode	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::StartDecode() {$/;"	f	class:libyuv::MJpegDecoder
+SumBox	source/scale.cc	/^static __inline uint32 SumBox(int iboxwidth, int iboxheight,$/;"	f	file:
+SumBox_16	source/scale.cc	/^static __inline uint32 SumBox_16(int iboxwidth, int iboxheight,$/;"	f	file:
+SumPixels	source/scale.cc	/^static __inline uint32 SumPixels(int iboxwidth, const uint16* src_ptr) {$/;"	f	file:
+SumPixels_16	source/scale.cc	/^static __inline uint32 SumPixels_16(int iboxwidth, const uint32* src_ptr) {$/;"	f	file:
+SumSquareErrorToPsnr	source/compare.cc	/^double SumSquareErrorToPsnr(uint64 sse, uint64 count) {$/;"	f
+SumSquareError_AVX2	source/compare_win.cc	/^uint32 SumSquareError_AVX2(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+SumSquareError_C	source/compare_common.cc	/^uint32 SumSquareError_C(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+SumSquareError_NEON	source/compare_neon.cc	/^uint32 SumSquareError_NEON(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+SumSquareError_NEON	source/compare_neon64.cc	/^uint32 SumSquareError_NEON(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+SumSquareError_SSE2	source/compare_posix.cc	/^uint32 SumSquareError_SSE2(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+SumSquareError_SSE2	source/compare_win.cc	/^uint32 SumSquareError_SSE2(const uint8* src_a, const uint8* src_b, int count) {$/;"	f
+T	source/row_common.cc	1857;"	d	file:
+T	source/row_common.cc	1891;"	d	file:
+TestCpuFlag	include/libyuv/cpu_id.h	/^static __inline int TestCpuFlag(int test_flag) {$/;"	f
+TestEnv	source/cpu_id.cc	/^static LIBYUV_BOOL TestEnv(const char* name) {$/;"	f	file:
+TestEnv	source/cpu_id.cc	/^static LIBYUV_BOOL TestEnv(const char*) {$/;"	f	file:
+TestOsSaveYmm	source/cpu_id.cc	/^int TestOsSaveYmm() {$/;"	f
+TestRow_SSE2	source/row_posix.cc	/^void TestRow_SSE2(const uint8* src_y, uint8* dst_argb, int pix) {$/;"	f
+TransposePlane	source/rotate.cc	/^void TransposePlane(const uint8* src, int src_stride,$/;"	f
+TransposeUV	source/rotate.cc	/^void TransposeUV(const uint8* src, int src_stride,$/;"	f
+TransposeUVWx8_C	source/rotate.cc	/^static void TransposeUVWx8_C(const uint8* src, int src_stride,$/;"	f	file:
+TransposeUVWx8_MIPS_DSPR2	source/rotate_mips.cc	/^void TransposeUVWx8_MIPS_DSPR2(const uint8* src, int src_stride,$/;"	f
+TransposeUVWx8_NEON	source/rotate_neon.cc	/^void TransposeUVWx8_NEON(const uint8* src, int src_stride,$/;"	f
+TransposeUVWx8_NEON	source/rotate_neon64.cc	/^void TransposeUVWx8_NEON(const uint8* src, int src_stride,$/;"	f
+TransposeUVWx8_SSE2	source/rotate.cc	/^static void TransposeUVWx8_SSE2(const uint8* src, int src_stride,$/;"	f	file:
+TransposeUVWxH_C	source/rotate.cc	/^static void TransposeUVWxH_C(const uint8* src, int src_stride,$/;"	f	file:
+TransposeWx8_C	source/rotate.cc	/^static void TransposeWx8_C(const uint8* src, int src_stride,$/;"	f	file:
+TransposeWx8_FAST_MIPS_DSPR2	source/rotate_mips.cc	/^void TransposeWx8_FAST_MIPS_DSPR2(const uint8* src, int src_stride,$/;"	f
+TransposeWx8_FAST_SSSE3	source/rotate.cc	/^static void TransposeWx8_FAST_SSSE3(const uint8* src, int src_stride,$/;"	f	file:
+TransposeWx8_MIPS_DSPR2	source/rotate_mips.cc	/^void TransposeWx8_MIPS_DSPR2(const uint8* src, int src_stride,$/;"	f
+TransposeWx8_NEON	source/rotate_neon.cc	/^void TransposeWx8_NEON(const uint8* src, int src_stride,$/;"	f
+TransposeWx8_NEON	source/rotate_neon64.cc	/^void TransposeWx8_NEON(const uint8* src, int src_stride,$/;"	f
+TransposeWx8_SSSE3	source/rotate.cc	/^static void TransposeWx8_SSSE3(const uint8* src, int src_stride,$/;"	f	file:
+TransposeWxH_C	source/rotate.cc	/^static void TransposeWxH_C(const uint8* src, int src_stride,$/;"	f	file:
+UB	source/row_common.cc	969;"	d	file:
+UB	source/row_common.cc	998;"	d	file:
+UB	source/row_posix.cc	1529;"	d	file:
+UB	source/row_win.cc	33;"	d	file:
+UBJ	source/row_common.cc	1085;"	d	file:
+UG	source/row_common.cc	970;"	d	file:
+UG	source/row_common.cc	999;"	d	file:
+UG	source/row_posix.cc	1530;"	d	file:
+UG	source/row_win.cc	34;"	d	file:
+UGJ	source/row_common.cc	1086;"	d	file:
+UINT64_C	include/libyuv/basic_types.h	32;"	d
+UINT64_C	include/libyuv/basic_types.h	43;"	d
+UINT64_C	include/libyuv/basic_types.h	53;"	d
+URJ	source/row_common.cc	1087;"	d	file:
+USE_BRANCHLESS	source/row_common.cc	24;"	d	file:
+UV422ANY	source/row_any.cc	423;"	d	file:
+UV422ANY	source/row_any.cc	468;"	d	file:
+UVANY	source/row_any.cc	354;"	d	file:
+UVANY	source/row_any.cc	421;"	d	file:
+UYVYToARGB	source/convert_argb.cc	/^int UYVYToARGB(const uint8* src_uyvy, int src_stride_uyvy,$/;"	f
+UYVYToARGBRow_C	source/row_common.cc	/^void UYVYToARGBRow_C(const uint8* src_uyvy,$/;"	f
+UYVYToARGBRow_NEON	source/row_neon.cc	/^void UYVYToARGBRow_NEON(const uint8* src_uyvy,$/;"	f
+UYVYToARGBRow_NEON	source/row_neon64.cc	/^void UYVYToARGBRow_NEON(const uint8* src_uyvy,$/;"	f
+UYVYToARGBRow_SSSE3	source/row_common.cc	/^void UYVYToARGBRow_SSSE3(const uint8* src_uyvy,$/;"	f
+UYVYToI420	source/convert.cc	/^int UYVYToI420(const uint8* src_uyvy, int src_stride_uyvy,$/;"	f
+UYVYToI422	source/planar_functions.cc	/^int UYVYToI422(const uint8* src_uyvy, int src_stride_uyvy,$/;"	f
+UYVYToUV422Row_AVX2	source/row_posix.cc	/^void UYVYToUV422Row_AVX2(const uint8* src_uyvy,$/;"	f
+UYVYToUV422Row_AVX2	source/row_win.cc	/^void UYVYToUV422Row_AVX2(const uint8* src_uyvy,$/;"	f
+UYVYToUV422Row_C	source/row_common.cc	/^void UYVYToUV422Row_C(const uint8* src_uyvy,$/;"	f
+UYVYToUV422Row_NEON	source/row_neon.cc	/^void UYVYToUV422Row_NEON(const uint8* src_uyvy, uint8* dst_u, uint8* dst_v,$/;"	f
+UYVYToUV422Row_NEON	source/row_neon64.cc	/^void UYVYToUV422Row_NEON(const uint8* src_uyvy, uint8* dst_u, uint8* dst_v,$/;"	f
+UYVYToUV422Row_SSE2	source/row_posix.cc	/^void UYVYToUV422Row_SSE2(const uint8* src_uyvy,$/;"	f
+UYVYToUV422Row_SSE2	source/row_win.cc	/^void UYVYToUV422Row_SSE2(const uint8* src_uyvy,$/;"	f
+UYVYToUVRow_AVX2	source/row_posix.cc	/^void UYVYToUVRow_AVX2(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToUVRow_AVX2	source/row_win.cc	/^void UYVYToUVRow_AVX2(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToUVRow_C	source/row_common.cc	/^void UYVYToUVRow_C(const uint8* src_uyvy, int src_stride_uyvy,$/;"	f
+UYVYToUVRow_NEON	source/row_neon.cc	/^void UYVYToUVRow_NEON(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToUVRow_NEON	source/row_neon64.cc	/^void UYVYToUVRow_NEON(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToUVRow_SSE2	source/row_posix.cc	/^void UYVYToUVRow_SSE2(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToUVRow_SSE2	source/row_win.cc	/^void UYVYToUVRow_SSE2(const uint8* src_uyvy, int stride_uyvy,$/;"	f
+UYVYToYRow_AVX2	source/row_posix.cc	/^void UYVYToYRow_AVX2(const uint8* src_uyvy, uint8* dst_y, int pix) {$/;"	f
+UYVYToYRow_AVX2	source/row_win.cc	/^void UYVYToYRow_AVX2(const uint8* src_uyvy,$/;"	f
+UYVYToYRow_C	source/row_common.cc	/^void UYVYToYRow_C(const uint8* src_uyvy, uint8* dst_y, int width) {$/;"	f
+UYVYToYRow_NEON	source/row_neon.cc	/^void UYVYToYRow_NEON(const uint8* src_uyvy, uint8* dst_y, int pix) {$/;"	f
+UYVYToYRow_NEON	source/row_neon64.cc	/^void UYVYToYRow_NEON(const uint8* src_uyvy, uint8* dst_y, int pix) {$/;"	f
+UYVYToYRow_SSE2	source/row_posix.cc	/^void UYVYToYRow_SSE2(const uint8* src_uyvy, uint8* dst_y, int pix) {$/;"	f
+UYVYToYRow_SSE2	source/row_win.cc	/^void UYVYToYRow_SSE2(const uint8* src_uyvy,$/;"	f
+UnloadFrame	source/mjpeg_decoder.cc	/^LIBYUV_BOOL MJpegDecoder::UnloadFrame() {$/;"	f	class:libyuv::MJpegDecoder
+VBJ	source/row_common.cc	1089;"	d	file:
+VEXTOPMEM	include/libyuv/row.h	446;"	d
+VEXTOPMEM	include/libyuv/row.h	471;"	d
+VG	source/row_common.cc	1000;"	d	file:
+VG	source/row_common.cc	971;"	d	file:
+VG	source/row_posix.cc	1531;"	d	file:
+VG	source/row_win.cc	35;"	d	file:
+VGJ	source/row_common.cc	1090;"	d	file:
+VISUALC_HAS_AVX2	include/libyuv/row.h	182;"	d
+VMEMOPREG	include/libyuv/row.h	441;"	d
+VMEMOPREG	include/libyuv/row.h	468;"	d
+VR	source/row_common.cc	1001;"	d	file:
+VR	source/row_common.cc	972;"	d	file:
+VR	source/row_posix.cc	1532;"	d	file:
+VR	source/row_win.cc	36;"	d	file:
+VRJ	source/row_common.cc	1091;"	d	file:
+ValidateJpeg	source/mjpeg_validate.cc	/^LIBYUV_BOOL ValidateJpeg(const uint8* sample, size_t sample_size) {$/;"	f
+WRITEWORD	source/row_common.cc	/^static inline void WRITEWORD(uint8* p, uint32 v) {$/;"	f	file:
+WRITEWORD	source/row_common.cc	63;"	d	file:
+X420ToI420	source/convert.cc	/^static int X420ToI420(const uint8* src_y,$/;"	f	file:
+YANY	source/row_any.cc	102;"	d	file:
+YANY	source/row_any.cc	21;"	d	file:
+YANY	source/row_any.cc	240;"	d	file:
+YANY	source/row_any.cc	351;"	d	file:
+YANY	source/row_any.cc	571;"	d	file:
+YANY	source/row_any.cc	598;"	d	file:
+YG	source/row_common.cc	965;"	d	file:
+YG	source/row_common.cc	996;"	d	file:
+YG	source/row_posix.cc	1525;"	d	file:
+YG	source/row_win.cc	29;"	d	file:
+YGB	source/row_common.cc	966;"	d	file:
+YGB	source/row_common.cc	997;"	d	file:
+YGB	source/row_posix.cc	1526;"	d	file:
+YGB	source/row_win.cc	30;"	d	file:
+YGJ	source/row_common.cc	1083;"	d	file:
+YPixel	source/row_common.cc	/^static __inline void YPixel(uint8 y, uint8* b, uint8* g, uint8* r) {$/;"	f	file:
+YToARGB	include/libyuv/convert_argb.h	79;"	d
+YToARGBRow_C	source/row_common.cc	/^void YToARGBRow_C(const uint8* src_y, uint8* rgb_buf, int width) {$/;"	f
+YToARGBRow_NEON	source/row_neon.cc	/^void YToARGBRow_NEON(const uint8* src_y,$/;"	f
+YToARGBRow_NEON	source/row_neon64.cc	/^void YToARGBRow_NEON(const uint8* src_y,$/;"	f
+YToARGBRow_SSE2	source/row_posix.cc	/^void YToARGBRow_SSE2(const uint8* y_buf,$/;"	f
+YToARGBRow_SSE2	source/row_win.cc	/^void YToARGBRow_SSE2(const uint8* y_buf,$/;"	f
+YUV422TORGB	source/row_neon.cc	96;"	d	file:
+YUV422TORGB	source/row_neon64.cc	103;"	d	file:
+YUV422TORGB_SETUP_REG	source/row_neon64.cc	94;"	d	file:
+YUVTORGB	source/row_posix.cc	1594;"	d	file:
+YUVTORGB	source/row_win.cc	1763;"	d	file:
+YUVTORGB_AVX2	source/row_posix.cc	2083;"	d	file:
+YUVTORGB_AVX2	source/row_win.cc	1512;"	d	file:
+YUY2TOYROW	source/row_x86.asm	/^YUY2TOYROW UYVY,a,$/;"	l
+YUY2TOYROW	source/row_x86.asm	/^YUY2TOYROW UYVY,u,_Unaligned$/;"	l
+YUY2TOYROW	source/row_x86.asm	/^YUY2TOYROW YUY2,a,$/;"	l
+YUY2TOYROW	source/row_x86.asm	/^YUY2TOYROW YUY2,u,_Unaligned$/;"	l
+YUY2ToARGB	source/convert_argb.cc	/^int YUY2ToARGB(const uint8* src_yuy2, int src_stride_yuy2,$/;"	f
+YUY2ToARGBRow_C	source/row_common.cc	/^void YUY2ToARGBRow_C(const uint8* src_yuy2,$/;"	f
+YUY2ToARGBRow_NEON	source/row_neon.cc	/^void YUY2ToARGBRow_NEON(const uint8* src_yuy2,$/;"	f
+YUY2ToARGBRow_NEON	source/row_neon64.cc	/^void YUY2ToARGBRow_NEON(const uint8* src_yuy2,$/;"	f
+YUY2ToARGBRow_SSSE3	source/row_common.cc	/^void YUY2ToARGBRow_SSSE3(const uint8* src_yuy2,$/;"	f
+YUY2ToI420	source/convert.cc	/^int YUY2ToI420(const uint8* src_yuy2, int src_stride_yuy2,$/;"	f
+YUY2ToI422	source/planar_functions.cc	/^int YUY2ToI422(const uint8* src_yuy2, int src_stride_yuy2,$/;"	f
+YUY2ToUV422Row_AVX2	source/row_posix.cc	/^void YUY2ToUV422Row_AVX2(const uint8* src_yuy2,$/;"	f
+YUY2ToUV422Row_AVX2	source/row_win.cc	/^void YUY2ToUV422Row_AVX2(const uint8* src_yuy2,$/;"	f
+YUY2ToUV422Row_C	source/row_common.cc	/^void YUY2ToUV422Row_C(const uint8* src_yuy2,$/;"	f
+YUY2ToUV422Row_NEON	source/row_neon.cc	/^void YUY2ToUV422Row_NEON(const uint8* src_yuy2, uint8* dst_u, uint8* dst_v,$/;"	f
+YUY2ToUV422Row_NEON	source/row_neon64.cc	/^void YUY2ToUV422Row_NEON(const uint8* src_yuy2, uint8* dst_u, uint8* dst_v,$/;"	f
+YUY2ToUV422Row_SSE2	source/row_posix.cc	/^void YUY2ToUV422Row_SSE2(const uint8* src_yuy2,$/;"	f
+YUY2ToUV422Row_SSE2	source/row_win.cc	/^void YUY2ToUV422Row_SSE2(const uint8* src_yuy2,$/;"	f
+YUY2ToUVRow_AVX2	source/row_posix.cc	/^void YUY2ToUVRow_AVX2(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToUVRow_AVX2	source/row_win.cc	/^void YUY2ToUVRow_AVX2(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToUVRow_C	source/row_common.cc	/^void YUY2ToUVRow_C(const uint8* src_yuy2, int src_stride_yuy2,$/;"	f
+YUY2ToUVRow_NEON	source/row_neon.cc	/^void YUY2ToUVRow_NEON(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToUVRow_NEON	source/row_neon64.cc	/^void YUY2ToUVRow_NEON(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToUVRow_SSE2	source/row_posix.cc	/^void YUY2ToUVRow_SSE2(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToUVRow_SSE2	source/row_win.cc	/^void YUY2ToUVRow_SSE2(const uint8* src_yuy2, int stride_yuy2,$/;"	f
+YUY2ToYRow_AVX2	source/row_posix.cc	/^void YUY2ToYRow_AVX2(const uint8* src_yuy2, uint8* dst_y, int pix) {$/;"	f
+YUY2ToYRow_AVX2	source/row_win.cc	/^void YUY2ToYRow_AVX2(const uint8* src_yuy2,$/;"	f
+YUY2ToYRow_C	source/row_common.cc	/^void YUY2ToYRow_C(const uint8* src_yuy2, uint8* dst_y, int width) {$/;"	f
+YUY2ToYRow_NEON	source/row_neon.cc	/^void YUY2ToYRow_NEON(const uint8* src_yuy2, uint8* dst_y, int pix) {$/;"	f
+YUY2ToYRow_NEON	source/row_neon64.cc	/^void YUY2ToYRow_NEON(const uint8* src_yuy2, uint8* dst_y, int pix) {$/;"	f
+YUY2ToYRow_SSE2	source/row_posix.cc	/^void YUY2ToYRow_SSE2(const uint8* src_yuy2, uint8* dst_y, int pix) {$/;"	f
+YUY2ToYRow_SSE2	source/row_win.cc	/^void YUY2ToYRow_SSE2(const uint8* src_yuy2,$/;"	f
+YVUTORGB	source/row_posix.cc	1622;"	d	file:
+YVUTORGB	source/row_win.cc	1794;"	d	file:
+YuvJPixel	source/row_common.cc	/^static __inline void YuvJPixel(uint8 y, uint8 u, uint8 v,$/;"	f	file:
+YuvPixel	source/row_common.cc	/^static __inline void YuvPixel(uint8 y, uint8 u, uint8 v,$/;"	f	file:
+alias	source/video_common.cc	/^  uint32 alias;$/;"	m	struct:libyuv::FourCCAliasEntry	file:
+align_buffer_64	include/libyuv/row.h	26;"	d
+argb	source/convert_jpeg.cc	/^  uint8* argb;$/;"	m	struct:libyuv::ARGBBuffers	file:
+argb_stride	source/convert_jpeg.cc	/^  int argb_stride;$/;"	m	struct:libyuv::ARGBBuffers	file:
+base	source/mjpeg_decoder.cc	/^  jpeg_error_mgr base;  \/\/ Must be at the top$/;"	m	struct:libyuv::SetJmpErrorMgr	file:
+buf_	include/libyuv/mjpeg_decoder.h	/^  Buffer buf_;$/;"	m	class:libyuv::MJpegDecoder
+buf_vec_	include/libyuv/mjpeg_decoder.h	/^  BufferVector buf_vec_;$/;"	m	class:libyuv::MJpegDecoder
+buffers	include/libyuv/mjpeg_decoder.h	/^  Buffer* buffers;$/;"	m	struct:libyuv::BufferVector
+canonical	source/video_common.cc	/^  uint32 canonical;$/;"	m	struct:libyuv::FourCCAliasEntry	file:
+cc1	source/compare.cc	/^static const int64 cc1 =  26634;  \/\/ (64^2*(.01*255)^2$/;"	v	file:
+cc2	source/compare.cc	/^static const int64 cc2 = 239708;  \/\/ (64^2*(.03*255)^2$/;"	v	file:
+cglobal	source/row_x86.asm	/^cglobal %1ToYRow%3, 3, 3, 3, src_yuy2, dst_y, pix$/;"	l
+cglobal	source/row_x86.asm	/^cglobal MergeUVRow_%2, 4, 4, 3, src_u, src_v, dst_uv, pix$/;"	l
+cglobal	source/row_x86.asm	/^cglobal SplitUVRow%2, 4, 4, 5, src_uv, dst_u, dst_v, pix$/;"	l
+clamp0	source/row_common.cc	/^static __inline int32 clamp0(int32 v) {$/;"	f	file:
+clamp255	source/row_common.cc	/^static __inline int32 clamp255(int32 v) {$/;"	f	file:
+common_CFLAGS	Android.mk	/^common_CFLAGS := -fexceptions$/;"	m
+common_C_INCLUDES	Android.mk	/^common_C_INCLUDES = $(LOCAL_PATH)\/include$/;"	m
+common_LDFLAGS	Android.mk	/^common_LDFLAGS :=$/;"	m
+common_SRC_FILES	Android.mk	/^common_SRC_FILES := \\$/;"	m
+cpu_info_	source/cpu_id.cc	/^int cpu_info_ = kCpuInit;  \/\/ cpu_info is not initialized yet.$/;"	v
+data	include/libyuv/mjpeg_decoder.h	/^  const uint8* data;$/;"	m	struct:libyuv::Buffer
+databuf_	include/libyuv/mjpeg_decoder.h	/^  uint8** databuf_;$/;"	m	class:libyuv::MJpegDecoder
+databuf_strides_	include/libyuv/mjpeg_decoder.h	/^  int* databuf_strides_;$/;"	m	class:libyuv::MJpegDecoder
+decompress_struct_	include/libyuv/mjpeg_decoder.h	/^  jpeg_decompress_struct* decompress_struct_;$/;"	m	class:libyuv::MJpegDecoder
+error_mgr_	include/libyuv/mjpeg_decoder.h	/^  SetJmpErrorMgr* error_mgr_;$/;"	m	class:libyuv::MJpegDecoder
+fakegot	source/x86inc.asm	/^        fakegot:$/;"	l
+fill_input_buffer	source/mjpeg_decoder.cc	/^boolean fill_input_buffer(j_decompress_ptr cinfo) {$/;"	f	namespace:libyuv
+fixed_invtbl8	source/row_common.cc	/^const uint32 fixed_invtbl8[256] = {$/;"	v
+free_aligned_buffer_64	include/libyuv/row.h	36;"	d
+h	source/convert_jpeg.cc	/^  int h;$/;"	m	struct:libyuv::ARGBBuffers	file:
+h	source/convert_jpeg.cc	/^  int h;$/;"	m	struct:libyuv::I420Buffers	file:
+has_scanline_padding_	include/libyuv/mjpeg_decoder.h	/^  LIBYUV_BOOL has_scanline_padding_;$/;"	m	class:libyuv::MJpegDecoder
+init_source	source/mjpeg_decoder.cc	/^void init_source(j_decompress_ptr cinfo) {$/;"	f	namespace:libyuv
+int16	include/libyuv/basic_types.h	/^typedef short int16;  \/\/ NOLINT$/;"	t
+int32	include/libyuv/basic_types.h	/^typedef int int32;$/;"	t
+int64	include/libyuv/basic_types.h	/^typedef __int64 int64;$/;"	t
+int64	include/libyuv/basic_types.h	/^typedef long int64;  \/\/ NOLINT$/;"	t
+int64	include/libyuv/basic_types.h	/^typedef long long int64;  \/\/ NOLINT$/;"	t
+int8	include/libyuv/basic_types.h	/^typedef signed char int8;$/;"	t
+kABGRToU	source/row_posix.cc	/^static vec8 kABGRToU = {$/;"	v	file:
+kABGRToU	source/row_win.cc	/^static const vec8 kABGRToU = {$/;"	v	file:
+kABGRToV	source/row_posix.cc	/^static vec8 kABGRToV = {$/;"	v	file:
+kABGRToV	source/row_win.cc	/^static const vec8 kABGRToV = {$/;"	v	file:
+kABGRToY	source/row_posix.cc	/^static vec8 kABGRToY = {$/;"	v	file:
+kABGRToY	source/row_win.cc	/^static const vec8 kABGRToY = {$/;"	v	file:
+kARGBShuffleMirror_AVX2	source/row_posix.cc	/^static const ulvec32 kARGBShuffleMirror_AVX2 = {$/;"	v	file:
+kARGBShuffleMirror_AVX2	source/row_win.cc	/^static const ulvec32 kARGBShuffleMirror_AVX2 = {$/;"	v	file:
+kARGBToSepiaB	source/row_posix.cc	/^static vec8 kARGBToSepiaB = {$/;"	v	file:
+kARGBToSepiaB	source/row_win.cc	/^static const vec8 kARGBToSepiaB = {$/;"	v	file:
+kARGBToSepiaG	source/row_posix.cc	/^static vec8 kARGBToSepiaG = {$/;"	v	file:
+kARGBToSepiaG	source/row_win.cc	/^static const vec8 kARGBToSepiaG = {$/;"	v	file:
+kARGBToSepiaR	source/row_posix.cc	/^static vec8 kARGBToSepiaR = {$/;"	v	file:
+kARGBToSepiaR	source/row_win.cc	/^static const vec8 kARGBToSepiaR = {$/;"	v	file:
+kARGBToU	source/row_posix.cc	/^static vec8 kARGBToU = {$/;"	v	file:
+kARGBToU	source/row_win.cc	/^static const vec8 kARGBToU = {$/;"	v	file:
+kARGBToUJ	source/row_posix.cc	/^static vec8 kARGBToUJ = {$/;"	v	file:
+kARGBToUJ	source/row_win.cc	/^static const vec8 kARGBToUJ = {$/;"	v	file:
+kARGBToV	source/row_posix.cc	/^static vec8 kARGBToV = {$/;"	v	file:
+kARGBToV	source/row_win.cc	/^static const vec8 kARGBToV = {$/;"	v	file:
+kARGBToVJ	source/row_posix.cc	/^static vec8 kARGBToVJ = {$/;"	v	file:
+kARGBToVJ	source/row_win.cc	/^static const vec8 kARGBToVJ = {$/;"	v	file:
+kARGBToY	source/row_posix.cc	/^static vec8 kARGBToY = {$/;"	v	file:
+kARGBToY	source/row_win.cc	/^static const vec8 kARGBToY = {$/;"	v	file:
+kARGBToYJ	source/row_posix.cc	/^static vec8 kARGBToYJ = {$/;"	v	file:
+kARGBToYJ	source/row_win.cc	/^static const vec8 kARGBToYJ = {$/;"	v	file:
+kAddUV128	source/row_posix.cc	/^static uvec8 kAddUV128 = {$/;"	v	file:
+kAddUV128	source/row_win.cc	/^static const uvec8 kAddUV128 = {$/;"	v	file:
+kAddUVJ128	source/row_posix.cc	/^static uvec16 kAddUVJ128 = {$/;"	v	file:
+kAddUVJ128	source/row_win.cc	/^static const uvec16 kAddUVJ128 = {$/;"	v	file:
+kAddY16	source/row_posix.cc	/^static uvec8 kAddY16 = {$/;"	v	file:
+kAddY16	source/row_win.cc	/^static const uvec8 kAddY16 = {$/;"	v	file:
+kAddYJ64	source/row_posix.cc	/^static vec16 kAddYJ64 = {$/;"	v	file:
+kAddYJ64	source/row_win.cc	/^static const vec16 kAddYJ64 = {$/;"	v	file:
+kBGRAToU	source/row_posix.cc	/^static vec8 kBGRAToU = {$/;"	v	file:
+kBGRAToU	source/row_win.cc	/^static const vec8 kBGRAToU = {$/;"	v	file:
+kBGRAToV	source/row_posix.cc	/^static vec8 kBGRAToV = {$/;"	v	file:
+kBGRAToV	source/row_win.cc	/^static const vec8 kBGRAToV = {$/;"	v	file:
+kBGRAToY	source/row_posix.cc	/^static vec8 kBGRAToY = {$/;"	v	file:
+kBGRAToY	source/row_win.cc	/^static const vec8 kBGRAToY = {$/;"	v	file:
+kColorSpaceCMYK	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceCMYK;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceCMYK	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceCMYK = JCS_CMYK;$/;"	m	class:libyuv::MJpegDecoder	file:
+kColorSpaceGrayscale	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceGrayscale;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceGrayscale	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceGrayscale = JCS_GRAYSCALE;$/;"	m	class:libyuv::MJpegDecoder	file:
+kColorSpaceRgb	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceRgb;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceRgb	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceRgb = JCS_RGB;$/;"	m	class:libyuv::MJpegDecoder	file:
+kColorSpaceUnknown	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceUnknown;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceUnknown	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceUnknown = JCS_UNKNOWN;$/;"	m	class:libyuv::MJpegDecoder	file:
+kColorSpaceYCCK	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceYCCK;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceYCCK	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceYCCK = JCS_YCCK;$/;"	m	class:libyuv::MJpegDecoder	file:
+kColorSpaceYCbCr	include/libyuv/mjpeg_decoder.h	/^  static const int kColorSpaceYCbCr;$/;"	m	class:libyuv::MJpegDecoder
+kColorSpaceYCbCr	source/mjpeg_decoder.cc	/^const int MJpegDecoder::kColorSpaceYCbCr = JCS_YCbCr;$/;"	m	class:libyuv::MJpegDecoder	file:
+kCpuHasARM	include/libyuv/cpu_id.h	/^static const int kCpuHasARM = 0x2;$/;"	v
+kCpuHasAVX	include/libyuv/cpu_id.h	/^static const int kCpuHasAVX = 0x200;$/;"	v
+kCpuHasAVX2	include/libyuv/cpu_id.h	/^static const int kCpuHasAVX2 = 0x400;$/;"	v
+kCpuHasERMS	include/libyuv/cpu_id.h	/^static const int kCpuHasERMS = 0x800;$/;"	v
+kCpuHasFMA3	include/libyuv/cpu_id.h	/^static const int kCpuHasFMA3 = 0x1000;$/;"	v
+kCpuHasMIPS	include/libyuv/cpu_id.h	/^static const int kCpuHasMIPS = 0x10000;$/;"	v
+kCpuHasMIPS_DSP	include/libyuv/cpu_id.h	/^static const int kCpuHasMIPS_DSP = 0x20000;$/;"	v
+kCpuHasMIPS_DSPR2	include/libyuv/cpu_id.h	/^static const int kCpuHasMIPS_DSPR2 = 0x40000;$/;"	v
+kCpuHasNEON	include/libyuv/cpu_id.h	/^static const int kCpuHasNEON = 0x4;$/;"	v
+kCpuHasSSE2	include/libyuv/cpu_id.h	/^static const int kCpuHasSSE2 = 0x20;$/;"	v
+kCpuHasSSE41	include/libyuv/cpu_id.h	/^static const int kCpuHasSSE41 = 0x80;$/;"	v
+kCpuHasSSE42	include/libyuv/cpu_id.h	/^static const int kCpuHasSSE42 = 0x100;$/;"	v
+kCpuHasSSSE3	include/libyuv/cpu_id.h	/^static const int kCpuHasSSSE3 = 0x40;$/;"	v
+kCpuHasX86	include/libyuv/cpu_id.h	/^static const int kCpuHasX86 = 0x10;$/;"	v
+kCpuInit	include/libyuv/cpu_id.h	23;"	d
+kFilterBilinear	include/libyuv/scale.h	/^  kFilterBilinear = 2,  \/\/ Faster than box, but lower quality scaling down.$/;"	e	enum:libyuv::FilterMode
+kFilterBox	include/libyuv/scale.h	/^  kFilterBox = 3  \/\/ Highest quality.$/;"	e	enum:libyuv::FilterMode
+kFilterLinear	include/libyuv/scale.h	/^  kFilterLinear = 1,  \/\/ Filter horizontally only.$/;"	e	enum:libyuv::FilterMode
+kFilterNone	include/libyuv/scale.h	/^  kFilterNone = 0,  \/\/ Point sample; Fastest.$/;"	e	enum:libyuv::FilterMode
+kFourCCAliases	source/video_common.cc	/^static const struct FourCCAliasEntry kFourCCAliases[] = {$/;"	v	typeref:struct:libyuv::FourCCAliasEntry	file:
+kHash16x33	source/compare_posix.cc	/^static uvec32 kHash16x33 = { 0x92d9e201, 0, 0, 0 };  \/\/ 33 ^ 16$/;"	v	file:
+kHash16x33	source/compare_win.cc	/^static uvec32 kHash16x33 = { 0x92d9e201, 0, 0, 0 };  \/\/ 33 ^ 16$/;"	v	file:
+kHashMul0	source/compare_posix.cc	/^static uvec32 kHashMul0 = {$/;"	v	file:
+kHashMul0	source/compare_win.cc	/^static uvec32 kHashMul0 = {$/;"	v	file:
+kHashMul1	source/compare_posix.cc	/^static uvec32 kHashMul1 = {$/;"	v	file:
+kHashMul1	source/compare_win.cc	/^static uvec32 kHashMul1 = {$/;"	v	file:
+kHashMul2	source/compare_posix.cc	/^static uvec32 kHashMul2 = {$/;"	v	file:
+kHashMul2	source/compare_win.cc	/^static uvec32 kHashMul2 = {$/;"	v	file:
+kHashMul3	source/compare_posix.cc	/^static uvec32 kHashMul3 = {$/;"	v	file:
+kHashMul3	source/compare_win.cc	/^static uvec32 kHashMul3 = {$/;"	v	file:
+kJpegUnknown	include/libyuv/mjpeg_decoder.h	/^  kJpegUnknown$/;"	e	enum:libyuv::JpegSubsamplingType
+kJpegYuv400	include/libyuv/mjpeg_decoder.h	/^  kJpegYuv400,$/;"	e	enum:libyuv::JpegSubsamplingType
+kJpegYuv411	include/libyuv/mjpeg_decoder.h	/^  kJpegYuv411,$/;"	e	enum:libyuv::JpegSubsamplingType
+kJpegYuv420	include/libyuv/mjpeg_decoder.h	/^  kJpegYuv420,$/;"	e	enum:libyuv::JpegSubsamplingType
+kJpegYuv422	include/libyuv/mjpeg_decoder.h	/^  kJpegYuv422,$/;"	e	enum:libyuv::JpegSubsamplingType
+kJpegYuv444	include/libyuv/mjpeg_decoder.h	/^  kJpegYuv444,$/;"	e	enum:libyuv::JpegSubsamplingType
+kMadd01	source/scale_posix.cc	/^static uvec8 kMadd01 =$/;"	v	file:
+kMadd01	source/scale_win.cc	/^static uvec8 kMadd01 =$/;"	v	file:
+kMadd11	source/scale_posix.cc	/^static uvec8 kMadd11 =$/;"	v	file:
+kMadd11	source/scale_win.cc	/^static uvec8 kMadd11 =$/;"	v	file:
+kMadd21	source/scale_posix.cc	/^static uvec8 kMadd21 =$/;"	v	file:
+kMadd21	source/scale_win.cc	/^static uvec8 kMadd21 =$/;"	v	file:
+kMaxPsnr	include/libyuv/compare.h	/^static const int kMaxPsnr = 128;$/;"	v
+kMult38_Div6	source/scale_neon.cc	/^static vec16 kMult38_Div6 =$/;"	v	file:
+kMult38_Div6	source/scale_neon64.cc	/^static vec16 kMult38_Div6 =$/;"	v	file:
+kMult38_Div9	source/scale_neon.cc	/^static vec16 kMult38_Div9 =$/;"	v	file:
+kMult38_Div9	source/scale_neon64.cc	/^static vec16 kMult38_Div9 =$/;"	v	file:
+kPermdARGBToY_AVX	source/row_posix.cc	/^static const lvec32 kPermdARGBToY_AVX = {$/;"	v	file:
+kPermdARGBToY_AVX	source/row_win.cc	/^static const lvec32 kPermdARGBToY_AVX = {$/;"	v	file:
+kRGBAToU	source/row_posix.cc	/^static vec8 kRGBAToU = {$/;"	v	file:
+kRGBAToU	source/row_win.cc	/^static const vec8 kRGBAToU = {$/;"	v	file:
+kRGBAToV	source/row_posix.cc	/^static vec8 kRGBAToV = {$/;"	v	file:
+kRGBAToV	source/row_win.cc	/^static const vec8 kRGBAToV = {$/;"	v	file:
+kRGBAToY	source/row_posix.cc	/^static vec8 kRGBAToY = {$/;"	v	file:
+kRGBAToY	source/row_win.cc	/^static const vec8 kRGBAToY = {$/;"	v	file:
+kRotate0	include/libyuv/rotate.h	/^  kRotate0 = 0,  \/\/ No rotation.$/;"	e	enum:libyuv::RotationMode
+kRotate180	include/libyuv/rotate.h	/^  kRotate180 = 180,  \/\/ Rotate 180 degrees.$/;"	e	enum:libyuv::RotationMode
+kRotate270	include/libyuv/rotate.h	/^  kRotate270 = 270,  \/\/ Rotate 270 degrees clockwise.$/;"	e	enum:libyuv::RotationMode
+kRotate90	include/libyuv/rotate.h	/^  kRotate90 = 90,  \/\/ Rotate 90 degrees clockwise.$/;"	e	enum:libyuv::RotationMode
+kRotateClockwise	include/libyuv/rotate.h	/^  kRotateClockwise = 90,$/;"	e	enum:libyuv::RotationMode
+kRotateCounterClockwise	include/libyuv/rotate.h	/^  kRotateCounterClockwise = 270,$/;"	e	enum:libyuv::RotationMode
+kRotateNone	include/libyuv/rotate.h	/^  kRotateNone = 0,$/;"	e	enum:libyuv::RotationMode
+kRound34	source/scale_posix.cc	/^static vec16 kRound34 =$/;"	v	file:
+kRound34	source/scale_win.cc	/^static vec16 kRound34 =$/;"	v	file:
+kScaleAb2	source/scale_posix.cc	/^static uvec16 kScaleAb2 =$/;"	v	file:
+kScaleAb2	source/scale_win.cc	/^static uvec16 kScaleAb2 =$/;"	v	file:
+kScaleAc33	source/scale_posix.cc	/^static uvec16 kScaleAc33 =$/;"	v	file:
+kScaleAc33	source/scale_win.cc	/^static uvec16 kScaleAc33 =$/;"	v	file:
+kShuf0	source/scale_posix.cc	/^static uvec8 kShuf0 =$/;"	v	file:
+kShuf0	source/scale_win.cc	/^static uvec8 kShuf0 =$/;"	v	file:
+kShuf01	source/scale_posix.cc	/^static uvec8 kShuf01 =$/;"	v	file:
+kShuf01	source/scale_win.cc	/^static uvec8 kShuf01 =$/;"	v	file:
+kShuf1	source/scale_posix.cc	/^static uvec8 kShuf1 =$/;"	v	file:
+kShuf1	source/scale_win.cc	/^static uvec8 kShuf1 =$/;"	v	file:
+kShuf11	source/scale_posix.cc	/^static uvec8 kShuf11 =$/;"	v	file:
+kShuf11	source/scale_win.cc	/^static uvec8 kShuf11 =$/;"	v	file:
+kShuf2	source/scale_posix.cc	/^static uvec8 kShuf2 =$/;"	v	file:
+kShuf2	source/scale_win.cc	/^static uvec8 kShuf2 =$/;"	v	file:
+kShuf21	source/scale_posix.cc	/^static uvec8 kShuf21 =$/;"	v	file:
+kShuf21	source/scale_win.cc	/^static uvec8 kShuf21 =$/;"	v	file:
+kShuf38	source/scale_neon.cc	/^static uvec8 kShuf38 =$/;"	v	file:
+kShuf38	source/scale_neon64.cc	/^static uvec8 kShuf38 =$/;"	v	file:
+kShuf38_2	source/scale_neon.cc	/^static uvec8 kShuf38_2 =$/;"	v	file:
+kShuf38_2	source/scale_neon64.cc	/^static uvec8 kShuf38_2 =$/;"	v	file:
+kShuf38a	source/scale_posix.cc	/^static uvec8 kShuf38a =$/;"	v	file:
+kShuf38a	source/scale_win.cc	/^static uvec8 kShuf38a =$/;"	v	file:
+kShuf38b	source/scale_posix.cc	/^static uvec8 kShuf38b =$/;"	v	file:
+kShuf38b	source/scale_win.cc	/^static uvec8 kShuf38b =$/;"	v	file:
+kShufARGBToUV_AVX	source/row_posix.cc	/^static const lvec8 kShufARGBToUV_AVX = {$/;"	v	file:
+kShufARGBToUV_AVX	source/row_win.cc	/^static const lvec8 kShufARGBToUV_AVX = {$/;"	v	file:
+kShufAb0	source/scale_posix.cc	/^static uvec8 kShufAb0 =$/;"	v	file:
+kShufAb0	source/scale_win.cc	/^static uvec8 kShufAb0 =$/;"	v	file:
+kShufAb1	source/scale_posix.cc	/^static uvec8 kShufAb1 =$/;"	v	file:
+kShufAb1	source/scale_win.cc	/^static uvec8 kShufAb1 =$/;"	v	file:
+kShufAb2	source/scale_posix.cc	/^static uvec8 kShufAb2 =$/;"	v	file:
+kShufAb2	source/scale_win.cc	/^static uvec8 kShufAb2 =$/;"	v	file:
+kShufAc	source/scale_posix.cc	/^static uvec8 kShufAc =$/;"	v	file:
+kShufAc	source/scale_win.cc	/^static uvec8 kShufAc =$/;"	v	file:
+kShufAc3	source/scale_posix.cc	/^static uvec8 kShufAc3 =$/;"	v	file:
+kShufAc3	source/scale_win.cc	/^static uvec8 kShufAc3 =$/;"	v	file:
+kShuffleAlpha	source/row_posix.cc	/^static uvec8 kShuffleAlpha = {$/;"	v	file:
+kShuffleAlpha	source/row_win.cc	/^static const uvec8 kShuffleAlpha = {$/;"	v	file:
+kShuffleAlpha0	source/row_posix.cc	/^static uvec8 kShuffleAlpha0 = {$/;"	v	file:
+kShuffleAlpha0	source/row_win.cc	/^static const uvec8 kShuffleAlpha0 = {$/;"	v	file:
+kShuffleAlpha1	source/row_posix.cc	/^static uvec8 kShuffleAlpha1 = {$/;"	v	file:
+kShuffleAlpha1	source/row_win.cc	/^static const uvec8 kShuffleAlpha1 = {$/;"	v	file:
+kShuffleAlpha_AVX2	source/row_posix.cc	/^static const uvec8 kShuffleAlpha_AVX2 = {$/;"	v	file:
+kShuffleAlpha_AVX2	source/row_win.cc	/^static const uvec8 kShuffleAlpha_AVX2 = {$/;"	v	file:
+kShuffleColARGB	source/scale_posix.cc	/^static uvec8 kShuffleColARGB = {$/;"	v	file:
+kShuffleColARGB	source/scale_win.cc	/^static uvec8 kShuffleColARGB = {$/;"	v	file:
+kShuffleFractions	source/scale_posix.cc	/^static uvec8 kShuffleFractions = {$/;"	v	file:
+kShuffleFractions	source/scale_win.cc	/^static uvec8 kShuffleFractions = {$/;"	v	file:
+kShuffleMaskABGRToARGB	source/convert_argb.cc	/^static uvec8 kShuffleMaskABGRToARGB = {$/;"	v	file:
+kShuffleMaskARGBToRAW	source/row_posix.cc	/^static uvec8 kShuffleMaskARGBToRAW = {$/;"	v	file:
+kShuffleMaskARGBToRAW	source/row_win.cc	/^static const uvec8 kShuffleMaskARGBToRAW = {$/;"	v	file:
+kShuffleMaskARGBToRAW_0	source/row_posix.cc	/^static uvec8 kShuffleMaskARGBToRAW_0 = {$/;"	v	file:
+kShuffleMaskARGBToRAW_0	source/row_win.cc	/^static const uvec8 kShuffleMaskARGBToRAW_0 = {$/;"	v	file:
+kShuffleMaskARGBToRGB24	source/row_posix.cc	/^static uvec8 kShuffleMaskARGBToRGB24 = {$/;"	v	file:
+kShuffleMaskARGBToRGB24	source/row_win.cc	/^static const uvec8 kShuffleMaskARGBToRGB24 = {$/;"	v	file:
+kShuffleMaskARGBToRGB24_0	source/row_posix.cc	/^static uvec8 kShuffleMaskARGBToRGB24_0 = {$/;"	v	file:
+kShuffleMaskARGBToRGB24_0	source/row_win.cc	/^static const uvec8 kShuffleMaskARGBToRGB24_0 = {$/;"	v	file:
+kShuffleMaskARGBToRGBA	source/convert_from_argb.cc	/^static uvec8 kShuffleMaskARGBToRGBA = {$/;"	v	file:
+kShuffleMaskBGRAToARGB	source/convert_argb.cc	/^static uvec8 kShuffleMaskBGRAToARGB = {$/;"	v	file:
+kShuffleMaskRAWToARGB	source/row_posix.cc	/^static uvec8 kShuffleMaskRAWToARGB = {$/;"	v	file:
+kShuffleMaskRAWToARGB	source/row_win.cc	/^static const uvec8 kShuffleMaskRAWToARGB = {$/;"	v	file:
+kShuffleMaskRGB24ToARGB	source/row_posix.cc	/^static uvec8 kShuffleMaskRGB24ToARGB = {$/;"	v	file:
+kShuffleMaskRGB24ToARGB	source/row_win.cc	/^static const uvec8 kShuffleMaskRGB24ToARGB = {$/;"	v	file:
+kShuffleMaskRGBAToARGB	source/convert_argb.cc	/^static uvec8 kShuffleMaskRGBAToARGB = {$/;"	v	file:
+kShuffleMirror	source/row_posix.cc	/^static uvec8 kShuffleMirror = {$/;"	v	file:
+kShuffleMirror	source/row_win.cc	/^static const uvec8 kShuffleMirror = {$/;"	v	file:
+kShuffleMirrorUV	source/row_posix.cc	/^static uvec8 kShuffleMirrorUV = {$/;"	v	file:
+kShuffleMirrorUV	source/row_win.cc	/^static const uvec8 kShuffleMirrorUV = {$/;"	v	file:
+kUVBiasB	source/row_posix.cc	/^  vec16 kUVBiasB;  \/\/ 48$/;"	m	struct:libyuv::__anon1	file:
+kUVBiasB	source/row_win.cc	/^static const vec16 kUVBiasB = { BB, BB, BB, BB, BB, BB, BB, BB };$/;"	v	file:
+kUVBiasB_AVX	source/row_posix.cc	/^  lvec16 kUVBiasB_AVX;  \/\/ 96$/;"	m	struct:libyuv::__anon2	file:
+kUVBiasB_AVX	source/row_win.cc	/^static const lvec16 kUVBiasB_AVX = {$/;"	v	file:
+kUVBiasG	source/row_posix.cc	/^  vec16 kUVBiasG;  \/\/ 64$/;"	m	struct:libyuv::__anon1	file:
+kUVBiasG	source/row_win.cc	/^static const vec16 kUVBiasG = { BG, BG, BG, BG, BG, BG, BG, BG };$/;"	v	file:
+kUVBiasG_AVX	source/row_posix.cc	/^  lvec16 kUVBiasG_AVX;  \/\/ 128$/;"	m	struct:libyuv::__anon2	file:
+kUVBiasG_AVX	source/row_win.cc	/^static const lvec16 kUVBiasG_AVX = {$/;"	v	file:
+kUVBiasR	source/row_posix.cc	/^  vec16 kUVBiasR;  \/\/ 80$/;"	m	struct:libyuv::__anon1	file:
+kUVBiasR	source/row_win.cc	/^static const vec16 kUVBiasR = { BR, BR, BR, BR, BR, BR, BR, BR };$/;"	v	file:
+kUVBiasR_AVX	source/row_posix.cc	/^  lvec16 kUVBiasR_AVX;  \/\/ 160$/;"	m	struct:libyuv::__anon2	file:
+kUVBiasR_AVX	source/row_win.cc	/^static const lvec16 kUVBiasR_AVX = {$/;"	v	file:
+kUVToB	source/row_posix.cc	/^  vec8 kUVToB;  \/\/ 0$/;"	m	struct:libyuv::__anon1	file:
+kUVToB	source/row_win.cc	/^static const vec8 kUVToB = {$/;"	v	file:
+kUVToB_AVX	source/row_posix.cc	/^  lvec8 kUVToB_AVX;     \/\/ 0$/;"	m	struct:libyuv::__anon2	file:
+kUVToB_AVX	source/row_win.cc	/^static const lvec8 kUVToB_AVX = {$/;"	v	file:
+kUVToG	source/row_neon.cc	/^static vec8 kUVToG = { -25, -25, -25, -25, -52, -52, -52, -52,$/;"	v	file:
+kUVToG	source/row_posix.cc	/^  vec8 kUVToG;  \/\/ 16$/;"	m	struct:libyuv::__anon1	file:
+kUVToG	source/row_win.cc	/^static const vec8 kUVToG = {$/;"	v	file:
+kUVToG_AVX	source/row_posix.cc	/^  lvec8 kUVToG_AVX;     \/\/ 32$/;"	m	struct:libyuv::__anon2	file:
+kUVToG_AVX	source/row_win.cc	/^static const lvec8 kUVToG_AVX = {$/;"	v	file:
+kUVToR	source/row_posix.cc	/^  vec8 kUVToR;  \/\/ 32$/;"	m	struct:libyuv::__anon1	file:
+kUVToR	source/row_win.cc	/^static const vec8 kUVToR = {$/;"	v	file:
+kUVToRB	source/row_neon.cc	/^static vec8 kUVToRB  = { 127, 127, 127, 127, 102, 102, 102, 102,$/;"	v	file:
+kUVToR_AVX	source/row_posix.cc	/^  lvec8 kUVToR_AVX;     \/\/ 64$/;"	m	struct:libyuv::__anon2	file:
+kUVToR_AVX	source/row_win.cc	/^static const lvec8 kUVToR_AVX = {$/;"	v	file:
+kUnattenShuffleAlpha_AVX2	source/row_posix.cc	/^static const uvec8 kUnattenShuffleAlpha_AVX2 = {$/;"	v	file:
+kUnattenShuffleAlpha_AVX2	source/row_win.cc	/^static const uvec8 kUnattenShuffleAlpha_AVX2 = {$/;"	v	file:
+kUnknownDataSize	include/libyuv/mjpeg_decoder.h	/^static const uint32 kUnknownDataSize = 0xFFFFFFFF;$/;"	m	namespace:libyuv
+kVTbl4x4Transpose	source/rotate_neon.cc	/^static uvec8 kVTbl4x4Transpose =$/;"	v	file:
+kVTbl4x4Transpose	source/rotate_neon64.cc	/^static uvec8 kVTbl4x4Transpose =$/;"	v	file:
+kVTbl4x4TransposeDi	source/rotate_neon.cc	/^static uvec8 kVTbl4x4TransposeDi =$/;"	v	file:
+kVTbl4x4TransposeDi	source/rotate_neon64.cc	/^static uint8 kVTbl4x4TransposeDi[32] =$/;"	v	file:
+kVUToB	source/row_posix.cc	/^  vec8 kVUToB;  \/\/ 112$/;"	m	struct:libyuv::__anon1	file:
+kVUToB	source/row_win.cc	/^static const vec8 kVUToB = {$/;"	v	file:
+kVUToG	source/row_posix.cc	/^  vec8 kVUToG;  \/\/ 128$/;"	m	struct:libyuv::__anon1	file:
+kVUToG	source/row_win.cc	/^static const vec8 kVUToG = {$/;"	v	file:
+kVUToR	source/row_posix.cc	/^  vec8 kVUToR;  \/\/ 144$/;"	m	struct:libyuv::__anon1	file:
+kVUToR	source/row_win.cc	/^static const vec8 kVUToR = {$/;"	v	file:
+kYToRgb	source/row_posix.cc	/^  vec16 kYToRgb;  \/\/ 96$/;"	m	struct:libyuv::__anon1	file:
+kYToRgb	source/row_win.cc	/^static const vec16 kYToRgb = { YG, YG, YG, YG, YG, YG, YG, YG };$/;"	v	file:
+kYToRgb_AVX	source/row_posix.cc	/^  lvec16 kYToRgb_AVX;   \/\/ 192$/;"	m	struct:libyuv::__anon2	file:
+kYToRgb_AVX	source/row_win.cc	/^static const lvec16 kYToRgb_AVX = {$/;"	v	file:
+kYuvConstants	source/row_posix.cc	/^} static SIMD_ALIGNED(kYuvConstants) = {$/;"	v	file:
+kYuvConstants_AVX	source/row_posix.cc	/^} static SIMD_ALIGNED(kYuvConstants_AVX) = {$/;"	v	file:
+len	include/libyuv/mjpeg_decoder.h	/^  int len;$/;"	m	struct:libyuv::Buffer
+len	include/libyuv/mjpeg_decoder.h	/^  int len;$/;"	m	struct:libyuv::BufferVector
+libyuv	include/libyuv/compare.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/convert.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/convert_argb.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/convert_from.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/convert_from_argb.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/cpu_id.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/format_conversion.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/mjpeg_decoder.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/planar_functions.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/rotate.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/rotate_argb.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/row.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/scale.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/scale_argb.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/scale_row.h	/^namespace libyuv {$/;"	n
+libyuv	include/libyuv/video_common.h	/^namespace libyuv {$/;"	n
+libyuv	source/compare.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/compare_common.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/compare_neon.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/compare_neon64.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/compare_posix.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/compare_win.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_argb.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_from.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_from_argb.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_jpeg.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_to_argb.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/convert_to_i420.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/cpu_id.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/format_conversion.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/mjpeg_decoder.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/mjpeg_validate.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/planar_functions.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/rotate.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/rotate_argb.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/rotate_mips.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/rotate_neon.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/rotate_neon64.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_any.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_common.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_mips.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_neon.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_neon64.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_posix.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/row_win.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_argb.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_common.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_mips.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_neon.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_neon64.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_posix.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/scale_win.cc	/^namespace libyuv {$/;"	n	file:
+libyuv	source/video_common.cc	/^namespace libyuv {$/;"	n	file:
+lvec16	include/libyuv/row.h	/^typedef __declspec(align(32)) int16 lvec16[16];$/;"	v
+lvec32	include/libyuv/row.h	/^typedef __declspec(align(32)) int32 lvec32[8];$/;"	v
+lvec8	include/libyuv/row.h	/^typedef __declspec(align(32)) int8 lvec8[32];$/;"	v
+num_outbufs_	include/libyuv/mjpeg_decoder.h	/^  int num_outbufs_;  \/\/ Outermost size of all arrays below.$/;"	m	class:libyuv::MJpegDecoder
+pmulld	source/compare_win.cc	133;"	d	file:
+pos	include/libyuv/mjpeg_decoder.h	/^  int pos;$/;"	m	struct:libyuv::BufferVector
+scanlines_	include/libyuv/mjpeg_decoder.h	/^  uint8*** scanlines_;$/;"	m	class:libyuv::MJpegDecoder
+scanlines_sizes_	include/libyuv/mjpeg_decoder.h	/^  int* scanlines_sizes_;$/;"	m	class:libyuv::MJpegDecoder
+section	source/x86inc.asm	/^section .note.GNU-stack noalloc noexec nowrite progbits$/;"	l
+setjmp_buffer	source/mjpeg_decoder.cc	/^  jmp_buf setjmp_buffer;$/;"	m	struct:libyuv::SetJmpErrorMgr	file:
+skip_input_data	source/mjpeg_decoder.cc	/^void skip_input_data(j_decompress_ptr cinfo,$/;"	f	namespace:libyuv
+source_mgr_	include/libyuv/mjpeg_decoder.h	/^  jpeg_source_mgr* source_mgr_;$/;"	m	class:libyuv::MJpegDecoder
+term_source	source/mjpeg_decoder.cc	/^void term_source(j_decompress_ptr cinfo) {$/;"	f	namespace:libyuv
+u	source/convert_jpeg.cc	/^  uint8* u;$/;"	m	struct:libyuv::I420Buffers	file:
+u_stride	source/convert_jpeg.cc	/^  int u_stride;$/;"	m	struct:libyuv::I420Buffers	file:
+uint16	include/libyuv/basic_types.h	/^typedef unsigned short uint16;  \/\/ NOLINT$/;"	t
+uint32	include/libyuv/basic_types.h	/^typedef unsigned int uint32;$/;"	t
+uint64	include/libyuv/basic_types.h	/^typedef unsigned __int64 uint64;$/;"	t
+uint64	include/libyuv/basic_types.h	/^typedef unsigned long long uint64;  \/\/ NOLINT$/;"	t
+uint64	include/libyuv/basic_types.h	/^typedef unsigned long uint64;  \/\/ NOLINT$/;"	t
+uint8	include/libyuv/basic_types.h	/^typedef unsigned char uint8;$/;"	t
+ulvec16	include/libyuv/row.h	/^typedef __declspec(align(32)) uint16 ulvec16[16];$/;"	v
+ulvec32	include/libyuv/row.h	/^typedef __declspec(align(32)) uint32 ulvec32[8];$/;"	v
+ulvec8	include/libyuv/row.h	/^typedef __declspec(align(32)) uint8 ulvec8[32];$/;"	v
+uvec16	include/libyuv/row.h	/^typedef __declspec(align(16)) uint16 uvec16[8];$/;"	v
+uvec32	include/libyuv/row.h	/^typedef __declspec(align(16)) uint32 uvec32[4];$/;"	v
+uvec8	include/libyuv/row.h	/^typedef __declspec(align(16)) uint8 uvec8[16];$/;"	v
+v	source/convert_jpeg.cc	/^  uint8* v;$/;"	m	struct:libyuv::I420Buffers	file:
+v_stride	source/convert_jpeg.cc	/^  int v_stride;$/;"	m	struct:libyuv::I420Buffers	file:
+vec16	include/libyuv/row.h	/^typedef __declspec(align(16)) int16 vec16[8];$/;"	v
+vec32	include/libyuv/row.h	/^typedef __declspec(align(16)) int32 vec32[4];$/;"	v
+vec8	include/libyuv/row.h	/^typedef __declspec(align(16)) int8 vec8[16];$/;"	v
+w	source/convert_jpeg.cc	/^  int w;$/;"	m	struct:libyuv::ARGBBuffers	file:
+w	source/convert_jpeg.cc	/^  int w;$/;"	m	struct:libyuv::I420Buffers	file:
+y	source/convert_jpeg.cc	/^  uint8* y;$/;"	m	struct:libyuv::I420Buffers	file:
+y_stride	source/convert_jpeg.cc	/^  int y_stride;$/;"	m	struct:libyuv::I420Buffers	file:
+~MJpegDecoder	source/mjpeg_decoder.cc	/^MJpegDecoder::~MJpegDecoder() {$/;"	f	class:libyuv::MJpegDecoder
