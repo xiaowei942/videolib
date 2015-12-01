@@ -30,6 +30,7 @@ LOCAL_SRC_FILES := \
 	source/utils.cpp \
 	source/mp4_writer.cpp \
 	source/mp4_extractor.cpp \
+	source/transfer.cpp \
 	source/interface.cpp
 
 # 默认包含的头文件路径
