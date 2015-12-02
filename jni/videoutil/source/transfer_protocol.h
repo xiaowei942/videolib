@@ -1,8 +1,9 @@
 #ifndef __TRANSFER_PROTOCOL_H__
 #define __TRANSFER_PROTOCOL_H__
 #include <stdint.h>
-#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
 typedef struct _data_package {
 	uint16_t package_length;
@@ -81,16 +82,36 @@ int verify(const char *data, int size) {
  * 	0 	成功
  * 	-1 	失败
  */
-int parse_data_package(char *data, int size, data_package *package) {
+int parse_data_package(char *data, data_package *package) {
 	assert(package);
 	uint16_t *p16 = (uint16_t *)data;
 	uint8_t *p8 = (uint8_t *)data;
 	package->package_length = SWAP16(p16[0]);
 	package->seq = p8[2];
 	package->package_type = p8[3];
+	if(package->package_type != 0x01) {
+		printf("Unknown package type !\n");
+		return -1;
+	}
 	package->slice_ident = p8[4];
-	memcpy(package->nal_data, &p8[5], size-6);
-	package->verify=p8[size-1];
+	package->nal_data = (uint8_t *)malloc(package->package_length-5);
+	memcpy(package->nal_data, &p8[5], package->package_length-5);
+	package->verify=p8[package->package_length];
+	return 0;
+}
+
+/*
+ * 功能：判断当前包的分片类型
+ * 参数：
+ * 	package 待判断的数据包
+ * 返回值：
+ * 	0 图像帧的中间分片
+ * 	1 图像帧的最后一个分片
+ * 	2 图像帧的第一个分片
+ * 	3 图像帧没有分片
+ */
+int get_data_package_slice_ident_type(data_package *package) {
+	return package->slice_ident & 0x03;
 }
 
 int parse_control_package(char *data) {
