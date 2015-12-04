@@ -52,6 +52,19 @@ typedef struct _transfer_package {
 #define SWAP16(a) ( (a)<<8 | (a)>>8 )
 
 /*
+ * 功能：按协议获取数据的有效长度
+ * 参数：
+ * 	data 	接收到的数据包
+ * 返回值:
+ * 	n 	有效数据长度
+ */
+int get_valid_data_length(const char *data) {
+	assert(data);
+	uint16_t *p16 = (uint16_t *)data;
+	return SWAP16(p16[0]);
+}
+
+/*
  * 功能：按位异或方式校验
  * 参数：
  * 	data 	需要校验的数据
@@ -63,10 +76,10 @@ int verify(const char *data, int size) {
 	assert(data);
 	const char *buf = data;
 	char result=0;
-	for(int i=0; i<size-1; i++) {
+	for(int i=0; i<size; i++) {
 		result^=*buf++;
 	}
-	if(result != data[size-1]) {
+	if(result != data[size]) {
 		return -1;
 	}
 
@@ -106,12 +119,18 @@ int parse_data_package(char *data, data_package *package) {
  * 	package 待判断的数据包
  * 返回值：
  * 	0 图像帧的中间分片
- * 	1 图像帧的最后一个分片
+ * 	1 图像帧的最后一个分
  * 	2 图像帧的第一个分片
  * 	3 图像帧没有分片
  */
 int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
+}
+
+int hasSpsPps(data_package *package) {
+	assert(package);
+	char *data = package->nal_data;
+
 }
 
 int parse_control_package(char *data) {
