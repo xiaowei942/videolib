@@ -10,6 +10,8 @@ public:
 	bool isQueueEmpty();
 	bool enQueue(ElemType element);
 	bool deQueue(ElemType &element);
+	int getLength();
+	int getCapacity();
 
 private:
 	ElemType *data;
@@ -66,5 +68,15 @@ bool CircleQueue<ElemType>::deQueue(ElemType &element) {
 	} else {
 		return false;
 	}
+}
+
+template <typename ElemType>
+int CircleQueue<ElemType>::getLength() {
+	return m_queueLength;
+}
+
+template <typename ElemType>
+int CircleQueue<ElemType>::getCapacity() {
+	return m_queueCapacity;
 }
 #endif
