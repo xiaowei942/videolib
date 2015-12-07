@@ -1,5 +1,6 @@
 #ifndef __CIRCLEQUEUE_H__
 #define __CIRCLEQUEUE_H__
+#include <stdlib.h>
 
 template <typename ElemType>
 class CircleQueue {
