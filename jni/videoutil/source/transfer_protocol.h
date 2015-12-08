@@ -127,9 +127,61 @@ int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
 }
 
-int hasSpsPps(data_package *package) {
+int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps) {
 	assert(package);
-	char *data = package->nal_data;
+	uint8_t *data = package->nal_data;
+	bool hasSps = false;
+
+
+	int size;
+        bool hasSps = false;
+        bool hasPps = false;
+
+	int index = 0;
+	for(int i=0; i<package->package_length; i++) {
+		if( ((data[i] & 0x0f) == 0x07)
+				&& (data[i-1] == 0x01)
+				&& (data[i-2] == 0x00) 
+				&& (data[i-3] == 0x00)
+				&& (data[i-4] == 0x00)) {
+			hasSps = true;
+			sps = (uint8_t *)malloc(size*sizeof(uint8_t));
+			memcpy(sps, h264_data+index+i, size);
+
+#ifdef DEBUG
+			LOGI("Has sps");
+			for(int k=0; k<size; k++)
+				LOGI("0x%02x ", sps[k]);
+#endif
+			break;
+		}
+	}
+
+	if(hasSps) {
+		index = nalu_list.at(1);
+		for(int j=0; j<5; j++) {
+			unsigned char temp = h264_data[index+j];
+			if((temp & 0x0f) == 0x08) {
+				hasPps = true;
+				size = nalu_list.at(2)-nalu_list.at(1)-j;
+				pps = (unsigned char *)malloc(size*sizeof(unsigned char));
+				memcpy(pps, h264_data+index+j, size);
+
+#ifdef DEBUG
+				LOGI("Has pps");
+				for(int k=0; k<size; k++)
+					LOGI("0x%02x ", pps[k]);
+#endif
+				break;
+			}
+		}
+	}
+
+	if(hasSps && hasPps) {
+		sps_pps = chrs_join(sps, pps);
+		return 0;
+	}
+
 
 }
 
