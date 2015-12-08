@@ -188,7 +188,7 @@ int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_
 						&& (data[i-2] == 0x00) 
 						&& (data[i-3] == 0x00)
 						&& (data[i-4] == 0x00)) {
-					sps_size = i-pps_offset-4;
+					pps_size = i-pps_offset-4;
 					status = STATUS_PARSE_SUCCESS;
 					break;
 				}
