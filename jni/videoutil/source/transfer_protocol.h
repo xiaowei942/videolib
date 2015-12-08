@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <errno.h>
+#include <utils.h>
 
 typedef struct _data_package {
 	uint16_t package_length;
@@ -139,61 +140,81 @@ int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
 }
 
-int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps) {
+int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_pps) {
 	assert(package);
 	uint8_t *data = package->nal_data;
-	bool hasSps = false;
 
-
-	int size;
         bool hasSps = false;
         bool hasPps = false;
+	int sps_offset = 0;
+	int pps_offset = 0;
+	int sps_size = 0;
+	int pps_size = 0;
 
-	int index = 0;
+	enum _status {
+		STATUS_PARSE_SPS = 0,
+		STATUS_PARSE_PPS,
+		STATUS_PARSE_PPS_END,
+		STATUS_PARSE_ERROR,
+		STATUS_PARSE_SUCCESS
+	} status;
+
 	for(int i=0; i<package->package_length; i++) {
-		if( ((data[i] & 0x0f) == 0x07)
-				&& (data[i-1] == 0x01)
-				&& (data[i-2] == 0x00) 
-				&& (data[i-3] == 0x00)
-				&& (data[i-4] == 0x00)) {
-			hasSps = true;
-			sps = (uint8_t *)malloc(size*sizeof(uint8_t));
-			memcpy(sps, h264_data+index+i, size);
+		switch (status) {
+			case STATUS_PARSE_SPS:
+				if( ((data[i] & 0x0f) == 0x07)
+						&& (data[i-1] == 0x01)
+						&& (data[i-2] == 0x00) 
+						&& (data[i-3] == 0x00)
+						&& (data[i-4] == 0x00)) {
+					sps_offset = i+1;
+					status = STATUS_PARSE_PPS;
+					continue;
+				}
+			case STATUS_PARSE_PPS:
+				if( ((data[i] & 0x0f) == 0x08)
+						&& (data[i-1] == 0x01)
+						&& (data[i-2] == 0x00) 
+						&& (data[i-3] == 0x00)
+						&& (data[i-4] == 0x00)) {
+					pps_offset = i+1;
+					sps_size = pps_offset-sps_offset-5;
+					status = STATUS_PARSE_PPS_END;
+					continue;
+				}
+			case STATUS_PARSE_PPS_END:
+				if( ((data[i] & 0x0f) == 0x08)
+						&& (data[i-1] == 0x01)
+						&& (data[i-2] == 0x00) 
+						&& (data[i-3] == 0x00)
+						&& (data[i-4] == 0x00)) {
+					sps_size = i-pps_offset-4;
+					status = STATUS_PARSE_SUCCESS;
+					break;
+				}
+		}	
 
-#ifdef DEBUG
-			LOGI("Has sps");
-			for(int k=0; k<size; k++)
-				LOGI("0x%02x ", sps[k]);
-#endif
-			break;
-		}
+		status = STATUS_PARSE_ERROR;
 	}
 
-	if(hasSps) {
-		index = nalu_list.at(1);
-		for(int j=0; j<5; j++) {
-			unsigned char temp = h264_data[index+j];
-			if((temp & 0x0f) == 0x08) {
-				hasPps = true;
-				size = nalu_list.at(2)-nalu_list.at(1)-j;
-				pps = (unsigned char *)malloc(size*sizeof(unsigned char));
-				memcpy(pps, h264_data+index+j, size);
+
+	if(status == STATUS_PARSE_SUCCESS) {
+		sps = (uint8_t *)malloc(sps_size*sizeof(uint8_t));
+		memcpy(sps, data+sps_offset, sps_size);
 
 #ifdef DEBUG
-				LOGI("Has pps");
-				for(int k=0; k<size; k++)
-					LOGI("0x%02x ", pps[k]);
+		LOGI("Has sps");
+		for(int k=0; k<sps_size; k++)
+			LOGI("0x%02x ", sps[k]);
 #endif
-				break;
-			}
-		}
-	}
+		pps = (unsigned char *)malloc(pps_size*sizeof(unsigned char));
+		memcpy(pps, data+pps_offset, pps_size);
 
-	if(hasSps && hasPps) {
 		sps_pps = chrs_join(sps, pps);
 		return 0;
 	}
 
+	return -1;
 }
 
 int parse_control_package(char *data) {
