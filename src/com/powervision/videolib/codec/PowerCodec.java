@@ -25,20 +25,20 @@ import java.nio.ByteBuffer;
 public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameListener{
     private String TAG = null;
     private static final boolean DEBUG = true;
-    //��Ƶ��ͼģ��
+    //视频截图模块
     OnCaptureFrameListener captureFrameListener = null;
     private FrameCapturer capturer = null;
     static Bitmap captureBitmap = null;
     private boolean captureFrame = false;
 
-    //��ݻ�ȡģ��
+    //数据获取模块
     private H264FrameExtractor extractor = null;
 
-    //��Ƶ�ļ��洢ģ��
+    //视频文件存储模块
     private FileWriter writer = null;
     static boolean closeWriter = false;
 
-    //ͼ����Ⱦģ��
+    //图像渲染模块
     private IRenderer renderer = null;
     static Surface mSurface = null;
     static boolean hasSurface = false;
@@ -47,7 +47,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     static Bitmap surfaceBitmap = null;
     private static byte[] brgb = null;
 
-    //����������
+    //解码器部分
     MediaCodec codec = null;
     MediaCodec.BufferInfo info;
     private int decodedframes = 0;
@@ -305,7 +305,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                         codec.releaseOutputBuffer(decoderStatus, true /*render*/);
                     }
                 }
-            } else { //��ʼ��,�ȴ�extractor��ȡ��sps��pps��
+            } else { //初始化,等待extractor获取到sps，pps等
                 ByteBuffer sps = mExtractor.getSps();
                 int sps_len = mExtractor.getSpsLength();
                 ByteBuffer pps = mExtractor.getPps();
