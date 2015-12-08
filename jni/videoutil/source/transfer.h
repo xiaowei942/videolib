@@ -22,6 +22,11 @@
 #define BUFFER_SIZE 1024
 #define QUEUE_SIZE 32
 
+#include <android/log.h>
+#define TRANSFER_LOG_TAG "TRANSFER"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TRANSFER_LOG_TAG,__VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TRANSFER_LOG_TAG,__VA_ARGS__)
+
 class Transfer {
 public:
 	Transfer(int width, int height);
@@ -51,7 +56,8 @@ private:
 	int local_control_socket_fd; //control
 	bool isReceive;
 	bool isProcess;
-	pthread_t *handle;
+	pthread_t receive_handle;
+	pthread_t process_handle;
 
 	int video_width;
 	int video_height;

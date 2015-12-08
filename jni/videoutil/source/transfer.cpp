@@ -1,5 +1,6 @@
 #include "transfer.h"
 
+#define DEBUG
 void *start_receive_func(void *arg) {
 	Transfer *cls = (Transfer *)arg;
 	cls->receiveThread();
@@ -21,12 +22,12 @@ Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), 
 		perror("Cannot Create CircleQueue");
 	}
 
-	int error = pthread_create(handle, NULL, start_receive_func, (void *)this);
+	int error = pthread_create(&receive_handle, NULL, &start_receive_func, (void *)this);
 	if(error) {
 		perror("Cannot Create Thread");
 	}
 
-	error = pthread_create(handle, NULL, start_receive_func, (void *)this);
+	error = pthread_create(&process_handle, NULL, &start_process_func, (void *)this);
 	if(error) {
 		perror("Cannot Create Thread");
 	}
@@ -71,10 +72,12 @@ int Transfer::initDataSocket(const char *server_ip, const char *local_ip, int lo
 			return -1;
 		}
 	}
+	return 0;
 }
 
 int Transfer::initSocket(const char *server_ip, const char *local_ip, const int local_port) {
 	int ret;
+	LOGI("Now initDataSocket\n");
 	switch(local_port) {
 		case CONTROL_PORT:
 			break;
@@ -104,7 +107,12 @@ void* Transfer::receiveThread() {
 	socklen_t server_addr_length = sizeof(server_addr);
 
 	while(!isReceive) {
+#ifdef DEBUG
+		LOGI("Now receive sleep\n");
+		usleep(1000000);
+#else
 		usleep(100000);
+#endif
 	}
 
 	/* 数据传输 */
@@ -155,7 +163,12 @@ data_package* Transfer::getDataPackage() {
 
 void* Transfer::processThread() {
 	while(!isProcess) {
+#ifdef DEBUG
+		LOGI("Now process sleep\n");
+		usleep(1000000);
+#else
 		usleep(100000);
+#endif
 	}
 
 	while(isProcess) {

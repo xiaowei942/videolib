@@ -155,7 +155,7 @@ JNIEXPORT Transfer* JNICALL Java_com_powervision_videolib_jni_JniNatives_native_
  * Signature: (II)I
  */
 JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1initSocket
-  (JNIEnv *env, jobject thiz, jstring serv_ip, Transfer *obj, jstring loc_ip, jint port) {
+  (JNIEnv *env, jobject thiz, Transfer *obj, jstring serv_ip, jstring loc_ip, jint port) {
 	const char *server_ip = env->GetStringUTFChars(serv_ip, 0);
 	const char *local_ip = env->GetStringUTFChars(loc_ip, 0);
 	jint ret = obj->initSocket(server_ip, local_ip, port);
@@ -173,7 +173,10 @@ static JNINativeMethod methods[] = {
 	{ "native_setFps", "(II)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1setFps },
 	{ "native_startRecord", "(I)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startRecord },
 	{ "native_stopRecord", "(I)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopRecord },
-	{ "native_writeFrame", "(I[BJJ)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1writeFrame }
+	{ "native_writeFrame", "(I[BJJ)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1writeFrame },
+	/************************* For Image Transfer ************************/	
+	{ "native_transferInit", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferInit },
+	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferInit }
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";

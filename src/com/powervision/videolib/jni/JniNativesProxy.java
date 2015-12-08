@@ -43,7 +43,7 @@ public class JniNativesProxy {
 
     public static void writeFrame(int obj, byte[] data, long size, long ts) {
         JniNatives.native_writeFrame(obj, data, size, ts);
-    };
+    }
 
     public static int convertYUV420P2ARGB(byte[] data, byte[] yuv420, int width, int height) {
         int ret = JniNatives.native_convertYUV420P2ARGB(data, yuv420, width, height);
@@ -58,7 +58,7 @@ public class JniNativesProxy {
 
     /*********** For Image Transfer ************/
     public static int transferInit(int width, int height) {
-        return JniNatives.native_writerInit(width, height);
+        return JniNatives.native_transferInit(width, height);
     }
 
     public static int initSocket(int object, String serverIp, String localIp, int localPort) {

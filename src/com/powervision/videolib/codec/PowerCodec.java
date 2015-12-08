@@ -17,6 +17,7 @@ import com.powervision.videolib.render.SurfaceViewRenderer;
 import com.powervision.videolib.writer.FileWriter;
 import com.powervision.videolib.writer.FileWriterFactory;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 /**
@@ -129,7 +130,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         writer.writeFrame(ppsBuf, ppsLength, 1);
 
         info = new MediaCodec.BufferInfo();
-        codec = MediaCodec.createDecoderByType(MIME_TYPE);
+        try {
+            codec = MediaCodec.createDecoderByType(MIME_TYPE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         MediaFormat format = MediaFormat.createVideoFormat(MIME_TYPE, getWidth(), getHeight());
 
         format.setByteBuffer("csd-0", sps);

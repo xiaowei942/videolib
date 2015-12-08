@@ -33,6 +33,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     @Override
     public int open() {
+        int ret = initSocket("192.168.42.202", "192.168.42.209", 6007);
         return 0;
     }
 
