@@ -52,4 +52,17 @@ public class JniNativesProxy {
         int ret = JniNatives.native_convertYUV420SP2ARGB(data, yuv420, width, height);
         return ret;
     }
+    //-------------lbg 2015.12.07---------------
+    public static ByteBuffer getPps() {
+        return JniNatives.native_getPps();
+    }
+    public static ByteBuffer getSps() {
+        return JniNatives.native_getSps();
+    }
+    public static int getPpsLength() {
+        return JniNatives.native_getPpsLength();
+    }
+    public static int getSpsLength() {
+        return JniNatives.native_getSpsLength();
+    }
 }

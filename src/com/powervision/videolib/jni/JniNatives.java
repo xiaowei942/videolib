@@ -26,4 +26,10 @@ public class JniNatives {
 
     public static native int native_convertYUV420P2ARGB(byte[] data, byte[] yuv420, int width, int height);
     public static native int native_convertYUV420SP2ARGB(byte[] data, byte[] yuv420, int width, int height);
+    //-----------lbg 2015.12.07-------------------
+
+    public static native ByteBuffer native_getSps();
+    public static native ByteBuffer native_getPps();
+    public static native int native_getPpsLength();
+    public static native int native_getSpsLength();
 }
