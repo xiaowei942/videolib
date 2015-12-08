@@ -1,5 +1,7 @@
 package com.powervision.videolib.jni;
 
+import java.nio.ByteBuffer;
+
 /**
  * Created by liwei on 15-7-26.
  */

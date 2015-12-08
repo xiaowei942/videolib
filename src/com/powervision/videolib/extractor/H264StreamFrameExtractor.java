@@ -1,5 +1,7 @@
 package com.powervision.videolib.extractor;
 
+import com.powervision.videolib.jni.JniNativesProxy;
+
 import java.nio.ByteBuffer;
 
 /**
