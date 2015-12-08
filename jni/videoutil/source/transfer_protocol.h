@@ -7,6 +7,10 @@
 #include <errno.h>
 #include <utils.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef struct _data_package {
 	uint16_t package_length;
 	uint8_t seq;
@@ -53,10 +57,12 @@ typedef enum _slice_type {
 	SLICE_TYPE_NONE
 } slice_type;
 
-#define CONTROL_PORT  	6006
-#define DATA_PORT 	6007
-#define MANAGE_PORT  	6008
-#define TRANSFER_PORT 	6009
+enum _local_port {
+	CONTROL_PORT = 6006,
+	DATA_PORT = 6007,
+	MANAGE_PORT = 6008,
+	TRANSFER_PORT = 6009
+};
 
 #define SWAP16(a) ( (a)<<8 | (a)>>8 )
 
@@ -67,7 +73,7 @@ typedef enum _slice_type {
  * 返回值:
  * 	n 	有效数据长度
  */
-int get_valid_data_length(const char *data) {
+static int get_valid_data_length(const char *data) {
 	assert(data);
 	uint16_t *p16 = (uint16_t *)data;
 	return SWAP16(p16[0]);
@@ -81,7 +87,7 @@ int get_valid_data_length(const char *data) {
  * 	0 	校验成功
  * 	-1 	校验失败
  */
-int verify(const char *data, int size) {
+static int verify(const char *data, int size) {
 	assert(data);
 	const char *buf = data;
 	char result=0;
@@ -104,7 +110,7 @@ int verify(const char *data, int size) {
  * 	0 	成功
  * 	-1 	失败
  */
-int parse_data_package(const char *data, data_package *package) {
+static int parse_data_package(const char *data, data_package *package) {
 	assert(package);
 	uint16_t *p16 = (uint16_t *)data;
 	uint8_t *p8 = (uint8_t *)data;
@@ -136,11 +142,11 @@ int parse_data_package(const char *data, data_package *package) {
  * 	2 图像帧的第一个分片
  * 	3 图像帧没有分片
  */
-int get_data_package_slice_ident_type(data_package *package) {
+static int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
 }
 
-int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_pps) {
+static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_pps) {
 	assert(package);
 	uint8_t *data = package->nal_data;
 
@@ -217,15 +223,20 @@ int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_
 	return -1;
 }
 
-int parse_control_package(char *data) {
+static int parse_control_package(char *data) {
 
 }
 
-int parse_manage_package(char *data) {
+static int parse_manage_package(char *data) {
 
 }
 
-int parse_transfer_package(char *data) {
+static int parse_transfer_package(char *data) {
 
 }
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

@@ -54,16 +54,29 @@ public class JniNativesProxy {
         int ret = JniNatives.native_convertYUV420SP2ARGB(data, yuv420, width, height);
         return ret;
     }
-    //-------------lbg 2015.12.07---------------
-    public static ByteBuffer getPps() {
-        return JniNatives.native_getPps();
+
+
+    /*********** For Image Transfer ************/
+    public static int transferInit(int width, int height) {
+        return JniNatives.native_writerInit(width, height);
     }
-    public static ByteBuffer getSps() {
-        return JniNatives.native_getSps();
+
+    public static int initSocket(int object, String serverIp, String localIp, int localPort) {
+        return JniNatives.native_initSocket(object, serverIp, localIp, localPort);
     }
+
+    public static int getSps(byte[] sps) {
+        return JniNatives.native_getPps(sps);
+    }
+
+    public static int getPps(byte[] pps) {
+        return JniNatives.native_getPps(pps);
+    }
+
     public static int getPpsLength() {
         return JniNatives.native_getPpsLength();
     }
+
     public static int getSpsLength() {
         return JniNatives.native_getSpsLength();
     }

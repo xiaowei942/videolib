@@ -28,10 +28,12 @@ public class JniNatives {
 
     public static native int native_convertYUV420P2ARGB(byte[] data, byte[] yuv420, int width, int height);
     public static native int native_convertYUV420SP2ARGB(byte[] data, byte[] yuv420, int width, int height);
-    //-----------lbg 2015.12.07-------------------
 
-    public static native ByteBuffer native_getSps();
-    public static native ByteBuffer native_getPps();
+    /*********** For Image Transfer ************/
+    public static native int native_transferInit(int width, int height);
+    public static native int native_initSocket(int obj, String serverIp, String localIp, int localPort);
+    public static native int native_getSps(byte[] sps);
+    public static native int native_getPps(byte[] pps);
     public static native int native_getPpsLength();
     public static native int native_getSpsLength();
 }

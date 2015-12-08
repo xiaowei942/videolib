@@ -2,6 +2,7 @@
 #include <iostream>
 #include <mp4v2/mp4v2.h>
 
+#include "transfer.h"
 #include "interface.h"
 #include "mp4_writer.h"
 #include "mp4_extractor.h"
@@ -17,7 +18,7 @@ using namespace std;
 #define MP4_FPS 30
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
+ * Class:     com_powervision_videolibtest_MyActivity
  * Method:    native_test
  * Signature: (I)I
  */
@@ -64,7 +65,7 @@ JNIEXPORT int JNICALL Java_com_powervision_videolibtest_MyActivity_native_1test
 
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
+ * Class:     com_powervision_videolib_jni_JniNatives
  * Method:    native_writerInit
  * Signature: (II)I
  */
@@ -78,8 +79,8 @@ JNIEXPORT Mp4_Writer * JNICALL Java_com_powervision_videolib_jni_JniNatives_nati
   }
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
- * Method:    native_setMp4FileName
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_setFileName
  * Signature: (Ljava/lang/Object;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1setFileName
@@ -90,8 +91,8 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1setF
   }
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
- * Method:    native_setMp4Fps
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_setFps
  * Signature: (Ljava/lang/Object;I)V
  */
 JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1setFps
@@ -100,7 +101,7 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1setF
   }
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
+ * Class:     com_powervision_videolib_jni_JniNatives
  * Method:    native_startRecord
  * Signature: (Ljava/lang/Object;)V
  */
@@ -110,7 +111,7 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1star
   }
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
+ * Class:     com_powervision_videolib_jni_JniNatives
  * Method:    native_stopRecord
  * Signature: (Ljava/lang/Object;)V
  */
@@ -120,7 +121,7 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1stop
   }
 
 /*
- * Class:     com_powervision_video_writer_AVCWriter
+ * Class:     com_powervision_videolib_jni_JniNatives
  * Method:    native_writeFrame
  * Signature: (Ljava/lang/Object;[BJJ)V
  */
@@ -130,6 +131,41 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1writ
 	obj->WriteEncodedVideoFrame((unsigned char *)payload_data, size, ts);
 	env->ReleaseByteArrayElements(data, payload_data, 0);
   }
+
+
+/******************  Transfer  ********************/
+
+/*
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_transferInit
+ * Signature: (II)I
+ */
+JNIEXPORT Transfer* JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1transferInit
+  (JNIEnv *env, jobject thiz, jint width, jint height) {
+	Transfer *transfer = new Transfer(width, height);
+	if(transfer) {
+		return transfer;
+	}
+	return NULL;
+  }
+
+/*
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_initSocket
+ * Signature: (II)I
+ */
+JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1initSocket
+  (JNIEnv *env, jobject thiz, jstring serv_ip, Transfer *obj, jstring loc_ip, jint port) {
+	const char *server_ip = env->GetStringUTFChars(serv_ip, 0);
+	const char *local_ip = env->GetStringUTFChars(loc_ip, 0);
+	jint ret = obj->initSocket(server_ip, local_ip, port);
+	env->ReleaseStringUTFChars(loc_ip, local_ip);
+	env->ReleaseStringUTFChars(serv_ip, server_ip);
+	return ret;
+  }
+
+
+
 #if 1
 static JNINativeMethod methods[] = {
 	{ "native_writerInit", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1writerInit },

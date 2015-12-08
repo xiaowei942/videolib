@@ -19,17 +19,18 @@
 #include <CircleQueue.h>
 #include "transfer_protocol.h"
 
-#define DATA_PORT 6007
 #define BUFFER_SIZE 1024
 #define QUEUE_SIZE 32
 
 class Transfer {
 public:
-	Transfer();
+	Transfer(int width, int height);
 	~Transfer();
 	int initSocket(const char *server_ip, const char *local_ip, int local_port);
-	int startReceive() { isRecieve = true; }
-	int stopReceive() { isRecieve = false; }
+	int initDataSocket(const char *server_ip, const char *local_ip, int local_port);
+	void unInitSocket();
+	int startReceive() { isReceive = true; }
+	int stopReceive() { isReceive = false; }
 	void* receiveThread();
 
 	int startProcess() { isProcess = true; }
@@ -45,9 +46,14 @@ private:
 	struct sockaddr_in server_addr;
 	/* 本机地址 */
 	struct sockaddr_in local_addr;
-	int local_socket_fd;
-	bool isRecieve;
+	/* socket */
+	int local_data_socket_fd; //data
+	int local_control_socket_fd; //control
+	bool isReceive;
 	bool isProcess;
 	pthread_t *handle;
+
+	int video_width;
+	int video_height;
 };
 #endif
