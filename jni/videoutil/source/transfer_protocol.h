@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <errno.h>
 
 typedef struct _data_package {
 	uint16_t package_length;
@@ -43,6 +44,13 @@ typedef struct _transfer_package {
 	uint8_t verify;
 	uint8_t end_flag;
 } transfer_package;
+
+typedef enum _slice_type {
+	SLICE_TYPE_INTER = 0,
+	SLICE_TYPE_LAST,
+	SLICE_TYPE_FIRST,
+	SLICE_TYPE_NONE
+} slice_type;
 
 #define CONTROL_PORT  	6006
 #define DATA_PORT 	6007
@@ -95,7 +103,7 @@ int verify(const char *data, int size) {
  * 	0 	成功
  * 	-1 	失败
  */
-int parse_data_package(char *data, data_package *package) {
+int parse_data_package(const char *data, data_package *package) {
 	assert(package);
 	uint16_t *p16 = (uint16_t *)data;
 	uint8_t *p8 = (uint8_t *)data;
@@ -103,11 +111,15 @@ int parse_data_package(char *data, data_package *package) {
 	package->seq = p8[2];
 	package->package_type = p8[3];
 	if(package->package_type != 0x01) {
-		printf("Unknown package type !\n");
+		perror("Unknown package type !");
 		return -1;
 	}
 	package->slice_ident = p8[4];
 	package->nal_data = (uint8_t *)malloc(package->package_length-5);
+	assert(package->nal_data);
+	if(!package->nal_data) {
+		perror("Cannot malloc package->nal_data");
+	}
 	memcpy(package->nal_data, &p8[5], package->package_length-5);
 	package->verify=p8[package->package_length];
 	return 0;
@@ -181,7 +193,6 @@ int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps) {
 		sps_pps = chrs_join(sps, pps);
 		return 0;
 	}
-
 
 }
 
