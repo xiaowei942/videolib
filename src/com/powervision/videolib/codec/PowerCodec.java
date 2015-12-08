@@ -8,7 +8,6 @@ import android.view.Surface;
 import android.view.SurfaceView;
 import com.powervision.videolib.capture.FrameCapturer;
 import com.powervision.videolib.capture.OnCaptureFrameListener;
-import com.powervision.videolib.extractor.ExtractorFactory;
 import com.powervision.videolib.extractor.H264FrameExtractor;
 import com.powervision.videolib.jni.JniNativesProxy;
 import com.powervision.videolib.render.IRenderer;
@@ -26,20 +25,20 @@ import java.nio.ByteBuffer;
 public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameListener{
     private String TAG = null;
     private static final boolean DEBUG = true;
-    //ÊÓÆµ½ØÍ¼Ä£¿é
+    //ï¿½ï¿½Æµï¿½ï¿½Í¼Ä£ï¿½ï¿½
     OnCaptureFrameListener captureFrameListener = null;
     private FrameCapturer capturer = null;
     static Bitmap captureBitmap = null;
     private boolean captureFrame = false;
 
-    //Êý¾Ý»ñÈ¡Ä£¿é
+    //ï¿½ï¿½Ý»ï¿½È¡Ä£ï¿½ï¿½
     private H264FrameExtractor extractor = null;
 
-    //ÊÓÆµÎÄ¼þ´æ´¢Ä£¿é
+    //ï¿½ï¿½Æµï¿½Ä¼ï¿½ï¿½æ´¢Ä£ï¿½ï¿½
     private FileWriter writer = null;
     static boolean closeWriter = false;
 
-    //Í¼ÏñäÖÈ¾Ä£¿é
+    //Í¼ï¿½ï¿½ï¿½ï¿½È¾Ä£ï¿½ï¿½
     private IRenderer renderer = null;
     static Surface mSurface = null;
     static boolean hasSurface = false;
@@ -48,7 +47,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     static Bitmap surfaceBitmap = null;
     private static byte[] brgb = null;
 
-    //½âÂëÆ÷²¿·Ö
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     MediaCodec codec = null;
     MediaCodec.BufferInfo info;
     private int decodedframes = 0;
@@ -61,7 +60,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
     boolean inputDone = false;
     boolean encoderDone = false;
-    boolean outputDone = false;
+    boolean exitDecoder = false;
 
     void registerAllRenderers() {
         mCurrentRenderer = RendererFactory.createSurfaceViewRenderer(mSurfaceView);
@@ -85,13 +84,21 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         capturer = FrameCapturer.getInstance();
         setCaptureFrameListener(this);
 
-        writer = FileWriterFactory.createMp4FileWriter(this, null);
-
         if ((param.width % 16) != 0 || ((param.height % 16) != 0)) {
             Log.w(TAG, "WARNING: width or height not multiple of 16");
         }
         mWidth = param.width;
         mHeight = param.height;
+    }
+
+    void initMediaCodec(ByteBuffer sps, int spsLength, ByteBuffer pps, int ppsLength) {
+        setCurrentRenderer(Renderer.RendererType.RendererType_SurfaceView);
+
+//        writer = FileWriterFactory.createMp4FileWriter(this, null);
+
+//        if ((param.width % 16) != 0 || ((param.height % 16) != 0)) {
+//            Log.w(TAG, "WARNING: width or height not multiple of 16");
+//        }
 
 
         if (brgb == null) {
@@ -110,10 +117,6 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
         writer = FileWriterFactory.createMp4FileWriter(this, null);
         writer.open();
-    }
-
-    void initMediaCodec(ByteBuffer sps, int spsLength, ByteBuffer pps, int ppsLength) {
-        setCurrentRenderer(Renderer.RendererType.RendererType_SurfaceView);
 
         byte[] spsBuf = new byte[spsLength];
         sps.get(spsBuf, 0, spsLength);
@@ -141,7 +144,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     }
     @Override
     public void initCodec(Object obj) {
-        initMediaCodec(mExtractor.getSps(), mExtractor.getSpsLength(), mExtractor.getPps(), mExtractor.getPpsLength());
+        ByteBuffer sps = mExtractor.getSps();
+        int sps_len = mExtractor.getSpsLength();
+        ByteBuffer pps = mExtractor.getPps();
+        int pps_len = mExtractor.getPpsLength();
+        initMediaCodec(sps, sps_len, pps, pps_len);
     }
 
     @Override
@@ -156,7 +163,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
     @Override
     public void stop() {
-
+        exitDecoder = true;
     }
 
     @Override
@@ -178,56 +185,56 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         int count = 1;
         long startMs = System.currentTimeMillis();
         long lasttime = startMs;
-        while (!outputDone) {
+        while (!exitDecoder) {
             int size = 0;
             int inputBufferIndex = 0;
-            if (!inputDone) {
-                byte[] buf = null;
-                if ((buf = mExtractor.getFrame()) != null) {
-                    inputBufferIndex = codec.dequeueInputBuffer(-1);
-                    if (inputBufferIndex >= 0) {
-                        ByteBuffer bf = ByteBuffer.wrap(buf, 0, buf.length);
+            if(decoderconfigured) {
+                if (!inputDone) {
+                    byte[] buf = null;
+                    if ((buf = mExtractor.getFrame()) != null) {
+                        inputBufferIndex = codec.dequeueInputBuffer(-1);
+                        if (inputBufferIndex >= 0) {
+                            ByteBuffer bf = ByteBuffer.wrap(buf, 0, buf.length);
 
-                        bf.position(0);
-                        bf.limit(buf.length);
+                            bf.position(0);
+                            bf.limit(buf.length);
 
-                        ByteBuffer inputBuffer = decoderInputBuffers[inputBufferIndex];
-                        inputBuffer.clear();
-                        inputBuffer.put(buf);
-                        if (count == 3) {
-                            codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
-                            if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 1);
-                        } else {
-                            codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
-                            if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 0);
+                            ByteBuffer inputBuffer = decoderInputBuffers[inputBufferIndex];
+                            inputBuffer.clear();
+                            inputBuffer.put(buf);
+                            if (count == 3) {
+                                codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
+                                if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 1);
+                            } else {
+                                codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
+                                if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 0);
+                            }
+
+                            if (closeWriter) {
+                                writer.close();
+                            } else {
+                                writer.writeFrame(buf, buf.length, 1);
+                            }
+                            count++;
                         }
+                    } else {
 
-                        if(closeWriter) {
+                        if (closeWriter) {
                             writer.close();
-                        } else {
-                            writer.writeFrame(buf, buf.length, 1);
                         }
-                        count++;
                     }
                 } else {
+                    inputDone = true;
+                    inputBufferIndex = codec.dequeueInputBuffer(TIMEOUT_USEC);
+                    if (inputBufferIndex >= 0) {
+                        codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
 
-                    if(closeWriter) {
-                        writer.close();
+                        if (DEBUG)
+                            Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + MediaCodec.BUFFER_FLAG_END_OF_STREAM
+                                    + (encoderDone ? " (EOS)" : ""));
                     }
                 }
-            } else {
-                inputDone = true;
-                inputBufferIndex = codec.dequeueInputBuffer(TIMEOUT_USEC);
-                if (inputBufferIndex >= 0) {
-                    codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, MediaCodec.BUFFER_FLAG_END_OF_STREAM);
 
-                    if (DEBUG)
-                        Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + MediaCodec.BUFFER_FLAG_END_OF_STREAM
-                                + (encoderDone ? " (EOS)" : ""));
-                }
-            }
-
-            if (decoderconfigured) {
                 int decoderStatus = codec.dequeueOutputBuffer(info, TIMEOUT_USEC);
                 if (decoderStatus == MediaCodec.INFO_TRY_AGAIN_LATER) {
                     // no output available yet
@@ -289,7 +296,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
                     if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                         if (DEBUG) Log.d(TAG, "output EOS");
-                        outputDone = true;
+                        exitDecoder = true;
                     }
 
                     if (!hasSurface) {
@@ -298,6 +305,13 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                         codec.releaseOutputBuffer(decoderStatus, true /*render*/);
                     }
                 }
+            } else { //ï¿½ï¿½Ê¼ï¿½ï¿½,ï¿½È´ï¿½extractorï¿½ï¿½È¡ï¿½ï¿½spsï¿½ï¿½ppsï¿½ï¿½
+                ByteBuffer sps = mExtractor.getSps();
+                int sps_len = mExtractor.getSpsLength();
+                ByteBuffer pps = mExtractor.getPps();
+                int pps_len = mExtractor.getPpsLength();
+
+                initMediaCodec(sps, sps_len, pps, pps_len);
             }
         }
     }
