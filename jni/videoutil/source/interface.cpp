@@ -9,7 +9,7 @@
 #include <android/log.h>
 using namespace std;
 
-#define LOG_TAG "MP4_WRITER"
+#define LOG_TAG "INTERFACE"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)
 
@@ -145,6 +145,7 @@ JNIEXPORT Transfer* JNICALL Java_com_powervision_videolib_jni_JniNatives_native_
 	LOGI("Enter native_transferInit");
 	Transfer *transfer = new Transfer(width, height);
 	if(transfer) {
+		LOGI("Leave native_transferInit");
 		return transfer;
 	}
 	LOGI("Leave native_transferInit return NULL");
@@ -189,10 +190,23 @@ JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1initS
  * Method:    native_unInitSocket
  * Signature: (II)I
  */
-JNIEXPORT jint JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket
+JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket
   (JNIEnv *env, jclass thiz, jint obj, jint port) {
 	Transfer *transfer = (Transfer *)obj;
-	transfer->unInitSocket(port);
+	return transfer->unInitSocket(port);
+  }
+
+JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getSps
+  (JNIEnv *env, jclass thiz, jint obj, jbyteArray sps) {
+	Transfer *transfer = (Transfer *)obj;
+	uint8_t *p = (uint8_t *)env->GetByteArrayElements(sps, JNI_FALSE);
+	int ret = transfer->getSps(p);
+	return ret;
+  }
+
+JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getPps
+  (JNIEnv *env, jclass thiz, jint obj, jbyteArray pps) {
+	Transfer *transfer = (Transfer *)obj;
   }
 
 #if 1
@@ -206,7 +220,10 @@ static JNINativeMethod methods[] = {
 	/************************* For Image Transfer ************************/	
 	{ "native_transferInit", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferInit },
 	{ "native_transferUnInit", "(I)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferUnInit },
-	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1initSocket }
+	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1initSocket },
+	{ "native_unInitSocket", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket },
+	{ "native_getSps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getSps },
+	{ "native_getPps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getPps }
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";

@@ -33,7 +33,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     @Override
     public int open() {
-        int ret = initSocket("192.168.42.202", "192.168.42.209", 6007);
+        int ret = initSocket("192.168.42.202", "192.168.42.129", 6007);
         return 0;
     }
 
@@ -83,7 +83,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     }
 
     public ByteBuffer getSps(byte[] sps) {
-        int size = JniNativesProxy.getSps(sps);
+        int size = JniNativesProxy.getSps(nativeTransferObject, sps);
 
         if(size != 0) {
             ByteBuffer byteBuffer = ByteBuffer.wrap(sps);
@@ -93,7 +93,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     }
 
     public ByteBuffer getPps(byte[] pps) {
-        int size = JniNativesProxy.getPps(pps);
+        int size = JniNativesProxy.getPps(nativeTransferObject, pps);
 
         if(size != 0) {
             ByteBuffer byteBuffer = ByteBuffer.wrap(pps);
@@ -101,10 +101,4 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
         }
         return null;
     }
-    public int getSpsLength() {
-        return JniNativesProxy.getSpsLength();
-    };
-    public int getPpsLength() {
-        return JniNativesProxy.getPpsLength();
-    };
 }

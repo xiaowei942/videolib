@@ -1,4 +1,5 @@
 #include "transfer.h"
+#include <netinet/in.h>
 
 #define DEBUG
 
@@ -18,26 +19,26 @@ void Transfer::Exit() {
 	isExit = true;
 }
 
-Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), video_width(width), video_height(height) {
+Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), video_width(width), video_height(height), gotSpsPps(false), local_data_socket_fd(-1) {
 	LOGI("Enter Transfer");
 	package_queue = new CircleQueue<data_package *>(QUEUE_SIZE);
 	if(!package_queue) {
-		perror("Cannot Create CircleQueue");
+		LOGE("Cannot Create CircleQueue");
 	}
 
 	frame_queue = new CircleQueue<uint8_t *>(QUEUE_SIZE);
 	if(!frame_queue) {
-		perror("Cannot Create CircleQueue");
+		LOGE("Cannot Create CircleQueue");
 	}
 
 	int error = pthread_create(&receive_handle, NULL, &start_receive_func, (void *)this);
 	if(error) {
-		perror("Cannot Create Thread");
+		LOGE("Cannot Create Thread");
 	}
 
 	error = pthread_create(&process_handle, NULL, &start_process_func, (void *)this);
 	if(error) {
-		perror("Cannot Create Thread");
+		LOGE("Cannot Create Thread");
 	}
 	LOGI("Leave Transfer");
 }
@@ -54,11 +55,15 @@ Transfer::~Transfer() {
 		delete frame_queue;
 		frame_queue = NULL;
 	}
+
+	unInitSockets();
 	LOGI("Leave ~Transfer");
 }
 
 int Transfer::initDataSocket(const char *server_ip, const char *local_ip, int local_port) {
-	if(local_data_socket_fd) {
+	LOGI("Now initDataSocket: server_ip: %s, local_ip: %s, local_port: %d", server_ip, local_ip, local_port);
+	if(local_data_socket_fd != -1) {
+		LOGE("Socket Already Created");
 		return -1;
 	}
 
@@ -66,9 +71,14 @@ int Transfer::initDataSocket(const char *server_ip, const char *local_ip, int lo
 	local_data_socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(local_data_socket_fd < 0)
 	{
-		perror("Create Socket Failed:");
+		LOGE("Create Socket Failed");
 		return -1;	
 	}
+
+        bzero(&server_addr, sizeof(server_addr));
+        server_addr.sin_family = AF_INET;
+        server_addr.sin_addr.s_addr = inet_addr("192.168.42.202");
+        server_addr.sin_port = htons(8000);
 
 	if(local_ip) {
 		bzero(&local_addr, sizeof(local_addr));
@@ -79,16 +89,19 @@ int Transfer::initDataSocket(const char *server_ip, const char *local_ip, int lo
 		/* 绑定套接口 */
 		if(-1 == (bind(local_data_socket_fd,(struct sockaddr*)&local_addr,sizeof(local_addr))))
 		{
-			perror("Client Bind Failed:");
+			LOGE("Client Bind Failed:");
 			return -1;
 		}
 	}
+
+	startReceive();
+	LOGI("local_addr bind success");
 	return 0;
 }
 
 int Transfer::initSocket(const char *server_ip, const char *local_ip, const int local_port) {
 	int ret;
-	LOGI("Now initDataSocket\n");
+	LOGI("Now initSocket: server_ip: %s, local_ip: %s, local_port: %d", server_ip, local_ip, local_port);
 	switch(local_port) {
 		case CONTROL_PORT:
 			break;
@@ -106,52 +119,74 @@ int Transfer::initSocket(const char *server_ip, const char *local_ip, const int 
 	return ret;
 }
 
-void Transfer::unInitSocket(int port) {
+int Transfer::unInitSocket(int port) {
+	LOGI("Enter unInitSocket");
+	int ret;
 	switch (port) {
 		case CONTROL_PORT:
-			close(local_control_socket_fd);
+			ret = close(local_control_socket_fd);
 			break;
 		case DATA_PORT:
-			close(local_data_socket_fd);
+			ret = close(local_data_socket_fd);
 			break;
 		case MANAGE_PORT:
 			break;
 		case TRANSFER_PORT:
 			break;
 		default:
+			ret = -1;
 			break;
 	}
+	LOGI("Leave unInitSocket");
+	return ret;
+}
+
+void Transfer::unInitSockets() {
+	LOGI("Enter unInitSockets");
+	if(local_data_socket_fd >= 0) {
+		close(local_data_socket_fd);
+	}
+	if(local_control_socket_fd >= 0) {
+		close(local_control_socket_fd);
+	}
+	LOGI("Leave unInitSockets");
 }
 
 void* Transfer::receiveThread() {
+	LOGI("Enter receive thread");
 	int data_len;
 	char buffer[BUFFER_SIZE];
-	/* 定义一个地址，用于捕获客户端地址 */
-	struct sockaddr_in server_addr;
-	socklen_t server_addr_length = sizeof(server_addr);
 
+#if 1
 	while(!isReceive && !isExit) {
 #ifdef DEBUG
-		LOGI("Now receive sleep\n");
-		usleep(1000000);
+		LOGI("Now receive sleep");
+		usleep(3000000);
 #else
 		usleep(100000);
 #endif
 	}
+#endif
 
 	/* 数据传输 */
 	while(isReceive && !isExit)
 	{
 		data_len = 0;
+		int server_addr_length = sizeof(server_addr);
 		memset(buffer, 0x0, BUFFER_SIZE);
+
+		LOGI("Now receive data");
 
 		/* 接收数据 */
 		int rcv_len = recvfrom(local_data_socket_fd, buffer, BUFFER_SIZE, 0,(struct sockaddr*)&server_addr, &server_addr_length);
 		if(rcv_len == -1)
 		{
-			perror("Receive Data Failed:");
-			exit(1);
+			LOGE("Receive Data Failed:");
+			continue;
+			//exit(1);
 		}
+
+		LOGI("Now receive %d bytes data", rcv_len);
 
 		data_len = get_valid_data_length(buffer);
 		if(data_len) {
@@ -161,14 +196,15 @@ void* Transfer::receiveThread() {
 				data_package *pkg = (data_package *)malloc(sizeof(data_package));			
 				assert(pkg);
 				if(!pkg) {
-					perror("Cannot malloc data_package");
+					LOGE("Cannot malloc data_package");
 				}
 
 				int result = parse_data_package(buffer, pkg);
 				if(result) {
-					perror("Parse data_package failed");
+					LOGE("Parse data_package failed");
 				}
 
+				LOGI("Now enQueue package");
 				package_queue->enQueue(pkg);
 #ifdef VERIFY
 			}
@@ -180,29 +216,45 @@ void* Transfer::receiveThread() {
 }
 
 data_package* Transfer::getDataPackage() {
-	data_package *pkg;
+	data_package *pkg = NULL;
 	if(package_queue->deQueue(pkg)) {
+		LOGI("pkg: %p", pkg);
 		return pkg;
 	}
 	return NULL;
 }
 
 void* Transfer::processThread() {
+#if 0
 	while(!isProcess && !isExit) {
 #ifdef DEBUG
-		LOGI("Now process sleep\n");
+		LOGI("Now process sleep");
 		usleep(1000000);
 #else
 		usleep(100000);
 #endif
 	}
+#endif
 
 	while(isProcess && !isExit) {
+		LOGI("Now process package");
 		data_package *pkg = getDataPackage();	
-		if(pkg) {
-			perror("Cannot Get DataPackage");
+		if(pkg == NULL) {
+			LOGE("Cannot Get DataPackage");
+			continue;
 		}
 
+		for(int i=0; i<100; i++)
+			printf("0x%02x ", pkg->nal_data[i]);
+
+		if(!gotSpsPps) {
+			LOGI("Now parse package -> has_sps_pps");
+			int ret = has_sps_pps(pkg, Sps, Pps, spsPps);
+			if(ret == STATUS_PARSE_SUCCESS) {
+				LOGI("Now Got Sps Pps !");
+				gotSpsPps = true;
+			}
+		}
 
 //make frame
 		int slice_type = get_data_package_slice_ident_type(pkg);
@@ -234,4 +286,16 @@ void* Transfer::processThread() {
 		}
 	}
 	LOGI("Exit Process Thread");
+}
+
+int Transfer::getSps(uint8_t *buf) {
+	int size = sizeof(Sps);
+	memcpy(buf, Sps, size); 
+	return size;
+}
+
+int Transfer::getPps(uint8_t *buf) {
+	int size = sizeof(Pps);
+	memcpy(buf, Pps, size); 
+	return size;
 }

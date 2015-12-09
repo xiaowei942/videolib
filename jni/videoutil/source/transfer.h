@@ -32,7 +32,7 @@ public:
 	Transfer(int width, int height);
 	~Transfer();
 	int initSocket(const char *server_ip, const char *local_ip, int local_port);
-	void unInitSocket(int port);
+	int unInitSocket(int port);
 	int initDataSocket(const char *server_ip, const char *local_ip, int local_port);
 	void unInitSocket();
 	int startReceive() { isReceive = true; }
@@ -44,8 +44,12 @@ public:
 	int stopProcess() { isProcess = false; }
 	void* processThread();
 
+	int getSps(uint8_t *buf);
+	int getPps(uint8_t *buf);
+
 private:
 	data_package* getDataPackage();
+	void unInitSockets();
 
 	CircleQueue<data_package *> *package_queue;
 	CircleQueue<uint8_t *> *frame_queue;
@@ -64,5 +68,11 @@ private:
 
 	int video_width;
 	int video_height;
+
+	uint8_t *Sps;
+	uint8_t *Pps;
+	uint8_t *spsPps;
+
+	bool gotSpsPps;
 };
 #endif

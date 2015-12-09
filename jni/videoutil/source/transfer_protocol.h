@@ -64,6 +64,14 @@ enum _local_port {
 	TRANSFER_PORT = 6009
 };
 
+enum _status {
+	STATUS_PARSE_SPS = 0,
+	STATUS_PARSE_PPS,
+	STATUS_PARSE_PPS_END,
+	STATUS_PARSE_ERROR,
+	STATUS_PARSE_SUCCESS
+};
+
 #define SWAP16(a) ( (a)<<8 | (a)>>8 )
 
 /*
@@ -157,16 +165,9 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 	int sps_size = 0;
 	int pps_size = 0;
 
-	enum _status {
-		STATUS_PARSE_SPS = 0,
-		STATUS_PARSE_PPS,
-		STATUS_PARSE_PPS_END,
-		STATUS_PARSE_ERROR,
-		STATUS_PARSE_SUCCESS
-	} status;
-
+	int parse_status = STATUS_PARSE_SPS;
 	for(int i=0; i<package->package_length; i++) {
-		switch (status) {
+		switch (parse_status) {
 			case STATUS_PARSE_SPS:
 				if( ((data[i] & 0x0f) == 0x07)
 						&& (data[i-1] == 0x01)
@@ -174,7 +175,7 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 						&& (data[i-3] == 0x00)
 						&& (data[i-4] == 0x00)) {
 					sps_offset = i+1;
-					status = STATUS_PARSE_PPS;
+					parse_status = STATUS_PARSE_PPS;
 					continue;
 				}
 			case STATUS_PARSE_PPS:
@@ -185,7 +186,7 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 						&& (data[i-4] == 0x00)) {
 					pps_offset = i+1;
 					sps_size = pps_offset-sps_offset-5;
-					status = STATUS_PARSE_PPS_END;
+					parse_status = STATUS_PARSE_PPS_END;
 					continue;
 				}
 			case STATUS_PARSE_PPS_END:
@@ -195,16 +196,16 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 						&& (data[i-3] == 0x00)
 						&& (data[i-4] == 0x00)) {
 					pps_size = i-pps_offset-4;
-					status = STATUS_PARSE_SUCCESS;
+					parse_status = STATUS_PARSE_SUCCESS;
 					break;
 				}
 		}	
 
-		status = STATUS_PARSE_ERROR;
+		parse_status = STATUS_PARSE_ERROR;
 	}
 
 
-	if(status == STATUS_PARSE_SUCCESS) {
+	if(parse_status == STATUS_PARSE_SUCCESS) {
 		sps = (uint8_t *)malloc(sps_size*sizeof(uint8_t));
 		memcpy(sps, data+sps_offset, sps_size);
 

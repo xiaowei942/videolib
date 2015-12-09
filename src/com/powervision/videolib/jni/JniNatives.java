@@ -34,8 +34,6 @@ public class JniNatives {
     public static native void native_transferUnInit(int obj);
     public static native int native_initSocket(int obj, String serverIp, String localIp, int localPort);
     public static native int native_unInitSocket(int obj, int localPort);
-    public static native int native_getSps(byte[] sps);
-    public static native int native_getPps(byte[] pps);
-    public static native int native_getPpsLength();
-    public static native int native_getSpsLength();
+    public static native int native_getSps(int obj, byte[] sps);
+    public static native int native_getPps(int obj, byte[] pps);
 }
