@@ -32,12 +32,14 @@ public:
 	Transfer(int width, int height);
 	~Transfer();
 	int initSocket(const char *server_ip, const char *local_ip, int local_port);
+	void unInitSocket(int port);
 	int initDataSocket(const char *server_ip, const char *local_ip, int local_port);
 	void unInitSocket();
 	int startReceive() { isReceive = true; }
 	int stopReceive() { isReceive = false; }
 	void* receiveThread();
 
+	void Exit();
 	int startProcess() { isProcess = true; }
 	int stopProcess() { isProcess = false; }
 	void* processThread();
@@ -54,6 +56,7 @@ private:
 	/* socket */
 	int local_data_socket_fd; //data
 	int local_control_socket_fd; //control
+
 	bool isReceive;
 	bool isProcess;
 	pthread_t receive_handle;

@@ -1,6 +1,9 @@
 #include "transfer.h"
 
 #define DEBUG
+
+//线程退出标志，不可用Transfer的成员来控制
+bool isExit = false;
 void *start_receive_func(void *arg) {
 	Transfer *cls = (Transfer *)arg;
 	cls->receiveThread();
@@ -11,7 +14,12 @@ void *start_process_func(void *arg) {
 	cls->processThread();
 }
 
+void Transfer::Exit() {
+	isExit = true;
+}
+
 Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), video_width(width), video_height(height) {
+	LOGI("Enter Transfer");
 	package_queue = new CircleQueue<data_package *>(QUEUE_SIZE);
 	if(!package_queue) {
 		perror("Cannot Create CircleQueue");
@@ -31,11 +39,12 @@ Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), 
 	if(error) {
 		perror("Cannot Create Thread");
 	}
+	LOGI("Leave Transfer");
 }
 
 Transfer::~Transfer() {
-	stopReceive();
-	stopProcess();
+	LOGI("Enter ~Transfer");
+	Exit();
 	if(package_queue) {
 		delete package_queue;
 		package_queue = NULL;
@@ -45,7 +54,9 @@ Transfer::~Transfer() {
 		delete frame_queue;
 		frame_queue = NULL;
 	}
+	LOGI("Leave ~Transfer");
 }
+
 int Transfer::initDataSocket(const char *server_ip, const char *local_ip, int local_port) {
 	if(local_data_socket_fd) {
 		return -1;
@@ -95,8 +106,21 @@ int Transfer::initSocket(const char *server_ip, const char *local_ip, const int 
 	return ret;
 }
 
-void Transfer::unInitSocket() {
-	close(local_data_socket_fd);
+void Transfer::unInitSocket(int port) {
+	switch (port) {
+		case CONTROL_PORT:
+			close(local_control_socket_fd);
+			break;
+		case DATA_PORT:
+			close(local_data_socket_fd);
+			break;
+		case MANAGE_PORT:
+			break;
+		case TRANSFER_PORT:
+			break;
+		default:
+			break;
+	}
 }
 
 void* Transfer::receiveThread() {
@@ -106,7 +130,7 @@ void* Transfer::receiveThread() {
 	struct sockaddr_in server_addr;
 	socklen_t server_addr_length = sizeof(server_addr);
 
-	while(!isReceive) {
+	while(!isReceive && !isExit) {
 #ifdef DEBUG
 		LOGI("Now receive sleep\n");
 		usleep(1000000);
@@ -116,7 +140,7 @@ void* Transfer::receiveThread() {
 	}
 
 	/* 数据传输 */
-	while(isReceive)
+	while(isReceive && !isExit)
 	{
 		data_len = 0;
 		memset(buffer, 0x0, BUFFER_SIZE);
@@ -151,6 +175,8 @@ void* Transfer::receiveThread() {
 #endif
 		}
 	}
+
+	LOGI("Exit Receive Thread");
 }
 
 data_package* Transfer::getDataPackage() {
@@ -162,7 +188,7 @@ data_package* Transfer::getDataPackage() {
 }
 
 void* Transfer::processThread() {
-	while(!isProcess) {
+	while(!isProcess && !isExit) {
 #ifdef DEBUG
 		LOGI("Now process sleep\n");
 		usleep(1000000);
@@ -171,7 +197,7 @@ void* Transfer::processThread() {
 #endif
 	}
 
-	while(isProcess) {
+	while(isProcess && !isExit) {
 		data_package *pkg = getDataPackage();	
 		if(pkg) {
 			perror("Cannot Get DataPackage");
@@ -207,4 +233,5 @@ void* Transfer::processThread() {
 			pkg = NULL;
 		}
 	}
+	LOGI("Exit Process Thread");
 }

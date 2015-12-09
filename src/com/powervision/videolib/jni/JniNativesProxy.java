@@ -61,8 +61,16 @@ public class JniNativesProxy {
         return JniNatives.native_transferInit(width, height);
     }
 
+    public static void transferUnInit(int obj) {
+        JniNatives.native_transferUnInit(obj);
+    }
+
     public static int initSocket(int object, String serverIp, String localIp, int localPort) {
         return JniNatives.native_initSocket(object, serverIp, localIp, localPort);
+    }
+
+    public static int unInitSocket(int object, int port) {
+        return JniNatives.native_unInitSocket(object, port);
     }
 
     public static int getSps(byte[] sps) {

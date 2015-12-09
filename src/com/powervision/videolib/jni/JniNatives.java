@@ -31,7 +31,9 @@ public class JniNatives {
 
     /*********** For Image Transfer ************/
     public static native int native_transferInit(int width, int height);
+    public static native void native_transferUnInit(int obj);
     public static native int native_initSocket(int obj, String serverIp, String localIp, int localPort);
+    public static native int native_unInitSocket(int obj, int localPort);
     public static native int native_getSps(byte[] sps);
     public static native int native_getPps(byte[] pps);
     public static native int native_getPpsLength();

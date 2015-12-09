@@ -130,11 +130,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         writer.writeFrame(ppsBuf, ppsLength, 1);
 
         info = new MediaCodec.BufferInfo();
-        try {
-            codec = MediaCodec.createDecoderByType(MIME_TYPE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        codec = MediaCodec.createDecoderByType(MIME_TYPE);
         MediaFormat format = MediaFormat.createVideoFormat(MIME_TYPE, getWidth(), getHeight());
 
         format.setByteBuffer("csd-0", sps);

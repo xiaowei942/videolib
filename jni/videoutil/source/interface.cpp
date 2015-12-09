@@ -142,11 +142,29 @@ JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1writ
  */
 JNIEXPORT Transfer* JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1transferInit
   (JNIEnv *env, jobject thiz, jint width, jint height) {
+	LOGI("Enter native_transferInit");
 	Transfer *transfer = new Transfer(width, height);
 	if(transfer) {
 		return transfer;
 	}
+	LOGI("Leave native_transferInit return NULL");
 	return NULL;
+  }
+
+/*
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_transferUnInit
+ * Signature: (Ljava/lang/Object;)V
+ */
+JNIEXPORT void JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1transferUnInit
+  (JNIEnv *env, jobject thiz, jint obj) {
+	LOGI("Enter native_transferUnInit");
+	Transfer *transfer = (Transfer *)obj;
+	if(transfer) {
+		delete transfer;
+		transfer = NULL;
+	}
+	LOGI("Leave native_transferUnInit");
   }
 
 /*
@@ -156,15 +174,26 @@ JNIEXPORT Transfer* JNICALL Java_com_powervision_videolib_jni_JniNatives_native_
  */
 JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1initSocket
   (JNIEnv *env, jobject thiz, Transfer *obj, jstring serv_ip, jstring loc_ip, jint port) {
+	LOGI("Enter native_initSocket");
 	const char *server_ip = env->GetStringUTFChars(serv_ip, 0);
 	const char *local_ip = env->GetStringUTFChars(loc_ip, 0);
 	jint ret = obj->initSocket(server_ip, local_ip, port);
 	env->ReleaseStringUTFChars(loc_ip, local_ip);
 	env->ReleaseStringUTFChars(serv_ip, server_ip);
+	LOGI("Leave native_initSocket");
 	return ret;
   }
 
-
+/*
+ * Class:     com_powervision_videolib_jni_JniNatives
+ * Method:    native_unInitSocket
+ * Signature: (II)I
+ */
+JNIEXPORT jint JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket
+  (JNIEnv *env, jclass thiz, jint obj, jint port) {
+	Transfer *transfer = (Transfer *)obj;
+	transfer->unInitSocket(port);
+  }
 
 #if 1
 static JNINativeMethod methods[] = {
@@ -176,7 +205,8 @@ static JNINativeMethod methods[] = {
 	{ "native_writeFrame", "(I[BJJ)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1writeFrame },
 	/************************* For Image Transfer ************************/	
 	{ "native_transferInit", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferInit },
-	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferInit }
+	{ "native_transferUnInit", "(I)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferUnInit },
+	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1initSocket }
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";
@@ -229,7 +259,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved)
         if (registerNatives(env) != JNI_TRUE) {
                 LOGE("ERROR: registerNatives failed");
                 return -1;
-        }
+	}
 
         return JNI_VERSION_1_4;
 }

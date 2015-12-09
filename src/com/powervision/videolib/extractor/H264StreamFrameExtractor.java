@@ -39,7 +39,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     @Override
     public void close() {
-
+        transferUnInit();
     }
 
     @Override
@@ -72,6 +72,10 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     private int transferInit(int width, int height) {
         return JniNativesProxy.getInstance().transferInit(width, height);
+    }
+
+    private void transferUnInit() {
+        JniNativesProxy.getInstance().transferUnInit(nativeTransferObject);
     }
 
     public int initSocket(String serverIp, String localIp, int localPort) {
