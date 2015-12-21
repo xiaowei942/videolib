@@ -207,6 +207,42 @@ JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getSp
 JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getPps
   (JNIEnv *env, jclass thiz, jint obj, jbyteArray pps) {
 	Transfer *transfer = (Transfer *)obj;
+	uint8_t *p = (uint8_t *)env->GetByteArrayElements(pps, JNI_FALSE);
+	int ret = transfer->getPps(p);
+	return ret;
+  }
+
+JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1startReceive
+  (JNIEnv *env, jclass thiz, jint obj) {
+	Transfer *transfer = (Transfer *)obj;
+	return transfer->startReceive();
+  }
+
+JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stopReceive
+  (JNIEnv *env, jclass thiz, jint obj) {
+	Transfer *transfer = (Transfer *)obj;
+	return transfer->stopReceive();
+  }
+
+JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1startProcess
+  (JNIEnv *env, jclass thiz, jint obj) {
+	Transfer *transfer = (Transfer *)obj;
+	return transfer->startProcess();
+  }
+
+JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess
+  (JNIEnv *env, jclass thiz, jint obj) {
+	Transfer *transfer = (Transfer *)obj;
+	return transfer->stopProcess();
+  }
+
+JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getframe
+  (JNIEnv *env, jclass thiz, jint obj, jint size) {
+	Transfer *transfer = (Transfer *)obj;
+	uint8_t *buf = transfer->get_frame((uint32_t &)size);
+	jbyteArray array = env->NewByteArray(size);
+ 	env->SetByteArrayRegion(array, 0, size, (jbyte *)buf);
+	return array;
   }
 
 #if 1
@@ -223,7 +259,11 @@ static JNINativeMethod methods[] = {
 	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1initSocket },
 	{ "native_unInitSocket", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket },
 	{ "native_getSps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getSps },
-	{ "native_getPps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getPps }
+	{ "native_getPps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getPps },
+	{ "native_startReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startReceive },
+	{ "native_stopReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopReceive },
+	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
+	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess }
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";
