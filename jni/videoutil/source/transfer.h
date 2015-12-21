@@ -18,7 +18,8 @@
 #include <pthread.h>
 #include <CircleQueue.h>
 #include "transfer_protocol.h"
-
+#include "tools/sps_resolution.h"
+#define FRAME_SIZE 4*1024*1024
 #define BUFFER_SIZE 1024
 #define QUEUE_SIZE 32
 
@@ -47,12 +48,13 @@ public:
 	int getSps(uint8_t *buf);
 	int getPps(uint8_t *buf);
 
+	uint8_t *get_frame(uint32_t &payload_size);
 private:
 	data_package* getDataPackage();
 	void unInitSockets();
 
 	CircleQueue<data_package *> *package_queue;
-	CircleQueue<uint8_t *> *frame_queue;
+	CircleQueue<nalu_package *> *frame_queue;
 	/* 服务端地址 */
 	struct sockaddr_in server_addr;
 	/* 本机地址 */
@@ -69,10 +71,15 @@ private:
 	int video_width;
 	int video_height;
 
-	uint8_t *Sps;
-	uint8_t *Pps;
-	uint8_t *spsPps;
+	uint8_t sps[512];
+	uint8_t Pps[128];
+	uint8_t spsPps[1024];
+
+	int sps_size;
+	int pps_size;
+	int sps_pps_size;
 
 	bool gotSpsPps;
+	bool gotWidthHeight;
 };
 #endif

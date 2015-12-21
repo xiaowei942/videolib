@@ -31,6 +31,8 @@ LOCAL_SRC_FILES := \
 	source/mp4_extractor.cpp \
 	source/transfer.cpp \
 	source/transfer_protocol.cpp \
+	source/tools/golomb.c \
+	source/tools/sps_resolution.c \
 	source/interface.cpp
 
 # 默认包含的头文件路径

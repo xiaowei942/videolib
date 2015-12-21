@@ -7,6 +7,11 @@
 #include <errno.h>
 #include <utils.h>
 
+#include <android/log.h>
+#define TRANSFER_LOG_TAG "TRANSFER"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO, TRANSFER_LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, TRANSFER_LOG_TAG, __VA_ARGS__)
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -18,7 +23,14 @@ typedef struct _data_package {
 	uint8_t slice_ident;
 	uint8_t *nal_data;
 	uint8_t verify;
+	uint16_t nal_size;
 } data_package;
+
+typedef struct _nalu_package {
+	uint8_t *nalu;
+	uint32_t size;
+	uint8_t seq;
+} nalu_package;
 
 typedef struct _control_package {
 	uint16_t package_length;
@@ -122,7 +134,7 @@ static int parse_data_package(const char *data, data_package *package) {
 	assert(package);
 	uint16_t *p16 = (uint16_t *)data;
 	uint8_t *p8 = (uint8_t *)data;
-	package->package_length = SWAP16(p16[0]);
+	package->package_length = p16[0];//SWAP16(p16[0]);
 	package->seq = p8[2];
 	package->package_type = p8[3];
 	if(package->package_type != 0x01) {
@@ -134,9 +146,11 @@ static int parse_data_package(const char *data, data_package *package) {
 	assert(package->nal_data);
 	if(!package->nal_data) {
 		perror("Cannot malloc package->nal_data");
+		return -1;
 	}
 	memcpy(package->nal_data, &p8[5], package->package_length-5);
 	package->verify=p8[package->package_length];
+	package->nal_size = package->package_length-6;
 	return 0;
 }
 
@@ -154,7 +168,7 @@ static int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
 }
 
-static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_t *sps_pps) {
+static int has_sps_pps(data_package *package, uint8_t* sps, int &sps_size, uint8_t* pps, int &pps_size, uint8_t* sps_pps) {
 	assert(package);
 	uint8_t *data = package->nal_data;
 
@@ -162,11 +176,9 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
         bool hasPps = false;
 	int sps_offset = 0;
 	int pps_offset = 0;
-	int sps_size = 0;
-	int pps_size = 0;
 
 	int parse_status = STATUS_PARSE_SPS;
-	for(int i=0; i<package->package_length; i++) {
+	for(int i=0; i<package->nal_size; i++) {
 		switch (parse_status) {
 			case STATUS_PARSE_SPS:
 				if( ((data[i] & 0x0f) == 0x07)
@@ -176,8 +188,9 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 						&& (data[i-4] == 0x00)) {
 					sps_offset = i+1;
 					parse_status = STATUS_PARSE_PPS;
-					continue;
+					LOGI("Has Sps");
 				}
+				break;
 			case STATUS_PARSE_PPS:
 				if( ((data[i] & 0x0f) == 0x08)
 						&& (data[i-1] == 0x01)
@@ -187,41 +200,53 @@ static int has_sps_pps(data_package *package, uint8_t *sps, uint8_t *pps, uint8_
 					pps_offset = i+1;
 					sps_size = pps_offset-sps_offset-5;
 					parse_status = STATUS_PARSE_PPS_END;
-					continue;
+					LOGI("Has Pps");
 				}
+				break;
 			case STATUS_PARSE_PPS_END:
-				if( ((data[i] & 0x0f) == 0x08)
-						&& (data[i-1] == 0x01)
-						&& (data[i-2] == 0x00) 
-						&& (data[i-3] == 0x00)
-						&& (data[i-4] == 0x00)) {
-					pps_size = i-pps_offset-4;
+				if((data[i] == 0x01)
+						&& (data[i-1] == 0x00) 
+						&& (data[i-2] == 0x00)
+						&& (data[i-3] == 0x00)) {
+					pps_size = i-pps_offset-3;
 					parse_status = STATUS_PARSE_SUCCESS;
-					break;
 				}
-		}	
+				break;
+			default:
+				break;
+		}
 
-		parse_status = STATUS_PARSE_ERROR;
-	}
-
-
-	if(parse_status == STATUS_PARSE_SUCCESS) {
-		sps = (uint8_t *)malloc(sps_size*sizeof(uint8_t));
-		memcpy(sps, data+sps_offset, sps_size);
-
-#ifdef DEBUG
-		LOGI("Has sps");
-		for(int k=0; k<sps_size; k++)
-			LOGI("0x%02x ", sps[k]);
+		if(parse_status == STATUS_PARSE_SUCCESS) {
+			printf("\nHas Sps and Pps\n");
+#if 0
+			sps = (uint8_t *)malloc(sps_size*sizeof(uint8_t));
+			if(!sps) {
+				printf("Malloc error\n");
+			}
 #endif
-		pps = (unsigned char *)malloc(pps_size*sizeof(unsigned char));
-		memcpy(pps, data+pps_offset, pps_size);
+			memset(sps, 0x0, sps_size*sizeof(uint8_t));
+			memcpy(sps, data+sps_offset, sps_size);
 
-		sps_pps = chrs_join(sps, pps);
-		return 0;
+#ifdef TRANSFER_DEBUG
+			int k=0;
+			for(; k<sps_size; k++)
+				LOGI("0x%02x ", sps[k]);
+#endif
+#if 0
+			pps = (uint8_t *)malloc(pps_size*sizeof(uint8_t));
+			if(!pps) {
+				printf("Malloc error\n");
+			}
+#endif
+			memset(pps, 0x0, sps_size*sizeof(uint8_t));
+			memcpy(pps, data+pps_offset, pps_size);
+
+			//sps_pps = chrs_join(sps, pps);
+			break;
+		}
 	}
 
-	return -1;
+	return parse_status;
 }
 
 static int parse_control_package(char *data) {
