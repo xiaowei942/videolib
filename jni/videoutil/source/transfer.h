@@ -48,7 +48,8 @@ public:
 	int getSps(uint8_t *buf);
 	int getPps(uint8_t *buf);
 
-	uint8_t *get_frame(uint32_t &payload_size);
+	uint8_t **get_frame(uint32_t &payload_size);
+	bool isPrepared();
 private:
 	data_package* getDataPackage();
 	void unInitSockets();

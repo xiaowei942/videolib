@@ -12,9 +12,8 @@ public class JniNativesProxy {
 
     private static JniNativesProxy mInstance = null;
     public static synchronized JniNativesProxy getInstance() {
-        if(mInstance != null) {
+        if(mInstance == null) {
             mInstance = new JniNativesProxy();
-            return mInstance;
         }
 
         return mInstance;
@@ -74,10 +73,34 @@ public class JniNativesProxy {
     }
 
     public static int getSps(int object, byte[] sps) {
-        return JniNatives.native_getPps(object, sps);
+        return JniNatives.native_getSps(object, sps);
     }
 
     public static int getPps(int object, byte[] pps) {
         return JniNatives.native_getPps(object, pps);
+    }
+
+    public static int startReceive(int obj) {
+        return JniNatives.native_startReceive(obj);
+    }
+
+    public static int stopReceive(int obj) {
+        return JniNatives.native_stopReceive(obj);
+    }
+
+    public static int startProcess(int obj) {
+        return JniNatives.native_startProcess(obj);
+    }
+
+    public static int stopProcess(int obj) {
+        return JniNatives.native_stopProcess(obj);
+    }
+
+    public static int getFrame(int obj, byte[] frame) {
+        return JniNatives.native_getFrame(obj, frame);
+    }
+
+    public static boolean native_isPrepared(int obj) {
+        return JniNatives.native_isPrepared(obj);
     }
 }

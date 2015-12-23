@@ -151,6 +151,7 @@ static int parse_data_package(const char *data, data_package *package) {
 	memcpy(package->nal_data, &p8[5], package->package_length-5);
 	package->verify=p8[package->package_length];
 	package->nal_size = package->package_length-6;
+	LOGI("----> package->seq: %d", package->seq);
 	return 0;
 }
 
@@ -172,13 +173,13 @@ static int has_sps_pps(data_package *package, uint8_t* sps, int &sps_size, uint8
 	assert(package);
 	uint8_t *data = package->nal_data;
 
-        bool hasSps = false;
-        bool hasPps = false;
+	bool hasSps = false;
+	bool hasPps = false;
 	int sps_offset = 0;
 	int pps_offset = 0;
 
 	int parse_status = STATUS_PARSE_SPS;
-	for(int i=0; i<package->nal_size; i++) {
+	for(int i=4; i<package->nal_size; i++) {
 		switch (parse_status) {
 			case STATUS_PARSE_SPS:
 				if( ((data[i] & 0x0f) == 0x07)
@@ -186,7 +187,7 @@ static int has_sps_pps(data_package *package, uint8_t* sps, int &sps_size, uint8
 						&& (data[i-2] == 0x00) 
 						&& (data[i-3] == 0x00)
 						&& (data[i-4] == 0x00)) {
-					sps_offset = i+1;
+					sps_offset = i-4;
 					parse_status = STATUS_PARSE_PPS;
 					LOGI("Has Sps");
 				}
@@ -197,8 +198,8 @@ static int has_sps_pps(data_package *package, uint8_t* sps, int &sps_size, uint8
 						&& (data[i-2] == 0x00) 
 						&& (data[i-3] == 0x00)
 						&& (data[i-4] == 0x00)) {
-					pps_offset = i+1;
-					sps_size = pps_offset-sps_offset-5;
+					pps_offset = i-4;
+					sps_size = pps_offset-sps_offset;
 					parse_status = STATUS_PARSE_PPS_END;
 					LOGI("Has Pps");
 				}

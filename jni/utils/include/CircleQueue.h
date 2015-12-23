@@ -4,7 +4,7 @@
 #include <string.h>
 #include <pthread.h>
 
-//#define TRANSFER_DEBUG
+#define TRANSFER_DEBUG
 
 template <typename ElemType>
 class CircleQueue {

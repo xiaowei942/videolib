@@ -9,13 +9,14 @@ import java.nio.ByteBuffer;
  * Created by liwei on 15-7-24.
  */
 public class H264StreamFrameExtractor extends H264FrameExtractor {
-    private ByteBuffer sps = null;
-    private ByteBuffer pps = null;
     int mWidth = -1;
     int mHeight = -1;
     String serverIp = "192.168.42.202";
     String localIp = "192.168.42.129";
     int dataPort = 6007;
+    byte sps[] = new byte[512];
+    byte pps[] = new byte[128];
+    byte frame[] = new byte[5*1024*1024];
 
     private int nativeTransferObject;
 
@@ -39,33 +40,47 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     @Override
     public void close() {
+        JniNativesProxy.stopReceive(nativeTransferObject);
+        JniNativesProxy.startProcess(nativeTransferObject);
+        unInitSocket(6007);
         transferUnInit();
     }
 
     @Override
     public void start() {
-
+        JniNativesProxy.startReceive(nativeTransferObject);
+        JniNativesProxy.startProcess(nativeTransferObject);
     }
 
     @Override
     public byte[] getFrame() {
-        return new byte[0];
+        int size = JniNativesProxy.getFrame(nativeTransferObject, frame);
+        if(size <= 0) {
+            return null;
+        }
+        return frame;
     }
+
     public void setSps(ByteBuffer sps) {
         super.setSps(sps);
     };
 
     public void setPps(ByteBuffer pps) {
         super.setPps(pps);
-    };
+    }
 
     public void setSpsLength(int length) {
         super.setSpsLength(length);
-    };
+    }
 
     public void setPpsLength(int length) {
         super.setPpsLength(length);
-    };
+    }
+
+    @Override
+    public boolean isPrepared() {
+        return JniNativesProxy.native_isPrepared(nativeTransferObject);
+    }
 
 
     /************* Implements by native methods *************/
@@ -82,11 +97,26 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
         return JniNativesProxy.initSocket(nativeTransferObject, serverIp, localIp, localPort);
     }
 
+    public int unInitSocket(int port) {
+        return JniNativesProxy.unInitSocket(nativeTransferObject, port);
+    }
+
+    @Override
+    public ByteBuffer getSps() {
+        return getSps(sps);
+    }
+
+    @Override
+    public ByteBuffer getPps() {
+        return getPps(pps);
+    }
+
     public ByteBuffer getSps(byte[] sps) {
         int size = JniNativesProxy.getSps(nativeTransferObject, sps);
+        setSpsLength(size);
 
         if(size != 0) {
-            ByteBuffer byteBuffer = ByteBuffer.wrap(sps);
+            ByteBuffer byteBuffer = ByteBuffer.wrap(sps, 0, size);
             return byteBuffer;
         }
         return null;
@@ -94,9 +124,10 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 
     public ByteBuffer getPps(byte[] pps) {
         int size = JniNativesProxy.getPps(nativeTransferObject, pps);
+        setPpsLength(size);
 
         if(size != 0) {
-            ByteBuffer byteBuffer = ByteBuffer.wrap(pps);
+            ByteBuffer byteBuffer = ByteBuffer.wrap(pps, 0, size);
             return byteBuffer;
         }
         return null;

@@ -36,4 +36,10 @@ public class JniNatives {
     public static native int native_unInitSocket(int obj, int localPort);
     public static native int native_getSps(int obj, byte[] sps);
     public static native int native_getPps(int obj, byte[] pps);
+    public static native int native_startReceive(int obj);
+    public static native int native_stopReceive(int obj);
+    public static native int native_startProcess(int obj);
+    public static native int native_stopProcess(int obj);
+    public static native int native_getFrame(int obj, byte[] frame);
+    public static native boolean native_isPrepared(int obj);
 }

@@ -308,6 +308,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                     }
                 }
             } else { //初始化,等待extractor获取到sps，pps等
+                boolean isPrepared = mExtractor.isPrepared();
+                while (!isPrepared) {
+                    continue;
+                }
+
                 ByteBuffer sps = mExtractor.getSps();
                 int sps_len = mExtractor.getSpsLength();
                 ByteBuffer pps = mExtractor.getPps();

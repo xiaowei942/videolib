@@ -65,7 +65,7 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
         System.arraycopy(bytes, start, temp, 0, count);
 
         if(decodeNaluIndex==naluList.size()-2) {
-            //Ñ­»··¢ËÍÊý¾Ý
+            //Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             decodeNaluIndex = 2;
         } else {
             decodeNaluIndex++;
@@ -104,7 +104,7 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
     //Open raw video file
     private int openFile(String file) {
         try {
-            fis = new FileInputStream("/mnt/sdcard/test.h264");//file);
+            fis = new FileInputStream("/sdcard/test.264");//file);
             return 0;
         } catch (FileNotFoundException e) {
             Log.e(TAG, "Cannot open input file stream.");
@@ -216,5 +216,10 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
         }
 
         status = EXTRACTOR_STATUS_OK;
+    }
+
+    @Override
+    public boolean isPrepared() {
+        return true;
     }
 }
