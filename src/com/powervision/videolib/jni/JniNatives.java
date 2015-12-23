@@ -41,5 +41,6 @@ public class JniNatives {
     public static native int native_startProcess(int obj);
     public static native int native_stopProcess(int obj);
     public static native int native_getFrame(int obj, byte[] frame);
+    public static native byte[] native_getFrame2(int obj);
     public static native boolean native_isPrepared(int obj);
 }

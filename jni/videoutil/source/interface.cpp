@@ -240,43 +240,98 @@ JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stop
 JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
   (JNIEnv *env, jclass thiz, jint obj, jbyteArray array) {
   	LOGI("Enter native_getFrame");
-#if 1
+LOGI("1");
   	size_t size = 0;
 	Transfer *transfer = (Transfer *)obj;
 	if(!transfer) {
 		return -1;
 	}
 
-	uint8_t **buf = transfer->get_frame(size);
+LOGI("2");
+	nalu_package *nal_pkg = transfer->getFrame();
+	if(!nal_pkg) {
+		return 0;
+	}
+
+LOGI("3");
+	size = nal_pkg->size;
+	char *buf = (char *)nal_pkg->nalu;
+LOGI("4");
 	if(size>0) {
 		LOGI("Get frame: %d", size);
-		//jbyteArray array = env->NewByteArray(size);
 		jbyte *data = env->GetByteArrayElements(array, 0);
-		memcpy(data, &buf, size);
-		free(*buf);
-		free(buf);
-		//env->SetByteArrayRegion(array, 0, size, (jbyte *)&buf);
-		LOGI("Leave native_getFrame size");
+
+LOGI("5");
+#if 0
+		LOGI("findb END SLICE, NOW QUEUE, SIZE: %d", size);
+
+		LOGI("******************* QUEUE ******************");
+		char *queue_buffer = (char *)malloc(size * 3);
+		if(!queue_buffer) {
+			LOGI("########################");
+			return 0;
+		}
+		memset(queue_buffer, 0x0, size*3);
+		for(int i=0; i<size; i++) {
+			sprintf(&queue_buffer[i*3], "%02x ", buf[i]);
+		}
+		LOGI("%s", queue_buffer);
+		LOGI("******************* findb END******************");
+#endif
+		memcpy(data, nal_pkg->nalu, size);
+		env->ReleaseByteArrayElements(array, data, 0);
+LOGI("6");
+		//if(buf)
+	//	free(buf);
+
+LOGI("7");
 		return size;
  	}
 
 	LOGI("Get no frame");
 	return 0;
-#else
+  }
+
+
+JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2
+  (JNIEnv *env, jclass thiz, jint obj) {
+  	LOGI("Enter native_getFrame2");
+LOGI("1");
   	size_t size = 0;
 	Transfer *transfer = (Transfer *)obj;
-
-	//uint8_t *buf = transfer->get_frame(size);
-	jbyteArray array = env->NewByteArray(10);
-	jbyte *buf = env->GetByteArrayElements(array, 0);
-	for(int i=0; i<10; i++) {
-		buf[i] = i;
+	if(!transfer) {
+		return NULL;
 	}
 
- 	//env->SetByteArrayRegion(array, 0, size, (jbyte *)buf);
- 	LOGI("Leave native_getFrame size: %d", size);
-	return array;
-#endif
+LOGI("2");
+	nalu_package *nal_pkg = transfer->getFrame();
+	if(!nal_pkg) {
+		return NULL;
+	}
+
+	LOGI("nalu_pkg: %p", nal_pkg);
+LOGI("3");
+	size = nal_pkg->size;
+	uint8_t *buf = (uint8_t *)nal_pkg->nalu;
+LOGI("4");
+	if(size>0) {
+		LOGI("Get frame 2: %d", size);
+		jbyteArray array = env->NewByteArray(size);
+
+LOGI("5");
+		LOGI("Sizeof buf: %d", sizeof(buf));
+		env->SetByteArrayRegion(array, 0,  size, (jbyte *)buf);
+LOGI("6");
+		//if(nal_pkg->nalu)
+		//	free(nal_pkg->nalu);
+
+LOGI("7");
+		//return array;
+		return NULL;
+ 	} else {
+		LOGI("Get no frame");
+		return NULL;
+	}
   }
 
 
@@ -311,6 +366,7 @@ static JNINativeMethod methods[] = {
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
 	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess },
 	{ "native_getFrame", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
+	{ "native_getFrame2", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2 },
 	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared }
 };
 

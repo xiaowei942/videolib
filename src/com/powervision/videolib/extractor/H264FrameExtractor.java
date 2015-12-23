@@ -41,6 +41,8 @@ public abstract class H264FrameExtractor extends Extractor implements IExtractor
 
     public abstract boolean isPrepared();
 
+    byte frame[] = null;
+    int frameSize = 0;
     private int spsLength;
     private int ppsLength;
     private ByteBuffer Sps = null;

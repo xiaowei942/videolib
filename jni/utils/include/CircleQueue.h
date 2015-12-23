@@ -4,7 +4,12 @@
 #include <string.h>
 #include <pthread.h>
 
-#define TRANSFER_DEBUG
+#define CIRCLEQUEUE_DEBUG
+
+#include <android/log.h>
+#define TRANSFER_LOG_TAG "CIRCLEQUEUE"
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,TRANSFER_LOG_TAG,__VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,TRANSFER_LOG_TAG,__VA_ARGS__)
 
 template <typename ElemType>
 class CircleQueue {
@@ -67,8 +72,8 @@ template <typename ElemType>
 bool CircleQueue<ElemType>::enQueue(ElemType element) {
 	pthread_mutex_lock(&mutex);
 	if(isCirculative) {
-#ifdef TRANSFER_DEBUG
-printf("<-- EnQueue %s(cir) %d\n", queue_name, writePos);
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- EnQueue %s(cir) %d\n", queue_name, writePos);
 #endif
 		data[writePos++] = element;
 		writePos %= m_queueCapacity;
@@ -77,8 +82,8 @@ printf("<-- EnQueue %s(cir) %d\n", queue_name, writePos);
 		return true;
 	} else {
 		if(!isQueueFull()) {
-#ifdef TRANSFER_DEBUG
-printf("<-- EnQueue %s %d\n", queue_name, writePos);
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- EnQueue %s %d\n", queue_name, writePos);
 #endif
 			data[writePos++] = element;
 			writePos %= m_queueCapacity;
@@ -87,8 +92,8 @@ printf("<-- EnQueue %s %d\n", queue_name, writePos);
 			return true;
 		} else {
 			pthread_mutex_unlock(&mutex);
-#ifdef TRANSFER_DEBUG
-printf("<-- EnQueue %s %d\n", queue_name, writePos);
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- EnQueue %s %d\n", queue_name, writePos);
 #endif
 			return false;
 		}
@@ -97,12 +102,12 @@ printf("<-- EnQueue %s %d\n", queue_name, writePos);
 
 template <typename ElemType>
 bool CircleQueue<ElemType>::deQueue(ElemType &element) {
-#ifdef TRANSFER_DEBUG
-printf("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
 #endif
 	pthread_mutex_lock(&mutex);
 	if(isCirculative) {
-#ifdef TRANSFER_DEBUG
+#ifdef CIRCLEQUEUE_DEBUG
 //printf("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
 #endif
 		element = data[readPos];
@@ -114,8 +119,8 @@ printf("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
 		return true;
 	} else {
 		if(!isQueueEmpty()) {
-#ifdef TRANSFER_DEBUG
-printf("\n<-- DeQueue %s %d\n", queue_name, readPos);
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("\n<-- DeQueue %s %d\n", queue_name, readPos);
 #endif
 			element = data[readPos];
 			memset(&data[readPos], 0x0, sizeof(ElemType));
@@ -126,7 +131,7 @@ printf("\n<-- DeQueue %s %d\n", queue_name, readPos);
 			return true;
 		} else {
 			pthread_mutex_unlock(&mutex);
-#ifdef TRANSFER_DEBUG
+#ifdef CIRCLEQUEUE_DEBUG
 //printf("<-- DeQueue failed %s %d\n", queue_name, readPos);
 #endif
 			return false;
