@@ -50,7 +50,7 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     @Override
     public void start() {
         JniNativesProxy.startReceive(nativeTransferObject);
-        JniNativesProxy.startProcess(nativeTransferObject);
+        //JniNativesProxy.startProcess(nativeTransferObject);
     }
 
     @Override

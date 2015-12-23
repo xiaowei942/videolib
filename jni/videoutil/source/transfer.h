@@ -49,6 +49,7 @@ public:
 	int getPps(uint8_t *buf);
 
 	uint8_t **get_frame(uint32_t &payload_size);
+	nalu_package *getFrame();
 	bool isPrepared();
 private:
 	data_package* getDataPackage();

@@ -194,6 +194,9 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                 if (!inputDone) {
                     byte[] buf = mExtractor.getFrame();
                     size = mExtractor.getFrameSize();
+                    if(size > 0) {
+                        size = size;
+                    }
                     if (size > 0) {
                         inputBufferIndex = codec.dequeueInputBuffer(-1);
                         if (inputBufferIndex >= 0 ) {

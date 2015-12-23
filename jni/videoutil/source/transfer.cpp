@@ -178,7 +178,7 @@ void* Transfer::receiveThread() {
 	int data_len;
 	char buffer[BUFFER_SIZE];
 
-#if 1
+#if 0
 	while(!isReceive && !isExit) {
 #ifdef TRANSFER_DEBUG
 		LOGI("Now receive sleep");
@@ -188,7 +188,7 @@ void* Transfer::receiveThread() {
 #endif
 	}
 #endif
-
+	isReceive = true;
 	/* 数据传输 */
 	while(isReceive && !isExit)
 	{
@@ -208,7 +208,6 @@ void* Transfer::receiveThread() {
 		}
 
 #if 0
-		LOGI("Now receive %d bytes data", rcv_len);
 		LOGI("******************* Receive ******************");
 		char *log_buf = (char *)malloc(rcv_len * 8);
 		memset(log_buf, 0x0, rcv_len*8);
@@ -237,6 +236,32 @@ void* Transfer::receiveThread() {
 				}
 //				LOGI("data_package seq: %02x", pkg->seq);
 //				LOGI("Receiver enQueue package %p", pkg);
+
+#if 1
+				if(!gotWidthHeight) {
+					if(!gotSpsPps) {
+						LOGI("Now parse package -> has_sps_pps");
+						int ret = has_sps_pps(pkg, sps, sps_size, Pps, pps_size, spsPps);
+						if(ret == STATUS_PARSE_SUCCESS) {
+							LOGI("Now Got Sps Pps !");
+							gotSpsPps = true;
+						} else {
+							LOGI("Cannot get Sps Pps");
+							continue;
+						}
+					}
+
+					Screen_Info info;
+					LOGI("Now Get Width and Height");
+					int spssize = sizeof(sps)/sizeof(sps[0]);
+					if(ff_h264_decode_sps(sps,spssize, &info)){
+						LOGI("Width: %d, Height: %d\n", info.width, info.height);
+						gotWidthHeight = true;
+					} else {
+						continue;
+					}
+				}
+#endif
 				if(!package_queue->enQueue(pkg)) {
 					LOGE("Unable to enQueue");
 					if(pkg) {
@@ -506,3 +531,177 @@ uint8_t **Transfer::get_frame(uint32_t &payload_size) {
 bool Transfer::isPrepared() {
 	return gotWidthHeight;
 }
+
+int offset2 = 0;
+nalu_package *nal_pkg2 = NULL;
+
+nalu_package *Transfer::getFrame() {
+
+	LOGI("Now process package");
+	data_package *pkg = getDataPackage();
+	if(pkg == NULL) {
+		LOGE("Cannot Get DataPackage");
+		return NULL;
+	}
+
+	LOGI("Now getDataPackage: Package Address is %p\n", pkg);
+#ifdef TRANSFER_DEBUG
+	printf("\n");
+	for(int i=0; i<pkg->nal_size; i++)
+		printf("%02x ", pkg->nal_data[i]);
+#endif
+
+#if 1
+	char *sps_log_buf = (char *)malloc(sps_size);
+	memset(sps_log_buf, '\0', sps_size);
+	for(int i=0; i<sps_size; i++) {
+		sprintf(&sps_log_buf[i*3], "%02x ", sps[i]);
+	}
+	LOGI("SPS(size: %d): %s", sps_size, sps_log_buf);
+	free(sps_log_buf);
+
+	char *pps_log_buf = (char *)malloc(pps_size);
+	memset(pps_log_buf, '\0', pps_size);
+	for(int i=0; i<pps_size; i++) {
+		sprintf(&pps_log_buf[i*3], "%02x ", Pps[i]);
+	}
+	LOGI("PPS(size: %d): %s",pps_size, pps_log_buf);
+	free(pps_log_buf);
+#endif
+
+	char *queue_buffer;
+	int slice_type = get_data_package_slice_ident_type(pkg);
+	switch(slice_type) {
+		case SLICE_TYPE_INTER: //中间分片
+#if 1
+			LOGI("FIND A INTERNAL SLICE: %02x", pkg->seq);
+			assert(nal_pkg2);
+#if 1
+			if(!nal_pkg2) {
+				return NULL;;
+			}
+#endif
+
+			offset2 = nal_pkg2->size;
+			nal_pkg2->seq = pkg->seq;
+			LOGI("lbg33333 %d",nal_pkg2->size);
+			//				LOGI("Slice seq: %02x", nal_pkg2->seq);
+			nal_pkg2->nalu = (uint8_t *)realloc(nal_pkg2->nalu, offset2 + pkg->nal_size);
+			LOGI("lbg44444");
+			memcpy(nal_pkg2->nalu+offset2, pkg->nal_data, pkg->nal_size);
+			nal_pkg2->size += pkg->nal_size;
+			break;
+#endif
+		case SLICE_TYPE_FIRST: //分片开始
+			LOGI("FIND A START SLICE: %02x", pkg->seq);
+#if 1
+			//如果没有发现分片结束
+			if(nal_pkg2) {
+				LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg2->size);
+				return nal_pkg2;
+				//frame_queue->enQueue(nal_pkg2);
+				//free(nal_pkg2);
+				nal_pkg2 = NULL;
+			}
+
+			nal_pkg2 = (nalu_package *)malloc(sizeof(nalu_package));
+			if(!nal_pkg2) {
+				LOGE("No more memory");
+				return NULL;
+			}
+
+			nal_pkg2->seq = pkg->seq;
+			//				LOGI("Slice seq: %02x", nal_pkg2->seq);
+			nal_pkg2->size = pkg->nal_size;
+			nal_pkg2->nalu = (uint8_t *)malloc(nal_pkg2->size);
+			if(!nal_pkg2->nalu) {
+				LOGE("No more memory");
+				return NULL;
+			}
+
+			memset(nal_pkg2->nalu, 0x0, nal_pkg2->size);
+			memcpy(nal_pkg2->nalu, pkg->nal_data, pkg->nal_size);
+#endif
+
+			break;
+		case SLICE_TYPE_LAST: //分片结束
+			LOGI("FIND A END SLICE: %02x", pkg->seq);
+
+			if(!nal_pkg2) {
+				return NULL;
+			}
+
+			assert(nal_pkg2);
+			offset2 = nal_pkg2->size;
+			nal_pkg2->seq = pkg->seq;
+			//				LOGI("Slice seq: %02x", nal_pkg2->seq);
+			nal_pkg2->nalu = (uint8_t *)realloc(nal_pkg2->nalu, offset2 + pkg->nal_size);
+			memcpy(nal_pkg2->nalu+offset2, pkg->nal_data, pkg->nal_size);
+			nal_pkg2->size += pkg->nal_size;
+
+			LOGI("FIND END SLICE, NOW QUEUE, SIZE: %d", nal_pkg2->size);
+
+			LOGI("******************* QUEUE ******************");
+			queue_buffer = (char *)malloc(nal_pkg2->size * 3);
+			memset(queue_buffer, 0x0, nal_pkg2->size*3);
+			for(int i=0; i<nal_pkg2->size; i++) {
+				sprintf(&queue_buffer[i*3], "%02x ", nal_pkg2->nalu[i] & 0xff);
+			}
+			LOGI("%s", queue_buffer);
+			LOGI("******************* QUEUE END******************");
+			return nal_pkg2;
+			//frame_queue->enQueue(nal_pkg2);
+			//free(nal_pkg2);
+			//nal_pkg2 = NULL;
+
+			break;
+		case SLICE_TYPE_NONE:
+#if 1
+			LOGI("FIND A WHOLE FRAME: %d", nal_pkg2->size);
+			//如果没有发现分片结束
+			if(nal_pkg2) {
+				LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg2->size);
+				//frame_queue->enQueue(nal_pkg2);
+				return nal_pkg2;
+				//free(nal_pkg2);
+				//nal_pkg2 = NULL;
+			}
+
+			nal_pkg2 = (nalu_package *)malloc(sizeof(nalu_package));
+			if(!nal_pkg2) {
+				LOGE("No more memory");
+				return NULL;
+			}
+
+			nal_pkg2->seq = pkg->seq;
+			LOGI("Slice seq: %02x", nal_pkg2->seq);
+			nal_pkg2->size = pkg->nal_size;
+			nal_pkg2->nalu = (uint8_t *)malloc(nal_pkg2->size);
+			if(!nal_pkg2->nalu) {
+				LOGE("No more memory");
+				return NULL;
+			}
+
+			memset(nal_pkg2->nalu, 0x0, nal_pkg2->size);
+			memcpy(nal_pkg2->nalu, pkg->nal_data, pkg->nal_size);
+			return nal_pkg2;
+			//frame_queue->enQueue(nal_pkg2);
+			//free(nal_pkg2);
+			//nal_pkg2 = NULL;
+#endif
+			break;
+		default:
+			LOGI("Not A Valid Slice");
+			break;
+
+			if(pkg) {
+				if(pkg->nal_data) {
+					free(pkg->nal_data);
+					pkg->nal_data = NULL;
+				}
+				free(pkg);
+				pkg = NULL;
+			}
+	}
+}
+
