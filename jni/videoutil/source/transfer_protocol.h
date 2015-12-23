@@ -151,7 +151,7 @@ static int parse_data_package(const char *data, data_package *package) {
 	memcpy(package->nal_data, &p8[5], package->package_length-5);
 	package->verify=p8[package->package_length];
 	package->nal_size = package->package_length-6;
-	LOGI("----> package->seq: %d", package->seq);
+//	LOGI("----> package->seq: %d", package->seq);
 	return 0;
 }
 

@@ -250,13 +250,31 @@ JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getF
 	uint8_t **buf = transfer->get_frame(size);
 	if(size>0) {
 		LOGI("Get frame: %d", size);
-		//jbyteArray array = env->NewByteArray(size);
 		jbyte *data = env->GetByteArrayElements(array, 0);
+
+		LOGI("findb END SLICE, NOW QUEUE, SIZE: %d", size);
+
+		LOGI("******************* QUEUE ******************");
+			return 0;
+		char *queue_buffer = (char *)malloc(size * 3);
+		if(!queue_buffer) {
+			LOGI("########################");
+			return 0;
+		}
+		memset(queue_buffer, 0x0, size*3);
+		for(int i=0; i<size; i++) {
+			sprintf(&queue_buffer[i*3], "%02x ", (*buf)[i]);
+		}
+		LOGI("%s", queue_buffer);
+		LOGI("******************* findb END******************");
+
 		memcpy(data, &buf, size);
-		free(*buf);
-		free(buf);
+		//if(*buf)
+		//free(*buf);
+//		if(buf)
+//		free(buf);
 		//env->SetByteArrayRegion(array, 0, size, (jbyte *)&buf);
-		LOGI("Leave native_getFrame size");
+		//LOGI("Leave native_getFrame size: %d", size);
 		return size;
  	}
 

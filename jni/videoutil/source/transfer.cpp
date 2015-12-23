@@ -1,7 +1,7 @@
 #include "transfer.h"
 #include <netinet/in.h>
 
-#define TRANSFER_DEBUG
+//#define TRANSFER_DEBUG
 
 //线程退出标志，不可用Transfer的成员来控制
 bool isExit = false;
@@ -196,7 +196,7 @@ void* Transfer::receiveThread() {
 		socklen_t server_addr_length = sizeof(server_addr);
 		memset(buffer, 0x0, BUFFER_SIZE);
 
-		LOGI("Now receive data");
+//		LOGI("Now receive data");
 
 		/* 接收数据 */
 		int rcv_len = recvfrom(local_data_socket_fd, buffer, BUFFER_SIZE, 0,(struct sockaddr*)&server_addr, &server_addr_length);
@@ -207,7 +207,7 @@ void* Transfer::receiveThread() {
 			//exit(1);
 		}
 
-#ifdef TRANSFER_DEBUG
+#if 0
 		LOGI("Now receive %d bytes data", rcv_len);
 		LOGI("******************* Receive ******************");
 		char *log_buf = (char *)malloc(rcv_len * 8);
@@ -235,8 +235,8 @@ void* Transfer::receiveThread() {
 				if(result) {
 					LOGE("Parse data_package failed");
 				}
-				LOGI("data_package seq: %02x", pkg->seq);
-				LOGI("Receiver enQueue package %p", pkg);
+//				LOGI("data_package seq: %02x", pkg->seq);
+//				LOGI("Receiver enQueue package %p", pkg);
 				if(!package_queue->enQueue(pkg)) {
 					LOGE("Unable to enQueue");
 					if(pkg) {
@@ -248,11 +248,13 @@ void* Transfer::receiveThread() {
 						pkg = NULL;
 					}
 				}
-				LOGI("Receiver EnQueue package end");
+//				LOGI("Receiver EnQueue package end");
 #ifdef VERIFY
 			}
 #endif
 		}
+
+		//usleep(1000);
 	}
 
 	LOGI("Exit Receive Thread");
@@ -289,7 +291,7 @@ void* Transfer::processThread() {
 			//	LOGE("Cannot Get DataPackage");
 			continue;
 		}
-		LOGI("Now getDataPackage: Package Address is %p\n", pkg);
+//		LOGI("Now getDataPackage: Package Address is %p\n", pkg);
 #ifdef TRANSFER_DEBUG
 		printf("\n");
 		for(int i=0; i<pkg->nal_size; i++)
@@ -298,7 +300,7 @@ void* Transfer::processThread() {
 
 		if(!gotWidthHeight) {
 			if(!gotSpsPps) {
-				LOGI("Now parse package -> has_sps_pps");
+//				LOGI("Now parse package -> has_sps_pps");
 				int ret = has_sps_pps(pkg, sps, sps_size, Pps, pps_size, spsPps);
 				if(ret == STATUS_PARSE_SUCCESS) {
 					LOGI("Now Got Sps Pps !");
@@ -338,6 +340,7 @@ void* Transfer::processThread() {
 		free(pps_log_buf);
 #endif
 //make frame
+		char *queue_buffer;
 		int slice_type = get_data_package_slice_ident_type(pkg);
 		switch(slice_type) {
 			case SLICE_TYPE_INTER: //中间分片
@@ -349,10 +352,13 @@ void* Transfer::processThread() {
 					continue;
 				}
 #endif
+
 				offset = nal_pkg->size;
 				nal_pkg->seq = pkg->seq;
-				LOGI("Slice seq: %02x", nal_pkg->seq);
+					LOGI("lbg33333 %d",nal_pkg->size);
+//				LOGI("Slice seq: %02x", nal_pkg->seq);
 				nal_pkg->nalu = (uint8_t *)realloc(nal_pkg->nalu, offset + pkg->nal_size);
+				LOGI("lbg44444");
 				memcpy(nal_pkg->nalu+offset, pkg->nal_data, pkg->nal_size);
 				nal_pkg->size += pkg->nal_size;
 				break;
@@ -364,7 +370,7 @@ void* Transfer::processThread() {
 				if(nal_pkg) {
 					LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg->size);
 					frame_queue->enQueue(nal_pkg);
-					free(nal_pkg);
+					//free(nal_pkg);
 					nal_pkg = NULL;
 				}
 
@@ -375,7 +381,7 @@ void* Transfer::processThread() {
 				}
 
 				nal_pkg->seq = pkg->seq;
-				LOGI("Slice seq: %02x", nal_pkg->seq);
+//				LOGI("Slice seq: %02x", nal_pkg->seq);
 				nal_pkg->size = pkg->nal_size;
 				nal_pkg->nalu = (uint8_t *)malloc(nal_pkg->size);
 				if(!nal_pkg->nalu) {
@@ -398,14 +404,24 @@ void* Transfer::processThread() {
 				assert(nal_pkg);
 				offset = nal_pkg->size;
 				nal_pkg->seq = pkg->seq;
-				LOGI("Slice seq: %02x", nal_pkg->seq);
+//				LOGI("Slice seq: %02x", nal_pkg->seq);
 				nal_pkg->nalu = (uint8_t *)realloc(nal_pkg->nalu, offset + pkg->nal_size);
 				memcpy(nal_pkg->nalu+offset, pkg->nal_data, pkg->nal_size);
 				nal_pkg->size += pkg->nal_size;
 
-				LOGI("FIND END SLICE, NOW QUEUE");
+				LOGI("FIND END SLICE, NOW QUEUE, SIZE: %d", nal_pkg->size);
+
+				LOGI("******************* QUEUE ******************");
+				queue_buffer = (char *)malloc(nal_pkg->size * 3);
+				memset(queue_buffer, 0x0, nal_pkg->size*3);
+				for(int i=0; i<nal_pkg->size; i++) {
+					sprintf(&queue_buffer[i*3], "%02x ", nal_pkg->nalu[i] & 0xff);
+				}
+				LOGI("%s", queue_buffer);
+				LOGI("******************* QUEUE END******************");
+
 				frame_queue->enQueue(nal_pkg);
-				free(nal_pkg);
+				//free(nal_pkg);
 				nal_pkg = NULL;
 
 				break;
@@ -416,7 +432,7 @@ void* Transfer::processThread() {
 				if(nal_pkg) {
 					LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg->size);
 					frame_queue->enQueue(nal_pkg);
-					free(nal_pkg);
+					//free(nal_pkg);
 					nal_pkg = NULL;
 				}
 
@@ -438,7 +454,7 @@ void* Transfer::processThread() {
 				memset(nal_pkg->nalu, 0x0, nal_pkg->size);
 				memcpy(nal_pkg->nalu, pkg->nal_data, pkg->nal_size);
 				frame_queue->enQueue(nal_pkg);
-				free(nal_pkg);
+				//free(nal_pkg);
 				nal_pkg = NULL;
 #endif
 				break;
@@ -456,8 +472,8 @@ void* Transfer::processThread() {
 			free(pkg);
 			pkg = NULL;
 		}
-		//usleep(10000);
 
+		usleep(1000);
 	}
 	LOGI("Exit Process Thread");
 }
@@ -479,6 +495,8 @@ uint8_t **Transfer::get_frame(uint32_t &payload_size) {
 	if(pkg) {
 		frame = pkg->nalu;
 		payload_size = pkg->size;
+		LOGI("Payload_size %d", payload_size);
+		free(pkg);
 		return &frame;
 	}
 	return NULL;

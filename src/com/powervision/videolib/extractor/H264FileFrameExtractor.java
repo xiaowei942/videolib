@@ -57,6 +57,11 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
     }
 
     @Override
+    public int getFrameSize() {
+        return 0;
+    }
+
+    @Override
     public byte[] getFrame() {
         int start = naluList.get(decodeNaluIndex);
         int count = naluList.get(decodeNaluIndex+1)-naluList.get(decodeNaluIndex);
@@ -78,6 +83,8 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
             }
             Log.i(TAG, "***************************  END  *******************************");
         }
+
+
         return temp;
     }
 

@@ -192,31 +192,38 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
             int inputBufferIndex = 0;
             if(decoderconfigured) {
                 if (!inputDone) {
-                    byte[] buf = null;
-                    if ((buf = mExtractor.getFrame()) != null) {
+                    byte[] buf = mExtractor.getFrame();
+                    size = mExtractor.getFrameSize();
+                    if (size > 0) {
                         inputBufferIndex = codec.dequeueInputBuffer(-1);
-                        if (inputBufferIndex >= 0) {
-                            ByteBuffer bf = ByteBuffer.wrap(buf, 0, buf.length);
+                        if (inputBufferIndex >= 0 ) {
+                            if ( buf==null) {
+                            count++;
+                                continue;
+                            }
+
+                            ByteBuffer bf = ByteBuffer.wrap(buf, 0, size);
 
                             bf.position(0);
-                            bf.limit(buf.length);
+                            bf.limit(size);
 
                             ByteBuffer inputBuffer = decoderInputBuffers[inputBufferIndex];
                             inputBuffer.clear();
                             inputBuffer.put(buf);
                             if (count == 3) {
-                                codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
+                                codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, 0);
                                 if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 1);
                             } else {
-                                codec.queueInputBuffer(inputBufferIndex, 0, buf.length, count * 1000, 0);
+                                codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, 0);
                                 if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 0);
                             }
 
                             if (closeWriter) {
-                                writer.close();
+                                //writer.close();
                             } else {
-                                writer.writeFrame(buf, buf.length, 1);
+                                //writer.writeFrame(buf, size, 1);
                             }
+
                             count++;
                         }
                     } else {

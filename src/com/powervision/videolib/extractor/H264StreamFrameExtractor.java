@@ -1,5 +1,6 @@
 package com.powervision.videolib.extractor;
 
+import android.util.Log;
 import com.powervision.videolib.jni.JniNatives;
 import com.powervision.videolib.jni.JniNativesProxy;
 
@@ -16,11 +17,11 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     int dataPort = 6007;
     byte sps[] = new byte[512];
     byte pps[] = new byte[128];
-    byte frame[] = new byte[5*1024*1024];
 
     private int nativeTransferObject;
 
     H264StreamFrameExtractor() {
+        frame = new byte[5*1024*1024];
         init();
     }
 
@@ -53,12 +54,21 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     }
 
     @Override
+    public int getFrameSize() {
+        return frameSize;
+    }
+
+    @Override
     public byte[] getFrame() {
-        int size = JniNativesProxy.getFrame(nativeTransferObject, frame);
+        Log.i("getFrame", "Enter");
+        byte frame2[] = new byte[102400];
+        int size = JniNativesProxy.getFrame(nativeTransferObject, frame2);
+        Log.i("getFrame", "Leave with size: " + size);
         if(size <= 0) {
             return null;
         }
-        return frame;
+        frameSize = size;
+        return frame2;
     }
 
     public void setSps(ByteBuffer sps) {
