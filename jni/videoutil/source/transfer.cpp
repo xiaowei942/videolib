@@ -235,7 +235,7 @@ void* Transfer::receiveThread() {
 					LOGE("Parse data_package failed");
 				}
 //				LOGI("data_package seq: %02x", pkg->seq);
-//				LOGI("Receiver enQueue package %p", pkg);
+				LOGI("Receiver enQueue package %p", pkg);
 
 #if 1
 				if(!gotWidthHeight) {
@@ -478,9 +478,12 @@ void* Transfer::processThread() {
 
 				memset(nal_pkg->nalu, 0x0, nal_pkg->size);
 				memcpy(nal_pkg->nalu, pkg->nal_data, pkg->nal_size);
-				frame_queue->enQueue(nal_pkg);
-				//free(nal_pkg);
-				nal_pkg = NULL;
+				
+				if(gotWidthHeight) {
+					frame_queue->enQueue(nal_pkg);
+					//free(nal_pkg);
+					nal_pkg = NULL;
+				}
 #endif
 				break;
 			default:
@@ -545,13 +548,13 @@ nalu_package *Transfer::getFrame() {
 	}
 
 	LOGI("Now getDataPackage: Package Address is %p\n", pkg);
-#ifdef TRANSFER_DEBUG
+#if 0
 	printf("\n");
 	for(int i=0; i<pkg->nal_size; i++)
 		printf("%02x ", pkg->nal_data[i]);
 #endif
 
-#if 1
+#if 0
 	char *sps_log_buf = (char *)malloc(sps_size);
 	memset(sps_log_buf, '\0', sps_size);
 	for(int i=0; i<sps_size; i++) {
@@ -640,7 +643,7 @@ nalu_package *Transfer::getFrame() {
 			nal_pkg2->size += pkg->nal_size;
 
 			LOGI("FIND END SLICE, NOW QUEUE, SIZE: %d", nal_pkg2->size);
-
+#if 0
 			LOGI("******************* QUEUE ******************");
 			queue_buffer = (char *)malloc(nal_pkg2->size * 3);
 			memset(queue_buffer, 0x0, nal_pkg2->size*3);
@@ -648,7 +651,9 @@ nalu_package *Transfer::getFrame() {
 				sprintf(&queue_buffer[i*3], "%02x ", nal_pkg2->nalu[i] & 0xff);
 			}
 			LOGI("%s", queue_buffer);
+			free(queue_buffer);
 			LOGI("******************* QUEUE END******************");
+#endif
 			return nal_pkg2;
 			//frame_queue->enQueue(nal_pkg2);
 			//free(nal_pkg2);

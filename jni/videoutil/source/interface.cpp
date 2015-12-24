@@ -266,7 +266,6 @@ LOGI("5");
 		LOGI("findb END SLICE, NOW QUEUE, SIZE: %d", size);
 
 		LOGI("******************* QUEUE ******************");
-			return 0;
 		char *queue_buffer = (char *)malloc(size * 3);
 		if(!queue_buffer) {
 			LOGI("########################");
@@ -280,15 +279,58 @@ LOGI("5");
 		LOGI("******************* findb END******************");
 #endif
 		memcpy(data, nal_pkg->nalu, size);
-		if(buf)
-		free(buf);
-
+		env->ReleaseByteArrayElements(array, data, 0);
 LOGI("6");
+		//if(buf)
+	//	free(buf);
+
+LOGI("7");
 		return size;
  	}
 
 	LOGI("Get no frame");
 	return 0;
+  }
+
+
+JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2
+  (JNIEnv *env, jclass thiz, jint obj) {
+  	LOGI("Enter native_getFrame2");
+LOGI("1");
+  	size_t size = 0;
+	Transfer *transfer = (Transfer *)obj;
+	if(!transfer) {
+		return NULL;
+	}
+
+LOGI("2");
+	nalu_package *nal_pkg = transfer->getFrame();
+	if(!nal_pkg) {
+		return NULL;
+	}
+
+	LOGI("nalu_pkg: %p", nal_pkg);
+LOGI("3");
+	size = nal_pkg->size;
+	char *buf = (char *)nal_pkg->nalu;
+LOGI("4");
+	if(size>0) {
+		LOGI("Get frame 2: %d", size);
+		//jbyteArray array = env->NewByteArray(size);
+
+LOGI("5");
+	//	env->SetByteArrayRegion(array, 0, size, (jbyte *)buf);
+LOGI("6");
+		//if(nal_pkg->nalu)
+		//	free(nal_pkg->nalu);
+
+LOGI("7");
+		//return array;
+		return NULL;
+ 	} else {
+		LOGI("Get no frame");
+		return NULL;
+	}
   }
 
 
@@ -323,6 +365,7 @@ static JNINativeMethod methods[] = {
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
 	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess },
 	{ "native_getFrame", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
+	{ "native_getFrame2", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2 },
 	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared }
 };
 
