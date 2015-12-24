@@ -17,19 +17,21 @@ extern "C" {
 #endif
 
 typedef struct _data_package {
+	uint16_t nal_size;
 	uint16_t package_length;
 	uint8_t seq;
 	uint8_t package_type;
 	uint8_t slice_ident;
-	uint8_t *nal_data;
 	uint8_t verify;
-	uint16_t nal_size;
+	uint8_t *nal_data;
+	uint32_t pad;
 } data_package;
 
 typedef struct _nalu_package {
 	uint8_t *nalu;
 	uint32_t size;
 	uint8_t seq;
+	uint32_t frame_num;
 } nalu_package;
 
 typedef struct _control_package {
@@ -84,6 +86,11 @@ enum _status {
 	STATUS_PARSE_SUCCESS
 };
 
+enum _make_frame_status {
+	MAKE_FRMAE_STATUS_END = 0,
+	MAKE_FRMAE_STATUS_MAKING
+};
+
 #define SWAP16(a) ( (a)<<8 | (a)>>8 )
 
 /*
@@ -96,7 +103,7 @@ enum _status {
 static int get_valid_data_length(const char *data) {
 	assert(data);
 	uint16_t *p16 = (uint16_t *)data;
-	return SWAP16(p16[0]);
+	return p16[0];
 }
 
 /*
@@ -135,6 +142,7 @@ static int parse_data_package(const char *data, data_package *package) {
 	uint16_t *p16 = (uint16_t *)data;
 	uint8_t *p8 = (uint8_t *)data;
 	package->package_length = p16[0];//SWAP16(p16[0]);
+//	LOGI("parse_data_package : size %d %02X ",package->package_length,p16[0]);
 	package->seq = p8[2];
 	package->package_type = p8[3];
 	if(package->package_type != 0x01) {
@@ -151,6 +159,7 @@ static int parse_data_package(const char *data, data_package *package) {
 	memcpy(package->nal_data, &p8[5], package->package_length-5);
 	package->verify=p8[package->package_length];
 	package->nal_size = package->package_length-6;
+//	LOGI("parse_data_package : size %d %02X ",package->package_length,p16[0]);
 //	LOGI("----> package->seq: %d", package->seq);
 	return 0;
 }
@@ -169,7 +178,7 @@ static int get_data_package_slice_ident_type(data_package *package) {
 	return package->slice_ident & 0x03;
 }
 
-static int has_sps_pps(data_package *package, uint8_t* sps, int &sps_size, uint8_t* pps, int &pps_size, uint8_t* sps_pps) {
+static int has_sps_pps(const data_package *package, uint8_t* sps, int &sps_size, uint8_t* pps, int &pps_size, uint8_t* sps_pps) {
 	assert(package);
 	uint8_t *data = package->nal_data;
 

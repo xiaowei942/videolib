@@ -50,6 +50,7 @@ public:
 
 	uint8_t **get_frame(uint32_t &payload_size);
 	nalu_package *getFrame();
+	nalu_package *makeFrame(data_package *pkg);
 	bool isPrepared();
 private:
 	data_package* getDataPackage();

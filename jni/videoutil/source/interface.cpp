@@ -312,14 +312,16 @@ LOGI("2");
 	LOGI("nalu_pkg: %p", nal_pkg);
 LOGI("3");
 	size = nal_pkg->size;
-	char *buf = (char *)nal_pkg->nalu;
+	uint8_t *buf = (uint8_t *)nal_pkg->nalu;
 LOGI("4");
 	if(size>0) {
 		LOGI("Get frame 2: %d", size);
-		//jbyteArray array = env->NewByteArray(size);
+		jbyteArray array = env->NewByteArray(2);//size);
 
 LOGI("5");
-	//	env->SetByteArrayRegion(array, 0, size, (jbyte *)buf);
+		LOGI("Sizeof buf: %d", sizeof(buf));
+	//	char *log_buf = 
+		env->SetByteArrayRegion(array, 0, 25/* size */, (jbyte *)buf);
 LOGI("6");
 		//if(nal_pkg->nalu)
 		//	free(nal_pkg->nalu);

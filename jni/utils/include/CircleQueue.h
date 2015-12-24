@@ -75,9 +75,6 @@ bool CircleQueue<ElemType>::enQueue(ElemType element) {
 #ifdef CIRCLEQUEUE_DEBUG
 LOGI("<-- EnQueue %s(cir) %d\n", queue_name, writePos);
 #endif
-		if((void *)data[writePos]) {
-			free((void *)(data[writePos]));
-		}
 		data[writePos++] = element;
 		writePos %= m_queueCapacity;
 		m_queueLength++;
