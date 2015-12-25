@@ -35,34 +35,14 @@ Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), 
 		LOGE("Cannot Create CircleQueue");
 	}
 
-#if 0
-	for(int i=0; i<QUEUE_SIZE; i++) {
-		nalu_package *nal_pkg = (nalu_package *)malloc(sizeof(nalu_package));
-		if(!nal_pkg) {
-			LOGE("Malloc Frame Queue Element Error");
-			exit(-1);
-		}
-
-		nal_pkg->size = QUEUE_SIZE;
-		nal_pkg->pos = 0;
-		nal_pkg->nalu = (uint8_t *)malloc(FRAME_SIZE);
-		if(!nal_pkg->nalu) {
-			LOGE("Malloc Frame Queue Buffer Error");
-			exit(-1);
-		}
-		frame_queue->enQueue(nal_pkg);
-	}
-#endif
-
 	int error = pthread_create(&receive_handle, NULL, &start_receive_func, (void *)this);
 	if(error) {
 		LOGE("Cannot Create Thread");
 	}
-
-	error = pthread_create(&process_handle, NULL, &start_process_func, (void *)this);
-	if(error) {
-		LOGE("Cannot Create Thread");
-	}
+//	error = pthread_create(&process_handle, NULL, &start_process_func, (void *)this);
+//	if(error) {
+//		LOGE("Cannot Create Thread");
+//	}
 	LOGI("Leave Transfer");
 }
 
