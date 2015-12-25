@@ -220,7 +220,6 @@ void* Transfer::receiveThread() {
 				}
 
 				LOGI("raw package: size: %d(%d)  seq: %02x", pkg->package_length, pkg->nal_size, pkg->seq);
-#if 1
 				if(!gotWidthHeight) {
 					if(!gotSpsPps) {
 						LOGI("Now parse package -> has_sps_pps");
@@ -230,14 +229,8 @@ void* Transfer::receiveThread() {
 							gotSpsPps = true;
 						} else {
 							LOGI("Cannot get Sps Pps");
-							if(pkg) {
-								if(pkg->nal_data) {
-									free(pkg->nal_data);
-									pkg->nal_data = NULL;
-								} 
-								LOGI("free 111");
-								free(pkg);
-							}
+
+							goto pkgfree;
 							continue;
 						}
 					}
@@ -249,38 +242,29 @@ void* Transfer::receiveThread() {
 						LOGI("Width: %d, Height: %d\n", info.width, info.height);
 						gotWidthHeight = true;
 					} else {
-						if(pkg) {
-							if(pkg->nal_data) {
-								free(pkg->nal_data);
-								pkg->nal_data = NULL;
-							} 
-							LOGI("free 222");
-							free(pkg);
-						}
+						goto pkgfree;
 						continue;
 					}
 				}
-
-#endif
-
 				if(makeFrame(pkg) != NULL) {
 					nal_pkg->frame_num++;
 					frame_queue->enQueue(nal_pkg);
 					nal_pkg = NULL;
 				}
 
-				if(pkg) {
-					if(pkg->nal_data) {
-						free(pkg->nal_data);
-						pkg->nal_data = NULL;
-					} 
-					LOGI("free 333");
-					free(pkg);
-					pkg = NULL;
-				}
+			goto pkgfree;
 #ifdef VERIFY
 			}
 #endif
+		pkgfree:
+			if(pkg) {
+				if(pkg->nal_data) {
+					free(pkg->nal_data);
+					pkg->nal_data = NULL;
+				}
+				LOGI("free 111");
+				free(pkg);
+			}
 		}
 
 		//usleep(1000);
