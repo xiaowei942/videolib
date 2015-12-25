@@ -239,7 +239,6 @@ JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stop
 
 JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
   (JNIEnv *env, jclass thiz, jint obj) {
-  	LOGI("Enter native_getFrame2");
   	size_t size = 0;
 	Transfer *transfer = (Transfer *)obj;
 	if(!transfer) {
@@ -251,14 +250,12 @@ JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_nativ
 		return NULL;
 	}
 
-	LOGI("nalu_pkg: %p", nal_pkg);
 	size = nal_pkg->size;
 	uint8_t *buf = (uint8_t *)nal_pkg->nalu;
 	if(size>0) {
-		LOGI("Get frame 2: %d", size);
+//		LOGI("Get frame 2: %d", size);
 		jbyteArray array = env->NewByteArray(size);
 
-		LOGI("Sizeof buf: %d", sizeof(buf));
 		env->SetByteArrayRegion(array, 0,  size, (jbyte *)buf);
 		if(nal_pkg->nalu) {
 			free(nal_pkg->nalu);
@@ -283,6 +280,37 @@ JNIEXPORT jboolean JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_
 	}
 	return transfer->isPrepared();
   }
+JNIEXPORT jstring JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getDescribe
+  (JNIEnv *env, jclass thiz, jint obj) {
+  	LOGI("Enter native_isPrepared");
+
+	Transfer *transfer = (Transfer *)obj;
+	if(!transfer) {
+		return false;
+	}
+	 char pat[80];
+	if(transfer->video_width && transfer->video_height)
+	{
+	char *width = "width:";
+	char *height = " height:";
+        sprintf(pat, "%s%d%s%d", width, transfer->video_width,height,transfer->video_height);
+	}else{
+	pat[0]='0';
+	}
+
+ // 定义java String类 strClass
+    jclass strClass = (env)->FindClass("java/lang/String");
+    // 获取java String类方法String(byte[],String)的构造器,用于将本地byte[]数组转换为一个新String
+    jmethodID ctorID = (env)->GetMethodID(strClass, "<init>", "([BLjava/lang/String;)V");
+    // 建立byte数组
+    jbyteArray bytes = (env)->NewByteArray((jsize)strlen(pat));
+    // 将char* 转换为byte数组
+    (env)->SetByteArrayRegion(bytes, 0, (jsize)strlen(pat), (jbyte*)pat);
+    //设置String, 保存语言类型,用于byte数组转换至String时的参数
+    jstring encoding = (env)->NewStringUTF("GB2312");
+    //将byte数组转换为java String,并输出
+    return (jstring)(env)->NewObject(strClass, ctorID, bytes, encoding);
+  }
 
 #if 1
 static JNINativeMethod methods[] = {
@@ -304,7 +332,8 @@ static JNINativeMethod methods[] = {
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
 	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess },
 	{ "native_getFrame", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
-	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared }
+	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared},
+	{ "native_getDescribe", "(I)Ljava/lang/String;", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getDescribe}
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";

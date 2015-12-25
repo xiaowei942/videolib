@@ -100,7 +100,9 @@ public class JniNativesProxy {
     public static byte[] getFrame(int obj) {
         return JniNatives.native_getFrame(obj);
     }
-
+    public static String getDescribe(int obj){
+        return JniNatives.native_getDescribe(obj);
+    }
     public static boolean native_isPrepared(int obj) {
         return JniNatives.native_isPrepared(obj);
     }

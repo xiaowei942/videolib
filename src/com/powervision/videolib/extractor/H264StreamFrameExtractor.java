@@ -72,6 +72,11 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
        return JniNativesProxy.getFrame(nativeTransferObject);
     }
 
+    @Override
+    public String getDescribe() {
+        return JniNativesProxy.getDescribe(nativeTransferObject);
+    }
+
     public void setSps(ByteBuffer sps) {
         super.setSps(sps);
     };

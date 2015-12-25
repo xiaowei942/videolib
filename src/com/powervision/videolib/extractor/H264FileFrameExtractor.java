@@ -88,6 +88,11 @@ public class H264FileFrameExtractor extends H264FrameExtractor implements Runnab
         return temp;
     }
 
+    @Override
+    public String getDescribe() {
+        return null;
+    }
+
     public int open() {
         if(filePath != null) {
             int ret = openFile(filePath);

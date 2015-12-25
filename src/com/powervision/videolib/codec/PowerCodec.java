@@ -329,6 +329,12 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                     continue;
                 }
 
+                String describe=mExtractor.getDescribe();
+                if(describe!=null && describe.length()>1) {
+                    String[] tmpstr = describe.split(" ");
+                    mWidth = Integer.parseInt(tmpstr[0].replace("width:", ""));
+                    mHeight = Integer.parseInt(tmpstr[1].replace("height:", ""));
+                }
                 ByteBuffer sps = mExtractor.getSps();
                 int sps_len = mExtractor.getSpsLength();
                 ByteBuffer pps = mExtractor.getPps();
