@@ -11,12 +11,8 @@ nalu_package *nal_pkg = NULL;
 
 void *start_receive_func(void *arg) {
 	Transfer *cls = (Transfer *)arg;
+	//开启接收线程
 	cls->receiveThread();
-}
-
-void *start_process_func(void *arg) {
-	Transfer *cls = (Transfer *)arg;
-	//cls->processThread();
 }
 
 void Transfer::Exit() {
@@ -39,10 +35,6 @@ Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), 
 	if(error) {
 		LOGE("Cannot Create Thread");
 	}
-//	error = pthread_create(&process_handle, NULL, &start_process_func, (void *)this);
-//	if(error) {
-//		LOGE("Cannot Create Thread");
-//	}
 	LOGI("Leave Transfer");
 }
 

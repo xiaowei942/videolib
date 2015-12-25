@@ -96,12 +96,9 @@ public class JniNativesProxy {
         return JniNatives.native_stopProcess(obj);
     }
 
-    public static int getFrame(int obj, byte[] frame) {
-        return JniNatives.native_getFrame(obj, frame);
-    }
 
-    public static byte[] getFrame2(int obj) {
-        return JniNatives.native_getFrame2(obj);
+    public static byte[] getFrame(int obj) {
+        return JniNatives.native_getFrame(obj);
     }
 
     public static boolean native_isPrepared(int obj) {

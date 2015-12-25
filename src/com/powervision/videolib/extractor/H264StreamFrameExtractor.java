@@ -68,8 +68,8 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
 //        }
 //        frameSize = size;
 //        return frame;
-        byte[] buf = JniNativesProxy.getFrame2(nativeTransferObject);
-        return buf;
+
+       return JniNativesProxy.getFrame(nativeTransferObject);
     }
 
     public void setSps(ByteBuffer sps) {

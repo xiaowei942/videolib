@@ -237,63 +237,7 @@ JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stop
 	return transfer->stopProcess();
   }
 
-JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
-  (JNIEnv *env, jclass thiz, jint obj, jbyteArray array) {
-  	LOGI("Enter native_getFrame");
-LOGI("1");
-  	size_t size = 0;
-	Transfer *transfer = (Transfer *)obj;
-	if(!transfer) {
-		return -1;
-	}
-
-LOGI("2");
-	nalu_package *nal_pkg = transfer->getFrame();
-	if(!nal_pkg) {
-		return 0;
-	}
-
-LOGI("3");
-	size = nal_pkg->size;
-	char *buf = (char *)nal_pkg->nalu;
-LOGI("4");
-	if(size>0) {
-		LOGI("Get frame: %d", size);
-		jbyte *data = env->GetByteArrayElements(array, 0);
-
-LOGI("5");
-#if 0
-		LOGI("findb END SLICE, NOW QUEUE, SIZE: %d", size);
-
-		LOGI("******************* QUEUE ******************");
-		char *queue_buffer = (char *)malloc(size * 3);
-		if(!queue_buffer) {
-			LOGI("########################");
-			return 0;
-		}
-		memset(queue_buffer, 0x0, size*3);
-		for(int i=0; i<size; i++) {
-			sprintf(&queue_buffer[i*3], "%02x ", buf[i]);
-		}
-		LOGI("%s", queue_buffer);
-		LOGI("******************* findb END******************");
-#endif
-		memcpy(data, nal_pkg->nalu, size);
-		env->ReleaseByteArrayElements(array, data, 0);
-LOGI("6");
-		//if(buf)
-	//	free(buf);
-
-LOGI("7");
-		return size;
- 	}
-
-	LOGI("Get no frame");
-	return 0;
-  }
-
-
-JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2
+JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
   (JNIEnv *env, jclass thiz, jint obj) {
   	LOGI("Enter native_getFrame2");
   	size_t size = 0;
@@ -329,7 +273,6 @@ JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_nativ
 	}
   }
 
-
 JNIEXPORT jboolean JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared
   (JNIEnv *env, jclass thiz, jint obj) {
   	LOGI("Enter native_isPrepared");
@@ -360,8 +303,7 @@ static JNINativeMethod methods[] = {
 	{ "native_stopReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopReceive },
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
 	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess },
-	{ "native_getFrame", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
-	{ "native_getFrame2", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2 },
+	{ "native_getFrame", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
 	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared }
 };
 
