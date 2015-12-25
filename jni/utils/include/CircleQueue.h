@@ -4,7 +4,7 @@
 #include <string.h>
 #include <pthread.h>
 
-#define CIRCLEQUEUE_DEBUG
+#undef CIRCLEQUEUE_DEBUG
 
 #include <android/log.h>
 #define TRANSFER_LOG_TAG "CIRCLEQUEUE"
