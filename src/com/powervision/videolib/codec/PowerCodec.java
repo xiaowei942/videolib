@@ -193,10 +193,12 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
             if(decoderconfigured) {
                 if (!inputDone) {
                     byte[] buf = mExtractor.getFrame();
-                    size = mExtractor.getFrameSize();
-                    if(size > 0) {
+                    if (buf == null) {
                         continue;
                     }
+
+                    size = buf.length;
+
                     if (size > 0) {
                         inputBufferIndex = codec.dequeueInputBuffer(-1);
                         if (inputBufferIndex >= 0 ) {
@@ -246,77 +248,77 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                                     + (encoderDone ? " (EOS)" : ""));
                     }
                 }
-//
-//                int decoderStatus = codec.dequeueOutputBuffer(info, TIMEOUT_USEC);
-//                if (decoderStatus == MediaCodec.INFO_TRY_AGAIN_LATER) {
-//                    // no output available yet
-//                    if (DEBUG)
-//                        Log.d(TAG, "no output from decoder available");
-//                } else if (decoderStatus == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
-//                    // The storage associated with the direct ByteBuffer may already be unmapped,
-//                    // so attempting to access data through the old output buffer array could
-//                    // lead to a native crash.
-//                    if (DEBUG)
-//                        Log.d(TAG, "decoder output buffers changed");
-//                    decoderOutputBuffers = codec.getOutputBuffers();
-//                } else if (decoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
-//                    // this happens before the first frame is returned
-//                    decoderOutputFormat = codec.getOutputFormat();
-//                    if (DEBUG)
-//                        Log.d(TAG, "decoder output format changed: " + decoderOutputFormat);
-//                } else if (decoderStatus < 0) {
-//                    Log.e(TAG, "unexpected result from deocder.dequeueOutputBuffer: " + decoderStatus);
-//                } else {  // decoderStatus >= 0
-//                    ByteBuffer outputFrame = decoderOutputBuffers[decoderStatus];
-//
-//                    if (!hasSurface) {
-//                        byte[] data = new byte[info.size];
-//                        outputFrame.get(data);
-//                        outputFrame.position(info.offset);
-//
-//                        Log.i("WEI-->", "lastTime:" + " " + lasttime);
-//                        long outMs = System.currentTimeMillis();
-//                        long useTime = outMs - startMs;
-//                        lasttime = useTime;
-//
-//                        while (true) {
-//                            Log.i(TAG, "Decoded, now convert format !!!");
-//                            JniNativesProxy.convertYUV420P2ARGB(brgb, data, mWidth, mHeight);
-//                            Log.i(TAG, "Decoded, now draw !!!");
-//                            renderFrame(mCurrentRenderer);
-//                            ByteBuffer byteBuffer = ByteBuffer.wrap(brgb);
-//                            surfaceBitmap.copyPixelsFromBuffer(byteBuffer);
-//                            //((MyActivity)obj).sv.draw();
-//                            if (getCaptureFrame()) {
-//                                captureBitmap = Bitmap.createBitmap(surfaceBitmap);
-//                            }
-//
-//                            if (getCaptureFrame()) {
-//                                setCaptureFrame(false);
-//                                if(captureFrameListener != null)
-//                                    captureFrameListener.onCaptureFrame(captureBitmap);
-//                            }
-//                            break;
-//                        }
-//                    }
-//
-//                    if (info.size == 0) {
-//                        if (DEBUG) Log.d(TAG, "got empty frame");
-//                    } else {
-//                        if (DEBUG) Log.d(TAG, "decoded, checking frame " + decodedframes++);
-//                    }
-//
-//                    if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
-//                        if (DEBUG) Log.d(TAG, "output EOS");
-//                        exitDecoder = true;
-//                    }
-//
-//                    if (!hasSurface) {
-//                        codec.releaseOutputBuffer(decoderStatus, false /*render*/);
-//                    } else {
-//                        codec.releaseOutputBuffer(decoderStatus, true /*render*/);
-//                    }
-//                }
+
+                int decoderStatus = codec.dequeueOutputBuffer(info, TIMEOUT_USEC);
+                if (decoderStatus == MediaCodec.INFO_TRY_AGAIN_LATER) {
+                    // no output available yet
+                    if (DEBUG)
+                        Log.d(TAG, "no output from decoder available");
+                } else if (decoderStatus == MediaCodec.INFO_OUTPUT_BUFFERS_CHANGED) {
+                    // The storage associated with the direct ByteBuffer may already be unmapped,
+                    // so attempting to access data through the old output buffer array could
+                    // lead to a native crash.
+                    if (DEBUG)
+                        Log.d(TAG, "decoder output buffers changed");
+                    decoderOutputBuffers = codec.getOutputBuffers();
+                } else if (decoderStatus == MediaCodec.INFO_OUTPUT_FORMAT_CHANGED) {
+                    // this happens before the first frame is returned
+                    decoderOutputFormat = codec.getOutputFormat();
+                    if (DEBUG)
+                        Log.d(TAG, "decoder output format changed: " + decoderOutputFormat);
+                } else if (decoderStatus < 0) {
+                    Log.e(TAG, "unexpected result from deocder.dequeueOutputBuffer: " + decoderStatus);
+                } else {  // decoderStatus >= 0
+                    ByteBuffer outputFrame = decoderOutputBuffers[decoderStatus];
+
+                    if (!hasSurface) {
+                        byte[] data = new byte[info.size];
+                        outputFrame.get(data);
+                        outputFrame.position(info.offset);
+
+                        Log.i("WEI-->", "lastTime:" + " " + lasttime);
+                        long outMs = System.currentTimeMillis();
+                        long useTime = outMs - startMs;
+                        lasttime = useTime;
+
+                        while (true) {
+                            Log.i(TAG, "Decoded, now convert format !!!");
+                            JniNativesProxy.convertYUV420P2ARGB(brgb, data, mWidth, mHeight);
+                            Log.i(TAG, "Decoded, now draw !!!");
+                            renderFrame(mCurrentRenderer);
+                            ByteBuffer byteBuffer = ByteBuffer.wrap(brgb);
+                            surfaceBitmap.copyPixelsFromBuffer(byteBuffer);
+                            //((MyActivity)obj).sv.draw();
+                            if (getCaptureFrame()) {
+                                captureBitmap = Bitmap.createBitmap(surfaceBitmap);
+                            }
+
+                            if (getCaptureFrame()) {
+                                setCaptureFrame(false);
+                                if(captureFrameListener != null)
+                                    captureFrameListener.onCaptureFrame(captureBitmap);
+                            }
+                            break;
+                        }
+                    }
+
+                    if (info.size == 0) {
+                        if (DEBUG) Log.d(TAG, "got empty frame");
+                    } else {
+                        if (DEBUG) Log.d(TAG, "decoded, checking frame " + decodedframes++);
+                    }
+
+                    if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
+                        if (DEBUG) Log.d(TAG, "output EOS");
+                        exitDecoder = true;
+                    }
+
+                    if (!hasSurface) {
+                        codec.releaseOutputBuffer(decoderStatus, false /*render*/);
+                    } else {
+                        codec.releaseOutputBuffer(decoderStatus, true /*render*/);
+                    }
+                }
             } else { //初始化,等待extractor获取到sps，pps等
                 boolean isPrepared = mExtractor.isPrepared();
                 while (!isPrepared) {
