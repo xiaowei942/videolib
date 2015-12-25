@@ -218,9 +218,8 @@ void* Transfer::receiveThread() {
 				if(result) {
 					LOGE("Parse data_package failed");
 				}
-//				LOGI("data_package seq: %02x", pkg->seq);
-//				LOGI("Receiver enQueue package %p", pkg);
 
+				LOGI("raw package: size: %d(%d)  seq: %02x", pkg->package_length, pkg->nal_size, pkg->seq);
 #if 1
 				if(!gotWidthHeight) {
 					if(!gotSpsPps) {
@@ -236,14 +235,13 @@ void* Transfer::receiveThread() {
 									free(pkg->nal_data);
 									pkg->nal_data = NULL;
 								} 
-								LOGI("free+++++ ");
+								LOGI("free 111");
 								free(pkg);
 							}
 							continue;
 						}
 					}
 
-					LOGI("ff_h264 : %d ",pkg->nal_size);
 					Screen_Info info;
 					LOGI("Now Get Width and Height");
 					int spssize = sizeof(sps)/sizeof(sps[0]);
@@ -251,6 +249,14 @@ void* Transfer::receiveThread() {
 						LOGI("Width: %d, Height: %d\n", info.width, info.height);
 						gotWidthHeight = true;
 					} else {
+						if(pkg) {
+							if(pkg->nal_data) {
+								free(pkg->nal_data);
+								pkg->nal_data = NULL;
+							} 
+							LOGI("free 222");
+							free(pkg);
+						}
 						continue;
 					}
 				}
@@ -268,7 +274,7 @@ void* Transfer::receiveThread() {
 						free(pkg->nal_data);
 						pkg->nal_data = NULL;
 					} 
-					LOGI("free+++++ ");
+					LOGI("free 333");
 					free(pkg);
 					pkg = NULL;
 				}
@@ -317,8 +323,6 @@ bool Transfer::isPrepared() {
 }
 
 nalu_package *Transfer::makeFrame(data_package *pkg) {
-
-	LOGI("Now makeFrame");
 	nalu_package *ret = NULL;
 	char *queue_buffer;
 	int slice_type = get_data_package_slice_ident_type(pkg);
@@ -333,11 +337,10 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 			offset2 = nal_pkg->size;
 			nal_pkg->seq = pkg->seq;
-			LOGI("SLICE %d", nal_pkg->size);
-			//LOGI("Slice seq: %02x", nal_pkg->seq);
 			nal_pkg->nalu = (uint8_t *)realloc(nal_pkg->nalu, offset2 + pkg->nal_size);
 			memcpy(nal_pkg->nalu+offset2, pkg->nal_data, pkg->nal_size);
 			nal_pkg->size += pkg->nal_size;
+			LOGI("SLICE: size: %d  seq: %02x", nal_pkg->size, nal_pkg->seq);
 			return NULL;
 			break;
 		case SLICE_TYPE_FIRST: //分片开始
@@ -357,7 +360,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 			nal_pkg->seq = pkg->seq;
 			nal_pkg->size = pkg->nal_size;
-			LOGI("SLICE seq: %02x %d", nal_pkg->seq, nal_pkg->size);
+			LOGI("SLICE: size: %d  seq: %02x", nal_pkg->size, nal_pkg->seq);
 			nal_pkg->nalu = (uint8_t *)malloc(nal_pkg->size);
 			if(!nal_pkg->nalu) {
 				LOGE("No more memory");
@@ -366,7 +369,6 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 			memset(nal_pkg->nalu, 0x0, nal_pkg->size);
 			memcpy(nal_pkg->nalu, pkg->nal_data, pkg->nal_size);
-			LOGI("makeFrame size: [pkg] %d [nal_pkg] %d ",pkg->nal_size,nal_pkg->size);
 			return NULL;
 			break;
 		case SLICE_TYPE_LAST: //分片结束
@@ -379,7 +381,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			assert(nal_pkg);
 			offset2 = nal_pkg->size;
 			nal_pkg->seq = pkg->seq;
-			//				LOGI("Slice seq: %02x", nal_pkg->seq);
+			LOGI("SLICE: size: %d  seq: %02x", nal_pkg->size, nal_pkg->seq);
 			nal_pkg->nalu = (uint8_t *)realloc(nal_pkg->nalu, offset2 + pkg->nal_size);
 			memcpy(nal_pkg->nalu+offset2, pkg->nal_data, pkg->nal_size);
 			nal_pkg->size += pkg->nal_size;
@@ -415,8 +417,8 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			}
 
 			nal_pkg->seq = pkg->seq;
-			LOGI("Slice seq: %02x", nal_pkg->seq);
 			nal_pkg->size = pkg->nal_size;
+			LOGI("SLICE: size: %d  seq: %02x", nal_pkg->size, nal_pkg->seq);
 			nal_pkg->nalu = (uint8_t *)malloc(nal_pkg->size);
 			if(!nal_pkg->nalu) {
 				LOGE("No more memory");

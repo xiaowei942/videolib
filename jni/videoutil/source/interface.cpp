@@ -296,39 +296,31 @@ LOGI("7");
 JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2
   (JNIEnv *env, jclass thiz, jint obj) {
   	LOGI("Enter native_getFrame2");
-LOGI("1");
   	size_t size = 0;
 	Transfer *transfer = (Transfer *)obj;
 	if(!transfer) {
 		return NULL;
 	}
 
-LOGI("2");
 	nalu_package *nal_pkg = transfer->getFrame();
 	if(!nal_pkg) {
 		return NULL;
 	}
 
 	LOGI("nalu_pkg: %p", nal_pkg);
-LOGI("3");
 	size = nal_pkg->size;
 	uint8_t *buf = (uint8_t *)nal_pkg->nalu;
-LOGI("4");
 	if(size>0) {
 		LOGI("Get frame 2: %d", size);
 		jbyteArray array = env->NewByteArray(size);
 
-LOGI("5");
-
 		LOGI("Sizeof buf: %d", sizeof(buf));
 		env->SetByteArrayRegion(array, 0,  size, (jbyte *)buf);
-LOGI("6");
 		if(nal_pkg->nalu) {
 			free(nal_pkg->nalu);
 			nal_pkg->nalu = NULL;
 		}
 
-LOGI("7");
 		return array;
 		//return NULL;
  	} else {
