@@ -265,7 +265,7 @@ void* Transfer::receiveThread() {
 					Screen_Info info;
 					LOGI("Now Get Width and Height");
 					int spssize = sizeof(sps)/sizeof(sps[0]);
-					if(ff_h264_decode_sps(&sps[4],spssize-5, &info)){
+					if(ff_h264_decode_sps(&sps[5],spssize-5, &info)){
 						LOGI("Width: %d, Height: %d\n", info.width, info.height);
 						gotWidthHeight = true;
 					} else {
