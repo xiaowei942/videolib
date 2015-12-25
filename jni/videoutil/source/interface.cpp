@@ -319,15 +319,18 @@ LOGI("4");
 		jbyteArray array = env->NewByteArray(size);
 
 LOGI("5");
+
 		LOGI("Sizeof buf: %d", sizeof(buf));
 		env->SetByteArrayRegion(array, 0,  size, (jbyte *)buf);
 LOGI("6");
-		//if(nal_pkg->nalu)
-		//	free(nal_pkg->nalu);
+		if(nal_pkg->nalu) {
+			free(nal_pkg->nalu);
+			nal_pkg->nalu = NULL;
+		}
 
 LOGI("7");
-		//return array;
-		return NULL;
+		return array;
+		//return NULL;
  	} else {
 		LOGI("Get no frame");
 		return NULL;

@@ -251,6 +251,14 @@ void* Transfer::receiveThread() {
 							gotSpsPps = true;
 						} else {
 							LOGI("Cannot get Sps Pps");
+							if(pkg) {
+								if(pkg->nal_data) {
+									free(pkg->nal_data);
+									pkg->nal_data = NULL;
+								} 
+								LOGI("free+++++ ");
+								free(pkg);
+							}
 							continue;
 						}
 					}
@@ -272,16 +280,14 @@ void* Transfer::receiveThread() {
 				if(makeFrame(pkg) != NULL) {
 					nal_pkg->frame_num++;
 					frame_queue->enQueue(nal_pkg);
+					nal_pkg = NULL;
 				}
 
 				if(pkg) {
 					if(pkg->nal_data) {
-						LOGI("free1");
 						free(pkg->nal_data);
-						LOGI("free+++++++=");
 						pkg->nal_data = NULL;
 					} 
-		//			LOGI("free %s", __LINE__);
 					LOGI("free+++++ ");
 					free(pkg);
 					pkg = NULL;
@@ -333,7 +339,7 @@ bool Transfer::isPrepared() {
 nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 	LOGI("Now makeFrame");
-
+	nalu_package *ret = NULL;
 	char *queue_buffer;
 	int slice_type = get_data_package_slice_ident_type(pkg);
 	switch(slice_type) {
@@ -347,12 +353,12 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 			offset2 = nal_pkg->size;
 			nal_pkg->seq = pkg->seq;
-			LOGI("lbg33333 %d",nal_pkg->size);
+			LOGI("SLICE %d", nal_pkg->size);
 			//LOGI("Slice seq: %02x", nal_pkg->seq);
 			nal_pkg->nalu = (uint8_t *)realloc(nal_pkg->nalu, offset2 + pkg->nal_size);
-			LOGI("lbg44444");
 			memcpy(nal_pkg->nalu+offset2, pkg->nal_data, pkg->nal_size);
 			nal_pkg->size += pkg->nal_size;
+			return NULL;
 			break;
 		case SLICE_TYPE_FIRST: //分片开始
 			LOGI("FIND A START SLICE: %02x", pkg->seq);
@@ -361,7 +367,6 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			if(nal_pkg) {
 				LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg->size);
 				return nal_pkg;
-				nal_pkg = NULL;
 			}
 
 			nal_pkg = (nalu_package *)malloc(sizeof(nalu_package));
@@ -372,7 +377,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 
 			nal_pkg->seq = pkg->seq;
 			nal_pkg->size = pkg->nal_size;
-			LOGI("Slice seq: %02x %d", nal_pkg->seq,nal_pkg->size);
+			LOGI("SLICE seq: %02x %d", nal_pkg->seq, nal_pkg->size);
 			nal_pkg->nalu = (uint8_t *)malloc(nal_pkg->size);
 			if(!nal_pkg->nalu) {
 				LOGE("No more memory");
@@ -382,6 +387,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			memset(nal_pkg->nalu, 0x0, nal_pkg->size);
 			memcpy(nal_pkg->nalu, pkg->nal_data, pkg->nal_size);
 			LOGI("makeFrame size: [pkg] %d [nal_pkg] %d ",pkg->nal_size,nal_pkg->size);
+			return NULL;
 			break;
 		case SLICE_TYPE_LAST: //分片结束
 			LOGI("FIND A END SLICE: %02x", pkg->seq);
@@ -444,7 +450,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			break;
 		default:
 			LOGI("Not A Valid Slice");
-
+			
 			if(pkg) {
 				if(pkg->nal_data) {
 					free(pkg->nal_data);
@@ -453,6 +459,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 				free(pkg);
 				pkg = NULL;
 			}
+			return NULL;
 			break;
 	}
 }
