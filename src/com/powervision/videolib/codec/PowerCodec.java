@@ -325,7 +325,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                 }
             } else { //初始化,等待extractor获取到sps，pps等
                 boolean isPrepared = mExtractor.isPrepared();
-                while (!isPrepared) {
+                if (!isPrepared) {
                     continue;
                 }
 
