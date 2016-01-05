@@ -6,4 +6,5 @@ package com.powervision.videolib.extractor;
 public interface IExtractor {
     public int getFrameSize();
     public byte[] getFrame();
+    public String getDescribe();
 }

@@ -21,7 +21,7 @@
 #include "tools/sps_resolution.h"
 #define FRAME_SIZE 4*1024*1024
 #define BUFFER_SIZE 1024
-#define QUEUE_SIZE 32
+#define QUEUE_SIZE 5
 
 #include <android/log.h>
 #define TRANSFER_LOG_TAG "TRANSFER"
@@ -52,11 +52,13 @@ public:
 	nalu_package *getFrame();
 	nalu_package *makeFrame(data_package *pkg);
 	bool isPrepared();
+	int video_width;
+	int video_height;
 private:
 	data_package* getDataPackage();
 	void unInitSockets();
 
-	CircleQueue<data_package *> *package_queue;
+//	CircleQueue<data_package *> *package_queue;
 	CircleQueue<nalu_package *> *frame_queue;
 	/* 服务端地址 */
 	struct sockaddr_in server_addr;
@@ -70,10 +72,6 @@ private:
 	bool isProcess;
 	pthread_t receive_handle;
 	pthread_t process_handle;
-
-	int video_width;
-	int video_height;
-
 	uint8_t sps[512];
 	uint8_t Pps[128];
 	uint8_t spsPps[1024];

@@ -4,7 +4,7 @@
 #include <string.h>
 #include <pthread.h>
 
-#define CIRCLEQUEUE_DEBUG
+//#define CIRCLEQUEUE_DEBUG
 
 #include <android/log.h>
 #define TRANSFER_LOG_TAG "CIRCLEQUEUE"
@@ -24,7 +24,8 @@ public:
 	void unLock();
 	int getLength();
 	int getCapacity();
-
+	bool deQueuebyNum(ElemType &element,int number);
+	bool deQueueCurrent(ElemType &element);
 private:
 	char queue_name[128];
 	ElemType *data;
@@ -139,6 +140,47 @@ LOGI("\n<-- DeQueue %s %d\n", queue_name, readPos);
 	}
 }
 
+template <typename ElemType>
+bool CircleQueue<ElemType>::deQueuebyNum(ElemType &element,int number) {
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
+#endif
+	pthread_mutex_lock(&mutex);
+	{
+		if(!isQueueEmpty()) {
+			element = data[number];
+			memset(&data[number], 0x0, sizeof(ElemType));
+			pthread_mutex_unlock(&mutex);
+			return true;
+		}else{
+			pthread_mutex_unlock(&mutex);
+			return false;
+		}
+	}
+}
+
+template <typename ElemType>
+bool CircleQueue<ElemType>::deQueueCurrent(ElemType &element) {
+#ifdef CIRCLEQUEUE_DEBUG
+LOGI("<-- DeQueue %s(cir) %d\n", queue_name, readPos);
+#endif
+	pthread_mutex_lock(&mutex);
+	{
+		if(writePos-readPos){
+		return false;
+		}
+		if(!isQueueEmpty()) {
+		int index=writePos;
+			index %= m_queueCapacity;
+			element = data[index];
+			memset(&data[index], 0x0, sizeof(ElemType));
+			pthread_mutex_unlock(&mutex);
+			return true;
+		}else{
+		return false;
+		}
+	}
+}
 template <typename ElemType>
 void CircleQueue<ElemType>::Lock() {
 	pthread_mutex_lock(&mutex);

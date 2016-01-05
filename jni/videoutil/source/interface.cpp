@@ -17,6 +17,7 @@ using namespace std;
 #define MP4_FILE_PATH "/sdcard/test.mp4"
 #define MP4_FPS 30
 
+//#define interfaces_debug
 /*
  * Class:     com_powervision_videolibtest_MyActivity
  * Method:    native_test
@@ -188,7 +189,7 @@ JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1initS
 /*
  * Class:     com_powervision_videolib_jni_JniNatives
  * Method:    native_unInitSocket
- * Signature: (II)I
+ * Signature: (II)falseI
  */
 JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket
   (JNIEnv *env, jclass thiz, jint obj, jint port) {
@@ -237,113 +238,96 @@ JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1stop
 	return transfer->stopProcess();
   }
 
-JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
-  (JNIEnv *env, jclass thiz, jint obj, jbyteArray array) {
-  	LOGI("Enter native_getFrame");
-LOGI("1");
-  	size_t size = 0;
-	Transfer *transfer = (Transfer *)obj;
-	if(!transfer) {
-		return -1;
-	}
-
-LOGI("2");
-	nalu_package *nal_pkg = transfer->getFrame();
-	if(!nal_pkg) {
-		return 0;
-	}
-
-LOGI("3");
-	size = nal_pkg->size;
-	char *buf = (char *)nal_pkg->nalu;
-LOGI("4");
-	if(size>0) {
-		LOGI("Get frame: %d", size);
-		jbyte *data = env->GetByteArrayElements(array, 0);
-
-LOGI("5");
-#if 0
-		LOGI("findb END SLICE, NOW QUEUE, SIZE: %d", size);
-
-		LOGI("******************* QUEUE ******************");
-		char *queue_buffer = (char *)malloc(size * 3);
-		if(!queue_buffer) {
-			LOGI("########################");
-			return 0;
-		}
-		memset(queue_buffer, 0x0, size*3);
-		for(int i=0; i<size; i++) {
-			sprintf(&queue_buffer[i*3], "%02x ", buf[i]);
-		}
-		LOGI("%s", queue_buffer);
-		LOGI("******************* findb END******************");
-#endif
-		memcpy(data, nal_pkg->nalu, size);
-		env->ReleaseByteArrayElements(array, data, 0);
-LOGI("6");
-		//if(buf)
-	//	free(buf);
-
-LOGI("7");
-		return size;
- 	}
-
-	LOGI("Get no frame");
-	return 0;
-  }
-
-
-JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2
+JNIEXPORT jbyteArray JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getFrame
   (JNIEnv *env, jclass thiz, jint obj) {
-  	LOGI("Enter native_getFrame2");
-LOGI("1");
   	size_t size = 0;
 	Transfer *transfer = (Transfer *)obj;
 	if(!transfer) {
 		return NULL;
 	}
 
-LOGI("2");
 	nalu_package *nal_pkg = transfer->getFrame();
 	if(!nal_pkg) {
 		return NULL;
 	}
 
-	LOGI("nalu_pkg: %p", nal_pkg);
-LOGI("3");
+	if((!nal_pkg->size) || nal_pkg->size>5000000){
+	if(nal_pkg->size>1000000){
+		LOGI("Get errorframe %d",nal_pkg->size);
+	}
+	if(nal_pkg->nalu) {
+				free(nal_pkg->nalu);
+				nal_pkg->nalu = NULL;
+			}
+			return NULL;
+	}
 	size = nal_pkg->size;
 	uint8_t *buf = (uint8_t *)nal_pkg->nalu;
-LOGI("4");
 	if(size>0) {
-		LOGI("Get frame 2: %d", size);
+//		LOGI("Get frame 2: %d", size);
 		jbyteArray array = env->NewByteArray(size);
 
-LOGI("5");
-		LOGI("Sizeof buf: %d", sizeof(buf));
 		env->SetByteArrayRegion(array, 0,  size, (jbyte *)buf);
-LOGI("6");
-		//if(nal_pkg->nalu)
-		//	free(nal_pkg->nalu);
+		if(nal_pkg->nalu) {
+			free(nal_pkg->nalu);
+			nal_pkg->nalu = NULL;
+		}
 
-LOGI("7");
-		//return array;
-		return NULL;
+		return array;
+		//return NULL;
  	} else {
 		LOGI("Get no frame");
 		return NULL;
 	}
   }
 
-
 JNIEXPORT jboolean JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared
   (JNIEnv *env, jclass thiz, jint obj) {
-  	LOGI("Enter native_isPrepared");
 
+  	#ifdef interfaces_debug
+  	LOGI("Enter native_isPrepared");
+	#endif
 	Transfer *transfer = (Transfer *)obj;
 	if(!transfer) {
 		return false;
 	}
 	return transfer->isPrepared();
+  }
+
+JNIEXPORT jstring JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1getDescribe
+  (JNIEnv *env, jclass thiz, jint obj) {
+  	LOGI("Enter native_getDescribe");
+
+	Transfer *transfer = (Transfer *)obj;
+	if(!transfer) {
+		return false;
+	}
+
+	char pat[80];
+	pat[0]='0';
+	if(transfer->video_width && transfer->video_height)
+	{
+		LOGI("native_getDescribe width: %d height:%d", transfer->video_width,transfer->video_height);
+		char *width = "width:";
+		char *height = " height:";
+		sprintf(pat, "%s%d%s%d", width, transfer->video_width, height, transfer->video_height);
+	}else{
+		pat[0]='0';
+	}
+ 	// 定义java String类 strClass
+	jclass strClass = (env)->FindClass("java/lang/String");
+	// 获取java String类方法String(byte[],String)的构造器,用于将本地byte[]数组转换为一个新String
+	jmethodID ctorID = (env)->GetMethodID(strClass, "<init>", "([BLjava/lang/String;)V");
+	// 建立byte数组
+	jbyteArray bytes = (env)->NewByteArray((jsize)strlen(pat));
+	// 将char* 转换为byte数组
+	(env)->SetByteArrayRegion(bytes, 0, (jsize)strlen(pat), (jbyte*)pat);
+	//设置String, 保存语言类型,用于byte数组转换至String时的参数
+	jstring encoding = (env)->NewStringUTF("GB2312");
+	//将byte数组转换为java String,并输出
+	LOGI("Leave native_getDescribe");
+
+	return (jstring)(env)->NewObject(strClass, ctorID, bytes, encoding);
   }
 
 #if 1
@@ -365,9 +349,9 @@ static JNINativeMethod methods[] = {
 	{ "native_stopReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopReceive },
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },
 	{ "native_stopProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopProcess },
-	{ "native_getFrame", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
-	{ "native_getFrame2", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame2 },
-	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared }
+	{ "native_getFrame", "(I)[B", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getFrame },
+	{ "native_isPrepared", "(I)Z", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1isPrepared},
+	{ "native_getDescribe", "(I)Ljava/lang/String;", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getDescribe}
 };
 
 static const char * classPathName = "com/powervision/videolib/jni/JniNatives";
