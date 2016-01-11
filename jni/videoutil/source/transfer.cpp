@@ -47,6 +47,8 @@ Transfer::~Transfer() {
 //		package_queue = NULL;
 //	}
 
+	gotWidthHeight = false;
+
 	LOGI("Now free circle queue elements");
 	if(frame_queue) {
 		for(int i=0; i<frame_queue->getCapacity(); i++){
@@ -67,8 +69,6 @@ Transfer::~Transfer() {
 		delete frame_queue;
 		frame_queue = NULL;
 	}
-
-	gotWidthHeight = false;
 
 	LOGI("Now freee circle queue end");
 	unInitSockets();

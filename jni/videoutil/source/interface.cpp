@@ -304,16 +304,19 @@ JNIEXPORT jstring JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1
 	}
 
 	char pat[80];
-	pat[0]='0';
-	if(transfer->video_width && transfer->video_height)
+	memset(pat, 0, 80);
+
+	if(transfer->video_width > 0 && transfer->video_height > 0)
 	{
 		LOGI("native_getDescribe width: %d height:%d", transfer->video_width,transfer->video_height);
 		char *width = "width:";
 		char *height = " height:";
 		sprintf(pat, "%s%d%s%d", width, transfer->video_width, height, transfer->video_height);
 	}else{
-		pat[0]='0';
+		LOGI("native_getDescribe --> NULL");
+		return NULL;
 	}
+
  	// 定义java String类 strClass
 	jclass strClass = (env)->FindClass("java/lang/String");
 	// 获取java String类方法String(byte[],String)的构造器,用于将本地byte[]数组转换为一个新String

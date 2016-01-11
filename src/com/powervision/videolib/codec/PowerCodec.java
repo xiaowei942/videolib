@@ -67,6 +67,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     static int sps_len =0;
     static int pps_len =0;
 
+    boolean isPrepared = false;
+    boolean decodeThreadExited = true;
     Thread decodeThread = null;
 
     void registerAllRenderers() {
@@ -178,6 +180,17 @@ if(false) {
     public void stop() {
         Log.i(TAG, "Set Start Flag --> stop");
         codecStatus = 0;
+        while(true) {
+            if(decodeThreadExited) {
+                return;
+            }
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -335,6 +348,7 @@ if(false) {
 
                     if ((info.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0) {
                         if (DEBUG) Log.d(TAG, "output EOS");
+                        Log.i(TAG, "End of stream, exit decoder");
                         exitDecoder = true;
                     }
 
@@ -345,42 +359,56 @@ if(false) {
                     }
                 }
             } else { //初始化,等待extractor获取到sps，pps等
-                if (sps == null && pps==null) {
-                    boolean isPrepared = mExtractor.isPrepared();
-
-                    if (!isPrepared) {
-                        continue;
-                    }
-
-                    String describe = mExtractor.getDescribe();
-                    if (describe != null && describe.length() > 1) {
-                        String[] tmpstr = describe.split(" ");
-                        mWidth = Integer.parseInt(tmpstr[0].replace("width:", ""));
-                        mHeight = Integer.parseInt(tmpstr[1].replace("height:", ""));
-                    }
-                    sps = mExtractor.getSps();
-                    sps_len = mExtractor.getSpsLength();
-                    pps = mExtractor.getPps();
-                    pps_len = mExtractor.getPpsLength();
+                isPrepared = mExtractor.isPrepared();
+                if (!isPrepared) {
+                    continue;
                 }
+                Log.i(TAG, "Already Prepared");
+
+                String describe = mExtractor.getDescribe();
+                if (describe != null && describe.length() > 1) {
+                    Log.i(TAG, describe);
+                    String[] tmpstr = describe.split(" ");
+                    mWidth = Integer.parseInt(tmpstr[0].replace("width:", ""));
+                    mHeight = Integer.parseInt(tmpstr[1].replace("height:", ""));
+                    if(mWidth <= 0 || mHeight <=0)
+                        continue;
+                } else {
+                    continue;
+                }
+                sps = mExtractor.getSps();
+                sps_len = mExtractor.getSpsLength();
+                pps = mExtractor.getPps();
+                pps_len = mExtractor.getPpsLength();
 
                 initMediaCodec(sps, sps_len, pps, pps_len);
+                decodeThreadExited = false;
             }
         }
 
-        Log.i(TAG, "TRANSFER Decoder will exit");
+        Log.i(TAG, "Decoder will exit");
         decoderconfigured = false;
-        if(codec !=null){
-            try{
-                codec.stop();
-                codec.release();
-                codec =null;
-            }catch (Exception e){
-                e.printStackTrace();
-                Log.e("PowerCodec",e.getMessage());
+        if(decodeThreadExited == false) {
+            if (codec != null) {
+                try {
+                    codec.stop();
+                    codec.release();
+                    codec = null;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e("PowerCodec", e.getMessage());
+                }
             }
+
+            if(sps != null) {
+                sps = null;
+            }
+            if(pps != null) {
+                pps = null;
+            }
+            decodeThreadExited = true;
         }
-        Log.i(TAG, "TRANSFER Decoder exit");
+        Log.i(TAG, "Decoder exit");
     }
 
     public void setCaptureFrameListener(OnCaptureFrameListener listener) {
