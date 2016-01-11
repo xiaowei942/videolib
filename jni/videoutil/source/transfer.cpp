@@ -19,7 +19,7 @@ void Transfer::Exit() {
 	isExit = true;
 }
 
-Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), video_width(width), video_height(height), gotSpsPps(false), local_data_socket_fd(-1) {
+Transfer::Transfer(int width, int height) : isReceive(false), isProcess(false), video_width(width), video_height(height), gotSpsPps(false), gotWidthHeight(false), local_data_socket_fd(-1) {
 	LOGI("Enter Transfer");
 //	package_queue = new CircleQueue<data_package *>(QUEUE_SIZE, "DATA_QUEUE", true);
 //	if(!package_queue) {
