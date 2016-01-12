@@ -197,21 +197,42 @@ JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1unIni
 	return transfer->unInitSocket(port);
   }
 
-JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getSps
+JNIEXPORT jbyteArray JNICALL Native_getSps
   (JNIEnv *env, jclass thiz, jint obj, jbyteArray sps) {
 	Transfer *transfer = (Transfer *)obj;
 	uint8_t *p = (uint8_t *)env->GetByteArrayElements(sps, JNI_FALSE);
 	int ret = transfer->getSps(p);
+
+	jbyte gs_raw_data[ret];
+    int i;
+    memset(&gs_raw_data,0,ret);
+    memcpy(&gs_raw_data,p,ret);
+    // parse the data
+    //below is the return 's bytearray lens
+    jbyteArray jarrRV =env->NewByteArray(ret+1);
+    env->SetByteArrayRegion(jarrRV, 0,ret,gs_raw_data);
+    return jarrRV;
+
 	LOGI("####GET SPS RETURN: %d", ret);
-	return ret;
+//	return ret;
   }
 
-JNIEXPORT int JNICALL Java_com_powervision_videolib_jni_JniNatives_native_1getPps
+JNIEXPORT jbyteArray Native_getPps
   (JNIEnv *env, jclass thiz, jint obj, jbyteArray pps) {
 	Transfer *transfer = (Transfer *)obj;
 	uint8_t *p = (uint8_t *)env->GetByteArrayElements(pps, JNI_FALSE);
 	int ret = transfer->getPps(p);
-	return ret;
+
+	jbyte gs_raw_data[ret];
+    int i;
+    memset(&gs_raw_data,0,ret);
+    memcpy(&gs_raw_data,p,ret);
+    // parse the data
+    //below is the return 's bytearray lens
+    jbyteArray jarrRV =env->NewByteArray(ret+1);
+    env->SetByteArrayRegion(jarrRV, 0,ret,gs_raw_data);
+    return jarrRV;
+//	return ret;
   }
 
 JNIEXPORT int JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1startReceive
@@ -332,7 +353,6 @@ JNIEXPORT jstring JNICALL  Java_com_powervision_videolib_jni_JniNatives_native_1
 
 	return (jstring)(env)->NewObject(strClass, ctorID, bytes, encoding);
   }
-
 #if 1
 static JNINativeMethod methods[] = {
 	{ "native_writerInit", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1writerInit },
@@ -346,8 +366,8 @@ static JNINativeMethod methods[] = {
 	{ "native_transferUnInit", "(I)V", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1transferUnInit },
 	{ "native_initSocket", "(ILjava/lang/String;Ljava/lang/String;I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1initSocket },
 	{ "native_unInitSocket", "(II)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1unInitSocket },
-	{ "native_getSps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getSps },
-	{ "native_getPps", "(I[B)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1getPps },
+	{ "native_getSps", "(I[B)[B", (void *)Native_getSps },
+	{ "native_getPps", "(I[B)[B", (void *)Native_getPps },
 	{ "native_startReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startReceive },
 	{ "native_stopReceive", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1stopReceive },
 	{ "native_startProcess", "(I)I", (void *)Java_com_powervision_videolib_jni_JniNatives_native_1startProcess },

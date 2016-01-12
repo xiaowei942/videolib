@@ -326,7 +326,11 @@ pkgfree:
 //}
 
 int Transfer::getSps(uint8_t *buf) {
+
 	memcpy(buf, sps, sps_size);
+	int k=0;
+    	for(; k<sps_size; k++)
+    		LOGI("lbg sps 0x%02x ", buf[k]);
 	return sps_size;
 }
 
