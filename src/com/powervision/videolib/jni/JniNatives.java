@@ -34,8 +34,8 @@ public class JniNatives {
     public static native void native_transferUnInit(int obj);
     public static native int native_initSocket(int obj, String serverIp, String localIp, int localPort);
     public static native int native_unInitSocket(int obj, int localPort);
-    public static native int native_getSps(int obj, byte[] sps);
-    public static native int native_getPps(int obj, byte[] pps);
+    public static native byte[] native_getSps(int obj, byte[] sps);
+    public static native byte[] native_getPps(int obj, byte[] pps);
     public static native int native_startReceive(int obj);
     public static native int native_stopReceive(int obj);
     public static native int native_startProcess(int obj);
@@ -43,4 +43,5 @@ public class JniNatives {
     public static native byte[] native_getFrame(int obj);
     public static native String native_getDescribe(int obj);
     public static native boolean native_isPrepared(int obj);
+
 }

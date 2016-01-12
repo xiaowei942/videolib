@@ -128,7 +128,9 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     }
 
     public ByteBuffer getSps(byte[] sps) {
-        int size = JniNativesProxy.getSps(nativeTransferObject, sps);
+
+        sps= JniNativesProxy.getSps(nativeTransferObject, sps);
+        int size = sps.length;
         setSpsLength(size);
 
         if(size > 0 && size<sps.length*2) {
@@ -139,7 +141,8 @@ public class H264StreamFrameExtractor extends H264FrameExtractor {
     }
 
     public ByteBuffer getPps(byte[] pps) {
-        int size = JniNativesProxy.getPps(nativeTransferObject, pps);
+       pps= JniNativesProxy.getPps(nativeTransferObject, pps);
+        int size=pps.length;
         setPpsLength(size);
 
         if(size>0 && size<pps.length*2) {

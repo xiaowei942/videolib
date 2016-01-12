@@ -17,7 +17,9 @@ import com.powervision.videolib.render.SurfaceViewRenderer;
 import com.powervision.videolib.writer.FileWriter;
 import com.powervision.videolib.writer.FileWriterFactory;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.Arrays;
 
 /**
  * Created by liwei on 15-7-24.
@@ -116,17 +118,17 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
             brgb = new byte[mWidth * mHeight * 4];
         }
 
-if(false) {
-    if (mCurrentRenderer.getType() == Renderer.RendererType.RendererType_SurfaceView) {
-        // Initialize the bitmap, with the replaced color
-        surfaceBitmap = Bitmap.createBitmap(mWidth, mHeight,
-                Bitmap.Config.ARGB_8888);
-            /* We cannot use following way to create a bitmap, or error occurs when setPixels
-                surfaceBitmap = Bitmap.createBitmap(irgb, mWidth, mHeight,
+        if(false) {
+            if (mCurrentRenderer.getType() == Renderer.RendererType.RendererType_SurfaceView) {
+                // Initialize the bitmap, with the replaced color
+                surfaceBitmap = Bitmap.createBitmap(mWidth, mHeight,
                         Bitmap.Config.ARGB_8888);
-            */
-    }
-}
+                    /* We cannot use following way to create a bitmap, or error occurs when setPixels
+                        surfaceBitmap = Bitmap.createBitmap(irgb, mWidth, mHeight,
+                                Bitmap.Config.ARGB_8888);
+                    */
+            }
+        }
         writer = FileWriterFactory.createMp4FileWriter(this, null);
         writer.open();
 
@@ -142,11 +144,18 @@ if(false) {
 
         info = new MediaCodec.BufferInfo();
 
-        codec = MediaCodec.createDecoderByType(MIME_TYPE);
+        try {
+            codec = MediaCodec.createDecoderByType(MIME_TYPE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         MediaFormat format = MediaFormat.createVideoFormat(MIME_TYPE, getWidth(), getHeight());
 
         format.setByteBuffer("csd-0", sps);
         format.setByteBuffer("csd-1", pps);
+        Log.e("lbg width:",getWidth()+",height:"+getHeight()+"");
+        Log.e("lbg sps", Arrays.toString(spsBuf));
+        Log.e("lbg pps", Arrays.toString(ppsBuf));
         //format.setInteger("color-format", 19);
         codec.configure(format, mSurface, null, 0);
         codec.start();

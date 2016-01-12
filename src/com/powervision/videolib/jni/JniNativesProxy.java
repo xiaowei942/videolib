@@ -72,11 +72,14 @@ public class JniNativesProxy {
         return JniNatives.native_unInitSocket(object, port);
     }
 
-    public static int getSps(int object, byte[] sps) {
+    public static byte[] getSps(int object, byte[] sps) {
+
+        // Create temporary object
+
         return JniNatives.native_getSps(object, sps);
     }
 
-    public static int getPps(int object, byte[] pps) {
+    public static byte[] getPps(int object, byte[] pps) {
         return JniNatives.native_getPps(object, pps);
     }
 
