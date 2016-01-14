@@ -203,6 +203,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     }
 
     @Override
+    public void pause() {
+        codecStatus = 2;
+    }
+
+    @Override
     public void closeCodec() {
 
     }
@@ -233,7 +238,6 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         while (!exitDecoder) {
             int size = 0;
             int inputBufferIndex = 0;
-
             if(decoderconfigured) {
                 if (codecStatus == 0) { //停止
                     inputBufferIndex = codec.dequeueInputBuffer(TIMEOUT_USEC);
@@ -250,8 +254,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                     }
 
                     size = buf.length;
-
                     if (size > 0) {
+                        Log.e("lbg",3+"");
                         inputBufferIndex = codec.dequeueInputBuffer(TIMEOUT_USEC);
                         if (inputBufferIndex >= 0) {
                             if (buf == null) {
@@ -446,7 +450,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
     @Override
     public void run() {
-        Log.i(TAG, "run decode thread");
+        Log.i(TAG, "lbg run decode thread");
         decode();
     }
 

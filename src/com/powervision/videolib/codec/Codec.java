@@ -12,6 +12,7 @@ public abstract class Codec {
     public abstract void openCodec();
     public abstract void start();
     public abstract void stop();
+    public abstract void pause();
     public abstract void closeCodec();
     public abstract void releaseCodec();
     public abstract void decode();
