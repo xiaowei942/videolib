@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public abstract class BaseCodec extends Codec implements ICodec{
     /*************** Renderer Start ****************/
     IRenderer mCurrentRenderer = null;
-    SurfaceView mSurfaceView = null;
+    SurfaceView aSurfaceView = null;
     ArrayList<IRenderer> renderers = new ArrayList<IRenderer>();
 
-    public SurfaceView getmSurfaceView() {
-        return mSurfaceView;
+    public SurfaceView getaSurfaceView() {
+        return aSurfaceView;
     }
 
     public synchronized void setCurrentRenderer(int type) {
@@ -44,9 +44,9 @@ public abstract class BaseCodec extends Codec implements ICodec{
     /***************  Renderer End  ****************/
 
     /*************** Display Start ****************/
-    static int mFps = -1;
-    static int mWidth = -1;
-    static int mHeight = -1;
+     int mFps = -1;
+     int mWidth = -1;
+     int mHeight = -1;
 
     public int getWidth() {
         return mWidth;

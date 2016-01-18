@@ -2,6 +2,7 @@ package com.powervision.videolib.codec;
 
 import android.graphics.Bitmap;
 import android.media.MediaCodec;
+import android.media.MediaCodecInfo;
 import android.media.MediaFormat;
 import android.util.Log;
 import android.view.Surface;
@@ -19,18 +20,17 @@ import com.powervision.videolib.writer.FileWriterFactory;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
 
 /**
  * Created by liwei on 15-7-24.
  */
 public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameListener{
     private String TAG = "PowerCodec";
-    private static final boolean DEBUG = false;
+    private final boolean DEBUG = false;
     //视频截图模块
     OnCaptureFrameListener captureFrameListener = null;
     private FrameCapturer capturer = null;
-    static Bitmap captureBitmap = null;
+     Bitmap captureBitmap = null;
     private boolean captureFrame = false;
 
     //数据获取模块
@@ -38,16 +38,16 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
     //视频文件存储模块
     private FileWriter writer = null;
-    static boolean closeWriter = false;
+    boolean closeWriter = false;
 
     //图像渲染模块
     private IRenderer renderer = null;
-    static Surface mSurface = null;
-    static boolean hasSurface = false;
-    static H264FrameExtractor mExtractor = null;
+     Surface mSurface = null;
+     boolean hasSurface = false;
+     H264FrameExtractor mExtractor = null;
 
-    static Bitmap surfaceBitmap = null;
-    private static byte[] brgb = null;
+     Bitmap surfaceBitmap = null;
+    private byte[] brgb = null;
 
     //解码器部分
     MediaCodec codec = null;
@@ -57,24 +57,24 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
     ByteBuffer[] decoderInputBuffers = null;
     ByteBuffer[] decoderOutputBuffers = null;
     MediaFormat decoderOutputFormat = null;
-    private static final String MIME_TYPE = "video/avc";
-    private static final long TIMEOUT_USEC = 1000;
+    private  final String MIME_TYPE = "video/avc";
+    private  final long TIMEOUT_USEC = 1000;
 
     int codecStatus = 2; //0:stop 1:start 2:idle
     boolean encoderDone = false;
     boolean exitDecoder = false;
 
-    static ByteBuffer sps = null;
-    static ByteBuffer pps = null;
-    static int sps_len =0;
-    static int pps_len =0;
+     ByteBuffer sps = null;
+     ByteBuffer pps = null;
+     int sps_len =0;
+     int pps_len =0;
 
     boolean isPrepared = false;
     boolean decodeThreadExited = true;
     Thread decodeThread = null;
 
     void registerAllRenderers() {
-        mCurrentRenderer = RendererFactory.createSurfaceViewRenderer(mSurfaceView);
+        mCurrentRenderer = RendererFactory.createSurfaceViewRenderer(aSurfaceView);
         addRenderer(mCurrentRenderer);
     }
 
@@ -141,7 +141,6 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
         writer.writeFrame(spsBuf, spsLength, 1);
         writer.writeFrame(ppsBuf, ppsLength, 1);
-
         info = new MediaCodec.BufferInfo();
 
         try {
@@ -149,15 +148,18 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         } catch (IOException e) {
             e.printStackTrace();
         }
-        MediaFormat format = MediaFormat.createVideoFormat(MIME_TYPE, getWidth(), getHeight());
-
-        format.setByteBuffer("csd-0", sps);
-        format.setByteBuffer("csd-1", pps);
+        MediaFormat mediaFormat = MediaFormat.createVideoFormat(MIME_TYPE, getWidth(), getHeight());
+        mediaFormat.setInteger(MediaFormat.KEY_BIT_RATE, 2500000);
+        mediaFormat.setInteger(MediaFormat.KEY_FRAME_RATE, 35);
+        mediaFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, MediaCodecInfo.CodecCapabilities.COLOR_FormatYUV420Planar);
+        mediaFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1); //关键帧间隔时间 单位s
+        mediaFormat.setByteBuffer("csd-0", sps);
+        mediaFormat.setByteBuffer("csd-1", pps);
         Log.e("lbg width:",getWidth()+",height:"+getHeight()+"");
-        Log.e("lbg sps", Arrays.toString(spsBuf));
-        Log.e("lbg pps", Arrays.toString(ppsBuf));
+//        Log.e("lbg sps", Arrays.toString(spsBuf));
+//        Log.e("lbg pps", Arrays.toString(ppsBuf));
         //format.setInteger("color-format", 19);
-        codec.configure(format, mSurface, null, 0);
+        codec.configure(mediaFormat, mSurface, null, 0);
         codec.start();
 
         decoderconfigured = true;
@@ -224,6 +226,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                 Log.e("PowerCodec",e.getMessage());
             }
         }
+        mSurface=null;
+        mExtractor=null;
+        surfaceBitmap=null;
+        mSurface=null;
+        brgb=null;
     }
 
     public void renderFrame(IRenderer render) {
@@ -248,29 +255,28 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                         }
                     }
                 } else if (codecStatus == 1) { //启动
-                    byte[] buf = mExtractor.getFrame();
-                    if (buf == null) {
+                    byte[] framebuf = mExtractor.getFrame();
+                    if (framebuf == null) {
                         continue;
                     }
 
-                    size = buf.length;
+                    size = framebuf.length;
                     if (size > 0) {
-                        Log.e("lbg",3+"");
                         inputBufferIndex = codec.dequeueInputBuffer(TIMEOUT_USEC);
                         if (inputBufferIndex >= 0) {
-                            if (buf == null) {
+                            if (framebuf == null) {
                                 count++;
                                 continue;
                             }
 
-                            ByteBuffer bf = ByteBuffer.wrap(buf, 0, size);
+                            ByteBuffer bf = ByteBuffer.wrap(framebuf, 0, size);
 
                             bf.position(0);
                             bf.limit(size);
 
                             ByteBuffer inputBuffer = decoderInputBuffers[inputBufferIndex];
                             inputBuffer.clear();
-                            inputBuffer.put(buf);
+                            inputBuffer.put(framebuf);
                             if (count == 3) {
                                 codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, 0);
                                 if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 1);
@@ -278,11 +284,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                                 codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, 0);
                                 if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 0);
                             }
-
+                            framebuf=null;
                             if (closeWriter) {
                                 //writer.close();
                             } else {
-                                //writer.writeFrame(buf, size, 1);
+                                //writer.writeFrame(framebuf, size, 1);
                             }
 
                             count++;
@@ -397,6 +403,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                 initMediaCodec(sps, sps_len, pps, pps_len);
                 decodeThreadExited = false;
             }
+            try {
+                Thread.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         Log.i(TAG, "Decoder will exit");
@@ -428,7 +439,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         this.captureFrameListener = listener;
     }
 
-    public static Bitmap getFrameBitmap() {
+    public  Bitmap getFrameBitmap() {
         return surfaceBitmap;
     }
 
@@ -440,11 +451,11 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         captureFrame = isCap;
     }
 
-    public static void setCloseWriter(boolean close) {
+    public void setCloseWriter(boolean close) {
         closeWriter = close;
     }
 
-    public SurfaceView getmSurfaceView() {
+    public SurfaceView getaSurfaceView() {
         return null;
     }
 

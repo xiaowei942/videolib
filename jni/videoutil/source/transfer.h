@@ -19,7 +19,7 @@
 #include <CircleQueue.h>
 #include "transfer_protocol.h"
 #include "tools/sps_resolution.h"
-#define FRAME_SIZE 4*1024*1024
+#define FRAME_SIZE 3*1024*1024
 #define BUFFER_SIZE 1024
 #define QUEUE_SIZE 5
 

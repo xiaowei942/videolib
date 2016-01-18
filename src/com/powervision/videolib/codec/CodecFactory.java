@@ -4,7 +4,7 @@ package com.powervision.videolib.codec;
  * Created by liwei on 15-7-25.
  */
 public class CodecFactory {
-    public static BaseCodec createCodec(CodecParam param) {
+    public BaseCodec createCodec(CodecParam param) {
         switch (param.codecType) {
             case Codec.CODEC_TYPE_OTHER:
                 return null;
