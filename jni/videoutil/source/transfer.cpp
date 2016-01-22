@@ -310,7 +310,7 @@ pkgfree:
 				}
 			}
 		}
-		usleep(200);
+		//usleep(200);
 	}
 
 	LOGI("Exit Receive Thread");

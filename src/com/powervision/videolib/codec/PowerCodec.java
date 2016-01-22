@@ -155,7 +155,7 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
         mediaFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1); //关键帧间隔时间 单位s
         mediaFormat.setByteBuffer("csd-0", sps);
         mediaFormat.setByteBuffer("csd-1", pps);
-        Log.e("lbg width:",getWidth()+",height:"+getHeight()+"");
+        Log.i("lbg width:",getWidth()+",height:"+getHeight()+"");
 //        Log.e("lbg sps", Arrays.toString(spsBuf));
 //        Log.e("lbg pps", Arrays.toString(ppsBuf));
         //format.setInteger("color-format", 19);
@@ -239,6 +239,9 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
 
     @Override
     public void decode() {
+        if(mExtractor==null){
+            return;
+        }
         int count = 1;
         long startMs = System.currentTimeMillis();
         long lasttime = startMs;
@@ -275,7 +278,6 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                             bf.limit(size);
 
                             ByteBuffer inputBuffer = decoderInputBuffers[inputBufferIndex];
-                            inputBuffer.clear();
                             inputBuffer.put(framebuf);
                             if (count == 3) {
                                 codec.queueInputBuffer(inputBufferIndex, 0, size, count * 1000, 0);
@@ -285,6 +287,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                                 if (DEBUG) Log.d(TAG, "passed " + size + " bytes to decoder" + " with flags - " + 0);
                             }
                             framebuf=null;
+                            inputBuffer.clear();
+                            bf.clear();
                             if (closeWriter) {
                                 //writer.close();
                             } else {
@@ -355,6 +359,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                                 if(captureFrameListener != null)
                                     captureFrameListener.onCaptureFrame(captureBitmap);
                             }
+                            byteBuffer.clear();
+                            brgb=null;
                             break;
                         }
                     }
@@ -376,6 +382,8 @@ public class PowerCodec extends BaseCodec implements Runnable, OnCaptureFrameLis
                     } else {
                         codec.releaseOutputBuffer(decoderStatus, true /*render*/);
                     }
+                    outputFrame.clear();
+
                 }
             } else { //初始化,等待extractor获取到sps，pps等
                 isPrepared = mExtractor.isPrepared();
