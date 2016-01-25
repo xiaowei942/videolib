@@ -328,9 +328,11 @@ pkgfree:
 int Transfer::getSps(uint8_t *buf) {
 
 	memcpy(buf, sps, sps_size);
+	#ifdef TRANSFER_DEBUG
 	int k=0;
     	for(; k<sps_size; k++)
     		LOGI("lbg sps 0x%02x ", buf[k]);
+    #endif
 	return sps_size;
 }
 
@@ -412,7 +414,6 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			return NULL;
 			break;
 		case SLICE_TYPE_LAST: //分片结束
-
 			if(!nal_pkg) {
 				return NULL;
 			}
@@ -447,7 +448,7 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			break;
 		case SLICE_TYPE_NONE:
 #if 1
-			LOGI("FIND A WHOLE FRAME: %d", nal_pkg->size);
+			LOGI("FIND A WHOLE FRAME");
 			//如果没有发现分片结束
 			if(nal_pkg) {
 				LOGI("NO END SLICE, NOW QUEUE, SIZE: %d", nal_pkg->size);
@@ -478,7 +479,6 @@ nalu_package *Transfer::makeFrame(data_package *pkg) {
 			break;
 		default:
 			LOGI("Not A Valid Slice");
-			
 			if(pkg) {
 				if(pkg->nal_data) {
 #ifdef transfer_free
